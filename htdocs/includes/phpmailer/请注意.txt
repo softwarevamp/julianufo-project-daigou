@@ -1,0 +1,10 @@
+﻿请注意：
+1.language为语言包，勿删，否则无法正常显示中文。
+2.class.phpmailer.php为主类库,勿删。
+3.class.pop3.php用到pop发送邮件时采用，否则可删除
+4.class.smtp.php用到smtp发送邮件时采用，否则可删除
+
+以下三个文件为测试文件，测试完毕后请删除。
+126.php
+163.php
+foxmail.php
