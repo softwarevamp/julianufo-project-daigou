@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+    <script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ > 
+
+    <script src="{TPL}js/wdggcGobal.js" type="text/javascript"></script>
+
+    <link href="{TPL}css/present.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/AjaxPager-min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/Sell.js"></script>
+
+
+<title>
+	[{$cfg_site_name}] – 我的优惠券
+</title></head>
+<body>
+    
+<form name="" method="post" action="" id="">
+
+{template 'header'}
+
+  <div class="admin">
+
+    <div class="ding">
+<div class="shouye">
+                <a href="{url_m.php}" title="我的会员中心"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>Your position：</b><a href="{url_m.php}">Member Center</a><span>&gt;</span><a href="{url_m.php?name=coupon}">My Coupon</a><span>&gt;</span>出售电子优惠券
+              </div>
+
+                
+              <div class="shezhi">
+<p>
+                        <a href="{url_m.php}">My Member Center</a><span>|</span>ThemeSet：</p>
+                    <ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+
+                </ul>
+                </div>
+            </div>
+        </div>
+
+{template 'member_left'}
+		
+    <div class="fill">
+      <div class="sell_top">
+        <h2>
+        电子优惠券出售区</h2>
+        </div>
+        <div class="jh_js">
+
+            <h2>
+                如果您手头的电子优惠券比较充裕，可以将电子优惠券的出售信息发布到电子优惠券商城噢！</h2>
+            <div class="js_tishi">
+                温馨提示：活动领取的电子优惠券是不能被出售的噢！</div>
+      </div>
+        
+	  {if !empty($dataarray)} 
+	  
+        <div class="zs_list" id="userCouponListPanel">
+            <h2>
+
+                选择您想要赠送的电子优惠券：</h2>
+            <div class="biao">
+                <table>
+                    <tr>
+                        <th class="w1">
+                            status
+                        </th>
+                        <th class="w2">
+                            电子优惠券号码
+                        </th>
+
+                        <th class="w3">
+                            indate
+                        </th>
+                        <th class="w4">
+                            par value
+                        </th>
+                        <th class="w5">
+                            operate
+                        </th>
+                    </tr>
+
+                </table>
+                <table id="userCouponList">
+{loop $dataarray $key $r}
+<tr {if $key%2==1}class="hui"{/if}>
+<td class="w1">{$r['statename']}</td>
+<td class="w2">{$r['sn']}</td>
+<td class="w3">{eval if($r['endtime']!=0)echo date('Y-m-d',$r['endtime']);else echo '未激活'}</td>
+<td class="w4">{$r['money']}</td>
+<td class="w5"> 
+
+
+<a id="c{$r['cid']}" href="javascript:;" class="{if $r['state']==1}sell{/if}" onclick="showsell('{$r['sn']}',{$r['money']},'{$r['uname']}','{$r['endtime']}','{$r['state']}',{$r['cid']})">
+{if $r['state']==2}
+出售中，取消出售
+{else}
+就选这张，下一步
+{/if}
+</a>
+
+</td>
+</tr>
+{/loop}
+                </table>
+                <div class="page-bottom" id="ajaxPager">
+                    &nbsp;</div>
+                <div style="clear: both;">
+                    &nbsp;</div>
+
+            </div>
+      </div>
+	  
+{else}		  
+ <div class="zs_wu">您目前没有可以出售的电子优惠券。<br /><a href="{url_m.php?name=coupon}">查看我的优惠券</a></div>     
+{/if}
+        
+    </div>
+
+        <div class="yj">
+    </div>
+    </div>
+
+    
+{template 'footer'}
+</form>
+
+
+
+</body>
+</html>
+

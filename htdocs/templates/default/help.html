@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/help.css">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<title>[{$cfg_site_name}] - {lang Help_Center}</title>
+</head>
+ <body>
+
+
+<form id="aspnetForm" action="{url_help.php?action=list}" method="post" name="aspnetForm">
+    {template 'header'}	
+    <div class="center">
+        <div class="search">
+            <div class="cz">
+               {lang Find_Help}：</div>
+            <div class="gjc">
+                <input type="text" onblur="if($.trim(this.value).length&lt;=0){this.className='s1';this.value='{lang Enter_keywords_purchasing}？'}" onfocus="if(this.className=='s1'){this.value='';this.className='s1_';}" value="{lang Enter_keywords_purchasing}" id="hkey" name="keyword" class="s1"><input type="submit" value="搜索" onmouseout="this.className='s2'" onmouseover="this.className='s2_'" id="hbtn" name="" class="s2" onclick="">
+            </div>
+        </div>
+        <div class="left_h">
+            <h2 class="n1">
+                <a title="{lang Help_Category}" href="{url_help.php}"></a>
+            </h2>
+            <ul>
+                {loop $atypearray $aval}
+				{if $aval['node']==0}
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                
+            </ul>
+            <h2 class="n2">
+                <a title="{lang Questions}" href="{url_help.php?id=9}"></a>
+            </h2>
+            <ul>
+                 {loop $atypearray $aval}
+				{if $aval['node']==9}               
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                    
+            </ul>
+            <h2 class="n6">
+                <a title="{lang Common_tools}" href="{url_tools.php}"></a>
+            </h2>
+            
+            <h2 class="n4">
+                <a title="{lang User_Guide}" href="{url_help.php?action=view&id=82}"></a>
+            </h2>
+            
+        </div>
+        
+    <div class="right_h">
+        <div class="weizhi">
+            <p>
+                <b>{lang Location}：</b><a href="{url_help.php}">{lang Find_Help}</a><span>&gt;</span>{lang Help_Center}</p>
+            <div>
+                <a target="_blank" href="{url_demo.php}">{lang Shopping_Demo}</a></div>
+        </div>
+        <div class="fenlei_h">
+        {loop $rightatypearray $aval}
+		
+            <h2>{$aval['typename']}</h2>
+            <ul>
+                {loop $rightarticlearray $val}
+				{if $val['typeid']==$aval[typeid]}
+                <li><a href="{url_help.php?action=view&id=$val[aid]}">{$val['title']}</a></li>
+				{/if}
+				{/loop}
+            </ul>
+			
+        {/loop}
+		
+		
+		
+		    
+        </div>
+    </div>
+    <div style="clear: both;" class="yj">
+    </div>
+
+    </div>
+    <input type="text" style="display: none;">
+    <div class="foot_h">
+        <p>
+            <a href="{url_about.php?action=aboutus}">{lang About_us}</a>&nbsp;|&nbsp;<a href="{url_about.php?action=contactus}">{lang contact_us}</a>&nbsp;|&nbsp;<a href="{url_about.php?action=joinus}">{lang join_us}</a>&nbsp;|&nbsp;<a href="{url_about.php?action=links}">{lang my_links}</a>
+        </p>
+        Copyright&nbsp;&copy;&nbsp;2010 代购! Inc. All rights reserved
+    </div>
+    </form>
+
+</body>

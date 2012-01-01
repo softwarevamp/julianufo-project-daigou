@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$cfg_site_name}" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<link href="{TPL}css/tbsp.css" rel="stylesheet" type="text/css" />
+<link href="{TPL}css/charging_center.css" rel="stylesheet" type="text/css" />
+<title>{lang Girls_Services} - {$cfg_site_name}</title>
+</head>
+<body>
+{template 'header'}
+<div id="page" style="border:1px solid #f0f0f0;overflow:hidden">
+  <!-- #header END -->
+  <div id="content">
+    <div class="grid-c">
+      <div class="box page-info">
+        <h2 class="title">{lang Shopping_girls_Charge_Center}</h2>
+        <p class="desc">{lang Make_easier_recharge}</p>
+      </div>
+    </div>
+    <div class="grid-c2f">
+      <div class="col-main">
+        <div class="main-wrap">
+          <div class="box">
+            <div id="J_ChargingTab" class="tab-box">
+              <ul class="nav-box">
+			  
+                <li class="nav first "><span class="rc-tp"></span><a href="service.php?action=alipay" data-height="431"><span>{lang Alipay_behalf_the_recharge}</span></a></li>
+                <li class="nav "><a href="service.php?action=game" data-height="431"><span>{lang Online_direct_charge}</span></a></li>
+                <li class="nav"><a href="service.php?action=qq" data-height="682"><span>{lang QQ_currency_recharge}</span></a></li>
+                <li class="nav"><a href="service.php?action=tenpay" data-height="431"><span>{lang TenPay_recharge}</span></a></li>
+                <li class="nav"><a href="service.php?action=other" data-height="682"><span>{lang Other_Website_recharge}</span></a></li>
+                <li class="nav last selected"><span class="rc-bt"></span><a href="service.php?action=card" data-height="600"><span>{lang Credit_payments}</span></a></li>
+				
+              </ul>
+              <div class="panel-box"> <span class="rc-tp"><span></span></span>
+                <div class="panel">
+                  <div class="telephone">
+                    <form name="service_product_list" method="post" action="{url_service.php?action=add&type=$action}" style="padding:0px; margin:0px;">
+                      <table cellspacing="0" cellpadding="0" border="0" class="form-table">
+                        <tbody>
+                          <tr>
+                            <td class="tel-img-box" colspan="2">{lang Facilitate_safe_efficient}</td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Alipay_Account}：</label></th>
+                            <td>
+                              <SELECT style="WIDTH: 206px" id=bankinfo_bank_id onchange=setCardLevel(this.value) name=bankname>
+                                <option value="0" selected="selected">全部银行</option>
+                                <option value="北京银行">B北京银行</option>
+                                <option value="东亚银行">D东亚银行</option>
+                                <option value="广东发展银行">G广东发展银行</option>
+                                <option value="光大银行">G光大银行</option>
+                                <option value="工商银行">G工商银行</option>
+                                <option value="华夏银行">H华夏银行</option>
+                                <option value="杭州银行">H杭州银行</option>
+                                <option value="建设银行">J建设银行</option>
+                                <option value="交通银行">J交通银行</option>
+                                <option value="民生银行">M民生银行</option>
+                                <option value="南京银行">N南京银行</option>
+                                <option value="农业银行">N农业银行</option>
+                                <option value="上海农商行">S上海农商行</option>
+                                <option value="上海浦发银行">S上海浦发银行</option>
+                                <option value="深圳发展银行">S深圳发展银行</option>
+                                <option value="天津银行">T天津银行</option>
+                                <option value="兴业银行">X兴业银行</option>
+                                <option value="邮政储蓄银行">Y邮政储蓄银行</option>
+                                <option value="中国银行">Z中国银行</option>
+                                <option value="招商银行">Z招商银行</option>
+                                <option value="中信银行">Z中信银行</option>
+                              </SELECT>
+                              </td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Credit_card_number}：</label></th>
+                            <td><span class="tel-input-label">
+                              <input type="text" name="account" autocomplete="off" maxlength="50" class="tel-input" id="J_TelInput" style="color: rgb(128, 128, 128);" />
+                              </span></td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Cardholder_name}：</label></th>
+                            <td><span class="tel-input-label">
+                              <input type="text" name="amount" autocomplete="off" maxlength="50" class="tel-input" id="J_TelInput" style="color: rgb(128, 128, 128);" />
+                              </span></td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><label style="color:red">{lang Repayment_amount}：</label></th>
+                            <td><span class="tel-input-label" style="width:100px">
+                              <input name="money" type="text" class="tel-input" id="phone" style="color: rgb(128, 128, 128); width:100px" size="10" maxlength="12" autocomplete="off" />
+                              </span></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><button id="J_SubmitButton" class="btn-submit" type="submit">{lang Click_here_recharge}</button>
+                              <a href="" target="_blank">{lang Probably_arrive_minutes}</a><a href="http://www.taobao.com/go/act/wap/act-zc-regularly.php" target="_blank"></a> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <div class="panel"></div>
+                <span class="rc-bt"><span></span></span> </div>
+            </div>
+          </div>
+          <div class="box more-service">
+            <ul class="ul-has-icon">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sub">
+        <div class="box side-banner"> <a href="#"><img src="{TPL}images/T1h.hFXiBoXXXXXXXX-180-250.jpg" alt="ad" /></a> </div>
+        <div class="box"> <span class="rc-tp"><span></span></span>
+          <div class="hd">
+            <h3>{lang Recharge_Help}</h3>
+          </div>
+          <div class="bd"> <ul>
+				{loop $helparray $r}
+				
+            <li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+            {/loop}
+            </ul>
+          </div>
+          <span class="rc-bt"><span></span></span> </div>
+      </div>
+    </div>
+  </div>
+</div>
+{template 'footer'}
+</body>
+</html>

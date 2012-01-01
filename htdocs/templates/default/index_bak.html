@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{lang Shopping_Shopping_Chinese_purchasing}" />
+<meta name="description" content="" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+<script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jquery.featureList-1.0.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewIndex.css" />
+
+<!--[if lte IE 6]><script type="text/javascript" src="{TPL}js/unitpngfix.js"></script><![endif]-->
+<style type="text/css">
+	.hltable{
+		margin:0 auto 0 20px;;
+		text-align:center;
+	}
+	.hltable tr{
+		text-align:left;
+		line-height:19px;
+	}
+	.hltable tr td{
+		text-align:left;
+	}
+	.down{
+		background-image:url({TPL}images/down.png);
+		display:inline-block;
+		height:8px;
+		margin-right:3px;
+		vertical-align:middle;
+		width:7px;
+	}
+	 .up{
+		background-image:url({TPL}images/up.png);
+		display:inline-block;
+		height:8px;
+		margin-right:3px;
+		vertical-align:middle;
+		width:7px;
+	}
+	
+	.daelog li {
+border-top:1px dashed #CCCCCC;
+clear:both;
+padding:10px 0;
+}
+.daelog li .r {
+font-size:14px;
+line-height:23px;
+padding:0 10px 10px;
+width:500px;
+float:left;
+}
+.daelog li .l {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	height:60px;
+	padding:5px 0 5px 5px;
+	width:77px;
+	background-attachment: scroll;
+	background-image: url({TPL}images/bg_picbg.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	float:left;
+}
+.daelog li .l img {
+height:50px;
+width:50px;
+}
+.daelog .huifu {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#EFEFEF none repeat scroll 0 0;
+color:#CC0000;
+line-height:23px;
+margin:10px 0 30px;
+padding:5px 15px;
+width:auto;
+}
+
+.zi_hui {
+color:#999999;
+}
+.zi_red {
+color:#FF0000;
+font-size:14px;
+font-weight:bold;
+}
+</style>
+
+<script type="text/javascript">
+    $(function() {
+        var e = function(n, b) {
+            if (n.length > b) {
+                return n.substring(0, b - 2) + "...";
+            }
+            return n;
+        };
+		
+		
+		
+        $.getJSON("/ajax/index_ajax.php?action=maqueeproduct&r=" + Math.random(),
+        function(n) {
+            var b = $("<ul></ul>");
+            $("#Slider").empty().append(b);
+            $.each(n,
+            function(o, p) {
+                b.append('<li><div class="detailed"><div class="pic"><a href="{url_see.php?type=}' + p.c + "#" + p.id + '"><img width=80 height=80 alt="' + p.n + '" src="' + p.p + '" /></a></div><div class="info"><h2><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 40) + "</a></h2><dl><dd><b>￥" + p.m + "</b><span>" + p.d + '</span></dd><dd class="i_bj">代购信息：<i>' + p.un + "</i>购买于" + p.s + '</dd></dl></div></div><div class="concise"><p><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 25) + "</a></p><span>" + p.d + "</span></div></li>");
+            }); (function(v, x) {
+                var w = true;
+                var u = b;
+                var o = 0;
+                var p;
+                var t = 1;
+                var y = u.find(".concise:eq(0)").outerHeight();
+                u.scrollTop(0);
+                u.children().each(function() {
+                    o += $(this).outerHeight();
+                });
+                u.append(u.html());
+                var q = u.find("li:eq(1)");
+                $(q).find(".detailed").show();
+                $(q).find(".concise").hide();
+                var z = function() {
+                    var s = u.scrollTop();
+                    if (s >= o) {
+                        q = u.find("li:eq(0)");
+                        u.find(".detailed").hide();
+                        $(q).find(".detailed").show();
+                        $(q).find(".concise").hide();
+                    }
+                    u.scrollTop((s >= o ? 0 : s) + t);
+                    if (u.scrollTop() % y == 0) {
+                        r();
+                    }
+                };
+                function r() {
+                    t = 0;
+                    if (w) {
+                        setTimeout(function() {
+                            $(q).find(".concise").show();
+                            q = $(q).next("li:first");
+                            if (!q) {
+                                q = u.find("li:first");
+                            }
+                            u.find(".detailed").hide();
+                            $(q).find(".detailed").show();
+                            $(q).find(".concise").hide();
+                            w = true;
+                            t = 1;
+                        },
+                        x);
+                    }
+                    w = false;
+                }
+                u.find("li").mouseover(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".detailed").show();
+                    $(this).find(".concise").hide();
+                    clearInterval(p);
+                });
+                u.find("li").mouseout(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".concise").show();
+                    $(q).find(".detailed").show();
+                    $(q).find(".concise").hide();
+                    p = setInterval(z, v);
+                });
+                p = setInterval(z, v);
+            })(30, 3000);
+        });
+		
+        $.getJSON("/ajax/index_ajax.php?action=recommendproduct&r=" + Math.random(),
+        function(b) {
+            var o = $('<div class="g_left"><a href="javascript:;" title="向左"></a></div>').click(function() {
+                clearTimeout(s);
+                if (v != w) {
+                    return;
+                }
+                p(v - 1);
+            });
+            var x = $('<div class="g_right"><a href="javascript:;" title="向右"></a></div>').click(function() {
+                clearTimeout(s);
+                if (v != w) {
+                    return;
+                }
+                p();
+            });
+            var t = $('<div class="g_box"></div>');
+            var n = $('<div class="g_center"></div>').append(t).hover(function() {
+                clearTimeout(s);
+                u = true;
+            },
+            function() {
+                clearTimeout(s);
+                u = false;
+                s = setTimeout(function() {
+                    p();
+                },
+                3000);
+            });
+            $.each(b,
+            function(y, z) {
+                var r = $("<ul></ul>");
+                $.each(z,
+                function(B, A) {
+                    r.append('<li><div class="g_pic"><a href="{url_recommend.php?action=view&gid=}' + A.id + '" target="_blank"><img src="' + A.p + '" alt="' + A.n + '" /></a><p>已购买' + A.s + '件</p></div><h2><a href="{url_recommend.php?action=view&gid=}' + A.id + '" target="_blank">' + A.n + "</a></h2><span>￥" + A.m + "</span></li>");
+                });
+                t.append(r);
+            });
+            t.append(t.children().clone()).width(660 * b.length * 2);
+            $("#Recommend").empty().append(o).append(n).append(x);
+            var s = setTimeout(function() {
+                p();
+            },
+            5000);
+            var v = 0;
+            var w = v;
+            var u = false;
+            var q = t.find("ul").length;
+            var p = function(r) {
+                w = (r || r == 0) ? r: v + 1;
+                if (w >= q) {
+                    w = b.length;
+                    t.css("margin-left", 0 - 660 * (w - 1));
+                }
+                if (w < 0) {
+                    w = b.length - 1;
+                    t.css("margin-left", 0 - 660 * (w + 1));
+                }
+                t.fadeTo("fast", 0.5).animate({
+                    marginLeft: (0 - 660 * w) + "px"
+                },
+                800,
+                function() {
+                    $(this).fadeTo("fast", 1);
+                    v = w;
+                    clearTimeout(s);
+                    if (!u) {
+                        s = setTimeout(function() {
+                            p();
+                        },
+                        5000);
+                    }
+                });
+            };
+        });
+		
+        $("#navi ul li:first-child").addClass("qh");
+        $("#navi ul li:last-child").addClass("wu");
+        $(".desc").hide();
+        $("#desc1").show();
+        $("#navi ul li ").mouseover(function() {
+            $("#navi ul li").removeClass();
+            $(this).addClass("qh");
+            if ($(this).next("li").length == 0) {
+                $(this).prev("li").addClass("wu");
+            } else {
+                $(this).next("li").addClass("wu");
+            }
+            $(".desc").hide();
+            $(".desc:eq(" + $("#navi ul li").index(this) + ")").show();
+        });
+		
+		$("#navitwo ul li:first-child").addClass("qh");
+        $("#navitwo ul li:last-child").addClass("wu");
+        $(".desctwo").hide();
+        $("#desc1two").show();
+        $("#navitwo ul li ").mouseover(function() {
+            $("#navitwo ul li").removeClass();
+            $(this).addClass("qh");
+            if ($(this).next("li").length == 0) {
+                $(this).prev("li").addClass("wu");
+            } else {
+                $(this).next("li").addClass("wu");
+            }
+            $(".desctwo").hide();
+            $(".desctwo:eq(" + $("#navitwo ul li").index(this) + ")").show();
+        });
+    });
+	
+		$(document).ready(function() {
+			$.featureList(
+				$("#tabs li a"),
+				$("#output li"), {
+					start_item	:	1
+				}
+			);
+		});    
+</script>
+
+<title>
+	[{$cfg_site_name}] - {lang The_largest_Shopping_Website}
+</title></head>
+<body>
+   	<link href="{TPL}images/qq/qq.css" type="text/css" rel="stylesheet">
+	<script src="{TPL}images/qq/ServiceQQ.htm"></script>
+    <form name="" method="post" action="" id="">
+
+{template 'header'}
+<!--
+    <div id="flash">
+      <div id="flash_1">
+        <div class="i_btn_login"> <a href="{url_user.php?action=register}"> <img height="45" border="0" width="180" alt="{lang Sign_up_enjoy_purchasing}" src="{TPL}images/blank.gif" /> </a></div>
+        <div class="i_newer"> <a href="{url_help.php?action=view&id=10}">{lang What_is_Shopping}？</a><a href="{url_help.php?action=list&id=10}">{lang Newbie_FAQ}</a><a href="{url_about.php?action=aboutus}">{lang Shopping_understand}</a><a href="{url_help.php?action=view&id=41}">{lang Purchasing_fw}</a> </div>
+      </div>
+      <div id="flash_2"> <img src="{TPL}images/flash_2.gif" /> </div>
+    </div>
+-->
+	<div class="slider">
+		<div id="feature_list">
+			<ul id="tabs">
+				<li>
+					<a href="javascript:;">
+						<img src="{TPL}images/services.png" />
+						<h3>{lang What_is_Shopping}</h3>
+						<span>{lang What_is_Shopping}</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<img src="{TPL}images/programming.png" />
+						<h3>{lang Newbie_FAQ}</h3>
+						<span>{lang Newbie_FAQ}</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<img src="{TPL}images/applications.png" />
+						<h3>{lang Shopping_understand}</h3>
+						<span>{lang Shopping_understand}</span>
+					</a>
+				</li>
+			</ul>
+			<ul id="output">
+			{loop $topcarray $r}
+				<li>
+					<img src="{$r['pic']}" />
+					<a href="{url_special.php?action=view&sid=$r['sid']}">{lang more}</a>
+				</li>
+
+			{/loop}	
+			</ul>			
+		</div>
+	</div>
+  <div class="center">
+        <div class="box">
+            
+            <div class="left">
+                <div class="see">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_see.php}">{lang what_to_buy}？</a></h2>
+                        <span><a href="{url_see.php}">{lang more}...</a></span>
+
+                    </div>
+                    <div class="see_list" id="Slider">
+                        <div class="seeLoading">
+                            <img src="{TPL}images/loading.gif" alt="{lang Data_Loading}..." />
+                            <p>
+                               {lang Data_Loading}...</p>
+                        </div>
+                        <ul>
+
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="bbs">
+                    
+                    <div class="lm">
+					<h2><a href="{url_talkover.php}" target="_blank">{lang User_Forums}</a></h2>
+					<span><a href="{url_talkover.php}" target="_blank">{lang more}...</a></span>
+					</div>
+					<div class="bbs_info">
+					<ul>
+					{loop $dataarray $r}	
+						<li>
+						<div class="gst_img"><img src="{$r['face']}" onerror="this.src='{TPL}images/untitled.jpg'" alt="" /></div>
+						<a href="{url_talkover.php}" target="_blank">{substrs($r['msg'],24,0,1)}</a>
+						<div class="gst_uname">{$r['uname']}</div>
+						<div class="gst_addtime">{ddate("m-d",$r['addtime'])}</div>
+						</li>
+					{/loop}	
+					</ul>
+					</div>
+                </div>
+                <div class="pd">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_recommend.php}">{lang Shopping_Boutique}</a></h2>
+                      <span><a href="{url_recommend.php}" class="ts">{lang See_more}</a></span>
+                    </div>
+                    <div class="pd_list">
+
+                        <ul>
+						{loop $cptjarray $r}
+                            <li>
+                                <div class="pd_pic">
+                                    <a href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                        <img onerror="this.src='{TPL}images/noimg80.gif'" alt="{$r['goodsname']}" src="{$r['goodsimg']}" /></a>
+                                </div>
+                                <div class="pd_info">
+                                    <h2>
+                                        <a href="{url_recommend.php?action=view&gid=$r['gid']}">
+
+                                             {substrs($r['goodsname'],45)}</a></h2>
+                                    <dl>
+                                        <dd>
+                                            <p>
+                                                &nbsp;{lang Total}<i>{$r['buynum']}</i>{lang People_purchasing}</p>
+                                            <b>{$r['shopname']}</b></dd>
+
+                                        <dd class="pd_jq">
+                                            ￥{$r['goodsprice']}</dd>
+                                    </dl>
+                                </div>
+                            </li>
+                         {/loop}   
+
+                            </ul>
+                    </div>
+                </div>
+                <div class="tuan">
+                    <div class="lm">
+                        <h2>
+
+                            <a href="{url_special.php}">{lang Quality_activities}</a></h2>
+                        <span><a href="{url_special.php}" class="ts">{lang participate_purchasing}</a></span>
+                    </div>
+
+					{loop $specialarray $r}
+                    <div class="tuan_show">
+                        <div class="tuan_pic">
+                            <a href="{url_special.php?action=view&sid=$r['sid']}">
+                                <img src="{$r['pic']}" alt="{$r['title']}" /></a>
+                        </div>
+
+                        <h2>
+                            <a href="{url_special.php?action=view&sid=$r['sid']}">{$r['title']}</a></h2>
+                        <div class="tuan_info">
+                            <p>
+                             {substrs($r['about'],135)}</p>
+                        </div>
+                    </div>
+					{/loop}
+                </div>
+                <div class="xiaobian">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_recommend.php}">{lang xb_Recommended}</a></h2>
+
+                        <div class="xb_lm">
+                            <p>
+                                <a href="{url_recommend.php?action=list&tid=1}">{lang Clothing}</a><i>|</i><a href="{url_recommend.php?action=list&tid=2}">{lang Shoebag}</a><i>|</i><a
+                                    href="{url_recommend.php?action=list&tid=3}">{lang Beauty}</a><i>|</i><a href="{url_recommend.php?action=list&tid=4}">{lang Home}</a><i>|</i><a
+                                        href="{url_recommend.php?action=list&tid=5}">{lang Accessories}</a><i>|</i><a href="{url_recommend.php?action=list&tid=6}">{lang Food}</a></p>
+
+                        </div>
+                    </div>
+                    <div class="xb_list" id="Recommend">
+                        <div class="pdLoading">
+                            <img src="{TPL}images/loading.gif" alt="{lang Data_Loading}..." />
+                            <p>
+                                {lang Data_Loading}...</p>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                
+                <div class="gonggao">
+				<div class="r_lm"><h2><a href="{url_news.php}" target="_blank">{lang Announcement}</a></h2><span><a href="{url_news.php}" target="_blank">{lang more}...</a></span></div>
+				<ul class="gg_nr">
+				{loop $newsarray $r}
+				<li><a href="{url_news.php?action=view&nid=$r['nid']}" target="_blank" title="{$r['title']}" style="color:red">{$r['title']}</a></li>
+				{/loop}
+				</ul>
+				</div>
+                <div class="activity">
+				
+                    <div class="r_x" id="navi">
+                        <ul>
+                            <li style="cursor: pointer">{lang Promotions}</li>
+                            <li style="cursor: pointer">{lang Discount}</li>
+                        </ul>
+                  </div>
+                    <div class="desc" id="desc1">
+					
+                 <div class="tupian">
+                      {loop $specialarray $r}
+						<a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}" title="{$r['title']}" /></a></div>
+					  {/loop}
+						<ul class="act_list">
+						
+						{loop $special $r}
+						<li><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+						{/loop}
+						</ul>
+                    </div>
+                    <div class="desc" id="desc2">
+                    	{loop $discount $r}
+                        <div class="tupian"><a href="{url_discount.php?action=view&did=$r['did']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}" title="{$r['title']}" /></a></div>
+						{/loop}
+						<ul class="act_list">
+						{loop $discountarray $r}
+						
+						<li><a href="{url_discount.php?action=view&did=$r['did']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+						{/loop}
+						</ul>
+                    </div>
+                </div>
+                
+                <div class="ask">
+				    <div class="r_xtwo" id="navitwo">
+                        <ul>
+                            <li style="cursor: pointer">{lang Questions}</li>
+                            <li style="cursor: pointer">{lang exchange_rate}</li>
+                        </ul>
+                    </div>
+                    <div class="desctwo" id="desc1two">
+						<ul class="act_listtwo">
+							{loop $articlearray $r}
+							<li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+							{/loop}
+						</ul>
+                    </div>
+                    <div class="desctwo" id="desc2two">
+						<table width="88%" border="0" cellspacing="0" cellpadding="0" class="hltable">
+						  <tr>
+						    <td class="sx" style="margin-left:22px;">{lang Currency}</td>
+						    <td class="sx">{lang exchange_rate}</td>
+						  </tr>
+						  <tr align="right">
+						    <td class="xx"><img src="{TPL}images/USD.gif" /></td>
+						    <td class="xx"><b class="down"></b><span class=" price">{$ratedata['USD']['rate']}</span></td>
+						  </tr>
+						  <tr>
+						    <td class="xx"><img src="{TPL}images/oub.gif" /></td>
+						    <td class="xx"><b class="down"></b><span class=" price">{$ratedata['EUR']['rate']}</span></td>
+						
+						  </tr>
+						  <tr>
+						    <td class="xx"><img src="{TPL}images/GBP.gif" /></td>
+						    <td class="xx"><b class="up"></b><span class=" price">{$ratedata['GBP']['rate']}</span></td>
+						  </tr>
+						  <tr>
+						    <td class="xx"><img src="{TPL}images/Canadian.gif" /></td>
+						    <td class="xx"><b class="up"></b><span class=" price">{$ratedata['CAD']['rate']}</span></td>
+						  </tr>
+						  <tr>
+						    <td class="xx"><img src="{TPL}images/xjpb.gif" /></td>
+						    <td class="xx"><b class="down"></b><span class=" price">{$ratedata['SGD']['rate']}</span></td>
+						  </tr>
+						  <tr>
+						    <td class="xx"><img src="{TPL}images/aob.gif" /></td>
+						    <td class="xx"><b class="up"></b><span class=" price">{$ratedata['AUD']['rate']}</span></td>
+						  </tr>
+						</table>
+                    </div>
+				</div>
+				
+                <div class="partner"><div class="r_lm"><h2>{lang Partners}</h2></div><div class="partner_list"><table><tr><td class="z">
+                <img src="{TPL}images/634171369911755766.gif" alt="PayPal" /></td><td>{lang popular_payment_collection}</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145324912025623.gif" alt="{lang IPS}" /></td><td>{lang Demand_meet_freely}</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145324979105741.gif" alt="EMS" /></td><td>{lang Speed_first_committed}</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145325015765805.gif" alt="DHL" /></td><td>{lang logistics_industry}</td></tr></table></div></div>
+                
+            </div>
+      </div>
+    </div>
+{template 'footer'}
+
+    </form>
+
+</body>
+</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="JUSTYLE,2010,春夏,伦敦之旅,圆领,图案,印花,绣花工艺,休闲T恤,L,黑色, panli代购" name="keywords">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{TPL}css/Product.css">
+<script type="text/javascript" src="{TPL}js/jquery.json-1.3.min.js"></script>
+   
+    <script type="text/javascript">
+        var flag = false;
+        var pid = {$gid};
+		var pimg="{$value['goodsimg']}";
+        $(document).ready(function() {
+            var pname = $.trim($(".you h1").text()).replace("\n","");
+            var data = {};
+            var newOptions = { domain: '', hoursToLive: 168 };
+            try {
+                data = $.evalJSON(jaaulde.utils.cookies.get("shopscan"));
+            } catch (eee) {
+                data = null;
+            }
+            if (data != null) {
+                data = $.grep(data, function(item, index) { return item["id"] != pid; });
+ 
+                if (data.length >= 10) flag = true;
+                $.each(data, function(index, item) {
+                    $("#scan").append("<li><a href='shop.php?action=view&gid=" + item["id"] + "'><img src='" + item["pimg"] + "' alt='" + item["n"] + "'  /></a></li>");
+                });
+                if (flag) { data = $.grep(data, function(item, index) { return index < 9; }); }
+                data = $.merge([{ "id": pid, "pimg": pimg, "n": pname}], data);
+                jaaulde.utils.cookies.set("shopscan", $.toJSON(data), newOptions);
+            }
+            else {
+                jaaulde.utils.cookies.set("shopscan", '[{"id":' + pid + ',"pimg":"' + pimg +'","n":"' + pname + '"}]', newOptions);
+            }
+            $(".ph dl").each(function() { $(this).mouseover(function() { $(".ph dl dt").hide(); $(".ph dl dd").show(); $(this).find("dd").hide(); $(this).find("dt").show(); }); });
+            $(".ph dl:eq(0)").mouseover();
+ 
+            $("#submitBtn").click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "/ajax/shop_ajax.php?action=addbuynum",
+                    dataType: "json",
+                    contentType: "application/json;utf-8",
+                    data: "{'pid':'" + pid + "'}",
+                    timeout: 10
+                });
+            });
+        });
+    </script>
+
+
+
+<title>
+	{$value['goodsname']} - {$cfg_site_name}
+</title></head><body>
+
+
+
+<form id="" action="" method="post" name="">
+
+{template 'header'}
+<div class="weizhi">
+        <p>
+             <b>Your location：</b><a href="{url_shop.php}">free goods</a>{$position}<span>&gt;</span><i>{$value['goodsname']}</i></p>
+    </div>
+    <div class="list">
+  <div class="you" style="float:left;">
+            <h1 id="goodsname">{$value['goodsname']}</h1>
+            <div class="product">
+                <div class="img">
+                    <a href="?pid=8294">
+                        <img alt="{$value['goodsname']}" src="{$value['goodsimg']}"></a>
+                </div>
+                <div class="parameter">
+                    <div class="pl">
+                      <p>recommend<img alt="{$value['rindex']}" src="{TPL}images/star{$value['rindex']}.gif"></p>
+                        <dl>
+                            <dt>￥<span id="goodsprice">{$value['goodsprice']}</span></dt>
+                            
+                        </dl>
+                    </div>
+                    <ul>
+                        <li>Number：{$value['buynum']}</li>
+                        <li>Views：{$value['views']}</li>
+                        
+                    </ul>
+                    <div class="shopping">
+                        <p>
+                           This product is free of postal goods, purchase of domestic shipping for free!</p>
+                        <a style="cursor: pointer;" onClick="FastAddShow('{url_$site_url/shop.php?action=view&gid=$value['gid']}')" id="submitBtn"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="lm">
+                <h3>
+                    Description</h3>
+            </div>
+            <div class="miaoshu">
+			
+			{$value['about']}
+
+            </div>
+        </div>
+      <div class="zuo" style="float:right;">
+        <div class="ranking">
+          <h2> <img alt="Panli推荐" src="{TPL}images/ranking.gif" /></h2>
+		  
+          <div class="ph">
+
+			{loop $leftarray $key $r}
+			<dl>
+				<dt {if $key==0}style="display: block;"{else}style="display: none;"{/if}>
+					<div class="img">
+						<a target="_blank" href="{url_shop.php?action=view&gid=$r['gid']}">
+						<img alt="{$r['goodsname']}" src="{$r['goodsimg']}">
+						</a>
+					</div>
+					<div class="xiangxi">
+						<h1>
+							<b>
+								{echo $key+1}.</b> <a target="_blank" href="{url_shop.php?action=view&gid=$r['gid']}">
+									{substrs($r['goodsname'],45)}</a>
+						</h1>
+						<label>
+							{$r['goodsprice']}</label>
+						<p>
+							来源网站：<span>{$r['shopname']}</span></p>
+					</div>
+				</dt>
+				<dd {if $key==0}style="display: none;"{else}style="display: block;"{/if}>
+					<span>{echo $key+1}</span>
+					<p>
+						<a target="_blank" href="{url_shop.php?action=view&gid=$r['gid']}">
+							{substrs($r['goodsname'],45)}</a>
+					</p>
+				</dd>
+			</dl>
+			{/loop}
+			
+          </div>
+		  
+
+        </div>
+        <div class="lately">
+          <h2> <img alt="You recently viewed" src="{TPL}images/lately.gif" /></h2>
+          <ul id="scan">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+{template 'footer'}
+
+    </form>
+
+</body>
+</html>

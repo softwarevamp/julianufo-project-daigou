@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+<script src="{TPL}js/jquery.cookies.2.1.0.min.js"type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<link href="{TPL}css/special.css" rel="stylesheet" type="text/css" />
+<title>[{$cfg_site_name}-{lang news}] - {lang thermal_purchase_large_meta_Offers}</title>
+<style type="text/css">
+.pages {float:right;height:25px;margin:15px 0 0 0;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+</head>
+<body>
+<form name="aspnetForm" method="post" action="#" id="aspnetForm">
+  {template 'header'}
+  <div class="special">
+    <div class="qj"> </div>
+    <div class="lm">
+      <h2> <img src="{TPL}images/new.gif" alt="专题" /></h2>
+      <span></span> </div>
+    <div class="new">
+
+{loop $topharray $r}
+      <div class="zuo"><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}" /></a></div>
+{/loop}
+      <div class="you">
+	{loop $topharray $r}
+        <div class="js">
+          <h1><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank">{$r['title']}</a></h1>
+          <p>{$r['about']}<a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank">{lang see_detail}&gt;&gt;</a></p>
+        </div>
+	{/loop}
+        <ul>
+		{loop $topcarray $r}
+          <li><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank">{$r['title']}</a></li>
+		{/loop}
+        </ul>
+        <dl class="noLogin">
+          <dt><img src="{TPL}images/picLogined.gif" /></dt>
+          <dd><a href="{url_user.php?action=register}" title="立即加入" target="_blank"> </a></dd>
+        </dl>
+      </div>
+	  
+	  
+    </div>
+    <div class="lm">
+      <h2> <img src="{TPL}images/wonderful.gif" alt="精彩专题活动" /></h2>
+    </div>
+    <div class="hdlb">
+	
+	{loop $dataarray $r}
+      <dl>
+        <dt> <a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}" /></a> </dt>
+        <dd>
+          <h1><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank">{$r['title']}</a></h1>
+          <p>{$r['about']}</p>
+          <span><a href="{url_special.php?action=view&sid=$r['sid']}" target="_blank">{lang see_detail}&gt;&gt;</a></span> </dd>
+      </dl>
+	{/loop}  
+
+	  
+      <div style="clear: both"> &nbsp; </div>
+    </div>
+	<div>  {echo pagelist($total,$pagesize,$page,"");} </div>
+  </div>
+  {template 'footer'}
+</form>
+</body>
+</html>

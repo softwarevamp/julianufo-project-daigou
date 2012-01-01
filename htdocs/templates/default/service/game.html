@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$cfg_site_name}" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<script type="text/javascript" src="{ROOT_DIR}images/js/productlist.js"></script>
+
+
+<link href="{TPL}css/tbsp.css" rel="stylesheet" type="text/css" />
+<link href="{TPL}css/charging_center.css" rel="stylesheet" type="text/css" />
+<title>{lang Girls_Services} - {$cfg_site_name}</title>
+</head>
+<body>
+  {template 'header'}
+  <div id="page" style="border:1px solid #f0f0f0;overflow:hidden">
+    <!-- #header END -->
+    <div id="content">
+      <div class="grid-c">
+        <div class="box page-info">
+        <h2 class="title">{lang Shopping_girls_Charge_Center}</h2>
+        <p class="desc">{lang Make_easier_recharge}</p>
+      </div>
+      </div>
+      <div class="grid-c2f">
+        <div class="col-main">
+          <div class="main-wrap">
+            <div class="box">
+              <div id="J_ChargingTab" class="tab-box">
+                <ul class="nav-box">
+                <li class="nav first "><span class="rc-tp"></span><a href="service.php?action=alipay" data-height="431"><span>{lang Alipay_behalf_the_recharge}</span></a></li>
+                <li class="nav "><a href="service.php?action=game" data-height="431"><span>{lang Online_direct_charge}</span></a></li>
+                <li class="nav"><a href="service.php?action=qq" data-height="682"><span>{lang QQ_currency_recharge}</span></a></li>
+                <li class="nav"><a href="service.php?action=tenpay" data-height="431"><span>{lang TenPay_recharge}</span></a></li>
+                <li class="nav"><a href="service.php?action=other" data-height="682"><span>{lang Other_Website_recharge}</span></a></li>
+                <li class="nav last selected"><span class="rc-bt"></span><a href="service.php?action=card" data-height="600"><span>{lang Credit_payments}</span></a></li>
+                </ul>
+                <div class="panel-box"> <span class="rc-tp"><span></span></span>
+                  <div class="panel">
+                    <div class="telephone">
+					<form name="service_product_list" method="post" action="{url_service.php?action=add&type=$action}" style="padding:0px; margin:0px;">
+                      <table cellspacing="0" cellpadding="0" border="0" class="form-table">
+                        <tbody>
+                          <tr>
+                            <td class="tel-img-box" colspan="2">{lang Facilitate_safe_efficient}</td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Name_the_Game}：</label></th>
+                            <td><select name="vendor" class="searchInput" onchange="selectVendor(this.value)" >
+                                <option  value="0" selected="selected">----{lang Please_select_specific_commodities}----</option>
+                            </select></td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Face_value}：</label></th>
+                            <td><select name="product" class="searchInput">
+                              <option  value="0" selected="selected">--{lang Select_par}--</option>
+                            </select>                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><label style="color:red">{lang Quantity}：</label></th>
+                            <td><span class="tel-input-label" style="width:100px">
+                              <input name="num" type="text" class="tel-input" id="phone" style="color: rgb(128, 128, 128); width:100px" value="1" size="10" maxlength="12" autocomplete="off" />
+                            </span></td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Play_area_service}：</label></th>
+                            <td><span class="tel-input-label">
+                              <input type="text" name="gamearea" autocomplete="off" maxlength="50" class="tel-input" id="J_TelInput" style="color: rgb(128, 128, 128);" />
+                            </span></td>
+                          </tr>
+                          <tr>
+                            <th class="tel-num" scope="row"><label>{lang Game_Account}：</label></th>
+                            <td><span class="tel-input-label">
+                              <input type="text" name="account" autocomplete="off" maxlength="50" class="tel-input" id="J_TelInput" style="color: rgb(128, 128, 128);" />
+                            </span></td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><label id="J_PriceLabel"></label></th>
+                            <td><div class="feild-box"></div></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><button id="J_SubmitButton" class="btn-submit" type="submit">{lang Click_here_recharge}</button>
+                             {lang Recharge_arrive_minutes_later_game} </td>
+                          </tr>
+                        </tbody>
+                      </table>
+					  <script type="text/javascript" src="{ROOT_DIR}images/js/3_menu_search.js"></script>
+					</form>
+                    </div>
+                  </div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <span class="rc-bt"><span></span></span> </div>
+              </div>
+            </div>
+            <div class="box more-service">
+              <ul class="ul-has-icon">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sub">
+          <div class="box side-banner"> <a href="#"><img src="{TPL}images/T1h.hFXiBoXXXXXXXX-180-250.jpg" alt="ad" /></a> </div>
+          <div class="box"> <span class="rc-tp"><span></span></span>
+            <div class="hd">
+              <h3>{lang Recharge_Help}</h3>
+            </div>
+            <div class="bd">
+              <ul>
+				{loop $helparray $r}
+				<li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+				
+				{/loop}
+              </ul>
+            </div>
+            <span class="rc-bt"><span></span></span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {template 'footer'}
+</body>
+</html>

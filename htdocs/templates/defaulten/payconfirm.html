@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/ShoppingCart.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+<title>我的购物车</title>
+</head>
+<body>
+ <form name="ctl00" method="post" action="{url_payconfirm.php}" id="ctl00">
+ 
+<div>
+<input type="hidden" name="__PAYDATA" id="__PAYDATA" value="{$paydata}" />
+</div>
+
+
+<div class="top">
+  <div class="kj">
+    <div class="logo"> <a href="/"> <img alt="代购" src="{TPL}images/logo.gif"></a>
+      <p> <img alt="购物车" src="{TPL}images/shoppingcart.gif"></p>
+    </div>
+    <div class="wdggc">
+      <ul>
+        <li><a class="gouwu" href="{url_shoppingcart.php}">shopping cart(<span id="allPro">4</span>)</a>|</li>
+        <li><a target="_blank" href="{url_m.php?action=register}">我的panli</a>|</li>
+        <li><a target="_blank" href="{url_m.php?action=register}">Truck</a>|</li>
+        <li><a href="{url_help.php}">help center</a></li>
+      </ul>
+      <p> hellow！wsl881202<a href="http://passport.panli.com/Login.aspx">[detrusion]</a>&nbsp;</p>
+    </div>
+    <div class="tishi"> Tip：Recently added<span>Favorites</span>，您可以将购物车中的商品添加收藏喔！ </div>
+  </div>
+</div>
+<div class="center">
+  <div class="weizhi"> <b>Your position：</b><a href="{url_m.php}">Member Center</a><span>&gt;</span>Confirm the settlement</div>
+  <div class="lc_two"> <img src="{TPL}images/donghua.gif"> </div>
+  <div class="pay_bt">
+    <ul>
+      <li class="w1">Product list</li>
+      <li class="w2">unit price</li>
+      <li class="w3">quantity</li>
+      <li class="w4">subtotal</li>
+      <li class="w5">Freight</li>
+    </ul>
+  </div>
+  <div class="product_2">
+  {eval $i=1}
+  {loop $temparray $sname $value}
+    <table>
+      <tbody>
+	  {loop $value $key $r}
+        <tr>
+          <td class="p1"> {$i}
+            <input type="hidden" value="{$r['gid']}" name="gids[]">
+          </td>
+          <td class="p2"><a target="_blank" href="{$r['goodsurl']}"> {$r['goodsname']}</a> </td>
+          <td class="p3"> ￥{$r['goodsprice']} </td>
+          <td class="p4"> {$r['goodsnum']} </td>
+          <td class="p5"> {eval if($r['type']==1)echo "￥".$r['goodsprice']*$r['goodsnum'];else echo "[代发商品]"} </td>
+		  
+		  {if $key==0}
+          <td rowspan="{eval echo count($value)}" class="p6">￥{$s[$sname]} </td>
+		  {/if}
+        </tr>
+	{eval $i++}
+	{/loop}
+        <tr>
+          <td colspan="8" class="sj"> Merchant：<a target="_blank" href="{$r['sellerurl']}">{$r['goodsseller']}</a><span>Source：{$r['goodssite']}</span> </td>
+        </tr>
+      </tbody>
+    </table>
+	{/loop}
+	
+    <div class="tixing"> Default shipping charge once the same seller, but issues such as overweight commodities, freight deviation; customer service will contact you! </div>
+    <div class="payment">
+      <div class="yuer"> Account balance：<b>￥{$_USERS['money']} </b><a target="_blank" href="{url_m.php?name=rmbaccount}">Recharge</a></div>
+      <dl>
+        <dt>Total<span>￥{$countdata['goodsmoney']}</span>&nbsp;+&nbsp;Total<span>￥{$countdata['sendmoney']}</span></dt>
+        <dd> Payment<span>￥{$countdata['totalmoney']}</span></dd>
+      </dl>
+    </div>
+    <div class="tijiao">
+	{if $_USERS['money'] < $countdata['totalmoney']}
+      <p> Sorry! Your account balance is less than recharge immediately!</p>
+	{/if}
+      <a href="{url_shoppingcart.php}">Shopping Cart</a>
+    <input type="submit" value="Submitted" class="ok" onmouseout="this.className='ok'" onmouseover="this.className='ok_'" {if $_USERS['money'] < $countdata['totalmoney']}disabled="disabled"{/if}>
+    </div>
+  </div>
+</div>
+ </form>
+<div class="foot">
+  <p> <a href="#">关于Panli代购</a>&nbsp;|&nbsp;<a href="#">contact us</a>&nbsp;|&nbsp;<a href="#">加入Panli</a>&nbsp;|&nbsp;<a href="#" target="_blank">Blog</a> </p>
+  Copyright&nbsp;&copy;&nbsp;2010 Panli代购! Inc. All rights reserved </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{lang register} - {$cfg_site_name}</title>
+<link href="{TPL}css/Register.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"> </script>
+<script type="text/javascript" src="{TPL}js/Register.js"> </script>
+</head>
+
+<body>
+{template 'header'}
+<div class="box">
+<form name="login" method="post" action="{url_user.php?action=register}">
+<input type="hidden" name="commit" value="1"/>
+        <div class="move">
+          <img alt="注册" src="{TPL}images/move.gif"></div>
+        <div class="welcome"><img alt="注册" src="{TPL}images/welcome.gif" /></div>
+        <div class="register">
+<table>
+                <tbody>
+                <tr>
+                    <td class="l">
+                        {lang Username}：
+                    </td>
+                    <td>
+                        <input type="text" onblur="nicknameblur(this)" onfocus="focusCheck(this,&quot;昵称必须是英文字母开头,中文,数字组成,长度2-8个汉字或4-16个字符&quot;);" name="regNickName" id="regNickName" maxlength="20" value="">
+                        <p>
+                            {lang Nickname_used_account_later}</p>
+                    </td>
+                </tr>
+				<tr>
+                    <td class="l">
+                        Email{lang address}：
+                    </td>
+                    <td>
+                        <input type="text" onblur="emailBlur(this)" onfocus="focusCheck(this,&quot;此邮箱将作为您登录的帐号，并将用来接收验证邮件&quot;);" name="regEmail" id="regEmail" maxlength="80" value="">
+                        <p>
+                            {lang This_will_account_login_verification_message}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                        {lang SD_Password}：
+                    </td>
+                    <td>
+                        <input type="password" onfocus="focusCheck(this,'密码可由大小写英文字母、数字组成、长度为6-20个字符')" onblur="checkPassword(this)" value="" name="regPassword" id="regPassword" maxlength="20" onkeydown="passPower(this)">
+                        <p>
+                            {lang Please_your_username_password}</p>
+                        <div style="display: none;" class="rank" id="passPower">
+                          {lang Security_Level_Low}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                      {lang Confirm_Password}：
+                    </td>
+                    <td>
+                        <input type="password" value="" onblur="reCheckPassword(this)" onfocus="focusCheck(this,'请再输入一次您的密码')" name="regRePassword" maxlength="20" id="regRePassword">
+                        <p>
+                          {lang Please_enter_your_password_again}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                        {lang code}：
+                    </td>
+                    <td>
+                      <input type="text" name="regCheckCodeInput" class="verification" id="regCheckCodeInput" ><img border="0" onclick="var now=new Date();this.src='includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" style="vertical-align: middle; cursor: pointer;" alt="验证码" title="点击图片刷新" src="includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" id="regCheckCode">
+                        <a onclick="$('#regCheckCode').click();" style="cursor: pointer;">{lang Not_clear_new}</a>
+                        <p style="display: none;" class="red">
+                            {lang Verification_error_please_re_enter}</p>
+                    </td>
+                </tr>
+            </tbody></table>
+            <div class="refer">
+                <span>
+                    <label>
+                        <input type="checkbox" checked="checked" value="" name="regAgree" id="regAgree">{lang have_read_agree}</label><a target="_blank" href="{url_help.php?action=view&id=82}">《{lang User_Registration_Agreement}》</a></span>
+                <input type="button" onclick="regSubmit()" onmouseout="this.className='button'" onmouseover="this.className='button_'" value="提交注册" name="" class="button">
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="bottom_1">
+    </div>
+
+{template 'footer'}	
+</body>
+</html>

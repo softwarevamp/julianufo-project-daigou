@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css"/>
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<link type="text/css" rel="stylesheet" href="{TPL}css/home.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >    
+<link type="text/css" rel="stylesheet" href="{TPL}css/mypanli.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+
+<title>{lang Member_Center}-{$cfg_site_name}</title>
+</head>
+
+<body>
+
+{template 'header'}
+    <div class="admin">
+      <div class="ding">
+            <div class="shouye">
+                <a title="{lang Member_Center_Home}" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+			
+                <div class="gonggao">
+                    <img alt="{lang Tips}" title="{lang Tips}" src="{TPL}images/lb.gif">
+                  <ul id="affiche">
+                        
+					<li>{lang collection_feature_allowing_easier_collection}！</li>
+					<li><a target="_blank" href="#">{lang Waiting_participate_exciting_activities}！</a></li>
+				  </ul>
+                </div>
+                
+                <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">{lang Member_Center_Home}</a><span>|</span>{lang Setting_style}：</p>
+                    <ul>
+						<li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+      </div>
+	  
+{template 'member_left'}
+
+    <div class="bj">
+        <div class="center">
+            <div class="data">
+                <div class="geren">
+                    <div class="photo">
+                        <img onerror="this.src='{TPL}images/noimg120.gif'" alt="{$_USERS['showname']}" src="{$_USERS['face']}">
+                    </div>
+                    <div class="info">
+                        <h2>
+                            {lang hello}！{$_USERS['showname']}，{lang Welcome_back}！！</h2>
+                        <ul>
+                            <li style="width:165px;">{lang Identity}：{$UTYPENAME[$_USERS['utype']]}</li>
+                            <li style="width:179px;">{lang RMB_Account}：<span>￥{$_USERS['money']}</span><a href="{url_m.php?name=rmbaccount}">{lang Recharge}</a></li>
+                            <li style="width:165px;">{lang Mail}：<a href="{url_m.php?name=pm}">{$_USERS['pm']}{lang Unread_messages}</a></li>
+                            <li style="width:179px;">{lang Account_Integration}：<span>{$_USERS['scores']}</span><a href="{url_m.php?name=coupon&action=getcoupon}" style="">{lang Exchange}</a>|<a href="m.php?name=index&amp;action=upmember" style="margin-top:0px;">{lang Membership_Upgrade}</a></li>
+                        </ul>
+                        <p style="display:none;">
+                           {lang already_spending_0_yuan}</p>
+                    </div>
+                </div>
+                <div class="shuju">
+                    <ul>
+                        <li>{lang Has_been_arrival_goods}：<a href="{url_m.php?name=orderlist&type=1}">{$COUNT_ORDER4}个</a></li>
+                        <li>{lang The_goods_their_way}：<a href="{url_m.php?name=orderlist&type=2}">{$COUNT_ORDER3}个</a></li>
+                        <li>{lang The_consignment_shipped}：<a href="{url_m.php?name=sendorderlist&type=1}">{$COUNT_SENDORDER23}个</a></li>
+                        <li>{lang Services_can_evaluated}：<a href="{url_m.php?name=sendorderlist&type=2}">{$COUNT_SENDORDERSERVER}个</a></li>
+                    </ul>
+                </div>
+            </div>
+            <dl class="gwc">
+                <dt>
+                    <img alt="我的购物车" src="{TPL}images/gwche.gif"></dt>
+                <dd>
+                    <h2>
+                        <a href="{url_shoppingcart.php}">{lang My_Shopping_Cart}</a></h2>
+                    <p>
+                        <a href="{url_shoppingcart.php}">{lang Your_shopping_cart}&nbsp;<b>{$_CARTCOUNT}</b>&nbsp;{lang Items_submit_your_order}！</a></p>
+                    <span>{lang preferential_policies_other_information_change}！</span>
+                </dd>
+            </dl>
+            <dl class="gwc">
+                <dt>
+                    <img alt="{lang delivery_vehicles}" src="{TPL}images/che.gif"></dt>
+                <dd>
+                    <h2>
+                        <a href="{url_m.php?name=orderlist}">{lang delivery_vehicles}</a></h2>
+                    <p>
+                        {lang Commodity_status}&nbsp;<font style="color: rgb(255, 0, 0);">“ {lang Has_been_warehouse}”</font>&nbsp;{lang yc_submit_delivery}！</p>
+                </dd>
+            </dl>
+            <div class="qb">
+                <h2>
+                    {lang Special_Information}</h2>
+                <div class="qingbao">
+				{loop $specialarray $r}
+
+                    <dl>
+					<dt>
+					<a target="_blank" href="{url_special.php?action=view&sid=$r['sid']}"><img alt="{$r['title']}" src="{$r['pic']}"></a></dt>
+					<dd><h1><a target="_blank" href="{url_special.php?action=view&sid=$r['sid']}">{$r['title']}</a></h1>
+					<p>{substrs($r['about'],100,0,1)}</p>
+					</dd></dl>
+					
+				{/loop}
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>
+             {lang Site_Notice}</h2>
+            <ul>
+			{loop $newsarray $r}
+                <li><a target="_blank" href="{url_news.php?action=view&nid=$r['nid']}">{$r['title']}</a></li>
+			{/loop}
+
+				
+            </ul>
+            <h2>
+                {lang Questions}</h2>
+            <ul>
+				{php $helparray=helplist(5,1)}
+				{loop $helparray $r}
+                    <li><a target="_blank" href="{url_help.php?action=view&id=$r['aid']}">{$r['title']}</a></li>
+				{/loop}
+
+            </ul>
+            <h2>
+                {lang Advisory}</h2>
+            <div class="jianyi">
+                <p>
+                    {lang You_have_questions_site}？</p>
+                <p>
+                   {lang Welcome_comments_advice}！</p>
+                <dl>
+				<form name="guestbook" method="post" action="{url_m.php?name=index&action=guestbook}">
+                    <dt>
+                        <textarea rows="" cols="" id="msg" name="msg"></textarea>
+                        <p>
+                            <input type="text" id="code" name="code" maxlength="4" onkeydown="return enter(event);"><input type="text" style="display: none;">
+                            <img src="includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=22&amp;t='+Math.random();" alt="验证码" name="checkCode" border="0" id="checkCode" style="vertical-align: middle; cursor: pointer;" title="点击图片刷新" onclick="this.src='includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=22&amp;t='+Math.random();">                        </p>
+                    </dt>
+                    <dd>
+                        <input type="submit" onmouseout="this.className=''" onmouseover="this.className='jg'" value="提交" onclick="" id="suggestBtn"></dd>
+				</form>
+                </dl>
+            </div>
+        </div>
+        <div class="yj_you">
+        </div>
+    </div>
+
+      <div class="yj">
+      </div>
+    </div>
+
+    
+{template 'footer'}
+</body>
+</html>

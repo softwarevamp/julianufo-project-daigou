@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[{$cfg_site_name}] - {lang The_largest_Shopping_Website}</title>
+<meta name="keywords" content="{lang Shopping_Shopping_Chinese_purchasing}" />
+<meta name="description" content="" />
+</head>
+
+<body>
+{template 'header'}
+<div class="w960 banner">
+	<div class="w200 left notice">
+		<div class="title"><a href="{url_news.php}">{lang Announcement}</a></div>
+		<ul class="left">
+			{loop $newsarray $r}
+			<li><a href="{url_news.php?action=view&nid=$r['nid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+			{/loop}
+		</ul>
+	</div>
+	<div class="w750 right slide">
+	<!--
+		<img src="{TPL}images/slide.gif" alt="" />-->
+		<div id="SlidePlayer">
+			<ul id="Slides" class="Slides" style="height: 825px; position: absolute; top: -275px;">			
+			{loop $topcarray $r}
+				<li><a title="{$r['title']}" href="{url_special.php?action=view&sid=$r['sid']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}"></a></li>
+			{/loop}			
+			</ul>
+			<ul class="SlideTriggers"><li class="">1</li><li class="Current">2</li><li class="">3</li></ul>			
+		</div>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="w960">
+	<div class="box_1 left">
+		<div class="title"><span class="more"><a href="{url_see.php}">{lang more}...</a></span><h2>{lang what_to_buy}？</h2></div>
+		<div class="content">
+			<div id="Slider">
+			<div class="seeLoading">
+				<img src="{TPL}images/loading.gif" alt="{lang Data_Loading}..." />
+				<p>{lang Data_Loading}...</p>
+			</div>			
+			<ul>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div class="box_2 left">
+		<div class="title"><span class="more"><a href="{url_special.php}">{lang more}...</a></span><h2>{lang Quality_activities}</h2></div>
+		<div class="content">
+		{loop $specialarray1 $r}
+			<div class="acttop top5 left">
+				<a href="{url_special.php?action=view&sid=$r['sid']}"><img src="{$r['pic']}" alt="{$r['title']}" /></a>
+			</div>
+		{/loop}
+		<ul class="actlist left">
+		{loop $specialarray2 $r}			
+			<li><span class="actname"><a href="{url_special.php?action=view&sid=$r['sid']}">{$r['title']}</a></span><span class="addtime">{date("Y-m-d",$r['addtime'])}</span></li>			
+		{/loop}
+		</ul>
+		</div>
+	</div>
+	<div class="box_3 left">
+		<div class="title"><span class="more"><a href="{url_help.php}">{lang more}...</a></span><h2>{lang Questions}</h2></div>
+		<div class="content">
+			<ul class="newslist">
+				{loop $articlearray $r}
+				<li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+				{/loop}
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="w960 top5">
+	<div class="recommendpro left">
+		<div class="proList"><a href="{url_recommend.php?action=list&tid=1}">{lang Clothing}</a> | <a href="{url_recommend.php?action=list&tid=2}">{lang Shoebag}</a> | <a
+                                    href="{url_recommend.php?action=list&tid=3}">{lang Beauty}</a> | <a href="{url_recommend.php?action=list&tid=4}">{lang Home}</a> | <a
+                                        href="{url_recommend.php?action=list&tid=5}">{lang Accessories}</a> | <a href="{url_recommend.php?action=list&tid=6}">{lang Food}</a></div>
+		<div class="tt"><a href="{url_recommend.php}">{lang xb_Recommended}</a></div>
+		<div class="content">
+			{loop $cptjarray $r}
+			<div class="goodsitem">
+				<div class="goodspic"><a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}"><img alt="{$r['goodsname']}" src="{$r['goodsimg']}"></a></div>
+				<p class="buynum">已购买{$r['buynum']}件</p>
+				<p class="goodsname top5"><a href="{url_recommend.php?action=view&gid=$r['gid']}" target="_blank" title="{$r['goodsname']}">{$r['goodsname']}</a></p>
+				<p class="goodsprice">￥{$r['goodsprice']}</p>
+			</div>
+			{/loop}
+		</div>
+	</div>
+	<div class="box_3 left">
+		<div class="title"><span class="more"><a href="{url_talkover.php}" target="_blank">{lang more}...</a></span><h2>{lang User_Forums}</h2></div>
+		<div class="content">
+		<ul class="bbs_info">
+		{loop $dataarray $r}	
+			<li>
+			<div class="gst_img"><img src="{$r['face']}" onerror="this.src='{TPL}images/untitled.jpg'" alt="" /></div>
+			<a href="{url_talkover.php}" target="_blank">{substrs($r['msg'],24,0,1)}</a>
+			<div class="gst_uname">{$r['uname']}</div>
+			</li>
+		{/loop}	
+		</ul>
+		</div>
+	</div>
+	<div class="box_3 left top5">
+		<div class="title"><span class="more"><a href="{url_about.php?action=contactus}">{lang more}...</a></span><h2>{lang Contact_us}</h2></div>
+		<div class="content">
+			<span class="contact_tel">{lang tel}：{$cfg_index_tel}</span>
+			<span class="contact_email">{lang Email_Address}：{$cfg_index_msnlink}</span>
+			<span class="contact_msn">MSN：{$cfg_index_msnlink}</span>
+			<span class="contact_qq">QQ：{$cfg_index_qqlink}</span>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="w960 top10 link">
+	<div class="title left"><img src="{TPL}images/flink_title.gif" alt="" /></div>
+	<div class="content left">
+		<ul>
+			<li><a href="#"><img src="{TPL}images/flink_1.gif" alt="" /></a></li>
+			<li><a href="#"><img src="{TPL}images/flink_2.gif" alt="" /></a></li>
+			<li><a href="#"><img src="{TPL}images/flink_3.gif" alt="" /></a></li>
+			<li><a href="#"><img src="{TPL}images/flink_4.gif" alt="" /></a></li>
+			<li><a href="#"><img src="{TPL}images/flink_5.gif" alt="" /></a></li>
+			<li><a href="#"><img src="{TPL}images/flink_6.gif" alt="" /></a></li>
+		</ul>
+	</div>
+</div>
+{template 'footer'}
+<script type="text/javascript" src="{TPL}js/indexSlide.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var e = function(n, b) {
+            if (n.length > b) {
+                return n.substring(0, b - 2) + "...";
+            }
+            return n;
+        };		
+		
+        $.getJSON("/ajax/index_ajax.php?action=maqueeproduct&r=" + Math.random(),
+        function(n) {
+            var b = $("<ul></ul>");
+            $("#Slider").empty().append(b);
+            $.each(n,
+            function(o, p) {
+                b.append('<li><div class="detailed"><div class="pic"><a href="{url_see.php?type=}' + p.c + "#" + p.id + '"><img width=80 height=80 alt="' + p.n + '" src="' + p.p + '" /></a></div><div class="info"><h2><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 40) + "</a></h2><dl><dd><b>￥" + p.m + "</b><span>" + p.d + '</span></dd><dd class="i_bj">代购信息：' + p.un + "购买于" + p.s + '</dd></dl></div></div><div class="concise"><p><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 25) + "</a></p><span>" + p.d + "</span></div></li>");
+            }); (function(v, x) {
+                var w = true;
+                var u = b;
+                var o = 0;
+                var p;
+                var t = 1;
+                var y = u.find(".concise:eq(0)").outerHeight();
+                u.scrollTop(0);
+                u.children().each(function() {
+                    o += $(this).outerHeight();
+                });
+                u.append(u.html());
+                var q = u.find("li:eq(1)");
+                $(q).find(".detailed").show();
+                $(q).find(".concise").hide();
+                var z = function() {
+                    var s = u.scrollTop();
+                    if (s >= o) {
+                        q = u.find("li:eq(0)");
+                        u.find(".detailed").hide();
+                        $(q).find(".detailed").show();
+                        $(q).find(".concise").hide();
+                    }
+                    u.scrollTop((s >= o ? 0 : s) + t);
+                    if (u.scrollTop() % y == 0) {
+                        r();
+                    }
+                };
+                function r() {
+                    t = 0;
+                    if (w) {
+                        setTimeout(function() {
+                            $(q).find(".concise").show();
+                            q = $(q).next("li:first");
+                            if (!q) {
+                                q = u.find("li:first");
+                            }
+                            u.find(".detailed").hide();
+                            $(q).find(".detailed").show();
+                            $(q).find(".concise").hide();
+                            w = true;
+                            t = 1;
+                        },
+                        x);
+                    }
+                    w = false;
+                }
+                u.find("li").mouseover(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".detailed").show();
+                    $(this).find(".concise").hide();
+                    clearInterval(p);
+                });
+                u.find("li").mouseout(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".concise").show();
+                    $(q).find(".detailed").show();
+                    $(q).find(".concise").hide();
+                    p = setInterval(z, v);
+                });
+                p = setInterval(z, v);
+            })(30, 3000);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >    
+<link type="text/css" rel="stylesheet" href="{TPL}css/preferential.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+
+<title>我的优惠券 - {$cfg_site_name}</title>
+</head>
+
+<body>
+
+{template 'header'}
+
+<div class="admin">
+        <div class="ding">
+            <div class="shouye">
+                <a title="我的会员中心" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>Your position：</b><a href="{url_m.php}">Member Center</a><span>&gt;</span>My Coupon               </div>
+                
+          <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">Member Center</a><span>|</span>ThemeSet：</p>
+<ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+		
+{template 'member_left'}
+        
+    <div class="fill">
+        <div class="p_top">
+            <div class="p_pic">
+                <img alt="优惠券" src="{TPL}images/preferential.gif">
+            </div>
+            <div class="p_right">
+                <div class="p_info">
+                    <h2>
+                        dear <span style="color:orange;">{$UTYPENAME[$_USERS['utype']]}</span>【{$_USERS['showname']}】，hello！</h2>
+                    <ul><li>You are currently not available e-coupons</li><li><a target="_blank" href="{url_help.php}">How to get&gt;&gt;</a></li></ul>
+                    <p>
+                        Current Points：<span>{$_USERS['scores']}</span><a href="{url_m.php?name=coupon&action=getcoupon}">Redeem&gt;&gt;</a></p>
+                </div>
+                <div class="ask">
+                    <h2></h2><ul>
+				{php $helparray=helplist(5,'')}
+				{loop $helparray $r}
+                    <li><a target="_blank" href="{url_help.php?action=view&id=$r['aid']}">{$r['title']}</a></li>
+				{/loop}
+
+					
+					
+					
+					</ul>
+                </div>
+                <div class="tieshi">
+                  Site Tips: the role of e-coupons: submit waybill, can be used to offset service charges.
+                </div>
+            </div>
+        </div>
+        <div class="chaozuo">
+            <ul>
+                <li>
+                    <div class="tu">
+                        <img alt="电子优惠券激活区" src="{TPL}images/t1.gif">                    </div>
+                    <div class="gy">
+                        <h2>
+                            <a href="{url_m.php?name=coupon&action=active}">Coupon activated area</a></h2>
+                        <p>
+                           Enter to activate slightly!</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tu">
+                        <img alt="电子优惠券赠送区" src="{TPL}images/t2.gif">
+                    </div>
+                    <div class="gy">
+                        <h2>
+                            <a href="{url_m.php?name=coupon&action=present}">Gift coupon area</a></h2>
+                        <p>
+                            E-gift voucher to your friends!</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="tu">
+                        <img alt="电子优惠券出售区" src="{TPL}images/t3.gif">
+                    </div>
+                    <div class="gy">
+                        <h2>
+                            <a href="{url_m.php?name=coupon&action=sell}">Coupon sales area</a></h2>
+                        <p>
+                           Do not want it, as in this sale!</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="jf_xz">
+            <ul>
+                <li class="o">My Coupon</li>
+            </ul>
+            <p>
+                <a target="_blank" href="{url_coupon.php}">Discount brokerage City&gt;&gt;</a></p>
+        </div>
+        <div class="jilu">
+
+{if !empty($dataarray)}            
+<DIV id=userCouponListPanel class="biao my"><TABLE>
+<TBODY>
+<TR>
+<TH class=w1>validity</TH>
+<TH class=w2>number</TH>
+<TH class=w3>value<SPAN>(￥)</SPAN> </TH>
+<TH class=w4>Way </TH>
+<TH class=w5>status </TH></TR>
+</TBODY></TABLE>
+<TABLE id=userCouponList>
+<TBODY>
+{loop $dataarray $key $r}
+<tr {if $key%2==1}class="hui"{/if}>
+<td class="w1">{eval if($r['endtime']!=0)echo date('Y-m-d',$r['endtime']);else echo '未激活'}</td>
+<td class="w2">{$r['sn']}</td>
+<td class="w3">{$r['money']}</td>
+<td class="w4">{$r['getwayname']}</td>
+<td class="w5"> <span>{$r['statename']}</span></td>
+</tr>
+{/loop}
+
+</TBODY>
+</TABLE>
+<DIV id=ajaxPager class=page-bottom></DIV>
+<DIV style="CLEAR: both">&nbsp;</DIV></DIV>			
+			
+{else}			
+<div class="biao mei">Do not use e-coupons<br><a target="_blank" href="{url_help.php}">How do I get e-coupons&gt;&gt;</a></div>			
+			
+{/if}		
+			
+			
+			
+        </div>
+    </div>
+
+        <div class="yj">
+        </div>
+    </div>
+
+    
+		
+{template 'footer'}
+</body>
+</html>

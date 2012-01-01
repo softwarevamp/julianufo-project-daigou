@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/ShoppingCart.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/ShoppingCart.js"></script>
+<title>我的购物车-{$cfg_site_name}</title>
+</head>
+<body>
+<form id="form1" action="payconfirm.php" onsubmit="return thisPage.submitCheck();" method="post">
+
+<div class="top">
+  <div class="kj">
+    <div class="logo"> <a href="/"> <img alt="代购" src="{TPL}images/logo.gif"></a>
+      <p> <img alt="购物车" src="{TPL}images/shoppingcart.gif"></p>
+    </div>
+    <div class="wdggc">
+      <ul>
+        <li><a class="gouwu" href="{url_shoppingcart.php}">Shopping Cart(<span id="allPro">4</span>)</a>|</li>
+        <li><a target="_blank" href="{url_m.php?action=register}">我的panli</a>|</li>
+        <li><a target="_blank" href="{url_m.php?action=register}">Delivery vehicles</a>|</li>
+        <li><a href="{url_help.php}">Help</a></li>
+      </ul>
+      <p> Hellow！wsl881202<a href="http://passport.panli.com/Login.aspx">[Exit]</a>&nbsp;</p>
+    </div>
+    <div class="tishi"> Tips：Recently added <span>favorites </span>function！ </div>
+  </div>
+</div>
+<div class="center" id="pagemain">
+  <div class="weizhi"> <a style="float: right; margin-right: 35px;" href="{url_m.php}">User Center</a> <b>Position：</b><a href="/">Home</a><span>&gt;</span>Shopping Cart</div>
+{if !empty($temparray)}
+
+  <div class="bt">
+    <ul>
+      <li class="w1">Commodities have been selected</li>
+      <li class="w2">Unit price</li>
+      <li class="w3">Quantity</li>
+      <li class="w4">Subtotal</li>
+      <li class="w5">
+        <div id="yunfei" class="yunfei">
+          <p> Seller in the same order the same goods, do not take a transportation!</p>
+          <button onclick="$('#yunfei').hide();return false;"> </button>
+        </div>
+        <span>国内运费</span><a onclick="$('#yunfei').show();" href="javascript:;"></a></li>
+      <li class="w6">Remarks</li>
+    </ul>
+  </div>
+  <div id="shoppingCartProduct" class="product">
+  {loop $temparray $sname $value}
+    <table>
+      <tbody>
+	   {loop $value $key $r}
+        <tr id="li{$r['gid']}">
+          <td class="b1"><input type="checkbox" checked="checked" value="{$r['gid']}" onclick="thisPage.accountAll()" name="gids[]">
+          </td>
+          <td class="b2"><a target="_blank" href="{$r['goodsurl']}"><img onerror="this.src='{TPL}images/noimg80.gif'" src="{$r['goodsimg']}"></a></td>
+          <td class="b3"><p><a target="_blank" href="{$r['goodsurl']}">{$r['goodsname']}</a></p></td>
+          <td class="b4">￥{$r['goodsprice']}</td>
+          <td class="b5">
+            <input type="text" value="{$r['goodsnum']}" onkeyup="value=value.replace(/[^\d]/g,'')" onblur="thisPage.updateNum({$r['gid']},this.value)" maxlength="4">
+          </td>
+          <td class="b6"><span>{eval if($r['type']==1)echo "￥".$r['goodsprice']*$r['goodsnum'];else echo "[代发商品]"}</span> </td>
+		  {if $key==0}
+          <td rowspan="{eval echo count($value)}" class="b7" id="sj0">￥{$s[$sname]} </td>
+		  {/if}
+		  <td class="b8"><a title="{$r['goodsremark']}" onclick="thisPage.showRemarkPanel({$r['gid']},false,this,'{$r['goodsremark']}')" onmouseover="thisPage.showRemarkPanel({$r['gid']},true,this,'{$r['goodsremark']}')" onmouseout="thisPage.cleartoID(thisPage.toID);if($('.beizhu').length&gt;0)thisPage.outID.push(setTimeout(function() {thisPage.closeRemarkPanel();}, 500));" class="orange">Add notes</a> </td>
+        </tr>
+		{/loop}
+        <tr>
+          <td colspan="8" class="sj">Business：<a target="_blank" title="{$r['goodsseller']}" href="{$r['sellerurl']}">{$r['goodsseller']}</a><span>Source：{$r['goodssite']}</span></td>
+        </tr>
+      </tbody>
+    </table>
+	{/loop}
+	
+	
+    <div class="jisuan">
+      <ul>
+        <li><a onclick="$('input[type=checkbox]').attr('checked',true);thisPage.accountAll();" href="javascript:;"> All</a><span>-</span><a id="reSelete" onclick="$('input[type=checkbox]').each(function(){this.checked=!this.checked;});thisPage.accountAll();" href="javascript:;">Reverse</a></li>
+        <li>
+          <input type="button" onclick="thisPage.del(this)" onmouseout="this.className='sc'" onmouseover="this.className='sc_'" value="DEL" class="sc">
+          <input type="button" onmouseout="this.className='tj'" onmouseover="this.className='tj_'" value="Add to Favorites" onclick="thisPage.addToFavorites(this);" class="tj">
+        </li>
+      </ul>
+      <dl>
+        <dt>Goods Total<span id="totalProPrice">￥{$countdata['goodsmoney']}</span>&nbsp;+&nbsp;Total freight<span id="totalFreight">￥{$countdata['sendmoney']}</span></dt>
+        <dd> Payment<span id="totalPrice">￥{$countdata['totalmoney']}</span></dd>
+      </dl>
+    </div>
+    <div class="next">
+      <p> <a target="_blank" href="{url_m.php?name=favorite}">Go my favorites</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{url_m.php?name=fillorders}">Purchasing fill</a></p>
+      <input type="submit" onmouseout="this.className='in'" onmouseover="this.className='in_'" value="Submitted Shopping" class="in">
+    </div>
+  </div>
+  {else}
+  
+  
+  <div class="nought">
+              <h2>
+                  Your shopping cart is empty, to submit purchasing goods！</h2>
+              <p>
+                  Next：<a href="{url_m.php?name=fillorders}">Purchasing a single fill</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{url_see.php}">Stroll</a></p>
+              <div>
+                    Tip: shopping cart empty? Could not log on!<a href="{url_user.php?action=login}">Login</a></div>
+              
+  </div>
+  {/if}
+  
+  
+</div>
+</form>
+
+<div class="foot">
+  <p> <a href="#">About</a>&nbsp;|&nbsp;<a href="#">Contact us
+</a>&nbsp;|&nbsp;<a href="#">Contact us</a>&nbsp;|&nbsp;<a href="#" target="_blank">Official blog</a> </p>
+  Copyright&nbsp;&copy;&nbsp;2010 中国代购! Inc. All rights reserved </div>
+</body>
+</html>

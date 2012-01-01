@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="css/AddItemPanel.css">
+<link type="text/css" rel="stylesheet" href="css/NewTopFoot.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="css/orange/color.css"/ >    
+<link type="text/css" rel="stylesheet" href="css/orderList.css"/>
+<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/wdggcGobal.js"></script>
+ <script src="js/Gobal.js" type="text/javascript"></script>
+
+<title>提交运单</title>
+</head>
+
+<body>
+
+    <div style="display: none;" id="Panli_Crawl" class="addpanel_dialog">
+        <div class="addpanel_windowname">
+            <h2>
+                快速代购</h2>
+            <a title="关闭" id="closeBtn"></a>
+        </div>
+        <div class="addpanel_inlay">
+            <div id="p0">
+                <img alt="加载中。。。" src="images/loading.gif">
+                <p>
+                    加&nbsp;载&nbsp;中……
+                </p>
+            </div>
+            <div id="p1">
+            </div>
+            <div style="display: none;" id="p2">
+            </div>
+            <div style="display: none;" id="p3">
+            </div>
+        </div>
+    </div>
+    <div class="All_top">
+      <div class="site_nav">
+        <div class="site_center">
+          <p id="Gobal_LoginInfo" class="login-info">您好！wsl881202[<a href="#">退出</a>]&nbsp;&nbsp;<a target="_blank" href="#"><img style="margin-right: 3px;" src="images/an2.gif" />新短信<span style="color: rgb(255, 255, 0);">(1)</span></a></p>
+          <ul class="quick-menu">
+            <li><a target="_blank" id="Gobal_Shoppingcart" class="gouwu" href="#">购物车<span>(2)</span></a></li>
+            <li><a href="#">我的Panli</a></li>
+            <li><a href="#">我的送货车</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="Panli_Tools" class="top_tool"><a onclick="return false;" href="javascript:;"> 常用服务工具</a></li>
+          </ul>
+          <div id="Panli_ToolsList" class="gj_xl">
+            <ul>
+              <li><a target="_blank" href="#">费用估算</a></li>
+              <li><a target="_blank" href="#">尺码换算</a></li>
+              <li><a target="_blank" href="#">汇率换算</a></li>
+              <li><a target="_blank" href="/Track/">包裹跟踪查询</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panli_wrapper">
+        <div class="logo"> <a href="/"> <img alt="Panli代购" src="images/logo.gif" /> </a> </div>
+        <div class="fast_daigou">
+          <label> 购买商品的网址：</label>
+          <input type="text" value="http://" id="CrawlUrl" class="fast_wz_" />
+          <a class="linkbutton" id="PanliCrawlBtn" href="javascript:;">快速代购</a>
+          <div id="CrawlPromt" class="fast_tishi"> 输入所有中国购物网站的商品链接地址就可以代购！</div>
+        </div>
+      </div>
+      <div id="SiteIndex" class="channel">
+        <ul>
+          <li><a id="Default" href="/" class="xt">首页</a></li>
+          <li><a id="see" href="suibiangg.">随便逛逛</a></li>
+          <li><a id="GroupPurchasing" href="GroupPurchasing."><span>团购</span></a></li>
+          <li><a id="Piece" href="/Piece/"><span>拼单购</span><b>(VIP)</b></a></li>
+          <li><a id="PanliRecommend" href="PanliRecommend.">Panli推荐</a></li>
+          <li><a href="See.">讨论组</a></li>
+        </ul>
+        <p> <a id="special" href="/Special/">专题活动</a><span>|</span><a id="discount" href="/Discount/">折扣信息</a><span>|</span><a id="free_postage" href="#">免邮商家</a></p>
+      </div>
+    </div>
+<div class="admin">
+        <div class="ding">
+            <div class="shouye">
+                <a title="我的Panli首页" href="#"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>您的位置：</b><a href="#">我的Panli</a><span>&gt;</span>选择运送方式
+                  </div>
+                
+          <div class="shezhi">
+                    <p>
+                        <a href="#">我的Panli首页</a><span>|</span>风格设置：</p>
+                    <ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="left">
+            <h2>
+                购物</h2>
+            <ul>
+                <li><a href="FillShoppingForm.html">
+                    我要代购</a><b>&nbsp;</b></li>
+        <li><a href="ShoppingCart.html">
+                    我的购物车</a></li>
+                <li><a href="Favorite.html">
+                    我的收藏夹</a></li>
+            </ul>
+            <h2>
+                送货</h2>
+            <ul>
+                <li class="xz"><a href="OrderCart.html">
+                    我的送货车</a></li>
+                <li><a href="OrderList.html">
+                    我的运单</a></li>
+            </ul>
+            <h2>
+                帐户管理</h2>
+            <ul>
+                <li><a href="RmbAccount.html">
+                    我的RMB帐户<span>[充值]</span></a></li>
+                <li><a href="GetCoupon.html">
+                    我的优惠券</a></li>
+                <li><a href="ShoppingRecords.html">
+                    消费记录</a></li>
+                <li><a href="RmbRefoundment.html">
+                    退款记录</a></li>
+                <li><a href="MessageBox.html">
+                    我的信箱<span>(1)</span></a></li>
+                <li><a href="MyAddress.html">
+                    收货地址薄</a></li>
+            </ul>
+            <h2>
+                我的团购&nbsp;<img alt="我的团购" src="images/new.gif"></h2>
+            <ul>
+                <li><a href="#">
+                    我要开团</a></li>
+                <li><a href="#">
+                    我开的团</a></li>
+                <li><a href="#">
+                    我抱的团</a></li>
+                <li><a href="#">
+                    我关注的团</a></li>
+            </ul>
+            <h2>
+                积分管理</h2>
+            <ul>
+                
+                <li><a href="ScoreRecords.html">
+                    我的积分</a></li>
+            </ul>
+            <h2>
+                个人信息管理</h2>
+            <ul>
+                
+                <li><a href="EditUserInfo.html">
+                    编辑个人档案</a></li>
+                <li><a href="ChangeEmail.html">
+                    修改Email地址</a></li>
+                <li><a href="ChangePassword.html">
+                    修改密码</a></li>
+            </ul>
+        </div>
+        
+    <div class="fill">
+      <div class="daelog">
+        <ul><li>
+          <div class="l"><img src="images/untitled.jpg" /></div>
+          <div class="r"> <span class="zi_hui">jine110 07-23,22:34</span><br />
+            能不能团购一次《唐山大地震》呢？ <br />
+            <div class="huifu">回复：您好！谢谢您的建议，我们会努力的，请多多关注。</div>
+          </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">娜宝宝 07-23,22:06</span><br />
+              团购个钰龙泉姚家园套票吧！39元超值的！！！ <br />
+              <div class="huifu">回复：谢谢您的建议，我们会努力的^_^</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">请输入你的名字 07-23,20:50</span><br />
+              请问罗佩兰SPA生活馆 是发短信代码吗？ <br />
+              <div class="huifu">回复：您好，付款成功后请您在“我的拉手”&mdash;“我的拉手券”页面打印或发短信，您凭短信或打印的拉手券就可以去消费了。</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">请输入你的名字 07-23,19:38</span><br />
+              温都水城的团购很应是应景啊
+              期待中。。。。 <br />
+                          <div class="huifu">回复：谢谢您的建议，我们会努力的^_^</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">风过无痕京 07-23,17:21</span><br />
+              139元“第九公社”写真摄影“Cover Girl封面明星照11岁的儿童能使用吗？ <br />
+              <div class="huifu">回复：您好！11岁的小孩是可以去拍的，请您致商家电话提前一周预约：全国统一客服电话  4006-520-945/010-84572057/13811375098/13810763694 （咨询详情）。</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">彬彬 07-23,14:37</span><br />
+              今天这个“罗兰佩蒂美容SPA生活馆”的价格是所有价格吗？过去以后还有没有别的需要另外缴费的地方或项目，比如说使用的什么什么油之类的？ <br />
+              <div class="huifu">回复：您好！凭拉手券可享受“罗兰佩蒂美容SPA生活馆”的美容纤体套餐一套：活氧焕彩嫩肤护理（面部）+纤体瘦身（减肥）+十四经络检测+背部舒压+手部舒压+前胸舒压（店里还免费提供养颜茶、养生汤、小点心哦）不需要另外支付费用（仅限女士使用）。 </div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">请输入你的名字 07-23,13:55</span><br />
+              最近天气太热了，强烈建议组织一次温都水城的团购，辛苦客服帮忙转告，谢了~！ <br />
+              <div class="huifu">回复：您好！谢谢您的支持与建议，我们会努力的，请多多关注^_^</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">你好！ 07-23,13:25</span><br />
+              前胸舒压（仅限女士使用），这个仅限女士使用是指前胸舒压这个项目，还是指今天这个团购? <br />
+              <div class="huifu">回复：您好！本次团购仅限女士使用，谢谢您的支持与关注。</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">请输入你的名字阿亮 07-23,12:53</span><br />
+              天津现在正在做金汉斯拉手网的团购，我能用北京的号买去天津消费吗？ <br />
+              <div class="huifu">回复：您好！这个活动不是同一个活动，所以您只能在北京享用。</div>
+            </div>
+          </li>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">lin 07-23,12:26</span><br />
+              建议团购一次电影票，最近好多片上映。糯米网电影票卖得那个火啊。 <br />
+              <div class="huifu">回复：您好！谢谢您的支持与建议，我们会努力的，请多多关注。</div>
+            </div>
+          </li>
+          <a name="12920" id="12920"></a><a name="12918" id="12918"></a><a name="12914" id="12914"></a><a name="12866" id="12866"></a>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">dongyanzhi 07-23,09:42</span><br />
+              北京在团购一次这个吧…… <br />
+              <div class="huifu">回复：您好！谢谢您的支持与建议，我们会努力的，请多多关注。</div>
+            </div>
+          </li>
+          <a name="12828" id="12828"></a>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">罗兰佩蒂美容SPA生活馆 07-23,03:59</span><br />
+              你好， 罗兰佩蒂美容SPA生活馆”美容纤体套餐一套，这个我想买两份怎么不行呢？ <br />
+              <div class="huifu">回复：您好！有效期内，每人只限使用一张拉手券，有问题请致电：4006517317咨询谢谢。</div>
+            </div>
+          </li>
+          <a name="12822" id="12822"></a>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">冰是睡着的水123 07-23,00:27</span><br />
+              刚看到这个网站，我买这个券要怎么用呢。万一去了老板不认怎么办 <br />
+              <div class="huifu">回复：您好！您凭拉手券或短信都可以商家消费，每个拉手券都有唯一的单号和密码，商家不会不认的，有问题请致电：4006517317咨询。</div>
+            </div>
+          </li>
+          <a name="12772" id="12772"></a>
+          <li>
+            <div class="l"><img src="images/untitled.jpg" /></div>
+            <div class="r"> <span class="zi_hui">sara 07-22,19:16</span><br />
+              的北京建设大厦酒店（四星级）“洛阳宫廷水席-河洛风情套餐”在组织一次吧别的星级酒店也好最近好几个朋友生日 <br />
+              <div class="huifu">回复：谢谢您的建议，我们会努力的^_^</div>
+            </div>
+          </li>
+          <a name="12754" id="12754"></a><li></li>
+        </ul>
+        <div class="tj">
+        <h1>请留下您想说的话！</h1>
+        <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+        <div class="mar">
+         <p>
+                            <input type="text" id="suggestCheck" maxlength="4" onkeydown="return enter(event);">
+                            <input type="text" style="display: none;">
+                            <img src="images/ValidateCode.gif" width="92" height="22" /></p>
+        <div id="tj_img">
+          <input type="button" onmouseout="this.className=''" onmouseover="this.className='jg'" value="提交" onclick="feedback();" id="suggestBtn">
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+<div class="yj">
+        </div>
+    </div>
+
+    
+<div class="foot">
+    <div class="help">
+        <div class="fenlei">
+            <h3>
+                新手上路</h3>
+            <ul>
+                <li><a target="_blank" href="#">新人须知</a></li>
+                <li><a target="_blank" href="#">操作指南</a></li>
+                <li><a target="_blank" href="#">代拍说明</a></li>
+                <li><a target="_blank" href="#">会员等级和积分</a></li>
+            </ul>
+        </div>
+        <div class="fenlei">
+            <h3>
+                代购指南</h3>
+            <ul>
+                <li><a target="_blank" href="#">挑选商品</a></li>
+                <li><a target="_blank" href="#">代购流程</a></li>
+                <li><a target="_blank" href="#">如何生成订单</a></li>
+                <li><a target="_blank" href="#">查询商品状态</a></li>
+            </ul>
+        </div>
+        <div class="fenlei">
+            <h3>
+                支付说明</h3>
+            <ul>
+                <li><a target="_blank" href="#">paypal支付</a></li>
+                <li><a target="_blank" href="#">国际信用卡</a></li>
+                <li><a target="_blank" href="#">国内银行卡</a></li>
+                <li><a target="_blank" href="#">其他汇款方式</a></li>
+            </ul>
+        </div>
+        <div class="fenlei">
+            <h3>
+                配送说明</h3>
+            <ul>
+                <li><a target="_blank" href="#">运输方式和费用对比</a></li>
+                <li><a target="_blank" href="#">大宗商品的运费</a></li>
+                <li><a target="_blank" href="#">海关及税项</a></li>
+                <li><a target="_blank" href="#">收货注意事项</a></li>
+            </ul>
+        </div>
+        <div class="fenlei">
+            <h3>
+                售后服务</h3>
+            <ul>
+                <li><a target="_blank" href="#">退换货原则</a></li>
+                <li><a target="_blank" href="#">退换货流程</a></li>
+                <li><a target="_blank" href="#">商品的保管期限</a></li>
+                <li><a target="_blank" href="#">如何退款</a></li>
+            </ul>
+        </div>
+        <div class="fenlei">
+            <h3>
+                用户须知</h3>
+            <ul>
+                <li><a target="_blank" href="#">服务条款</a></li>
+                <li><a target="_blank" href="#">服务介绍</a></li>
+                <li><a target="_blank" href="#">服务修订</a></li>
+                <li><a target="_blank" href="#">用户隐私保护规则</a></li>
+            </ul>
+        </div>
+        <div class="lx">
+            <h3>
+                <img alt="Panli客户服务热线" src="images/rexian.gif"></h3>
+            <ul>
+                <li>客服邮箱：<a href="mailto:service@panli.com">service@panli.com</a></li>
+                <li>服务时间：周一至周日（8:30～20:00）</li>
+            </ul>
+            <div class="Gobal_time">
+                <input type="hidden" id="Beijing_Time" value="1280226734100.79">
+                <label id="BeijingDate">北京时间：2010-07-27</label><p id="BeijingTime"><span>11</span><b></b><span>07</span><b></b><span>16</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="b_logo">
+            <a href="/news/about.html?nid=4">
+                <img alt="panli" src="images/f_logo.gif"></a>
+        </div>
+        <div class="b_box">
+            <p>
+                <a href="#">关于Panli代购</a><span>|</span><a href="#">联系我们</a><span>|</span><a href="#">加入Panli</a><span>|</span><a href="#" target="_blank">团队博客</a><span>|</span><a href="#">友情链接</a></p>
+            <p>
+                Copyright &copy;2010 Panli代购! Inc. All rights reserved.</p>
+        </div>
+        <div class="b_box2">
+            <ul>
+                <li class="juli"><a onclick="javascript:window.open('#','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');" href="javascript:;">
+                <img alt="paypal接受标记" src="images/paypal_.gif"></a></li>
+                <li><a target="_blank" href="#">
+                    <img alt="paypal" src="images/paypal.gif"></a></li>
+                <li>
+                    <img alt="paypal" src="images/v.gif"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

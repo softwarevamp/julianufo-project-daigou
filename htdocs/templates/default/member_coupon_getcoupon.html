@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+    <script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+    
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >
+
+    <script src="{TPL}js/wdggcGobal.js" type="text/javascript"></script>
+
+    
+    <link href="{TPL}css/exchange.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/GetCoupon.js" type="text/javascript"></script>
+
+<title>
+	[{$cfg_site_name}] – {lang Coupon_Exchange}
+</title></head>
+<body>
+    
+    <form name="" method="post" action="" id="">
+
+{template 'header'}
+
+    <div class="admin">
+      <div class="ding">
+
+<div class="shouye">
+                <a title="我的会员中心" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+               <div class="weizhi">
+                      <b>{lang Location}：</b><a href="{url_m.php}">{lang Member_Center}</a><span>&gt;</span>{lang Coupon_Exchange}
+                  </div>
+                
+                <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">{lang My_Member_Center}</a><span>|</span>{lang Setting_style}：</p>
+                     <!--  <ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>-->
+                </div>
+
+            </div>
+        </div>
+		
+{template 'member_left'}
+        
+    <div class="fill" id="couponPanel1">
+        <div class="duihuan">
+            <h2>
+                {lang Exchange_e_coupons}</h2>
+            <ul>
+                <li>{lang currently_have_points}：<span id="userScore">{$_USERS['scores']}</span></li>
+
+                <li>{lang Member_Level}：{$UTYPENAME[$_USERS['utype']]}</li>
+                <li>{lang With_coupon}：<span id="userCouponNum">{$total}</span>&nbsp;{lang Zhang}&nbsp;&nbsp;<a
+                    href="{url_m.php?name=coupon}">{lang View_My_Coupons}</a></li>
+            </ul>
+      </div>
+        <div class="biao">
+            <ul class="tou">
+
+                <li class="w1">{lang Coupon_Name}</li>
+                <li class="w2">{lang Quantity}</li>
+                <li class="w3">{lang Points_Required}</li>
+                <li class="w4">{lang Exchange_Permissions}</li>
+                <li class="w5">{lang Operation}</li>
+            </ul>
+
+            <table class="quan">
+                <tr>
+                    <td class="b1">
+                        <img src="{TPL}images/q5.jpg" alt="{lang 5electronic_coupons}" width="120" height="58" />                    </td>
+                    <td class="b2">
+                        {lang 5electronic_coupons}
+                    </td>
+                    <td class="b6">
+
+                        <a class="jian" href="javascript:;" title="减" onclick="var tb=$('#c5'); $('#c5n').text((s='×'+tb.val(parseInt(tb.val())<2?1:parseInt(tb.val())-1).val())=='×1'?'':s);">
+                        </a>
+                        <input value="1" id="c5" type="text" maxlength="3" onblur="if(this.value.length<=0||/[^\d]/g.test(this.value)||this.value==0) this.value=1;this.value=this.value.replace(/^0/,'');$('#c5n').text(this.value=='1'?'':'×'+this.value);"
+                            onkeyup="value=value.replace(/[^\d]/g,'');" /><a class="jia" onclick="var t=$('#c5');if(t.val()>=999)return;$('#c5n').text((s='×'+t.val(parseInt(t.val())+1).val())=='×1'?'':s);"
+                                href="javascript:;" title="加"></a>
+                        
+                    </td>
+                    <td class="b3">
+                        500<i id="c5n"></i>
+                    </td>
+                    <td class="b4">
+
+                        {lang Ordinary_Members}
+                    </td>
+                    <td class="b5">
+                        
+                        <a onclick="getCoupon(5);"> {lang I_exchange}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="{lang 10electronic_coupons}" src="{TPL}images/q10.jpg" />
+
+                    </td>
+                    <td class="b2">
+                        {lang 10electronic_coupons}
+                    </td>
+                    <td class="b6">
+                        
+                        <a class="{if $_USERS['utype']<1}jian_{else}jian{/if}" href="javascript:;" title="减"  onclick="var tb=$('#c10'); $('#c10n').text((s='×'+tb.val(parseInt(tb.val())<2?1:parseInt(tb.val())-1).val())=='×1'?'':s);"></a>
+                        <input value="1" {if $_USERS['utype']<1}disabled="true" class="hui"{/if} maxlength="3" id="c10" type="text" onblur="if(this.value.length<=0||/[^\d]/g.test(this.value)||this.value==0) this.value=1;this.value=this.value.replace(/^0/,'');$('#c10n').text(this.value=='1'?'':'×'+this.value);"
+                            onkeyup="value=value.replace(/[^\d]/g,'');" />
+                        <a class="{if $_USERS['utype']<1}jia_{else}jia{/if}" href="javascript:;" title="加" onclick="var t=$('#c10');if(t.val()>=999)return;$('#c10n').text((s='×'+t.val(parseInt(t.val())+1).val())=='×1'?'':s);"></a>
+                        
+                    </td>
+
+                    <td class="b3">
+                        1000<i id="c10n"></i>
+                    </td>
+                    <td class="b4">
+                        {lang Gold_Member}
+                    </td>
+                    <td class="b5">
+                        <span style="{if $_USERS['utype']>=1 && $_USERS['utype']<=3} display:none;{else}display:block;{/if}">{lang Non_convertible}</span>
+						 <a style="{if $_USERS['utype']>=1 && $_USERS['utype']<=3}display:block;{else}display:none;{/if}" onclick="getCoupon(10);">{lang I_exchange}</a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="{lang 20electronic_coupons}" src="{TPL}images/q20.jpg" />
+                    </td>
+                    <td class="b2">
+                        {lang 20electronic_coupons}
+                    </td>
+                    <td class="b6">
+
+                        
+                        <a class="{if $_USERS['utype']<2}jian_{else}jian{/if}" href="javascript:;" title="减" onclick="var tb=$('#c20'); $('#c20n').text((s='×'+tb.val(parseInt(tb.val())<2?1:parseInt(tb.val())-1).val())=='×1'?'':s);"></a>
+                        <input value="1"  {if $_USERS['utype']<2}disabled="true" class="hui"{/if} maxlength="3" id="c20" type="text"   onblur="if(this.value.length<=0||/[^\d]/g.test(this.value)||this.value==0) this.value=1;this.value=this.value.replace(/^0/,'');$('#c20n').text(this.value=='1'?'':'×'+this.value);"
+                            onkeyup="value=value.replace(/[^\d]/g,'');"  />
+                        <a class="{if $_USERS['utype']<2}jia_{else}jia{/if}" href="javascript:;" title="加"  onclick="var t=$('#c20');if(t.val()>=999)return;$('#c20n').text((s='×'+t.val(parseInt(t.val())+1).val())=='×1'?'':s);"></a>
+                        
+                    </td>
+                    <td class="b3">
+                        2000<i id="c20n"></i>
+                    </td>
+                    <td class="b4">
+                        {lang Platinum_Member}
+                    </td>
+
+                    <td class="b5">
+                         <span style="{if $_USERS['utype']>=2  && $_USERS['utype']<=3} display:none;{else}display:block;{/if}">{lang Non_convertible}</span>
+						 <a style="{if $_USERS['utype']>=2  && $_USERS['utype']<=3} display:block;{else}display:none;{/if}" onclick="getCoupon(20);">{lang I_exchange}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="{lang 50electronic_coupons}" src="{TPL}images/q50.jpg" />
+                    </td>
+
+                    <td class="b2">
+                        {lang 50electronic_coupons}
+                    </td>
+                    <td class="b6">
+                        
+                        <a class="{if $_USERS['utype']<3}jian_{else}jian{/if}" href="javascript:;" title="减" onclick="var tb=$('#c50'); $('#c50n').text((s='×'+tb.val(parseInt(tb.val())<2?1:parseInt(tb.val())-1).val())=='×1'?'':s);"></a>
+                        <input value="1"  {if $_USERS['utype']<3}disabled="true" class="hui"{/if} maxlength="3" id="c50" type="text" onblur="if(this.value.length<=0||/[^\d]/g.test(this.value)||this.value==0) this.value=1;this.value=this.value.replace(/^0/,'');$('#c20n').text(this.value=='1'?'':'×'+this.value);"
+                            onkeyup="value=value.replace(/[^\d]/g,'');"  />
+                        <a class="{if $_USERS['utype']<3}jia_{else}jia{/if}" href="javascript:;" title="加"  onclick="var t=$('#c50');if(t.val()>=999)return;$('#c50n').text((s='×'+t.val(parseInt(t.val())+1).val())=='×1'?'':s);"></a>
+                        
+                    </td>
+                    <td class="b3">
+
+                        5000<i id="c50n"></i>
+                    </td>
+                    <td class="b4">
+                        {lang Diamond_Member}
+                    </td>
+                    <td class="b5">
+                         <span style="{if $_USERS['utype']==3} display:none;{else}display:block;{/if}">{lang Non_convertible}</span>
+						 <a style="{if $_USERS['utype']==3} display:block;{else}display:none;{/if}" id="cou50" onclick="getCoupon(50);">{lang I_exchange}</a>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+      <div class="wenti">
+            <h2>
+                {lang E_coupons}Q&amp;A
+            </h2>
+            <ul>
+                <li><a href="http://ewen.com/help.php?action=view&id=85" target="_blank">{lang can_exchange_e_coupons}?</a></li>
+				<li><a href="http://ewen.com/help.php?action=view&id=86" target="_blank">{lang How_e_coupons}?</a></li>
+				<li><a href="http://ewen.com/help.php?action=view&id=87" target="_blank">{lang E_coupons_indefinitelyo}?</a></li>
+				<li><a href="http://ewen.com/help.php?action=view&id=91" target="_blank">{lang YC_transfer_e_coupons}?</a></li>  
+            </ul>
+      </div>
+    </div>
+    <div class="fill" id="couponPanel2" style="display: none;">
+        <div class="succeed">
+            <h2>
+                {lang Congratulations}！{lang Successful_exchange_coupons}！</h2>
+            <ul class="jf">
+
+                <li>{lang Get}<span id="sPrice">5</span>{lang Per_e_coupons}<span id="sNum">1</span>{lang Zhang}</li>
+                <li>{lang exchange_bonus_points}<b id="useScore">0</b>{lang Point}，{lang Your_remaining_points}<b id="userScores">0</b>{lang Point}！</li>
+            </ul>
+            <ul class="link">
+
+                <li><a href="{url_m.php?name=coupon}">{lang My_Coupons}</a></li>
+                <li><a href="javascript:;" onclick="$('#couponPanel2').hide(); $('#couponPanel1').show();$('.b3 i').text('');$('.b6 input[class!=\'hui\']').val(1);">
+                   {lang Continue_to_exchange}</a></li>
+            </ul>
+            <div class="hai">
+                <p>
+                    <b>{lang YCalso}：</b><a href="{url_m.php?name=scorerecords}">{lang Back_my_points}</a>&nbsp;&nbsp;&nbsp;<a href="{url_m.php?name=orderlist}">{lang Back_delivery_vehicles}</a></p>
+
+            </div>
+        </div>
+    </div>
+
+      <div class="yj">
+      </div>
+    </div>
+
+    
+{template 'footer'}
+    </form>
+
+</body>
+</html>
+

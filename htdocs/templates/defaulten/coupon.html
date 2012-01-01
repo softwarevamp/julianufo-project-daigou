@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+    <script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+	
+    <script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+    <link href="{TPL}css/css.css" rel="stylesheet" type="text/css" />
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>优惠券转让专区-随心自选 省心省钱--{$cfg_site_name}_足不出户,买遍中国-{$cfg_site_name}为全球华人代购中国商品</title>
+    <meta name="keywords" content="代购，海外华人，留学生" />
+
+    <meta name="description" content="{$cfg_site_name}－全球最大的专业代购网络，为海外华人代购国内各种商品，方便您的购物需求" />
+    <style type="text/css">
+        body
+        {
+            background: #fff;
+            font-family: Verdana,Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+            color: #5E5E5E;  
+        }
+        img
+        {
+            border: 0px;
+        }
+        ul, li, dl, dt, dd
+        {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+        .main_other
+        {
+            width: 950px;
+            height: auto;
+            display: table;
+            margin: auto;
+            text-align: center;
+            background: #fff;
+        }
+        .p_sale1
+        {
+            width: 950px;
+            height: 30px;
+            float: left;
+        }
+        .p_sale2
+        {
+            width: 500px;
+            height: 100px;
+            float: left;
+        }
+        .p_sale3
+        {
+            width: 450px;
+            height: 100px;
+            float: left;
+        }
+        .p_sdh
+        {
+            width: 950px;
+            height: 35px;
+            float: left;
+            background: #fff2d0;
+            border-top: 2px solid #ff9b00;
+            display: inline;
+            font-size: 14px;
+            text-align: left;
+        }
+        .p_sdh a:link, .p_sdh a:visited
+        {
+            color: #0764B5;
+            text-decoration: none;
+        }
+        .p_sdh a:hover
+        {
+            color: #FF4200;
+            text-decoration: underline;
+        }
+        .p_sdh a:active
+        {
+            color: #0764B5;
+            text-decoration: none;
+        }
+        .p_sdh ul
+        {
+            width: 950px;
+            height: 30px;
+        }
+        .p_sdh ul li
+        {
+            display: inline;
+            text-indent: 10px;
+            float: left;
+        }
+        .p_left
+        {
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            width: 500px;
+            text-align: left;
+        }
+        .p_right
+        {
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            width: 430px;
+            text-align: right;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        .p_main
+        {
+            width: 950px;
+            height: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        .p_s5
+        {
+            width: 200px;
+            height: 220px;
+            margin: 10px 8px 10px 22px;
+            float: left;
+            background: url({TPL}images/preference_5y.jpg) no-repeat;
+        }
+        .p_s10
+        {
+            width: 200px;
+            height: 220px;
+            margin: 10px 8px 10px 22px;
+            float: left;
+            background: url({TPL}images/preference_10y.jpg) no-repeat;
+        }
+        .p_s20
+        {
+            width: 200px;
+            height: 220px;
+            margin: 10px 8px 10px 22px;
+            float: left;
+            background: url({TPL}images/preference_20y.jpg) no-repeat;
+        }
+        .p_s50
+        {
+            width: 200px;
+            height: 220px;
+            margin: 10px 8px 10px 22px;
+            float: left;
+            background: url({TPL}images/preference_50y.jpg) no-repeat;
+        }
+        .p_content
+        {
+            width: 180px;
+            height: 120px;
+            margin: 60px 0 auto;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .p_content li
+        {
+            text-align: left;
+            width: 180px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            text-indent: 10px;
+        }
+        #p_button
+        {
+            text-align: center;
+        }
+        .f2
+        {
+            color: #ff4200;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        .f3
+        {
+            color: #FF4200;
+            display: inline;
+            font-size: 13px;
+        }
+    </style>
+<style type="text/css">
+.pages {float:right;height:25px;margin:15px 0 0 0;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+    <script type="text/javascript">
+        $(function() {
+            $("#selCouponType").val('0');
+            $("#selSortType").val('0');
+            $("#selCouponType").change(function() { window.location = '/coupon.php?money=' + $(this).val() + '&shortType=' + $('#selSortType').val(); });
+            $("#selSortType").change(function() { window.location = '/coupon.php?money=' + $('#selCouponType').val() + '&shortType=' + $(this).val(); });
+        });
+		
+var flag = false;
+var uname='{$_USERS['uname']}';
+var money='{$_USERS['money']}';
+function buyCoupon(code,price) {
+    if (flag) return false;
+	if (!uname) { alert("请登录后操作"); return false; }
+    if (money < price) { alert("您的账户余额不足，无法兑换优惠券"); return false; }
+    if (!confirm("优惠券只能用于抵扣服务费，如果优惠券面额超过服务费将无法退回差值。您是否确认购买？")) return false;
+    flag = true;
+
+    $.ajax({
+        type: "POST",
+        url: "/ajax/coupon_ajax.php?action=buycoupon",
+        dataType: "json",
+        contentType: "application/json;utf-8",
+        data: "{'code':'" + code + "'}",
+        timeout: 8000,
+        error: function() { alert("购买失败，请稍后再试"); flag = false; return false;},
+        success: function(res) {
+            flag = false;
+            var s = res;
+            switch (s) {
+                case "OK": alert("购买成功!"); return false;break;
+                default: alert(s);return false;break;
+            }
+        }
+    });
+}		
+		
+		
+    </script>
+
+</head>
+<body>
+    
+
+{template 'header'}
+
+      <div id="main">
+    
+    <div class="main_other">
+        <div class="p_sale1">
+            <a name="top">
+                <img src="{TPL}images/preference_01.jpg" /></a></div>
+        <div class="p_sale2">
+            <img src="{TPL}images/preference_02.jpg" width="500" height="100" /></div>
+
+        <div class="p_sale3">
+            <img src="{TPL}images/preference_03.jpg" width="450" height="100" /></div>
+        <div class="p_sale2">
+            <img src="{TPL}images/preference_04.jpg" width="500" height="100" /></div>
+        <div class="p_sale3">
+          <img src="{TPL}images/preference_05.jpg" /></div>
+        <div class="p_sale1">
+          <img src="{TPL}images/preference_06.jpg" /></div>
+        <div class="p_sdh">
+
+            <ul>
+                <li class="p_left">优惠券金额选择：
+                    <select id="selCouponType">
+                        <option value="0">任意金额</option>
+                        <option value="5">5元优惠券</option>
+                        <option value="10">10元优惠券</option>
+                        <option value="20">20元优惠券</option>
+                        <option value="50">50元优惠券</option>
+                    </select>
+                    &nbsp;&nbsp; &nbsp;&nbsp; 排序方式：
+                    <select id="selSortType">
+                        <option value="0">默认排序</option>
+                        <option value="1">售价升序</option>
+                        <option value="2">售价降序</option>
+                        <option value="3">到期时间升序</option>
+                        <option value="4">到期时间降序</option>
+                    </select>
+                </li>
+                <li class="p_right">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{url_coupon.php}" id="ctl00_ctl00_NewContentPlaceHolder_ContentPlaceHolder1_next">查看所有</a> </li>
+            </ul>
+        </div>
+
+        <div class="p_main">
+            
+			{loop $dataarray $r}
+			
+                    <div class="p_s{$r['money']}">
+                        <ul class="p_content">
+                            <li>seller：<span class="f3">{$r['uname']}</span></li>
+                            <li>price：<span class="f3">{$r['sellmoney']}元</span></li>
+                            <li style="text-decoration: none; font-weight: normal; font-size: 12px;">validity：<span
+                                class="f2">{date('Y-m-d',$r['endtime'])}</span></li>
+
+                            <li>&nbsp;</li>
+                            <li id="p_button">
+                                <input type="image" src="{TPL}images/preference_an.jpg"  onclick="buyCoupon('{$r['sn']}',{$r['sellmoney']})" style="border-width:0px;" /></li>
+                        </ul>
+                    </div>
+            {/loop}    
+				
+				
+              
+                
+        </div>
+		 {echo pagelist($total,$pagesize,$page,"");}
+        <div class="p_sdh">
+            <ul>
+                <li class="p_left">
+
+ 
+					
+                </li>
+                <li class="p_right"><a href="#top">返回顶部</a></li></ul>
+
+        </div>
+    </div>
+</div>
+
+    
+{template 'footer'}
+
+
+</body>
+</html>

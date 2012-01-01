@@ -1,0 +1,20 @@
+@charset "utf-8";
+.cx_r{ width:720px; height:auto;margin:5px auto; text-align:center;}
+.p_header{ width:950px; height:27px; font-size:14px; margin:10px auto; text-align:center;}
+.p_left{ width:120px; height:27px; line-height:27px; vertical-align:middle; text-align:center; color:#fff; background:url(../images/s_header_current_bg.gif) repeat-x;float:left;display: inline;  }
+.p_right11{ width:830px; height:27px; line-height:27px; vertical-align:middle; text-align:center; background: url(../images/s_panel_header_bg.gif) repeat-x;float:left; display: inline; }
+
+
+.cx_jieshi{ width:720px; height:auto; margin:20px 0px;text-indent:5px; text-align:left;  line-height:22px;}
+.cx_t1{width:720px; height:auto; margin:30px 0px; text-align:center;}
+.cx_t2{ color:#1278cd; font-size:14px; text-align:center; height:30px; }
+.cx_t2 a:link,.cx_t2 a:visited{color:#1478ce;text-decoration:underline;}
+.cx_t2 a:hover{color:#ff4200;text-decoration:underline;}
+.cx_air1{ width:720px;text-indent:10px;font-weight:bold;margin:20px 0px 10px 0px;text-align:left;}
+.cx_air2{ width:720px;height:auto;margin:10px 0px 20px 30px;text-indent:5px;border:1px dashed #b3cde6; background:#f5fbff; padding:5px;text-align:left;}
+.cx_a1{ text-indent:20px; font-weight:bold; height:22px;line-height:22px; }
+.cx_a2{ text-indent:30px; height:20px; line-height:20px;}
+.cx_a3{ text-indent:5px; margin:5px 5px 20px 30px; height:50px;}
+.cx_a3 a:link,.cx_a3 a:visited{color:#1478ce;text-decoration:none;}
+.cx_a3 a:hover{color:#ff4200;text-decoration:underline;}
+/*包裹跟踪查询结束*/

@@ -1,0 +1,97 @@
+<!-- 一键填单代码开始 -->
+<link href="add/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<div class="addpanel_dialog" style="display: none;">
+  <div class="addpanel_windowname">
+    <h2>{lang Fill_a_key}</h2>
+    <a id="closeBtn" title="{lang Close}"></a> </div>
+  <div class="addpanel_inlay">
+    <div id="p0"> <img src="/add/newimages/loading.gif" alt="{lang Loading}。。。" />
+      <p> {lang Loading}…… </p>
+    </div>
+    <div id="p1"> </div>
+    <div id="p2" style="display: none;"> </div>
+    <div id="p3" style="display: none;"> </div>
+  </div>
+</div>
+<div class="addpanel_overlay"> </div>
+ <script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<!-- 一键填单代码结束 -->
+
+<div class="All_top">
+        <div class="site_nav">
+		
+ <p style="width:80px;height:26px;float:left;">
+ <div id="google_translate_element"  style="height:26px;float:left;"></div>
+ <script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'zh-CN',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+ </p>
+
+            <div class="site_center">
+			{if empty($_USERS)}
+                <p id="Gobal_LoginInfo" class="login-info">{lang hello}！{lang visitor} {lang please} <a href="{url_user.php?action=login}">[{lang login}]</a> {lang or} <a href="{url_user.php?action=register}">[{lang register}]</a></p>
+			{else}
+				 <p class="login-info" id="Gobal_LoginInfo">{lang hello}！{$_USERS['uname']} [<a href="{url_user.php?action=quit}">{lang out}</a>]&nbsp;&nbsp;<a href="{url_m.php?name=pm}" target="_blank"><img src="{TPL}images/an2.gif" style="margin-right: 3px;">{lang SMS}<span style="color: rgb(255, 255, 0);">({$_USERS['pm']})</span></a></p>
+			{/if}
+			 <ul class="quick-menu">
+                    <li><a target="_blank" id="Gobal_Shoppingcart" class="gouwu" href="{url_shoppingcart.php}">{lang Shopping_Cart}<span>({$_CARTCOUNT})</span></a></li>
+                    <li><a href="{url_m.php}">{lang Member_Center}</a></li>
+                    <li><a href="{url_m.php?name=orderlist}">{lang My_Order}</a></li>
+                    <li><a href="{url_help.php}">{lang Help_Center}</a></li>
+<!--					<li>
+                        <a id="ctl00_HeaderControl_ChineseSwitchButton" href="?tpl=cn">中文</a>
+                    </li>
+                    <li>
+                        <a id="ctl00_HeaderControl_EnglishSwitchButton" href="?tpl=en">English</a>
+                    </li>
+-->                    <li id="Panli_Tools" class="top_tool"><a onclick="return false;" href="javascript:;">
+                        {lang Common_tools}</a></li>
+              </ul>
+                <div class="gj_xl" id="Panli_ToolsList">
+                    <ul>
+                        <li><a target="_blank" href="{url_page.php?action=estimates}">{lang Cost_estimates}</a></li>
+                        <li><a target="_blank" href="{url_page.php?action=measureconversion}">{lang Size_Conversion}</a></li>
+                        <li><a target="_blank" href="{url_page.php?action=postage}">{lang Shipping_prices}</a></li>
+                        <li><a target="_blank" href="http://www.123cha.com/hl/">{lang Exchange_rates}</a></li>
+                        <li><a target="_blank" href="{url_page.php?action=track}">{lang Package_Query}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panli_wrapper">
+            <div class="logo">
+                <a href="/">
+                    <img src="{TPL}images/index_03.gif" />                </a>            </div>
+            <div class="fast_daigou">
+                <label>{lang Buy_Website}：</label>
+                <input type="text" value="" id="CrawlUrl" class="fast_wz_">
+                <a class="linkbutton" id="PanliCrawlBtn" href="javascript:;">{lang Quick_Shopping}</a>
+                <div id="CrawlPromt" class="fast_tishi">{lang Purchasing_goods}！</div>
+            </div>
+        </div>
+        <div id="SiteIndex" class="channel">
+            <ul>
+                <li><a id="Default" href="/" ><span>{lang index}</span></a></li>
+              <li><a id="see" href="{url_see.php}"><span>{lang Casual_look}</span></a></li>
+                <li><a id="demo" href="{url_demo.php}"><span>{lang Shopping_Demo}</span></a></li>
+                <li><a id="shop" href="{url_shop.php}"><span>{lang Free_Goods}</span></a></li>
+                <li><a id="recommend" href="{url_recommend.php}"><span>{lang Recommend}</span></a></li>
+                <li><a id="guestbook" href="{url_guestbook.php}"><span>{lang User_Reviews}</span></a></li>
+
+            </ul>
+            <p>
+                <a id="special" href="{url_special.php}">{lang news}</a><span>|</span>
+<!--                <a id="pinindex" href="{url_pinindex.php}">{lang Buy_Website}</a><img src="{TPL}images/hot001.gif" style="vertical-align:top;" /><span>|</span>
+-->                <a id="special" href="{url_discount.php}">{lang Discount_information}</a><span>|</span>
+				<a id="discount" href="{url_free_postage.php}">{lang SB}</a>
+				
+				</p>
+        </div>
+</div>

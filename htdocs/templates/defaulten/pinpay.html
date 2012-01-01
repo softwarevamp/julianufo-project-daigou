@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Single purchase payment confirmation fight</title>
+    <link href="{TPL}css/pay.css" rel="stylesheet" type="text/css" />
+   	<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <form name="Form1" method="post" action="{url_pinindex.php?action=edit}" id="Form1" onsubmit="return checkall()">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzI1NjUyMzI5ZGQ=" />
+</div>
+
+    <input type="hidden" value="{$value['goodsprice']}" id="productPrice" />
+    <input type="hidden" value="{$value['sendprice']}" id="sendPrice" />
+    <input type="hidden" value="{$_USERS['scores']}" id="UserScore" />
+    <input type="hidden" value="{$_USERS['money']}" id="UserCurrentPrice" />
+	<input type="hidden" value="{$value['oid']}" id="oid" name="oid" />
+
+    <div class="top">
+        <div class="logo">
+            <a href="/">
+                <img src="{TPL}images/index_03.gif" alt="代购" /></a>
+            <p>
+                <img src="{TPL}images/pay.gif" alt="Payment confirmation" /></p>
+        </div>
+        <div class="mypanli">
+            <ul>
+
+                <li><a href="{url_help.php}">Help Center</a>|</li>
+                <li><a href="/">Home</a></li>
+            </ul>
+            <p>
+                <img src="{TPL}images/pin.gif" alt="No victories" /></p>
+        </div>
+    </div>
+
+    <div class="x_h2">
+    </div>
+    <div class="center">
+        <div class="top_yj">
+        </div>
+        <div class="bt">
+            <h1>
+                <a href="{$value['goodsurl']}" target="_blank">
+                    {$value['goodsname']}</a></h1>
+
+        </div>
+        <div class="left">
+            <div class="pic">
+                <a href="{$value['goodsurl']}" target="_blank">
+                    <img src="{$value['goodsimg']}"
+                        alt="{$value['goodsname']}" onerror="this.src='{TPL}images/noimg220.gif';" style="width:220px;height:220px;" /></a>
+            </div>
+            <div class="gmr">
+                <table>
+                    <tr>
+
+                        <td class="z">
+                            Popularity：
+                        </td>
+                        <td>
+                            2次
+                        </td>
+                        <td class="z">
+                            By：
+                        </td>
+                        <td>
+
+                            {$value['uname']}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="right">
+            <div class="sp">
+                <table>
+
+                    <tr>
+                        <td class="l">
+                          URL：
+                        </td>
+                        <td>
+                            <input class="text hui" name="goodsurl" type="text" value="{$value['goodsurl']}" /><a class="ck"
+                                href="{$value['goodsurl']}" target="_blank">View product</a>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="l">
+                            Business：
+                        </td>
+                        <td>
+                            <a class="wz">
+                                {$value['goodssite']}</a><a class="dm" href="{$value['goodsurl']}" target="_blank">{$value['goodsseller']}</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="l">
+                            price：
+                        </td>
+                        <td>
+                            <b>{$value['goodsprice']}</b>
+                        </td>
+                    </tr>
+                    
+                    <tr class="shu">
+                        <td class="l">
+                            Num：
+                        </td>
+                        <td>
+                            <input class="text" id="PieceproductNum" name="pieceNum" onblur="if(this.value.length<=0) this.value=1;sumBlur();"
+                                value="1" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')" type="text" /><a
+                                    title="Increase number" onclick="$('#PieceproductNum').val(parseInt($('#PieceproductNum').val())+1);sumBlur();"></a><a
+                                        class="jian" title="Reduce number" onclick="var tb=$('#PieceproductNum'); parseInt(tb.val())<2?1:tb.val(parseInt(tb.val())-1);sumBlur();"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l">
+
+                            Goods Notes：
+                        </td>
+                        <td>
+                            <label class="picking" onclick="noremark()">
+                                <input type="checkbox" value="1" id="RemarkCheck" />Note that if no special commodity - Please check this</label>
+                            <textarea id="PieceProductRemark" onblur="rblur(this);" onfocus="if(this.className=='red'){this.value='';this.className='still';}"
+                                onkeyup="if($.trim(this.value).length>0) $(this).attr('class','');else $(this).attr('class','still');"
+                                class="still" name="pieceRemark" cols="" rows=""></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <label for="PayFeight" class="cedan" onclick="return selectFeight();">
+                                <input type="checkbox" id="PayFeight" name="PayFeight" value="1" />If the fight alone is not successful, I am willing to pay the shipping costs alone to buy this product</label>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        <div class="pay" style="clear: both">
+            <div class="yuer">
+                <ul>
+                    <li>Current Points：<b>{$_USERS['scores']}</b>点</li>
+
+                    <li>Account balance：<b>{$_USERS['money']}</b><a href="{url_m.php?name=rmbaccount}" target="_blank">Recharge</a></li>
+                    <li><a style="color: #f90;" href="#"
+                              target="new">全场免费代购，充值就送钱！</a></li>
+
+                </ul>
+            </div>
+            <div class="ok">
+                <ul>
+                    <li>Consumption：<b id="totalPoint">20</b>Point Integral</li>
+
+                    <li>The need to pay：<span id="fPanel" style="display: none;"><i id="ProPrice">{$value['goodsprice']}</i>+<i>{$value['sendprice']} (Freight)</i>=</span><b
+                        id="totalPrice">{$value['goodsprice']}</b></li>
+                </ul>
+                <input class="pd" onmouseover="this.className='pd_'" onmouseout="this.className='pd'"
+                    type="submit" value="confirmation" />
+            </div>
+        </div>
+    </div>
+
+    </form>
+    <div class="foot">
+          <p>
+            <a href="{url_about.php?action=aboutus}">About Us</a>&nbsp;|&nbsp;<a href="{url_about.php?action=contactus}">Contact Us</a>&nbsp;|&nbsp;<a href="{url_about.php?action=joinus}">Join Us</a>&nbsp;|&nbsp;<a href="#" target="_blank">Team blog</a>&nbsp;|&nbsp;<a href="{url_about.php?action=links}">Links</a>
+        </p>
+        Copyright&nbsp;&copy;&nbsp;2010 代购! Inc. All rights reserved
+    </div>
+    
+
+    <script type="text/javascript">
+        var ProPrice = parseFloat(document.getElementById('productPrice').value);
+        var SendPrice = parseFloat(document.getElementById('sendPrice').value);
+
+        //备注框焦点脱离
+        function rblur(dom) {
+            if ($.trim($(dom).val()).length <= 0) $(dom).attr("class", "still");
+        }
+
+        //备注复选框勾选方法
+        function noremark() {
+            if (document.getElementById("RemarkCheck").checked) $("#PieceProductRemark").attr("disabled", "disabled").attr("class", "hui").val("我对此商品无任何特殊备注。");
+            else $("#PieceProductRemark").removeAttr("disabled").attr("class", "still").val("");
+        }
+
+        //计算价格和需要的积分
+        function sumBlur() {
+            var num = parseInt($("#PieceproductNum").val());
+            if (document.getElementById("PayFeight").checked) {
+                $("#ProPrice").text((ProPrice * num).toFixed(2));
+                $("#totalPrice").text("￥" + (ProPrice * num + SendPrice).toFixed(2));
+            }
+            else
+                $("#totalPrice").text("￥" + (ProPrice * num).toFixed(2));
+
+            $('#totalPoint').text(Math.floor(ProPrice * num) > 20 ? Math.floor(ProPrice * num).toString() : "20");
+        }
+        //用户是否愿意支付运费
+        function selectFeight() {
+            var c = document.getElementById("PayFeight");
+            if (c.checked)
+                $('#fPanel').show();
+            else
+                $('#fPanel').hide(); sumBlur();
+        }
+        //提交检查
+        function checkall() {
+            if ($.trim($('#PieceProductRemark').val()).length <= 0)
+                $('#PieceProductRemark').val('Please Note').attr("class", "red");
+            if ($('#PieceProductRemark').attr('class') == 'red')
+                return false;
+
+            if (parseFloat($('#UserCurrentPrice').val()) < (ProPrice * parseInt($("#PieceproductNum").val()) + (document.getElementById("PayFeight").checked ? SendPrice : 0))) {
+                alert('Sorry, your balance is insufficient to participate in this fight alone！');
+                return false;
+            }
+            if (parseFloat($('#UserScore').val()) < parseFloat($('#totalPoint').text())) {
+                alert('Sorry, your points is not enough to participate in this fight alone！');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try { var pageTracker = _gat._getTracker("UA-436090-1"); pageTracker._trackPageview(); } catch (err) { }
+    </script>
+
+</body>
+</html>

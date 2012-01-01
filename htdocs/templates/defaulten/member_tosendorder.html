@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >    
+<link type="text/css" rel="stylesheet" href="{TPL}css/orderList.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+ <script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+
+<title>提交运单 - {$cfg_site_name}</title>
+</head>
+
+<body>
+
+{template 'header'}
+
+<div class="admin">
+        <div class="ding">
+            <div class="shouye">
+                <a title="我的会员中心" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>Your position：</b><a href="{url_m.php}">Member Center</a><span>&gt;</span>Shipping method
+                  </div>
+                
+          <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">Member Center</a> |ThemeSet：</p>
+                    <ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		
+{template 'member_left'}
+<script type="text/javascript" src="{TPL}js/Country.js"></script>
+<script>
+var TOTALORDERMONEY="{$countmoney}";//订单总费用
+var TOTALORDERWEIGHT="{$countweight}";//订单总总量
+var USERMONEY="{$_USERS['money']}";//用户帐户余额
+jQuery(function($) {
+	//地址显示隐藏
+	$("#showalladdress").click( function () {
+		$("#addresslist").toggle();
+	});
+	//优惠卷显示隐藏
+	$("#usecoupon").click( function () {
+		$("#couponlist").toggle();
+		var cid = $("input[name='couponid']:checked").val();
+		if($("#usecoupon").attr("checked")){
+			$("#couponfee").html($("#coupon_"+cid).val());
+			countallfee();
+		}else{
+			$("#couponfee").html(0);
+			countallfee();
+		}
+	});
+	$(".areaselect").click( function () {
+		var area_id = $("input[name='area']:checked").val();
+		buildlist(area_id);
+		countallfee();
+		
+	});
+	$("input[name='couponid']").click( function () {
+		var cid = $("input[name='couponid']:checked").val();
+		$("#couponfee").html($("#coupon_"+cid).val());
+		
+		countallfee();
+	});
+	
+	$("input[name='selectaddress']").click( function () {
+		var aid = $("input[name='selectaddress']:checked").val();
+		selectaddress(aid);
+	});
+	var selectaddress =function(aid) {
+
+		var consignee = $("#address_"+aid+"_consignee").val();
+		var country = $("#address_"+aid+"_country").val();
+		var city = $("#address_"+aid+"_city").val();
+		var zip = $("#address_"+aid+"_zip").val();
+		var tel = $("#address_"+aid+"_tel").val();
+		var address = $("#address_"+aid+"_address").val();
+		
+		var countrystr = '<select name=\'country\'>' + COUNTRY.ToSelect(country) + '</select>';
+		
+		$("#consignee").val(consignee);
+		$("#city").val(city);
+		$("#countrystr").html(countrystr);
+		$("#zip").val(zip);
+		$("#tel").val(tel);
+		$("#address").val(address);
+
+	}
+	var countallfee = function() {
+		var serverfee=parseFloat($("#serverfee").html());//服务费
+		var freight=parseFloat($("#freight").html());//运费
+		var couponfee=parseFloat($("#couponfee").html());//抵扣服务费
+		if(couponfee > serverfee){
+			couponfee=serverfee;//只能抵扣服务费
+			$("#couponfee").html(serverfee);
+		}
+		alltotalfee=serverfee+freight-couponfee;
+		$("#totalfee").html(alltotalfee);
+		$("#totalfee2").html(alltotalfee);
+	}
+	var deliverylist;
+	//运送方式列表显示
+	var totalweight=parseFloat($("#totalweight").html());//总重量
+	var listHtml = $("#deliverylist");
+	var buildlist = function(aid) {
+		var tempfee=0;
+		var serverfee=parseFloat($("#areaserverfee_"+aid).val());
+		var serverfeepct=parseFloat($("#areaserverfeepct_"+aid).val());
+		if(serverfeepct){
+			tempfee=parseFloat(TOTALORDERMONEY)*serverfeepct;
+			if(tempfee>serverfee)tempfee=serverfee;
+		}else{
+			tempfee=serverfee;
+		}
+		$("#serverfee").html(tempfee);//设置服务费
+		 $.ajax({
+			type: "POST",
+			url: "/ajax/sendorder_ajax.php?action=getdelivery",
+			dataType: "json",
+			contentType: "application/json;utf-8",
+			data: "{'aid':'" + aid + "'}",
+			timeout: 15000,
+			error: function() { alert("加载信息出错，请稍后再试"); return false;},
+			success: function(res) {
+				var deliverylist = res;
+				
+				
+				
+                if (deliverylist.length > 0) {
+                    listHtml.empty();
+                    $.each(deliverylist,
+                    function(index, item) {
+                        var button = $('<input name="did" type="radio" id="did" value="'+item.did+'" />').click(function() {
+						//处理计算运费
+						
+						var deliveryfee =0 ;
+						//计算运费
+						
+						if(totalweight < parseFloat(item.first_weight))
+						{
+							deliveryfee=parseFloat(item.first_fee)+parseFloat(item.customs_fee);
+						}else{
+							deliveryfee=parseFloat(item.first_fee)+Math.ceil((totalweight-parseFloat(item.first_weight))/parseFloat(item.continue_weight))*parseFloat(item.continue_fee)+parseFloat(item.customs_fee);
+						}
+						$("#freight").html(deliveryfee);
+						$("#totalsendfee").html(deliveryfee);
+						countallfee();
+                        });
+                        var tr = $('<tr><td class="ww1" width=115 align="left">' + item.deliveryname + '</td><td width=93 align="center">' +item.areaname+'</td><td  width=131 align="center">' + item.first_fee +'<span class="hui">（'+item.first_weight+'克）'+ '</td><td width=238 align="center">' + item.continue_fee +'<span class="hui">（每续重'+item.continue_weight+'克或其零数）'+ '</td><td width=123 align="center">' + item.customs_fee + '</td></tr>');
+                        $(".ww1", tr).prepend(button);
+                        listHtml.append(tr);
+                    });
+                    $("#loading").hide();
+                    listHtml.show();
+					countallfee();
+                }else{
+					alert('暂无当前地区运送方式');
+					listHtml.empty();
+					listHtml.hide();
+					countallfee();
+				}
+			}
+		});
+	};
+	buildlist(1);//初始化运送方式列表
+	$("input[name='area']").val(["1"]);
+
+});
+//提交校验
+function submitTosendorder() {
+	if($("input[name='area']:checked").length!=1){ alert("运送区域必须选择!"); return false; }
+	if($("input[name='did']:checked").length!=1){ alert("运送方式必须选择!"); return false; }
+	if($.trim($("#consignee").val())==""){ alert("收货人姓名不能为空!"); return false; }
+	if($.trim($("#zip").val())==""){ alert("邮政编码不能为空!"); return false; }
+	if($.trim($("#tel").val())==""){ alert("收货人电话不能为空!"); return false; }
+	if($.trim($("#address").val())==""){ alert("详细地址不能为空!"); return false; }
+	if($('select[name="country"]').val()==0){ alert("国家必须选择!"); return false; }
+	if(parseFloat(USERMONEY)<parseFloat($("#totalfee").html())){ alert("您的帐户余额不足完成本次支付，请充值后再提交!"); return false; }
+	
+	if (!confirm("您确定要提交此运单吗？")) return false;
+	return true;
+
+}
+</script>
+
+<form method="post" action="" enctype="multipart/form-data" name="form" onSubmit="return  submitTosendorder()">
+
+<input type="hidden" name="action" value="save"/>
+<input type="hidden" name="oids" value="{$ids}"/>
+<input type="hidden" name="LOCKDATA" value="{$LOCKDATA}"/>
+
+
+    <div class="fill">
+        <div class="circuit_3">
+            <img alt="步骤" src="{TPL}images/donghua.gif">
+        </div>
+     
+	<div class="o_wu">
+		<div class="hg bg"><h1>Products list submitted</h1><h3><a href="###" id=""></a></h3></div>
+        <div class="add_text" id="" style="">
+        <ul>
+		{loop $dataarray $key $r}
+          <li>{echo $key+1}、<a href="{$r['goodsurl']}" target="_blank">{$r['goodsname']}</a>，Price:{$r['goodsprice']}，Quantity:{$r['goodsnum']}</li>
+		{/loop}
+
+		  <li>Total：  <font color=red>{$countmoney}￥</font> &nbsp;&nbsp;&nbsp;&nbsp;Total weight：{$countweight}g</li>
+        </ul>          
+        </div>	
+
+	</div>
+	 
+      <div class="o_wu">
+      <div class="hg bg"><h1>Delivery Address</h1><h3><a href="###" id="showalladdress">Show All</a></h3></div>
+        <div class="add_text" id="addresslist" style="display:none">
+        <ul>
+		
+		{loop $addressarray $r}
+          <li><input name="selectaddress" type="radio" id="selectaddress" value="{$r['aid']}" {if $r['def']==1}checked="checked"{/if}/>
+          {$r['consignee']},{$r['country']},{$r['city']},{$r['zip']},{$r['tel']},{$r['address']}
+		  
+		  <input name="address_{$r['aid']}_consignee" type="hidden" id="address_{$r['aid']}_consignee" value="{$r['consignee']}" />
+		  <input name="address_{$r['aid']}_country" type="hidden" id="address_{$r['aid']}_country" value="{$r['country']}" />
+		  <input name="address_{$r['aid']}_city" type="hidden" id="address_{$r['aid']}_city" value="{$r['city']}" />
+		  <input name="address_{$r['aid']}_zip" type="hidden" id="address_{$r['aid']}_zip" value="{$r['zip']}" />
+		  <input name="address_{$r['aid']}_tel" type="hidden" id="address_{$r['aid']}_tel" value="{$r['tel']}" />
+		  <input name="address_{$r['aid']}_address" type="hidden" id="address_{$r['aid']}_address" value="{$r['address']}" />
+		  
+		  </li>
+		{/loop}
+		<li><input name="selectaddress" type="radio" id="selectaddress" value="9999999" {if empty($addressarray)}checked="checked"{/if}/> 重新填写收货信息
+		  <input name="address_9999999_consignee" type="hidden" id="address_9999999_consignee" value="" />
+		  <input name="address_9999999_country" type="hidden" id="address_9999999_country" value="0" />
+		  <input name="address_9999999_city" type="hidden" id="address_9999999_city" value="" />
+		  <input name="address_9999999_zip" type="hidden" id="address_9999999_zip" value="" />
+		  <input name="address_9999999_tel" type="hidden" id="address_9999999_tel" value="" />
+		  <input name="address_9999999_address" type="hidden" id="address_9999999_address" value="" />		
+		</li>
+        </ul>          
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		
+  <tr>
+    <td width="152" align="right" class="pad_r_10 o_wu_line_30">Name：</td>
+    <td width="548" class="o_wu_line_30">
+	<input name="consignee" type="input" class="input" id="consignee" value="{$addressarray[0]['consignee']}" maxlength="20" />
+	</td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10 o_wu_line_30">Tel：</td>
+    <td class="o_wu_line_30">
+	<input name="tel" type="input" class="input" id="tel"  value="{$addressarray[0]['tel']}" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10 o_wu_line_30">country：</td>
+    <td class="o_wu_line_30" id="countrystr">
+	
+	
+	<script>
+	document.write('<select name=\'country\'>' + COUNTRY.ToSelect('{$addressarray[0]['country']}') + '</select>');
+	</script>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10 o_wu_line_30">city：</td>
+    <td class="o_wu_line_30"><input type="input" value="{$addressarray[0]['city']}"  maxlength="20" id="city" name="city" class="input" /></td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10 o_wu_line_30">Full address：</td>
+    <td class="o_wu_line_30"><input type="input" value="{$addressarray[0]['address']}"  maxlength="20" id="address" name="address" class="input" /></td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10 o_wu_line_30">zip code：</td>
+    <td class="o_wu_line_30"><input type="input" value="{$addressarray[0]['zip']}"  maxlength="20" id="zip" name="zip" class="input" /></td>
+  </tr>
+  <tr>
+    <td align="right" valign="middle" class="pad_r_10 o_wu_line_30">Area：</td>
+      <td rowspan="2">
+       <ul class="gj">
+		{loop $areaarray $r}
+         <li>
+		 <input name="area" class="areaselect"  type="radio" value="{$r['aid']}" />
+		 <input name="areaserverfee_{$r['aid']}" id="areaserverfee_{$r['aid']}"  type="hidden" value="{$r['serverfee']}" />
+		 <input name="areaserverfeepct_{$r['aid']}" id="areaserverfeepct_{$r['aid']}"  type="hidden" value="{$r['serverfeepct']}" />
+		 </li>
+         <li>{$r['name_cn']}</li>
+		{/loop}
+   
+       </ul>
+      </td>
+  </tr>
+  <tr>
+    <td align="right" class="pad_r_10">&nbsp;</td>
+    </tr>
+  <tr>
+    <td align="right" class="pad_r_10">special remark：</td>
+    <td><span class="lv">
+      <textarea name="remark" id="remark"  class="textarea"></textarea>
+    </span></td>
+  </tr>
+</table>
+     </div>
+      <div class="o_wu">
+        <div class="tab_s">
+          <h1 class="hg lv">method and cost</h1>
+        </div>
+        <div class="tab_s">
+        <table>
+        <tr class="hg bg lan_14">
+            <td align="center" width="115" valign="middle">method</td>
+            <td align="center" width="93" valign="bottom">area</td>
+            <td align="center" width="131" valign="bottom">jack-up<span class="red">（元）</span></td>
+            <td align="center" width="238" valign="bottom">Continued heavy<span class="red">（元）</span></td>
+            <td align="center" width="123" valign="bottom">Declaration<span class="red">（元）</span></td>
+          </tr>
+          </table>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="deliverylist">
+            <tr><td>&nbsp;
+			
+			</td></tr>			
+
+      </table>
+		<div style="text-align: center; padding: 70px 0;" id="loading">
+			<img src="{TPL}images/loading.gif" alt="loading..." />
+			<p style="color: #ccc; padding-top: 10px;">
+		  Data Loading...</p>
+		</div>
+      <div class="tab_s1 font_14">Weighing about：<span class="red"><b><span id="totalweight">{$countweight}</span>g</b></span>，<span class="yellow">EMS freight</span>：<span class="red"><b><span id="totalsendfee">0.00</span>元</b></span>      </div>
+      </div>
+	  
+	  {if !empty($couponarray)}
+      <div class="o_wu" style="display:block">
+        <div class="hg lv">
+          <div class="lanrentuku1">
+          <div class="lanrentuku2">
+          <div class="lanrentuku3">
+            <input type="checkbox" name="usecoupon" id="usecoupon" value="1"/>
+            </div>
+            </div>
+          </div>
+          <h1 class="lv">Coupon</h1>
+        </div>
+        <table width="700%" border="0" cellspacing="0" cellpadding="0" id="couponlist" style="display:none">
+          <tr class="hg bg lan_14">
+            <td width="207" align="center" valign="middle">优惠卷编号</td>
+            <td width="131" align="center" valign="bottom">面额<span class="red">（元）</span></td>
+            <td width="238" align="center" valign="bottom">有效期</td>
+            <td width="123" align="center" valign="bottom">获得途径</td>
+          </tr>
+		  {loop $couponarray $r}
+          <tr>
+            <td align="left">
+			  <input name="coupon_{$r['cid']}" type="hidden" id="coupon_{$r['cid']}" value="{$r['money']}" />
+              <input name="couponid" type="radio" id="couponid" value="{$r['cid']}" /> {$r['sn']}
+            </td>
+            <td align="center"><font color=red>{$r['money']}￥</font></td>
+            <td align="center">{date('Y-m-d',$r['endtime'])}</td>
+            <td align="center">{$r['getwayname']}</td>
+          </tr>
+		  {/loop}
+
+		  
+          <tr class="font_14">
+            <td colspan="5" align="right" valign="bottom">&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+	  {/if}
+	  
+	  
+      <div class="o_wu">
+        <div class="hg lv">
+          <h1 class="lv">Settlement</h1>
+        </div>
+        <table width="700" border="0" cellspacing="0" cellpadding="0">
+      
+          <tr class="yellow_bg bai font_14">
+            <td width="142" align="center">service charge</td>
+            <td width="284" align="center">transportation</td>
+
+            <td width="128" align="center">Deduction service</td>
+            <td width="146" align="center">Amount</td>
+          </tr>
+          <tr>
+            <td width="142" align="center" valign="top">+<span id="serverfee">0.00</span>元</td>
+            <td width="284" align="center" valign="top">+<span id="freight">0.00</span>元</td>
+
+            <td width="128" align="center" valign="top">-<span id="couponfee">0.00</span>元</td>
+            <td width="146" align="center" valign="top"><span id="totalfee">0.00</span>元</td>
+          </tr>
+
+          <tr class="font_14">
+            <td colspan="3" align="left" valign="bottom">The cost of the consignment：<span class="red"><b>&yen;<span id="totalfee2">0.00</span>元</b></span>，Click here to submit waybill confirmed</td>
+            <td width="146" align="center" valign="bottom"><div class="next">
+              <input type="submit" value="Submitted and settled" onmouseout="this.className=''" onmouseover="this.className='by'" />
+            </div></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</form>
+<div class="yj">
+        </div>
+    </div>
+
+    
+{template 'footer'}
+
+</body>
+</html>

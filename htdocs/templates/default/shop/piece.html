@@ -1,0 +1,1241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="keywords" content="panli,代购,拼单购,中国代购,免邮,淘宝代购" />
+<meta name="description" content="看中panli网友代购的宝贝？那就就一起拼单吧，拼单还可免邮哦；在panli代购淘宝网等其他购物网站的服装、饰品等宝贝可以免邮哦！" />
+<link href="http://sf.panli.com/FrontEnd/images20090801/favicon.ico?v=3.0" type="image/ico" rel="shortcut icon" />
+<link type="text/css" rel="Stylesheet" href="css/NewTopFoot.css" />
+<link href="css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/jQuery.Drag.min.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="css/List.css">
+
+    <script src="js/jquery.cookies.2.1.0.min.js"
+        type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/Gobal.js">
+    </script>
+
+    
+    
+    <style type="text/css">
+        #ad20100826
+        {
+            z-index: 100;
+            display: none;
+            moz-opacity: 0.56;
+            opacity: 0.56;
+            filter: alpha(opacity=56);
+            height: 40px;
+            background: #fff url(images/footlayer.jpg) repeat-x 0 0;
+            position: fixed;
+            _position: absolute;
+            bottom: 0;
+            border-top: #5BB6D0 solid 2px;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+        .gg_close
+        {
+            width: 15px;
+            right: 10px;
+            margin: 5px 0 -100px 0;
+            background: url(images/1000912.gif) no-repeat center 2px;
+            height: 15px;
+            position: absolute;
+            z-index: 100;
+        }
+        .gg_img
+        {
+            float: left;
+            position: fixed;
+            _position: absolute;
+            bottom: 0;
+            background: ;;;;;;;;;;;z-index:8;width:950px;height:40px;cursor:pointer;}
+        .gg_img span
+        {
+            height: 40px;
+            width: 950px;
+            display: block;
+        }
+        .zd_hf
+        {
+            position: fixed;
+            _position: absolute;
+            margin-left: -475px;
+            left: 50%;
+            height: 40px;
+            width: 950px;
+            bottom: 0;
+            z-index: 110;
+            display: none;
+        }
+    </style>
+    
+    <link href="css/piece.css" rel="stylesheet"
+        type="text/css" />
+    <link href="css/quicklogin.css" rel="stylesheet"
+        type="text/css" />
+
+    <script type="text/javascript" src="js/Piece.js"></script>
+
+<title>
+	[Panli代购-拼单购]-拼心爱宝贝，免国内运费
+</title></head>
+<body>
+    
+    
+
+    <script type="text/javascript">        $(function() {
+            var r;
+            try {
+                r = jaaulde.utils.cookies.get("ad20100826");
+            } catch (eee) {
+                r = false;
+            }
+            if (!!r) {
+                $("#ad20100826,#ad20100826a").remove();
+            } else {
+                if (typeof document.body.style.maxHeight == "undefined") {
+                    $("#ad20100826,#ad20100826a").css("position", "absolute").css("margin-top", "0px").css("z-index", "100");
+                    var divY = getViewportHeight() - $("#ad20100826").outerHeight();
+                    $("#ad20100826,#ad20100826a").each(function() { $(this).css("top", (divY + document.documentElement.scrollTop).toString()); });
+                    $(window).scroll(function() { $("#ad20100826,#ad20100826a").each(function() { $(this).css("top", divY + document.documentElement.scrollTop + ""); }); });
+                }
+                $("#ad20100826,#ad20100826a").show();
+            }
+        });
+    </script>
+
+    <div id="ad20100826">
+        &nbsp;</div>
+    <div class="zd_hf" id="ad20100826a">
+        <a class="gg_img" href="/Special/20100825/" target="_blank"><span style="background: url(http://sf.panli.com/FrontEnd/images20090801/special/20100826/bg.png) no-repeat 0 0;
+            _background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://sf.panli.com/FrontEnd/images20090801/special/20100826/bg.png',sizingMethod='scale');">
+        </span></a><a class="gg_close" href="javascript:;" onclick="$('#ad20100826,#ad20100826a').remove();jaaulde.utils.cookies.set('ad20100826', 'ad20100826', { domain: 'panli.com' }); return false;"
+            title="关闭"></a>
+
+    </div>
+    <form name="aspnetForm" method="post" action="Default.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI1ODE3NDUyN2Rk" />
+</div>
+
+    
+<div class="addpanel_dialog" id="Panli_Crawl" style="display: none;">
+        <div class="addpanel_windowname">
+            <h2>
+                快速代购</h2>
+
+          <a title="关闭" id="closeBtn"></a>
+        </div>
+        <div class="addpanel_inlay">
+            <div id="p0">
+        <img src="http://sf.panli.com/FrontEnd/images20090801/AddItemPanel/loading.gif" alt="加载中。。。" />
+                <p>
+                    加&nbsp;载&nbsp;中……
+                </p>
+
+            </div>
+            <div id="p1">
+            </div>
+            <div style="display: none;" id="p2">
+          </div>
+            <div style="display: none;" id="p3">
+            </div>
+        </div>
+    </div>
+
+    <div class="All_top">
+      <div class="site_nav">
+        <div class="site_center">
+          <p id="Gobal_LoginInfo" class="login-info">您好！wsl881202[<a href="#">退出</a>]&nbsp;&nbsp;<a target="_blank" href="#"><img style="margin-right: 3px;" src="images/an2.gif" />新短信<span style="color: rgb(255, 255, 0);">(1)</span></a></p>
+          <ul class="quick-menu">
+            <li><a target="_blank" id="Gobal_Shoppingcart" class="gouwu" href="#">购物车<span>(2)</span></a></li>
+            <li><a href="#">我的Panli</a></li>
+            <li><a href="#">我的送货车</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="Panli_Tools" class="top_tool"><a onclick="return false;" href="javascript:;"> 常用服务工具</a></li>
+          </ul>
+          <div id="Panli_ToolsList" class="gj_xl">
+            <ul>
+              <li><a target="_blank" href="#">费用估算</a></li>
+              <li><a target="_blank" href="#">尺码换算</a></li>
+              <li><a target="_blank" href="#">汇率换算</a></li>
+              <li><a target="_blank" href="/Track/">包裹跟踪查询</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panli_wrapper">
+        <div class="logo"> <a href="/"> <img alt="Panli代购" src="images/logo.gif" /> </a> </div>
+        <div class="fast_daigou">
+          <label> 购买商品的网址：</label>
+          <input type="text" value="http://" id="CrawlUrl" class="fast_wz_" />
+          <a class="linkbutton" id="PanliCrawlBtn" href="javascript:;">快速代购</a>
+          <div id="CrawlPromt" class="fast_tishi"> {lang Purchasing_goods}！</div>
+        </div>
+      </div>
+      <div id="SiteIndex" class="channel">
+        <ul>
+          <li><a id="Default" href="/" class="xt">首页</a></li>
+          <li><a id="see" href="suibiangg.">随便逛逛</a></li>
+          <li><a id="GroupPurchasing" href="GroupPurchasing."><span>团购</span></a></li>
+          <li><a id="Piece" href="/Piece/"><span>拼单购</span><b>(VIP)</b></a></li>
+          <li><a id="PanliRecommend" href="PanliRecommend.">Panli推荐</a></li>
+          <li><a href="See.">讨论组</a></li>
+        </ul>
+        <p> <a id="special" href="/Special/">专题活动</a><span>|</span><a id="discount" href="/Discount/">折扣信息</a><span>|</span><a id="free_postage" href="#">免邮商家</a></p>
+      </div>
+    </div>
+<div class="piece_top"></div>
+<div class="piece">
+        <div class="left">
+            <div class="possible">
+
+<h2>
+                  <img src="images/possible.gif" alt="搜索商品" /></h2>
+                <div class="search">
+                    <div class="select">
+            <input id="categoryID" onfocus="this.blur();" onmouseout="this.className='';" onmouseover="this.className='bian';"
+                            onclick="$('#categoryList').show()" readonly="readonly" type="text" value="所有分类"
+                            categoryid="-1" />
+                        <div id="categoryList" class="sort" onclick="this.style.display='none';" style="display: none;">
+                            <a href="javascript:;" onclick="$('#categoryID').val('所有分类').attr('categoryid','-1');">
+                                所有分类</a><a href="javascript:;" onclick="$('#categoryID').val('女装').attr('categoryid','11');">女装</a><a
+                                    href="javascript:;" onclick="$('#categoryID').val('男装').attr('categoryid','12');">男装</a><a
+                                        href="javascript:;" onclick="$('#categoryID').val('鞋子').attr('categoryid','13');">鞋子</a><a
+                                            href="javascript:;" onclick="$('#categoryID').val('箱包').attr('categoryid','14');">箱包</a><a
+                                                href="javascript:;" onclick="$('#categoryID').val('食品保健').attr('categoryid','15');">食品保健</a><a
+                                                    href="javascript:;" onclick="$('#categoryID').val('图书音像').attr('categoryid','16');">图书音像</a><a
+                                                        href="javascript:;" onclick="$('#categoryID').val('美容美发').attr('categoryid','17');">美容美发</a><a
+                                                            href="javascript:;" onclick="$('#categoryID').val('数码通讯').attr('categoryid','18');">数码通讯</a><a
+                                                                href="javascript:;" onclick="$('#categoryID').val('礼品').attr('categoryid','19');">礼品</a><a
+                                                                    href="javascript:;" onclick="$('#categoryID').val('家居用品').attr('categoryid','20');">家居用品</a><a
+                                                                        href="javascript:;" onclick="$('#categoryID').val('流行饰品').attr('categoryid','21');">流行饰品</a><a
+                                                                            href="javascript:;" onclick="$('#categoryID').val('其他').attr('categoryid','99');">其他</a>
+
+                        </div>
+                    </div>
+                    <input class="text" id="searchKeyword" onfocus="searchFocus()"
+                        onblur="searchBlur()" name="" type="text" value="请输入商品名.." /><input
+                            class="go" name="" onmouseover="this.className='go_'" onmouseout="this.className='go'"
+                            onclick="searchPiece()" type="button" value="搜索" />
+                </div>
+                <ul class="tiao">
+                    <li><b>每页显示：</b></li>
+                    <li><a class="yellow" href="/Piece/?ps=9">9</a></li>
+                    <li><a  href="/Piece/?ps=12">12</a></li>
+
+                    <li><a  href="/Piece/?ps=24">24</a></li>
+                </ul>
+            </div>
+            <div class="merchandise">
+                
+                <div class="remen">
+                    <p>
+                        热门分类：<a href="/Piece/?c=11&ps=9">女装</a>&nbsp; <a href="/Piece/?c=12&ps=9">
+
+                            男装</a>&nbsp; <a href="/Piece/?c=14&ps=9">箱包</a>&nbsp; <a href="/Piece/?c=21&ps=9">
+                                流行饰品</a>&nbsp; <a href="/Piece/?c=17&ps=9">美容美发</a>&nbsp; <a href="/Piece/?c=13&ps=9">
+                                    鞋子</a>&nbsp; <a href="/Piece/?c=15&ps=9">食品保健</a>&nbsp;
+
+                        <a href="/Piece/?c=19&ps=9">礼品</a>&nbsp; <a href="/Piece/?c=20&ps=9">
+                            家居用品</a></p>
+                    <dl>
+                        <dd><a href="?pn=2">下一页</a></dd>
+                    </dl>
+                    
+                    <span>
+                  1/9</span>
+
+                </div>
+                
+                <ul>
+                    
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5744133807" target="_blank">
+                                        <img src="images/756552.jpg"
+                                            alt="mac/魅可 180色眼影 大量现货批发 清库存低价出售" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+                                    <h1>
+
+                                        <a href="http://item.taobao.com/item.htm?id=5744133807" target="_blank" title="mac/魅可 180色眼影 大量现货批发 清库存低价出售">
+                                  mac/魅可 180色眼影 大量现货批发 清库存低价出售</a></h1>
+                                    <p>
+                                  ￥90.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTUyJTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+                                        <dd>
+
+                                            来源商家：<span>淘宝</span>健康与美丽并行</dd>
+                                        <dd>
+                                            购买人：<span>t***y</span></dd>
+                                        <dd>
+                                            被拼单：<span class="say">1次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5824155871" target="_blank">
+                                        <img src="images/756554.jpg"
+                                            alt="MAC/魅可 120色 大量现货 欢迎批发" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=5824155871" target="_blank" title="MAC/魅可 120色 大量现货 欢迎批发">
+                                  MAC/魅可 120色 大量现货 欢迎批发</a></h1>
+                                    <p>
+                                  ￥50.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTU0JTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>健康与美丽并行</dd>
+                                        <dd>
+                                            购买人：<span>t***y</span></dd>
+                                        <dd>
+                                            被拼单：<span class="say">1次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=2678351384&f=e" target="_blank">
+                                    <img src="images/756570.jpg"
+                                            alt="染发、烫发、做护理好帮手，工具三件套，方便，经济" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=2678351384&f=e" target="_blank" title="染发、烫发、做护理好帮手，工具三件套，方便，经济">
+                                            染发、烫发、做护理好帮手，工具三件套，方便，经济</a></h1>
+                                    <p>
+                                        ￥3.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTcwJTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>hongqiyong1986</dd>
+                                        <dd>
+                                            购买人：<span>m***n</span></dd>
+                                        <dd>
+                                            被拼单：<span class="say">1次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+<li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=3291445650" target="_blank">
+                                        <img src="images/756589.jpg"
+                                            alt="M狼7代/李明宇最爱/韩国棒球帽/棒球帽夏天 男 女 帽子" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=3291445650" target="_blank" title="M狼7代/李明宇最爱/韩国棒球帽/棒球帽夏天 男 女 帽子">
+                                            M狼7代/李明宇最爱/韩国棒球帽/棒球帽夏天 男 女 帽子...</a></h1>
+                                    <p>
+                                        ￥15.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTg5JTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>johnwenhuang</dd>
+                                        <dd>
+                                            购买人：<span>h***a</span></dd>
+                                        <dd>
+                                            被拼单：<span class="say">1次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5276613650&taomi=8aR2LQR6GJQbSwe34cXcBu%2FiE%2FeNUVJKF47OJPx6eSJ9or436M2VvZ5MXtAah%2F7WivmqK%2BtzVzj36JqAxKtfWMyg6yop5neeLbyY5Ht2YHchd6pDh23DbwyMWT4R0%2FQTtRRw6l3XDu" target="_blank">
+                                        <img src="images/756601.jpg"
+                                            alt="酒井法子代言蝴蝶结防晒袖套 夏季加长薄款露指防晒手套 公主袖套" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=5276613650&taomi=8aR2LQR6GJQbSwe34cXcBu%2FiE%2FeNUVJKF47OJPx6eSJ9or436M2VvZ5MXtAah%2F7WivmqK%2BtzVzj36JqAxKtfWMyg6yop5neeLbyY5Ht2YHchd6pDh23DbwyMWT4R0%2FQTtRRw6l3XDu" target="_blank" title="酒井法子代言蝴蝶结防晒袖套 夏季加长薄款露指防晒手套 公主袖套">
+                                            酒井法子代言蝴蝶结防晒袖套 夏季加长薄款露指防晒手套...</a></h1>
+                                    <p>
+                                        ￥6.10</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NjAxJTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>粘来的幸福</dd>
+                                        <dd>
+                                            购买人：<span>t***7</span></dd>
+                                        <dd>
+                                            被拼单：<span class="say">1次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5993933974" target="_blank">
+                                        <img src="images/756549.jpg"
+                                            alt="K-Palette 1 Day TATTOO 日本限量版24小时持久防水极细眼线液" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=5993933974" target="_blank" title="K-Palette 1 Day TATTOO 日本限量版24小时持久防水极细眼线液">
+                                            K-Palette 1 Day TATTOO 日本限量版24小时持久防水极细...</a></h1>
+                                    <p>
+                                        ￥99.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTQ5JTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>猪爱蛇</dd>
+                                        <dd>
+                                            购买人：<span>a***j</span></dd>
+                                        <dd>
+                                            被拼单：<span >0次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5892192061" target="_blank">
+                                        <img src="images/756553.jpg"
+                                            alt="MAC/魅可88色眼影 送两个眼影棒 现货批发" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=5892192061" target="_blank" title="MAC/魅可88色眼影 送两个眼影棒 现货批发">
+                                  MAC/魅可88色眼影 送两个眼影棒 现货批发</a></h1>
+                                    <p>
+                                  ￥40.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTUzJTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>健康与美丽并行</dd>
+                                        <dd>
+                                            购买人：<span>t***y</span></dd>
+                                        <dd>
+                                            被拼单：<span >0次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=5540395361" target="_blank">
+                                        <img src="images/756555.jpg"
+                                            alt="魅*可 24支装专业化妆刷 批发" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=5540395361" target="_blank" title="魅*可 24支装专业化妆刷 批发">
+                                  魅*可 24支装专业化妆刷 批发</a></h1>
+                                    <p>
+                                  ￥35.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTU1JTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>健康与美丽并行</dd>
+                                        <dd>
+                                            购买人：<span>t***y</span></dd>
+                                        <dd>
+                                            被拼单：<span >0次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                            <li>
+                                <div class="pic">
+                                    <a href="http://item.taobao.com/item.htm?id=3302430612" target="_blank">
+                                        <img src="images/756571.jpg"
+                                            alt="3支包邮 PK欧莱雅 利威丝染发膏 染发剂5/66李子红(送双氧 )" onerror="this.src='images/noimg220.gif';" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1>
+                                        <a href="http://item.taobao.com/item.htm?id=3302430612" target="_blank" title="3支包邮 PK欧莱雅 利威丝染发膏 染发剂5/66李子红(送双氧 )">
+                                  3支包邮 PK欧莱雅 利威丝染发膏 染发剂5/66李子红(送双...</a></h1>
+                                    <p>
+                                  ￥30.00</p>
+                                    <div class="pd"><a href="/Piece/Pay.aspx?product=NzU2NTcxJTdjYWRtaW4=" target="_blank">我要拼单</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            来源商家：<span>淘宝</span>hongqiyong1986</dd>
+                                        <dd>
+                                            购买人：<span>m***n</span></dd>
+                                        <dd>
+                                            被拼单：<span >0次</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        
+                </ul>
+            </div>
+            <div class="yj">
+                <div class="page-bottom">
+                    <div class="">
+	<div class="page-bottom"><span class="page-start"><span>上一页</span></span><span class="page-cur">1</span><a href="?pn=2">2</a><a href="?pn=3">3</a><a href="?pn=4">4</a><a href="?pn=5">5</a><span class="page-break"> ... </span><a href="?pn=2">下一页</a><span class="page-skip">共9页 到第<input name="jumpto" id="jumpto" size="3" value="1" type="text" />页</span><input class="page_button" type="button" height="19" width="41" onclick="var pn=$('#jumpto').val();if(pn>9) pn=9;window.location.href='?pn='+pn+''" /></div><script type="text/javascript">$('#jumpto').keypress(function(e) { if (e.keyCode == 13) { $('.page_button')[0].click(); return false; }});</script>
+
+</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            
+            
+            <div class="zuo">
+              <div class="lm" style=" border-color:#DFDFDF; border-top:none;" > <img alt="热门商品分类" src="images/fenlei.gif" /> </div>
+              <div class="caidan" style=" border-color:#DFDFDF;">
+                <h3 class="t"> <a title="服装" href="?category=1"> <b> 服装</b><span>集结最IN潮流服装</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=1"> 女装</a></li>
+                  <li><a href="?subCategory=2"> 男装</a></li>
+                  <li><a href="?subCategory=3"> 内衣袜品</a></li>
+                </ul>
+                <h3> <a title="鞋包" href="?category=2"> <b> 鞋包</b><span>网罗流行靓鞋美包</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=4"> 鞋子</a></li>
+                  <li><a href="?subCategory=5"> 箱包</a></li>
+                </ul>
+                <h3> <a title="美容" href="?category=3"> <b> 美容</b><span>推荐人气美容精品</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=6"> 彩妆</a></li>
+                  <li><a href="?subCategory=7"> 护肤</a></li>
+                  <li><a href="?subCategory=8"> 美容美发工具</a></li>
+                </ul>
+                <h3> <a title="居家" href="?category=4"> <b> 居家</b><span>打造快乐居家生活</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=9"> 家纺</a></li>
+                  <li><a href="?subCategory=10"> 装饰</a></li>
+                  <li><a href="?subCategory=11"> 日用</a></li>
+                  <li><a href="?subCategory=12"> 办公文具</a></li>
+                  <li><a href="?subCategory=16"> 礼品</a></li>
+                </ul>
+                <h3> <a title="配饰" href="?category=5"> <b> 配饰</b><span>搜罗独特时尚配饰</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=13"> 饰品</a></li>
+                  <li><a href="?subCategory=14"> 服饰配件</a></li>
+                </ul>
+                <h3> <a title="食品" href="?category=6"> <b> 食品</b><span>淘尽华夏各地美食</span></a></h3>
+                <ul>
+                  <li><a href="?subCategory=15"> 特产</a></li>
+                </ul>
+              </div>
+              <div class="lately">
+                <h2> <img src="images/lately.gif" /></h2>
+                <ul id="scan">
+                </ul>
+              </div>
+            </div>
+            <div class="bz">
+                <div class="h2">
+                    <img src="images/bang.gif" alt="拼单风云榜" />                </div>
+                <div class="bang">
+                    <div class="qh">
+
+                        <ul>
+                            <li class="on"><a onclick="mutiDiv(0)">热拼商品</a></li>
+                            <li><a onclick="mutiDiv(1)">被拼次数</a></li>
+                        </ul>
+                    </div>
+                    <div id="point" class="jifen">
+                        
+                                <dl>
+                                    <dt style="display: none;">
+
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5687405101" target="_blank">
+                                            <img src="images/749541.jpg"
+                                                    alt="高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    1.</i><a title="高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零" href="http://item.taobao.com/item.htm?id=5687405101"
+                                                        target="_blank">高跟鞋底防滑贴 ...</a></h1>
+
+                                            <label>
+                                                ￥0.90</label>
+                                            <p>
+                                                被拼单：<i>30次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+
+                                        <span>1</span><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5687405101" target="_blank">
+                                                高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+
+                                            <a href="http://item.taobao.com/item.htm?id=6723601854" target="_blank">
+                                            <img src="images/756186.jpg"
+                                                    alt="韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    2.</i><a title="韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货" href="http://item.taobao.com/item.htm?id=6723601854"
+                                                        target="_blank">韩国梦游娃娃宅人...</a></h1>
+                                            <label>
+
+                                                ￥25.00</label>
+                                            <p>
+                                                被拼单：<i>21次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <span>2</span><p>
+
+                                            <a href="http://item.taobao.com/item.htm?id=6723601854" target="_blank">
+                                                韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=6224816996#" target="_blank">
+
+                                            <img src="images/749369.jpg"
+                                                    alt="JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    3.</i><a title="JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价" href="http://item.taobao.com/item.htm?id=6224816996#"
+                                                        target="_blank">JJ-230 新款海绵...</a></h1>
+                                            <label>
+                                                ￥2.90</label>
+
+                                            <p>
+                                                被拼单：<i>17次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <span>3</span><p>
+                                            <a href="http://item.taobao.com/item.htm?id=6224816996#" target="_blank">
+
+                                                JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=4453267137" target="_blank">
+                                            <img src="images/745369.jpg"
+                                                    alt="满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    4.</i><a title="满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装" href="http://item.taobao.com/item.htm?id=4453267137"
+                                                        target="_blank">满百包邮 2010秋...</a></h1>
+                                            <label>
+                                                ￥29.00</label>
+
+                                            <p>
+                                                被拼单：<i>16次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>4</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=4453267137" target="_blank">
+
+                                                满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=2105780530" target="_blank">
+                                            <img src="images/756468.jpg"
+                                                    alt="创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    5.</i><a title="创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156" href="http://item.taobao.com/item.htm?id=2105780530"
+                                                        target="_blank">创意家居。吸卡两...</a></h1>
+                                            <label>
+                                                ￥5.50</label>
+
+                                            <p>
+                                                被拼单：<i>14次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>5</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=2105780530" target="_blank">
+
+                                                创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5717656489" target="_blank">
+                                            <img src="images/747433.jpg"
+                                                    alt="日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    6.</i><a title="日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形" href="http://item.taobao.com/item.htm?id=5717656489"
+                                                        target="_blank">日韩热卖 卡通眼...</a></h1>
+                                            <label>
+                                                ￥2.60</label>
+
+                                            <p>
+                                                被拼单：<i>13次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>6</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5717656489" target="_blank">
+
+                                                日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766" target="_blank">
+                                            <img src="images/752099.jpg"
+                                                    alt="VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    7.</i><a title="VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价" href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766"
+                                                        target="_blank">VIVI裙裤 小恶魔...</a></h1>
+                                            <label>
+                                                ￥8.80</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>7</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766" target="_blank">
+
+                                                VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=6013480926" target="_blank">
+                                            <img src="images/748678.jpg"
+                                                    alt="正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    8.</i><a title="正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购" href="http://item.taobao.com/item.htm?id=6013480926"
+                                                        target="_blank">正品！EcoTools 4...</a></h1>
+                                            <label>
+                                                ￥22.00</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>8</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=6013480926" target="_blank">
+
+                                                正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=7220625059" target="_blank">
+                                            <img src="images/745370.jpg"
+                                                    alt="满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    9.</i><a title="满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014" href="http://item.taobao.com/item.htm?id=7220625059"
+                                                        target="_blank">满28元包邮日本儿...</a></h1>
+                                            <label>
+                                                ￥6.40</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>9</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=7220625059" target="_blank">
+
+                                                满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5392889554" target="_blank">
+                                            <img src="images/749501.jpg"
+                                                    alt="张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    10.</i><a title="张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈" href="http://item.taobao.com/item.htm?id=5392889554"
+                                                        target="_blank">张柏芝 呛口小辣...</a></h1>
+                                            <label>
+                                                ￥0.65</label>
+
+                                            <p>
+                                                被拼单：<i>11次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>10</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5392889554" target="_blank">
+
+                                                张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈</a></p>
+                                    </dd>
+                                </dl>
+                            
+                    </div>
+                    <div id="pieceNum" class="jifen" style="display: none;">
+                       
+                        
+                                <dl>
+                                    <dt style="display: none;">
+
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5687405101" target="_blank">
+                                            <img src="images/749541.jpg"
+                                                    alt="高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    1.</i><a title="高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零" href="http://item.taobao.com/item.htm?id=5687405101"
+                                                        target="_blank">高跟鞋底防滑贴 ...</a></h1>
+
+                                            <label>
+                                                ￥0.90</label>
+                                            <p>
+                                                被拼单：<i>30次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+
+                                        <span>1</span><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5687405101" target="_blank">
+                                                高跟鞋底防滑贴 防滑垫 防滑耐磨贴 防滑必备 MM必备 特价批零</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+
+                                            <a href="http://item.taobao.com/item.htm?id=6723601854" target="_blank">
+                                            <img src="images/756186.jpg"
+                                                    alt="韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    2.</i><a title="韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货" href="http://item.taobao.com/item.htm?id=6723601854"
+                                                        target="_blank">韩国梦游娃娃宅人...</a></h1>
+                                            <label>
+
+                                                ￥25.00</label>
+                                            <p>
+                                                被拼单：<i>21次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <span>2</span><p>
+
+                                            <a href="http://item.taobao.com/item.htm?id=6723601854" target="_blank">
+                                                韩国梦游娃娃宅人披肩|披风|空调毯|宝宝毯|家居睡衣 粉蓝现货</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=6224816996#" target="_blank">
+
+                                            <img src="images/749369.jpg"
+                                                    alt="JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    3.</i><a title="JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价" href="http://item.taobao.com/item.htm?id=6224816996#"
+                                                        target="_blank">JJ-230 新款海绵...</a></h1>
+                                            <label>
+                                                ￥2.90</label>
+
+                                            <p>
+                                                被拼单：<i>17次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <span>3</span><p>
+                                            <a href="http://item.taobao.com/item.htm?id=6224816996#" target="_blank">
+
+                                                JJ-230 新款海绵盘发器 丸子头 花苞头 盘发棒带 特价</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=4453267137" target="_blank">
+                                            <img src="images/745369.jpg"
+                                                    alt="满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    4.</i><a title="满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装" href="http://item.taobao.com/item.htm?id=4453267137"
+                                                        target="_blank">满百包邮 2010秋...</a></h1>
+                                            <label>
+                                                ￥29.00</label>
+
+                                            <p>
+                                                被拼单：<i>16次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>4</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=4453267137" target="_blank">
+
+                                                满百包邮 2010秋装新品 夏末清仓韩版新款 圆领 长袖t恤 女装</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=2105780530" target="_blank">
+                                            <img src="images/756468.jpg"
+                                                    alt="创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    5.</i><a title="创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156" href="http://item.taobao.com/item.htm?id=2105780530"
+                                                        target="_blank">创意家居。吸卡两...</a></h1>
+                                            <label>
+                                                ￥5.50</label>
+
+                                            <p>
+                                                被拼单：<i>14次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>5</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=2105780530" target="_blank">
+
+                                                创意家居。吸卡两只装神奇洗衣球 让你的衣服洗的更干净 156</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5717656489" target="_blank">
+                                            <img src="images/747433.jpg"
+                                                    alt="日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    6.</i><a title="日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形" href="http://item.taobao.com/item.htm?id=5717656489"
+                                                        target="_blank">日韩热卖 卡通眼...</a></h1>
+                                            <label>
+                                                ￥2.60</label>
+
+                                            <p>
+                                                被拼单：<i>13次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>6</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5717656489" target="_blank">
+
+                                                日韩热卖 卡通眼镜盒 爱心形隐形眼镜盒 伴侣盒~透明心形</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766" target="_blank">
+                                            <img src="images/752099.jpg"
+                                                    alt="VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    7.</i><a title="VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价" href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766"
+                                                        target="_blank">VIVI裙裤 小恶魔...</a></h1>
+                                            <label>
+                                                ￥8.80</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>7</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5910244520&ali_refid=a3_619371_1007:1102593166:6:%C0%D9%CB%BF%B4%F2%B5%D7%BF%E3+%B2%E3%B2%E3:38f34a091599470b8d761b766ee6dd40&ali_trackid=1_38f34a091599470b8d761b766" target="_blank">
+
+                                                VIVI裙裤 小恶魔 蕾丝层层打底裤 防走光安全裤 热裤 现货 特价</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=6013480926" target="_blank">
+                                            <img src="images/748678.jpg"
+                                                    alt="正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    8.</i><a title="正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购" href="http://item.taobao.com/item.htm?id=6013480926"
+                                                        target="_blank">正品！EcoTools 4...</a></h1>
+                                            <label>
+                                                ￥22.00</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>8</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=6013480926" target="_blank">
+
+                                                正品！EcoTools 4件套化妆刷 天然竹子柄~论坛超高评价可团购</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=7220625059" target="_blank">
+                                            <img src="images/745370.jpg"
+                                                    alt="满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    9.</i><a title="满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014" href="http://item.taobao.com/item.htm?id=7220625059"
+                                                        target="_blank">满28元包邮日本儿...</a></h1>
+                                            <label>
+                                                ￥6.40</label>
+
+                                            <p>
+                                                被拼单：<i>12次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>9</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=7220625059" target="_blank">
+
+                                                满28元包邮日本儿童安全理发器削发器刘海修剪器(疏密2头设计N014</a></p>
+                                    </dd>
+                                </dl>
+                            
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="http://item.taobao.com/item.htm?id=5392889554" target="_blank">
+                                            <img src="images/749501.jpg"
+                                                    alt="张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈" /></a>
+
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+                                                    10.</i><a title="张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈" href="http://item.taobao.com/item.htm?id=5392889554"
+                                                        target="_blank">张柏芝 呛口小辣...</a></h1>
+                                            <label>
+                                                ￥0.65</label>
+
+                                            <p>
+                                                被拼单：<i>11次</i></p>
+                                        </div>
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <b>10</b><p>
+                                            <a href="http://item.taobao.com/item.htm?id=5392889554" target="_blank">
+
+                                                张柏芝 呛口小辣椒喜爱的 多色毛毛球 发圈</a></p>
+                                    </dd>
+                                </dl>
+                            
+                   
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+
+    
+    <div class="foot">
+      <div class="help">
+        <div class="fenlei">
+          <h3> 新手上路</h3>
+          <ul>
+            <li><a target="_blank" href="#">新人须知</a></li>
+            <li><a target="_blank" href="#">操作指南</a></li>
+            <li><a target="_blank" href="#">代拍说明</a></li>
+            <li><a target="_blank" href="#">会员等级和积分</a></li>
+          </ul>
+        </div>
+        <div class="fenlei">
+          <h3> 代购指南</h3>
+          <ul>
+            <li><a target="_blank" href="#">挑选商品</a></li>
+            <li><a target="_blank" href="#">代购流程</a></li>
+            <li><a target="_blank" href="#">如何生成订单</a></li>
+            <li><a target="_blank" href="#">查询商品状态</a></li>
+          </ul>
+        </div>
+        <div class="fenlei">
+          <h3> 支付说明</h3>
+          <ul>
+            <li><a target="_blank" href="#">paypal支付</a></li>
+            <li><a target="_blank" href="#">国际信用卡</a></li>
+            <li><a target="_blank" href="#">国内银行卡</a></li>
+            <li><a target="_blank" href="#">其他汇款方式</a></li>
+          </ul>
+        </div>
+        <div class="fenlei">
+          <h3> 配送说明</h3>
+          <ul>
+            <li><a target="_blank" href="#">运输方式和费用对比</a></li>
+            <li><a target="_blank" href="#">大宗商品的运费</a></li>
+            <li><a target="_blank" href="#">海关及税项</a></li>
+            <li><a target="_blank" href="#">收货注意事项</a></li>
+          </ul>
+        </div>
+        <div class="fenlei">
+          <h3> 售后服务</h3>
+          <ul>
+            <li><a target="_blank" href="#">退换货原则</a></li>
+            <li><a target="_blank" href="#">退换货流程</a></li>
+            <li><a target="_blank" href="#">商品的保管期限</a></li>
+            <li><a target="_blank" href="#">如何退款</a></li>
+          </ul>
+        </div>
+        <div class="fenlei">
+          <h3> 用户须知</h3>
+          <ul>
+            <li><a target="_blank" href="#">服务条款</a></li>
+            <li><a target="_blank" href="#">服务介绍</a></li>
+            <li><a target="_blank" href="#">服务修订</a></li>
+            <li><a target="_blank" href="#">用户隐私保护规则</a></li>
+          </ul>
+        </div>
+        <div class="lx">
+          <h3> <img alt="Panli客户服务热线" src="images/rexian.gif" /></h3>
+          <ul>
+            <li>客服邮箱：<a href="mailto:service@panli.com">service@panli.com</a></li>
+            <li>服务时间：周一至周日（8:30～20:00）</li>
+          </ul>
+          <div class="Gobal_time">
+            <input type="hidden" id="Beijing_Time" value="1280226734100.79" />
+            <label id="BeijingDate">北京时间：2010-07-27</label>
+            <p id="BeijingTime"><span>11</span><b></b><span>07</span><b></b><span>16</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="b_logo"> <a href="/news/about.html?nid=4"> <img alt="panli" src="images/f_logo.gif" /></a> </div>
+        <div class="b_box">
+          <p> <a href="#">关于Panli代购</a><span>|</span><a href="#">联系我们</a><span>|</span><a href="#">加入Panli</a><span>|</span><a href="#" target="_blank">团队博客</a><span>|</span><a href="#">友情链接</a></p>
+          <p> Copyright &copy;2010 Panli代购! Inc. All rights reserved.</p>
+        </div>
+        <div class="b_box2">
+          <ul>
+            <li class="juli"><a onclick="javascript:window.open('#','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');" href="javascript:;"> <img alt="paypal接受标记" src="images/paypal_.gif" /></a></li>
+            <li><a target="_blank" href="#"> <img alt="paypal" src="images/paypal.gif" /></a></li>
+            <li> <img alt="paypal" src="images/v.gif" /></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </form>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        try { var pageTracker = _gat._getTracker("UA-436090-1"); pageTracker._trackPageview(); } catch (err) { }        
+    </script>
+
+</body>
+</html>
+

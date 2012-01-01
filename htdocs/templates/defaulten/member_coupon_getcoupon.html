@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+    <script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+    
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >
+
+    <script src="{TPL}js/wdggcGobal.js" type="text/javascript"></script>
+
+    
+    <link href="{TPL}css/exchange.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/GetCoupon.js" type="text/javascript"></script>
+
+
+<title>
+	[{$cfg_site_name}] – 兑换优惠券
+</title></head>
+<body>
+    
+    <form name="" method="post" action="" id="">
+
+{template 'header'}
+
+    <div class="admin">
+      <div class="ding">
+
+<div class="shouye">
+                <a title="我的会员中心" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>Your position：</b><a href="{url_m.php}">Member Center</a><span>&gt;</span>Exchange Coupon
+              </div>
+                
+              <div class="shezhi">
+
+<p>
+                        <a href="{url_m.php}">Member Center</a><span>|</span>ThemeSet：</p>
+                <ul>
+                  <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+		
+{template 'member_left'}
+        
+    <div class="fill" id="couponPanel1">
+        <div class="duihuan">
+            <h2>
+                Exchange e-coupons</h2>
+            <ul>
+                <li>Integral：<span id="userScore">{$_USERS['scores']}</span></li>
+
+                <li>Member Level：{$UTYPENAME[$_USERS['utype']]}</li>
+                <li>Has：<span id="userCouponNum">{$total}</span>&nbsp;&nbsp;<a
+                    href="{url_m.php?name=coupon}">View My Coupons</a></li>
+            </ul>
+      </div>
+        <div class="biao">
+            <ul class="tou">
+
+                <li class="w1">coupon name</li>
+                <li class="w2">quantity</li>
+                <li class="w3">Integral</li>
+                <li class="w4">purview</li>
+                <li class="w5">operate</li>
+            </ul>
+
+            <table class="quan">
+                <tr>
+                    <td class="b1">
+                        <img src="{TPL}images/q5.jpg" alt="5元电子优惠券" width="120" height="58" />                    </td>
+                    <td class="b2">
+                        5元电子优惠券
+                    </td>
+                    <td class="b6">
+
+                        <a class="jian" href="javascript:;" title="减" onclick="var tb=$('#c5'); $('#c5n').text((s='×'+tb.val(parseInt(tb.val())<2?1:parseInt(tb.val())-1).val())=='×1'?'':s);">
+                        </a>
+                        <input value="1" id="c5" type="text" maxlength="3" onblur="if(this.value.length<=0||/[^\d]/g.test(this.value)||this.value==0) this.value=1;this.value=this.value.replace(/^0/,'');$('#c5n').text(this.value=='1'?'':'×'+this.value);"
+                            onkeyup="value=value.replace(/[^\d]/g,'');" /><a class="jia" onclick="var t=$('#c5');if(t.val()>=999)return;$('#c5n').text((s='×'+t.val(parseInt(t.val())+1).val())=='×1'?'':s);"
+                                href="javascript:;" title="加"></a>
+                        
+                    </td>
+                    <td class="b3">
+                        500<i id="c5n"></i>
+                    </td>
+                    <td class="b4">
+
+                        General
+                    </td>
+                    <td class="b5">
+                        
+                        <a onclick="getCoupon(5);">exchange</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="10元电子优惠券" src="{TPL}images/q10.jpg" />
+
+                    </td>
+                    <td class="b2">
+                        10元电子优惠券
+                    </td>
+                    <td class="b6">
+                        
+                        <a class="jian_" href="javascript:;" title="减"></a>
+                        <input disabled="disabled" maxlength="3" id="c10" type="text" class="hui" />
+                        <a class="jia_" href="javascript:;" title="加"></a>
+                        
+                    </td>
+
+                    <td class="b3">
+                        1000
+                    </td>
+                    <td class="b4">
+                        Not open
+                    </td>
+                    <td class="b5">
+                        
+                        <span>Non-convertible</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="20元电子优惠券" src="{TPL}images/q20.jpg" />
+                    </td>
+                    <td class="b2">
+                        20元电子优惠券
+                    </td>
+                    <td class="b6">
+
+                        
+                        <a class="jian_" href="javascript:;" title="减"></a>
+                        <input disabled="disabled" maxlength="3" id="c20" type="text" class="hui" />
+                        <a class="jia_" href="javascript:;" title="加"></a>
+                        
+                    </td>
+                    <td class="b3">
+                        2000
+                    </td>
+                    <td class="b4">
+                        Not open
+                    </td>
+
+                    <td class="b5">
+                        
+                        <span>Non-convertible</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="b1">
+                        <img alt="50元电子优惠券" src="{TPL}images/q50.jpg" />
+                    </td>
+
+                    <td class="b2">
+                        50元电子优惠券
+                    </td>
+                    <td class="b6">
+                        
+                        <a class="jian_" href="javascript:;" title="减"></a>
+                        <input disabled="disabled" maxlength="3" id="c50" type="text" class="hui" />
+                        <a class="jia_" href="javascript:;" title="加"></a>
+                        
+                    </td>
+                    <td class="b3">
+
+                        5000<i id="c50n"></i>
+                    </td>
+                    <td class="b4">
+                        Not open
+                    </td>
+                    <td class="b5">
+                        
+                        <span>Non-convertible</span>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+      <div class="wenti">
+            <h2>
+                电子优惠券Q&amp;A
+            </h2>
+            <ul>
+                <li><a href="http://www.panli.com/Help/Detail.aspx?hid=64" target="_blank">为什么我不能兑换全部种类的电子优惠券?</a></li><li><a href="http://www.panli.com/Help/Detail.aspx?hid=140" target="_blank">电子优惠券如何使用?</a></li><li><a href="http://www.panli.com/Help/Detail.aspx?hid=62" target="_blank">电子优惠券可以无限期使用吗?</a></li><li><a href="http://www.panli.com/Help/Detail.aspx?hid=63" target="_blank">电子优惠券可以转让吗?</a></li>
+
+                
+            </ul>
+      </div>
+    </div>
+    <div class="fill" id="couponPanel2" style="display: none;">
+        <div class="succeed">
+            <h2>
+                恭喜您！兑换优惠券成功！</h2>
+            <ul class="jf">
+
+                <li>获得<span id="sPrice">5</span>元电子优惠券<span id="sNum">1</span>张</li>
+                <li>您本次兑换消费积分<b id="useScore">0</b>点，您的剩余积分为<b id="userScores">0</b>点！</li>
+            </ul>
+            <ul class="link">
+
+                <li><a href="{url_m.php?name=coupon}">我的优惠券</a></li>
+                <li><a href="javascript:;" onclick="$('#couponPanel2').hide(); $('#couponPanel1').show();$('.b3 i').text('');$('.b6 input[class!=\'hui\']').val(1);">
+                    继续兑换</a></li>
+            </ul>
+            <div class="hai">
+                <p>
+                    <b>您还可以：</b><a href="{url_m.php?name=scorerecords}">返回我的积分</a>&nbsp;&nbsp;&nbsp;<a href="{url_m.php?name=orderlist}">返回我的送货车</a></p>
+
+            </div>
+        </div>
+    </div>
+
+      <div class="yj">
+      </div>
+    </div>
+
+    
+{template 'footer'}
+    </form>
+
+</body>
+</html>
+

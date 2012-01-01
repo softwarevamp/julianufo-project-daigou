@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css"/>
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >    
+<link type="text/css" rel="stylesheet" href="{TPL}css/mypanli.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+
+<title>会员中心 -{$cfg_site_name}</title>
+</head>
+
+<body>
+
+{template 'header'}
+
+    <div class="admin">
+      <div class="ding">
+            <div class="shouye">
+                <a title="会员中心首页" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+			
+                <div class="gonggao">
+                    <img alt="小提示" src="{TPL}images/lb.gif">
+                  <ul id="affiche">
+                        
+					<li>收藏夹新增“一键收藏”功能，让您收藏宝贝变得更容易，快去试试吧！</li>
+					<li><a target="_blank" href="#">网站全新改版！精彩活动等你来参加！</a></li>
+				  </ul>
+                </div>
+                
+                <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">Member Center</a><span>|</span>ThemeSet：</p>
+                    <ul>
+                      <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+      </div>
+	  
+{template 'member_left'}
+
+    <div class="bj">
+        <div class="center">
+            <div class="data">
+                <div class="geren">
+                    <div class="photo">
+                        <img onerror="this.src='{TPL}images/noimg120.gif'" alt="{$_USERS['showname']}" src="{$_USERS['face']}">
+                    </div>
+                    <div class="info">
+                        <h2>
+                            hellow！{$_USERS['showname']}，welcome back！！</h2>
+                        <ul>
+                            <li>identity：{$UTYPENAME[$_USERS['utype']]}</li>
+                            <li>RMB帐户：<span>￥{$_USERS['money']}</span><a href="{url_m.php?name=rmbaccount}">recharge</a></li>
+                            <li>mail box：<a href="{url_m.php?name=pm}">{$_USERS['pm']}条未读信息</a></li>
+                            <li>integral：<span>{$_USERS['scores']}</span><a href="{url_m.php?name=coupon&action=getcoupon}" style="">exchange</a></li>
+                        </ul>
+                        <p style="display:none;">
+                            您当前已经消费了0元</p>
+                    </div>
+                </div>
+                <div class="shuju">
+                    <ul>
+                        <li>Have been delivered：<a href="{url_m.php?name=orderlist&type=1}">{$COUNT_ORDER4}个</a></li>
+                        <li>Is on the way：<a href="{url_m.php?name=orderlist&type=2}">{$COUNT_ORDER3}个</a></li>
+                        <li>Been shipped：<a href="{url_m.php?name=sendorderlist&type=1}">{$COUNT_SENDORDER23}个</a></li>
+                        <li>Can be evaluated：<a href="{url_m.php?name=sendorderlist&type=2}">{$COUNT_SENDORDERSERVER}个</a></li>
+                    </ul>
+                </div>
+            </div>
+            <dl class="gwc">
+                <dt>
+                    <img alt="我的购物车" src="{TPL}images/gwche.gif"></dt>
+                <dd>
+                    <h2>
+                        <a href="{url_shoppingcart.php}">My Shopping Cart
+</a></h2>
+                    <p>
+                        <a href="{url_shoppingcart.php}">Your shopping cart has&nbsp;<b>{$_CARTCOUNT}</b>&nbsp;item，submit your order now!</a></p>
+                    <span>由于时效性问题，您所选择商品的价格丶优惠政策等信息随时可能发生变化哦。赶快去看看吧！</span>
+                </dd>
+            </dl>
+            <dl class="gwc">
+                <dt>
+                    <img alt="我的送货车" src="{TPL}images/che.gif"></dt>
+                <dd>
+                    <h2>
+                        <a href="{url_m.php?name=orderlist}">Delivery vehicles</a></h2>
+                    <p>
+                        Commodity status as&nbsp;<font style="color: rgb(255, 0, 0);">“warehouse”</font>&nbsp;submit delivery！</p>
+                </dd>
+            </dl>
+            <div class="qb">
+                <h2>
+                    Subject information</h2>
+                <div class="qingbao">
+				{loop $specialarray $r}
+
+                    <dl>
+					<dt>
+					<a target="_blank" href="{url_special.php?action=view&sid=$r['sid']}"><img alt="{$r['title']}" src="{$r['pic']}"></a></dt>
+					<dd><h1><a target="_blank" href="{url_special.php?action=view&sid=$r['sid']}">{$r['title']}</a></h1>
+					<p>{substrs($r['about'],100,0,1)}</p>
+					</dd></dl>
+					
+				{/loop}
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>
+                Notice</h2>
+            <ul>
+			{loop $newsarray $r}
+                <li><a target="_blank" href="{url_news.php?action=view&nid=$r['nid']}">{$r['title']}</a></li>
+			{/loop}
+
+				
+            </ul>
+            <h2>
+                FAQ</h2>
+            <ul>
+				{php $helparray=helplist(5,1)}
+				{loop $helparray $r}
+                    <li><a target="_blank" href="{url_help.php?action=view&id=$r['aid']}">{$r['title']}</a></li>
+				{/loop}
+
+            </ul>
+            <h2>
+                Consultation</h2>
+            <div class="jianyi">
+                <p>
+                    你对网站有什么疑问吗？</p>
+                <p>
+                    欢迎您提出意见和咨询！</p>
+                <dl>
+				<form name="guestbook" method="post" action="{url_m.php?name=index&action=guestbook}">
+                    <dt>
+                        <textarea rows="" cols="" id="msg" name="msg"></textarea>
+                        <p>
+                            <input type="text" id="code" name="code" maxlength="4" onkeydown="return enter(event);"><input type="text" style="display: none;">
+                            <img src="includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=22&amp;t='+Math.random();" alt="验证码" name="checkCode" border="0" id="checkCode" style="vertical-align: middle; cursor: pointer;" title="点击图片刷新" onclick="this.src='includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=22&amp;t='+Math.random();">                        </p>
+                    </dt>
+                    <dd>
+                        <input type="submit" onmouseout="this.className=''" onmouseover="this.className='jg'" value="Submitted" onclick="" id="suggestBtn"></dd>
+				</form>
+                </dl>
+            </div>
+        </div>
+        <div class="yj_you">
+        </div>
+    </div>
+
+      <div class="yj">
+      </div>
+    </div>
+
+    
+{template 'footer'}
+</body>
+</html>

@@ -1,0 +1,500 @@
+html {
+	background: transparent;
+}
+.main a {
+	color: #404040;
+}
+#content {
+	background: url(../images/T1TohwXjhkXXXXXXXX-1-84.png) repeat-x 0 0;
+}
+.page-info {
+	height: 61px;
+	padding-top: 1px;
+}
+.page-info .title {
+	display: block;
+	float: left;
+	width: 160px;
+	height: 28px;
+	overflow: hidden;
+	margin: 27px 0 0 21px;
+	line-height: 1000px;
+	background: url(../images/ye_bg.png) no-repeat 0 0;
+}
+.page-info .desc {
+	float: left;
+	width: 125px;
+	height: 18px;
+	overflow: hidden;
+	line-height: 1000px;
+	margin: 35px 0 0 8px;
+	background: url(../images/ye_bg.png) no-repeat -162px -7px;
+}
+.box .hd {
+	height: 25px;
+	padding-top: 3px;
+	border-color: #d6dadd;
+	background: #f2f7fd url(../images/T1I.pwXjhiXXXXXXXX-1-28.png) repeat-x 0 0;
+}
+.box .bd {
+	border-color: #d6dadd;
+	background: #fff;
+}
+.tab-box .rc-tp,.tab-box .rc-tp span,.tab-box .rc-bt,.tab-box .rc-bt span {
+	_overflow: visible;
+	position: absolute;
+	height: 3px;
+	line-height: 0;
+	font-size: 0;
+	background: url(../images/ye_bg.png) no-repeat;
+}
+.tab-box .rc-tp {
+	width: 100%;
+	top: -2px;
+	left: -2px;
+	background-position: -2px -30px;
+}
+.tab-box .rc-tp span {
+	right: -4px;
+	_right: -5px;
+	background-position: 1px -30px;
+}
+.tab-box .rc-bt {
+	width: 100%;
+	bottom: -2px;
+	_bottom: -3px;
+	left: -2px;
+	background-position: -2px -32px;
+}
+.tab-box .rc-bt span {
+	right: -4px;
+	_right: -5px;
+	background-position: 1px -32px;
+}
+.tab-box .nav-box {
+	position: absolute;
+	height: 208px;
+	left: 10px;
+	top: 10px;
+}
+.tab-box .nav-box .rc-tp {
+	top: -1px;
+	left: 0;
+}
+.tab-box .nav-box .rc-bt {
+	bottom: -1px;
+	left: 0;
+}
+.tab-box .nav {
+	position: relative;
+	height: 41px;
+	margin-left: 10px;
+	background: #fdf3db url(../images/ye_bg.png) no-repeat 0 -90px;
+}
+.tab-box .nav a {
+	display: block;
+	height: 100%;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #8600FC;
+}
+.tab-box .first {
+	height: 40px;
+	border-top: 1px solid #f59867;
+	background-position: 0 -91px;
+}
+.tab-box .last {
+	height: 40px;
+	border-bottom: 1px solid #9867F5;
+}
+.tab-box .selected {
+	height: 44px;
+	margin-left: 0;
+	border: none;
+	background-position: 0 -40px;
+}
+.tab-box .selected .rc-tp,.tab-box .selected .rc-bt {
+	display: none;
+}
+.tab-box .selected a {
+	line-height: 44px;
+	color: #fff;
+}
+.tab-box .panel-box {
+	position: relative;
+	overflow: visible;
+	width: 571px;
+	min-height:350px;
+	left: 170px; 
+	top: 0;
+	border: 2px solid #9867F5;
+	background: #fdfbf7 url(../images/T19.FwXjleXXXXXXXX-1-81.png) repeat-x 0 0;
+}
+.tab-box .panel {
+	width: 100%;
+	height: 100%;
+}
+.more-service {
+	width: 100px;
+	margin: 30px 0 0 34px;
+}
+.ul-has-icon li {
+	padding-left: 1em;
+	background: url(../images/ye_bg.png) no-repeat -295px -32px;
+}
+.telephone {
+	background: transparent;
+}
+.telephone table {
+	margin: 0 auto;
+}
+.telephone .tel-img-box {
+	text-align: center;
+	padding: 0 auto 40px auto;
+	font-size: 14px;
+	font-weight: bold;
+	color: #3300CC;
+	padding-top: 40px;
+}
+.telephone .formone {
+	width: 460px;
+	margin: 0 auto 0 auto;
+}
+.telephone .form {
+	width: 460px;
+	margin: 60px auto 0 auto;
+}
+.telephone .form-table {
+	width: 460px;
+}
+.telephone .form-table th {
+	vertical-align: top;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+.telephone .form-table th,.telephone .form-table td {
+	padding-bottom: 17px;
+}
+.telephone th.tel-num {
+	padding-top: 10px;
+}
+.telephone .tel-input-box {
+	padding: 5px;
+}
+.telephone .tel-input-wrap {
+	margin-bottom: 5px;
+}
+.telephone .tel-input-label {
+	display: block;
+	position: relative;
+	width: 240px;
+	height: 29px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+}
+.telephone .tel-input {
+	width: 230px;
+	height: 13px;
+	padding: 8px 5px;
+	color: #404040;
+	font-size: 12px;
+	border: none;
+	background: #fff;
+}
+.telephone .tel-input-icon {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 33px;
+	height: 29px;
+	_height: 31px;
+	overflow: hidden;
+	line-height: 1000px;
+	cursor: pointer;
+}
+.telephone .tel-num-list {
+	width: 240px;
+	border: 1px solid #ccc;
+	background: #fff;
+	overflow: hidden;
+}
+.telephone .tel-num-list a {
+	display: block;
+	height: 30px;
+	padding: 0 5px;
+	line-height: 30px;
+	text-decoration: none;
+	color: #808080;
+	border-top: 1px dashed #ddd;
+}
+.telephone .tel-num-list a.first {
+	border: none;
+}
+.telephone .tel-num-list a: hover,.telephone .tel-num-list a: active {
+	font-size: 14px;
+	color: #f60;
+	background: #f2f2f2;
+}
+.telephone .has-latest-input {
+	display: block;
+	background: #fff url(../images/ye_bg.png) no-repeat 11px -133px;
+}
+.telephone .has-latest-input: hover {
+	background-position: -40px -140px;
+}
+.telephone .btn-submit {
+	width: 95px;
+	height: 30px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	line-height: 26px;
+	border: none;
+	background: #f30 url(../images/ye_bg.png) no-repeat -205px -90px;
+	cursor: pointer;
+	margin-left: 100px;
+}
+.telephone .method {
+	height: 22px;
+	overflow: hidden;
+}
+.telephone .method label {
+	display: block;
+	height: 22px;
+	margin-bottom: 4px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.telephone .method label input {
+	margin-right: 4px;
+}
+.telephone .method label span {
+	color: #808080;
+	font-size: 12px;
+}
+.telephone .denomination label {
+	display: inline-block;
+	width: 75px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.telephone .denomination label.other {
+	width: 55px;
+}
+.telephone .denomination label.selected {
+	font-weight: bold;
+}
+.telephone .denomination label input {
+	margin-right: 4px;
+}
+.telephone .price {
+	font-size: 14px;
+	font-weight: bold;
+	color: #8600FC;
+}
+.telephone .hidden {
+	display: none;
+}
+.telephone .price-loading {
+	background: url(../images/T19stvXopxXXXXXXXX-16-16.gif) no-repeat 0 50%;
+	padding-left: 20px;
+	float: left;
+}
+input[type=text] {
+	outline: none;
+}
+
+
+
+
+
+
+
+
+.tab-box {
+	WIDTH: 177px; FLOAT: left
+}
+.tab-box UL {
+	WIDTH: 160px
+}
+.tab-box LI {
+	POSITION: relative; WIDTH: 100%; BACKGROUND: url(../images/sidebar-bg.png) no-repeat 0px 49px; FLOAT: left; HEIGHT: 51px
+}
+.tab-box LI A {
+	POSITION: absolute; LINE-HEIGHT: 50px; WIDTH: 100%; DISPLAY: block; HEIGHT: 52px; COLOR: #07679c; TOP: -2px
+}
+.tab-box LI A .icon {
+	PADDING-BOTTOM: 14px; PADDING-LEFT: 50px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/sidebar-icon.jpg?t=20101020) no-repeat; MARGIN-LEFT: 6px; FONT-SIZE: 14px; PADDING-TOP: 14px
+}
+.tab-box LI A:hover {
+	BACKGROUND: url(../images/sidebar-bg.png) #dde8eb no-repeat 0px -10px; TEXT-DECORATION: none
+}
+.tab-box LI.current A {
+	BACKGROUND: url(../images/sidebar-bg.png) #f8feff no-repeat 0px -67px; COLOR: #00a1d0; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.tab-box LI.current A:hover {
+	BACKGROUND: url(../images/sidebar-bg.png) #dde8eb no-repeat 0px -10px; TEXT-DECORATION: none
+}
+.confirm .tab-box {
+	POSITION: absolute; BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: none
+}
+.confirm .tab-box UL {
+	DISPLAY: none
+}
+.tab-box LI A .wegicon {
+	BACKGROUND-POSITION: 0px -610px
+}
+.tab-box LI.current A .wegicon {
+	BACKGROUND-POSITION: -300px -610px
+}
+.tab-box LI A:hover .wegicon {
+	BACKGROUND-POSITION: -150px -610px
+}
+.tab-box LI A .txicon {
+	BACKGROUND-POSITION: 0px -560px
+}
+.tab-box LI.current A .txicon {
+	BACKGROUND-POSITION: -300px -560px
+}
+.tab-box LI A:hover .txicon {
+	BACKGROUND-POSITION: -150px -560px
+}
+.tab-box LI A .gatheringicon {
+	BACKGROUND-POSITION: 0px -711px
+}
+.tab-box LI.current A .gatheringicon {
+	BACKGROUND-POSITION: -300px -711px
+}
+.tab-box LI A:hover .gatheringicon {
+	BACKGROUND-POSITION: -150px -711px
+}
+.tab-box LI A .escoreicon {
+	BACKGROUND-POSITION: 0px -660px
+}
+.tab-box LI.current A .escoreicon {
+	BACKGROUND-POSITION: -300px -660px
+}
+.tab-box LI A:hover .escoreicon {
+	BACKGROUND-POSITION: -150px -660px
+}
+.tab-box LI A .paymenticon {
+	BACKGROUND-POSITION: 0px -762px
+}
+.tab-box LI.current A .paymenticon {
+	BACKGROUND-POSITION: -300px -762px
+}
+.tab-box LI A:hover .paymenticon {
+	BACKGROUND-POSITION: -150px -762px
+}
+.tab-box LI A .cashgifticon {
+	BACKGROUND-POSITION: 0px -356px
+}
+.tab-box LI.current A .cashgifticon {
+	BACKGROUND-POSITION: -300px -356px
+}
+.tab-box LI A:hover .cashgifticon {
+	BACKGROUND-POSITION: -150px -356px
+}
+.tab-box LI A .crediticon {
+	BACKGROUND-POSITION: 0px -509px
+}
+.tab-box LI.current A .crediticon {
+	BACKGROUND-POSITION: -300px -509px
+}
+.tab-box LI A:hover .crediticon {
+	BACKGROUND-POSITION: -150px -509px
+}
+.tab-box LI A .renticon {
+	BACKGROUND-POSITION: 0px -458px
+}
+.tab-box LI.current A .renticon {
+	BACKGROUND-POSITION: -300px -458px
+}
+.tab-box LI A:hover .renticon {
+	BACKGROUND-POSITION: -150px -458px
+}
+.tab-box LI A .aacollecticon {
+	BACKGROUND-POSITION: 0px -407px
+}
+.tab-box LI.current A .aacollecticon {
+	BACKGROUND-POSITION: -300px -407px
+}
+.tab-box LI A:hover .aacollecticon {
+	BACKGROUND-POSITION: -150px -407px
+}
+.tab-box LI A .donateicon {
+	BACKGROUND-POSITION: 0px -153px
+}
+.tab-box LI.current A .donateicon {
+	BACKGROUND-POSITION: -300px -153px
+}
+.tab-box LI A:hover .donateicon {
+	BACKGROUND-POSITION: -150px -153px
+}
+.tab-box LI A .mobileicon {
+	BACKGROUND-POSITION: 0px -51px
+}
+.tab-box LI.current A .mobileicon {
+	BACKGROUND-POSITION: -300px -51px
+}
+.tab-box LI A:hover .mobileicon {
+	BACKGROUND-POSITION: -150px -51px
+}
+.tab-box LI A .flighticon {
+	BACKGROUND-POSITION: 0px -1px
+}
+.tab-box LI.current A .flighticon {
+	BACKGROUND-POSITION: -300px -1px
+}
+.tab-box LI A:hover .flighticon {
+	BACKGROUND-POSITION: -150px -1px
+}
+.tab-box LI A .hotelicon {
+	BACKGROUND-POSITION: 0px -256px
+}
+.tab-box LI.current A .hotelicon {
+	BACKGROUND-POSITION: -300px -256px
+}
+.tab-box LI A:hover .hotelicon {
+	BACKGROUND-POSITION: -150px -256px
+}
+.tab-box LI A .gameicon {
+	BACKGROUND-POSITION: 0px -103px
+}
+.tab-box LI.current A .gameicon {
+	BACKGROUND-POSITION: -300px -103px
+}
+.tab-box LI A:hover .gameicon {
+	BACKGROUND-POSITION: -150px -103px
+}
+.tab-box LI A .lotteryicon {
+	BACKGROUND-POSITION: 0px -205px
+}
+.tab-box LI.current A .lotteryicon {
+	BACKGROUND-POSITION: -300px -205px
+}
+.tab-box LI A:hover .lotteryicon {
+	BACKGROUND-POSITION: -150px -205px
+}
+.tab-box LI A .insuranceicon {
+	BACKGROUND-POSITION: 0px -307px
+}
+.tab-box LI.current A .insuranceicon {
+	BACKGROUND-POSITION: -300px -307px
+}
+.tab-box LI A:hover .insuranceicon {
+	BACKGROUND-POSITION: -150px -307px
+}
+.tab-box LI A .trainicon {
+	BACKGROUND-POSITION: 0px -817px
+}
+.tab-box LI.current A .trainicon {
+	BACKGROUND-POSITION: -300px -817px
+}
+.tab-box LI A:hover .trainicon {
+	BACKGROUND-POSITION: -150px -817px
+}

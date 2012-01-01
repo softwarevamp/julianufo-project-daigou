@@ -1,0 +1,351 @@
+body {
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:12px;
+margin:0;
+padding:0;
+}
+p, h1, h2, h3, h4, h5, li, ul, dd, dt, dl {
+margin:0;
+padding:0;
+}
+img {
+border:medium none;
+}
+ul li {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+}
+textarea {
+}
+.top {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FFFFFF url(../images/nav_bj.jpg) repeat-x scroll 0 80px;
+height:123px;
+margin-bottom:15px;
+}
+.kj {
+height:80px;
+margin:auto;
+width:950px;
+}
+.logo {
+float:left;
+margin:0;
+}
+.mypanli {
+color:#999999;
+float:right;
+font-family:"simsun";
+margin-top:8px;
+width:600px;
+}
+.mypanli li {
+float:left;
+height:30px;
+}
+.mypanli li a {
+color:#999999;
+display:inline;
+float:left;
+margin:0 8px;
+padding-top:2px;
+}
+.mypanli li a:hover, .mypanli p a:hover {
+color:#FF6600;
+text-decoration:none;
+}
+.mypanli p a {
+color:#999999;
+text-decoration:none;
+}
+.mypanli ul {
+float:right;
+}
+.mypanli p {
+display:inline;
+float:right;
+margin:2px 5px 0 0;
+}
+.gouwu {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/gouwu.gif) no-repeat scroll left center;
+padding-left:23px;
+}
+.kj dl {
+display:inline;
+float:right;
+margin-right:5px;
+}
+.kj dl a {
+display:block;
+}
+.kj dl dt {
+float:right;
+}
+.kj dl dd {
+float:right;
+margin:5px 30px 0 0;
+}
+.kj dl dt a {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/yjtd.gif) no-repeat scroll 0 -49px;
+cursor:pointer;
+height:38px;
+width:132px;
+}
+.kj dl dt a:hover {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/yjtd.gif) no-repeat scroll 0 0;
+cursor:pointer;
+}
+.kj dl dd a {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/kefu.gif) no-repeat scroll 0 0;
+height:28px;
+width:100px;
+}
+.nav {
+margin:auto;
+width:950px;
+}
+.nav li {
+float:left;
+}
+.nav li a {
+border-left:1px solid #FDAA68;
+float:left;
+font-family:"simsun";
+font-size:14px;
+height:30px;
+line-height:30px;
+text-align:center;
+width:100px;
+}
+.nav ul {
+border-right:1px solid #FDAA68;
+display:inline;
+float:left;
+height:30px;
+margin:13px 0 0 5px;
+}
+.nav a {
+color:#FFFFFF;
+display:block;
+text-decoration:none;
+}
+.nav li img {
+border:medium none;
+display:inline;
+float:left;
+left:29px;
+margin:0 -41px -41px 0;
+position:relative;
+top:-9px;
+}
+.nav .xt a, .nav li a:hover {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/daohang.gif) no-repeat scroll right center;
+border:medium none;
+color:#FF6600;
+font-size:16px;
+font-weight:bold;
+height:33px;
+line-height:33px;
+margin-right:-1px;
+margin-top:-3px;
+overflow:hidden;
+position:relative;
+width:102px;
+}
+.nav .xt a img, .nav li a:hover img {
+border:medium none;
+top:-30px;
+}
+.nav li a span {
+color:#FFFF99;
+font-family:"simsun";
+font-size:10px;
+font-weight:100;
+}
+.nav .xt a span, .nav li a:hover span {
+color:#33CC66;
+}
+.yuanjiao {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#F9F9F9 url(../images/help.gif) no-repeat scroll left top;
+height:5px;
+margin:0 -1px;
+overflow:hidden;
+position:relative;
+width:950px;
+}
+.help {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#F9F9F9 none repeat scroll 0 0;
+border-left:1px solid #DBDBDB;
+border-right:1px solid #DBDBDB;
+clear:both;
+height:150px;
+margin:auto;
+width:948px;
+}
+.fenlei {
+border-right:1px solid #DDDDDD;
+float:left;
+height:120px;
+margin-top:5px;
+padding:10px 0 0 10px;
+width:124px;
+}
+.wu {
+border:medium none;
+}
+.fenlei a {
+color:#999999;
+text-decoration:none;
+}
+.fenlei a:hover {
+color:#FF6600;
+text-decoration:underline;
+}
+.fenlei h3 {
+color:#888888;
+font-size:12px;
+margin-bottom:5px;
+}
+.fenlei li {
+line-height:20px;
+}
+.foot {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/help.gif) no-repeat scroll right top;
+color:#999999;
+height:60px;
+margin:auto;
+padding-top:22px;
+text-align:center;
+width:950px;
+}
+.foot a {
+color:#999999;
+}
+.foot a:hover {
+color:#FF6600;
+}
+.foot p {
+margin-bottom:8px;
+}
+.a_add {
+height:376px;
+position:relative;
+width:485px;
+}
+.a_content {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FBFCFE url(../images/a_content.gif) repeat-x scroll center bottom;
+border:1px solid #5285AA;
+color:#0764B5;
+font-size:12px;
+height:370px;
+width:480px;
+}
+.a_right {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#BCBEC0 none repeat scroll 0 0;
+height:368px;
+left:482px;
+opacity:0.7;
+position:absolute;
+top:4px;
+width:3px;
+}
+.a_bottom {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#BCBEC0 none repeat scroll 0 0;
+height:4px;
+left:3px;
+line-height:4px;
+opacity:0.7;
+position:absolute;
+top:372px;
+width:482px;
+}
+.a_top {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:url(../images/a_top.gif) repeat-x scroll 0 0;
+height:29px;
+width:480px;
+}
+.a_top h1 {
+color:#1A669E;
+font-size:14px;
+left:5px;
+position:absolute;
+text-indent:4px;
+top:6px;
+}
+.a_top div {
+color:#1A669E;
+font-size:14px;
+font-weight:bold;
+left:5px;
+position:absolute;
+text-indent:4px;
+top:6px;
+}
+.a_top span {
+position:absolute;
+right:10px;
+top:6px;
+}
+.kj .wenzigundong {
+font-size:14px;
+margin:13px 20px 0 0;
+overflow:hidden;
+padding:0;
+white-space:nowrap;
+width:255px;
+}
+.kj .wenzigundong a {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent none repeat scroll 0 0;
+color:#FF0000;
+font-weight:bold;
+}
+.wenzigundong a:hover {
+color:#FF0000;
+text-decoration:none;
+}
+.kj .wenzigundong li {
+float:left;
+width:230px;
+}

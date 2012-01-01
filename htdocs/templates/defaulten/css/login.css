@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/*body {
+	background-color: #e1eef3;
+	margin: 0px;
+}*/
+
+body {
+	margin:0 0 6px 0;
+	/*background:url(/Images/mainbg.jpg) repeat-x #f2f9ff  350px 87px;*/
+	background:#fff;
+}
+img{border:0px;}
+.clear{clear:both}
+
+a:link { color:#2361b4;}
+a:visited{ color:#2361b4;}
+a:hover{ text-decoration:underline; color:#FF6600}
+/*ͨ*/		
+
+
+.main{width:940px; height:auto; margin:0 auto 0 auto; background:#fff; padding:0 10px 5px 10px; }
+
+		
+.t_left{float:left; width:500px; height:77px; background:url(../Images/logo.gif) no-repeat 0 2px; margin-top:0; vertical-align:middle}
+	.t_right{float:right; width:400px; height:87px;}
+	.t_1{width:204px; height:75px; float:left; margin-top:8px; margin-bottom:0; overflow:hidden}
+	.t_1 a:link,.t_1 a:visited{background:url(../Images/blank.gif) no-repeat; width:200px; height:77px; display:block}
+	.t_1 a:hover{background:url(../Images/backhomepage.gif) no-repeat;width:200px; height:77px; display:block}
+	.t_2{width:300px; float:left;margin:27px 0 0 0; height:31px; background:url(../Images/t_line.gif) left no-repeat; text-indent:15px;}
+		.t_2 h1{font-size:14px; font-weight:normal; padding-top:0; margin:0px; color:#333; line-height:31px; }
+	.t_2_1{width:222px; float:left;margin:29px 0 0 0; height:38px; background:url(../Images/dangrigou.gif) left no-repeat; text-indent:70px; color:#2aae10; line-height:23px;}
+	.t_2_1 a{ color:#2aae10; text-decoration:none}
+	.t_3{width:0; float:right; text-align:right; height:20px;  color:#666; margin-top:5px;}
+		.t_3 a:link,.t_3 a:visited{color:#185fb1; text-decoration:none;line-height:20px;}
+		.t_3 a:hover{color:#185fb1; text-decoration:underline}
+		.t_3 span{ color:#CCCCCC}
+		.t_3 img{ vertical-align:middle}
+	.t_4{width:400px; float:right; margin-top:25px; text-align:right; font-size:12px; color:#666666; height:28px;}
+		.t_4 img{margin-left:12px; vertical-align:middle}
+	.t_5{width:400px; float:right; margin-top:15px; text-align:right; font-size:12px; color:#666666; height:16px; line-height:16px; color:#999999}	
+	.t_5 span{ color:#ff3300; padding:0 2px 0 2px; height:16px; font-weight:bold}
+	.t_5 a {text-decoration:none}
+	.t_line{ width:940px; height:4px; background:url(../Images/tline.gif); overflow:hidden;}
+	
+ 	
+.buy_ipt1{border:1px  solid #878787;background:#f1fff7; height:22px; line-height:19px; color:#5d5d5d; font-size:16px;padding-left:5px;}
+.buy_ipt2{border:1px solid #727272; background:#fffbd5;height:22px;line-height:19px;color:#5d5d5d; font-size:16px;padding-left:5px;}
+
+

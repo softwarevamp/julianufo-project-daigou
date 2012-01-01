@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/help.css">
+<title>[{$cfg_site_name}] - Help Center</title>
+</head>
+ <body>
+
+
+<form id="aspnetForm" action="{url_help.php?action=list}" method="post" name="aspnetForm">
+    <div class="top">
+        <div class="logo">
+            <a href="/">
+                <img alt="代购系统" src="{TPL}images/index_03.gif"></a>
+            <p>
+                <a href="{url_help.php}">
+                    <img alt="Help Center" src="{TPL}images/help_zx.gif"></a></p>
+        </div>
+        <div class="top_r">
+            <div class="nav">
+                <ul>
+					 <li><a href="/">Home</a></li>
+                    <li><a href="{url_see.php}">stroll</a></li>
+                    <li><a href="{url_recommend.php}">Recommend</a></li>
+                    <li><a href="{url_demo.php}">Demo</a></li>
+                    <li><a href="{url_discount.php}">Discount</a></li>
+                    <li><a href="{url_special.php}">Special</a></li>
+                    <li><a href="{url_free_postage.php}">Business</a></li>
+                    <li  style="border:none;"><a href="{url_guestbook.php}">Advisory</a></li>
+                </ul>
+            </div>
+            <div class="login">
+                <ul>
+                    <li class="che"><a href="{url_shoppingcart.php}">Shopping Cart<span>({$_CARTCOUNT})</span></a></li>
+                    <li class="che"><a href="{url_m.php?name=orderlist}">My Order</a></li>
+                    
+                </ul>
+			{if empty($_USERS)}
+                <p>Hello！Visitors Please <a href="{url_user.php?action=login}">[Login]</a> Or <a href="{url_user.php?action=register}">[Free Register]</a></p>
+			{else}
+				 <p>Hello！{$_USERS['uname']}[<a href="{url_user.php?action=quit}">Quit</a>]&nbsp;&nbsp;<a href="{url_m.php?name=pm}" target="_blank"><img src="{TPL}images/an2.gif" style="margin-right: 3px;">新短信<span style="color: rgb(255, 255, 0);">({$_USERS['pm']})</span></a></p>
+			{/if}
+            </div>
+        </div>
+    </div>
+	
+	
+
+	
+    <div class="center">
+        <div class="search">
+            <div class="cz">
+                Find Help：</div>
+            <div class="gjc">
+                <input type="text" onblur="if($.trim(this.value).length&lt;=0){this.className='s1';this.value='Enter the keywords you want to search,such as:What is purchasing?'}" onfocus="if(this.className=='s1'){this.value='';this.className='s1_';}" value="Enter the keywords you want to search,such as:What is purchasing?" id="hkey" name="keyword" class="s1"><input type="submit" value="Search" onmouseout="this.className='s2'" onmouseover="this.className='s2_'" id="hbtn" name="" class="s2" onclick="">
+            </div>
+        </div>
+        <div class="left">
+            <h2 class="n1">
+                <a title="帮助分类" href="{url_help.php}"></a>
+            </h2>
+            <ul>
+                {loop $atypearray $aval}
+				{if $aval['node']==0}
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                
+            </ul>
+            <h2 class="n2">
+                <a title="Common Questions" href="{url_help.php?id=9}"></a>
+            </h2>
+            <ul>
+                 {loop $atypearray $aval}
+				{if $aval['node']==9}               
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                    
+            </ul>
+            <h2 class="n6">
+                <a title="Common tools" href="{url_tools.php}"></a>
+            </h2>
+            
+            <h2 class="n4">
+                <a title="User Information" href="{url_help.php?action=view&id=82}"></a>
+            </h2>
+            
+        </div>
+        
+    <div class="right">
+        <div class="weizhi">
+            <p>
+                <b>You Location：</b><a href="{url_help.php}">Help Home</a><span>&gt;</span>Common tools</p>
+            <div>
+                <a target="_blank" href="{url_demo.php}">Shoping Demo</a></div>
+        </div>
+        <div class="fenlei">
+        {loop $rightatypearray $aval}
+		
+            <h2>{$aval['typename']}</h2>
+            <ul>
+                {loop $rightarticlearray $val}
+				{if $val['typeid']==$aval[typeid]}
+                <li><a href="{url_help.php?action=view&id=$val[aid]}">{$val['title']}</a></li>
+				{/if}
+				{/loop}
+            </ul>
+			
+        {/loop}
+		
+		
+		
+		    
+        </div>
+    </div>
+	    <div class="gongju">
+        <dl>
+
+            <dt>
+                <img src="{TPL}images/g1.jpg" /></dt>
+            <dd>
+                <h2>
+                    <a href="{url_page.php?action=postage}" target="_blank">Shipping prices</a></h2>
+                <p>Contrast the way of international shipping freight to the shipping method you choose the right delivery！</p>
+            </dd>
+
+        </dl>
+        <dl>
+            <dt>
+                <img src="{TPL}images/g2.jpg" /></dt>
+            <dd>
+                <h2>
+                    <a href="{url_page.php?action=measureconversion}" target="_blank">Size Conversion</a></h2>
+                <p>There are several algorithms global size conversion, Panli to provide you with the size of China and the international conversion！</p>
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <img src="{TPL}images/g3.jpg" /></dt>
+            <dd>
+                <h2>
+
+                    <a href="{url_page.php?action=estimates}" target="_blank">Cost estimates</a></h2>
+                <p>Before purchasing, you can use the cost estimation tools to estimate your purchasing costs！</p>
+            </dd>
+        </dl>
+        <dl>
+            <dt>
+                <img src="{TPL}images/g4.jpg" /></dt>
+
+            <dd>
+                <h2>
+                    <a href="http://www.123cha.com/hl/" target="_blank">Exchange rates</a></h2>
+                <p>Check the exchange rate premium, so you can recharge the exchange rate conversion！</p>
+            </dd>
+        </dl>
+        <dl>
+
+            <dt>
+                <img src="{TPL}images/g5.jpg" /></dt>
+            <dd>
+                <h2>
+                    <a href="{url_page.php?action=track}" target="_blank">Package tracking and tracing</a></h2>
+                <p>Package is issued, you can check for package tracking information of your package delivery</p>
+            </dd>
+
+        </dl>
+    </div>
+    <div style="clear: both;" class="yj">
+    </div>
+
+    </div>
+    <input type="text" style="display: none;">
+    <div class="foot">
+        <p>
+            <a href="{url_about.php?action=aboutus}">About Us</a>&nbsp;|&nbsp;<a href="{url_about.php?action=contactus}">Contact Us</a>&nbsp;|&nbsp;<a href="{url_about.php?action=joinus}">Join Us</a>&nbsp;|&nbsp;<a href="#" target="_blank">Team blog</a>&nbsp;|&nbsp;<a href="{url_about.php?action=links}">Links</a>
+        </p>
+        Copyright&nbsp;&copy;&nbsp;2010 代购! Inc. All rights reserved
+    </div>
+    </form>
+
+</body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+    <script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+    <script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+    <script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+    <link href="{TPL}css/placard.css" rel="stylesheet" type="text/css" />
+<title>
+{lang Site_Notice} - {$cfg_site_name}
+</title>
+<style type="text/css">
+.pages {float:right;height:25px;margin:15px 0 0 0;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+</head>
+<body>
+    
+    <form name="" method="post" action="" id="">
+
+{template 'header'}
+    
+    <div class="placard">
+
+        <div class="yj_top">
+            <div class="g_g">
+                <h2>
+                    {lang Site_Notice}</h2>
+            </div>
+        </div>
+        <div class="lb">
+            <ul>
+			{loop $dataarray $r}
+                
+                <li><a href="{url_news.php?action=view&nid=$r['nid']}">{$r['title']}</a><span>{date('Y-m-d',$r['addtime'])}</span></li>
+			{/loop}		
+					
+
+            </ul>
+        </div>
+        <div class="p">
+            <div class="">
+{echo pagelist($total,$pagesize,$page,"");} 
+</div>
+        </div>
+        <div class="yj_bottom">
+        </div>
+    </div>
+
+    
+ {template 'footer'}
+
+    </form>
+
+</body>
+</html>

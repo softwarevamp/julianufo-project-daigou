@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=" http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{lang Password_changed_successfully}</title>
+    <link href="{TPL}css/forgotPassword.css" rel="stylesheet"   type="text/css" />
+    <link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+    <script src="{TPL}js/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{TPL}js/forgot_one.js"></script>
+	<meta http-equiv="refresh" content="5;URL={url_user.php?action=login}">
+
+</head>
+<body>
+    <form name="" method="post" action="" id="">
+{template 'header'}	
+    <div class="center">
+        <div class="bz">
+            <img alt="修改成功" src="{TPL}images/bb4.gif">
+        </div>
+        <div class="cg">
+            <img alt="修改成功" src="{TPL}images/cg.gif">
+            <p>
+                <b>5</b>{lang automatically_jump_login_page}</p>
+        </div>
+        <div class="cz">
+            <h2>
+                {lang Guess_what_going_do}？</h2>
+            <ul>
+                <li><a href="{url_see.php}">{lang sb_see}</a></li>
+                <li><a href="{url_m.php}">{lang enter}“{lang My_Member_Center}”</a></li>
+                <li><a href="{url_shoppingcart.php}">{lang see}“{lang Shopping_Cart}”{lang china_goods}</a></li>
+            </ul>
+        </div>
+        <div class="yj">
+        </div>
+    </div>
+    
+    
+{template 'footer'}
+    </form>
+</body>
+</html>

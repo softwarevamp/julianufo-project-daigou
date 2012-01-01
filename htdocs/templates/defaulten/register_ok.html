@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册成功-等待激活</title>
+<link href="{TPL}css/Register.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"> </script>
+</head>
+
+<body>
+{template 'header'}
+<div class="box">
+        <script type="text/javascript">
+ 
+            function emailInputShow(e) {
+                if (e && e.stopPropagation) {
+                    e.stopPropagation();
+                }
+                else {
+                    window.event.cancelBubble = true;
+                }
+                $('#bgdiv').show();
+                $("#changeEmail").show(0, function() { $("#codeImage").click(); });
+                $("#changeEmailCode").val("");
+                $("#cEmail").removeAttr("class").text("Bind-mail account login");
+                $("#cemailinput").val("");
+            }
+ 
+            function changeEmail(e) {
+                if (e && e.stopPropagation != undefined) { e.stopPropagation(); }
+                else { window.event.cancelBubble = true; }
+ 
+                var checkCode = $.trim($("#changeEmailCode").val());
+                if (checkCode.length <= 0) {
+                    $("#cEmail").attr("class", "red").text("enter the verification code"); return;
+                }
+ 
+                $.ajax({
+                    type: "POST",
+                    url: "/ajax/user_ajax.php?action=checkcode&code=" + checkCode,
+                    dataType: "text",
+                    timeout: 5000,
+                    error: function(a, b, c) { checkcodechecked = true; $("#cEmail").removeAttr("class").text("Bind-mail account login"); changeEmailSuc(); },
+                    success: function(msg) {
+                        if (msg == '0') {
+                            $("#cEmail").attr("class", "red").text("Error Code"); return;
+                        }
+                        else {
+                            $("#cEmail").removeAttr("class").text("Bind-mail account login");
+                            changeEmailSuc();
+                        }
+                    }
+                });
+            }
+ 
+ 
+            function changeEmailSuc() {
+                var email = $("#cemailinput").val();
+                if (email.length <= 0) { $("#cEmail").attr("class", "red").text("Email address"); return; }
+                var reg = new RegExp("\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
+                if (reg.test($("#cemailinput").val())) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/ajax/user_ajax.php?action=changeemail",
+                        dataType: "json",
+                        contentType: "application/json;utf-8",
+                        data: "{'email':'" + email + "'}",
+                        timeout: 10000,
+                        beforeSend: function() { $("#cEmail").attr("class", "lv").text("Being revised Email，wait"); $("#changeEmailBtn").attr("disabled", "disabled"); },
+                        error: function() { $("#cEmail").attr("class", "red").text("Network connection fails"); $("#changeEmailBtn").removeAttr("disabled"); },
+                        success: function(res) {
+                            var rstr = res;
+                            if (rstr == "OK" || rstr == "fail") { $("#cEmail").text("Email has been modified and send activation email, check"); $("#changeEmail").hide(); $("#registerEmail").html(email); $("#successChange").show(); }
+							else{
+								{ $("#cEmail").attr("class", "red").text(rstr); }
+							}
+                            $("#changeEmailBtn").removeAttr("disabled");
+                        }
+                    });
+                }
+                else {
+                    $("#cEmail").attr("class", "red").text("Address is not correct");
+                }
+            }
+ 
+            function reSendEmail() {
+                $.ajax({
+                    type: "POST",
+                    url: "/ajax/user_ajax.php?action=resendemail",
+                    dataType: "json",
+                    contentType: "application/json;utf-8",
+                    data: "{'uname':'{$regNickName}'}",
+                    timeout: 50000,
+                    error: function() { alert("Network connection fails"); },
+                    success: function(res) { var resStr = res; if (resStr == "OK") { alert("The sent to your mailbox, please find"); } else { if (resStr == "again") alert("E-mail too frequently, over 10 minutes"); else { if (resStr == "approved") { alert("Your account has been activated! Visit"); window.location = "/user.php?action=login" } else alert("Failed to send activation email"); } } }
+                });
+            }
+ 
+            $(document).ready(function() {
+                $("#changeEmail").click(function(e) { if (e && e.stopPropagation) { e.stopPropagation(); } else { window.event.cancelBubble = true; } });
+                $("#successChange").click(function(e) { if (e && e.stopPropagation) { e.stopPropagation(); } else { window.event.cancelBubble = true; } });
+                $(document).click(function(e) {
+                    if ($("#changeEmail:hidden").length > 0) {
+                        //if ($.trim($("#cemailinput").val()).length == 0) $("#cemailinput").attr("class", "c1").val("请输入Email地址");
+                        $("#cEmail").removeAttr("class").text("Account as your login");
+                    } $("#changeEmail").hide(); $('#bgdiv').hide(); $("#successChange").hide();
+                });
+            });
+        </script>
+
+
+
+
+
+              <div class="move">
+            <img alt="激活帐户" src="{TPL}images/move2.gif"></div>
+        <div class="activation">
+            <div class="mail">
+                <h2>
+                    system has been<span id="registerEmail">{$regEmail}</span>Send</h2>
+                <dl>
+                    <dt>Point link in the message address, complete the activation！</dt>
+                    
+                    <dd>
+                        <a target="_blank" href="{$emailhttp}">Incoming Mail</a></dd>
+                </dl>
+            </div>
+            <div class="operate">
+                <h2>
+                    If the time did not receive mail, you can：</h2>
+                <ul>
+                    <li>Messages may be mistaken for ads placed in bins or boxes；</li>
+                    <li>If you have not been able to find, click on<a onclick="reSendEmail()" href="javascript:void(0);">resend</a>；</li>
+                    <li>You can<a href="javascript:void(0);" onclick="emailInputShow(event)">Replace other mail</a> ，Longer accept</li>
+                </ul>
+                <div style="display: none;" id="bgdiv" class="floor"> </div>
+                <div style="display: none;" class="change" id="changeEmail">
+                    <a title="关闭" class="close" onclick="$('#changeEmail').hide();$('#bgdiv').hide();" href="javascript:;"></a>
+                    <p id="cEmail">Bound-mail account login</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="zuo">E-mail Address：</td>
+                            <td><input type="text" class="c1" id="cemailinput"></td>
+                        </tr>
+                        <tr>
+                            <td class="zuo"> Code：</td>
+                            <td><input type="text" id="changeEmailCode" class="c3"><img border="0" onclick="var now=new Date();this.src='includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" style="vertical-align: middle; cursor: pointer;" alt="验证码" title="点击图片刷新" src="includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" id="codeImage"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <input type="button" onmouseout="this.className='c2'" onmouseover="this.className='c2_'" value="确定发送" name="" onclick="changeEmail(event);" class="c2" id="changeEmailBtn">
+                </div>
+                <div style="display: none;" class="change" id="successChange">
+                    <a title="关闭" class="close" onclick="$('#successChange').hide();$('#bgdiv').hide();" href="javascript:;"></a>
+                    <div class="ch_top">
+                        E-mail has been sent a new verification email<br>
+                       Click the link in the e-mail address to complete the verification
+                    </div>
+                    <p class="tishi"> This will be the account you log on as a bundled-mail</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  <div class="bottom_1">
+    </div>
+
+{template 'footer'}
+</body>
+</html>

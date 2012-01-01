@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"> </script>
+<link href="{TPL}css/see.css" rel="Stylesheet" type="text/css">
+<title>{lang User_rating}- {$cfg_site_name}</title>
+<style type="text/css">
+.pages {float:right;height:25px;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+</head>
+
+<body>
+{template 'header'}
+
+<div class="see">
+  <div class="see_main_left mar_right_10">
+    <div class="deals">
+      <div class="top fudong"><img src="{TPL}images/bg_scodtop.png" width="640" height="8" /></div>
+      <div class="mid">
+        <div class="gbt_line">{lang User_rating}
+        </div>
+        <div class="sect">
+          <div class="daelog">
+            <ul>
+			{loop $dataarray $r}
+              <a name="{$r['sid']}" id="{$r['sid']}"></a>
+              <li>
+                <div class="l"><img src="{$r['face']}" onerror="this.src='{TPL}images/untitled.jpg'"/></div>
+                <div class="r"> 
+                  <div class="huifu" style="height:23px"><h5 style="float:left; width:200px">{$r['uname']}</h5> <span>{date("Y-m-d",$r['commenttime'])} {lang Published} </span></div>
+                  <b>{lang Parcel_number}:</b><span class="zi_hui"><a href="###">{$r['sn']}</a></span>{$r['deliveryname']} ， {lang Country_destination}：{$r['country']} <br />
+                  <p>{$r['comment']}  </p>
+                  <b>{lang Reply}：</b><span class="hong">{$r['reply']} </span><br />
+                </div>
+              </li>
+			  {/loop}
+              <li></li>
+            </ul>
+          </div>
+        
+        {echo pagelist($total,$pagesize,$page,"");}
+        </div>
+      </div>
+      <div class="bom"><img src="{TPL}images/bg_scodbom.png" /></div>
+    </div>
+  </div>
+  
+  
+  
+    <div class="see_left">
+      <div class="pltj">
+        <div class="lm">
+          <h2> <img alt="{lang Recommended_girls}" src="{TPL}images/see_tj.gif" /> </h2>
+          <span><a target="_blank" href="{url_recommend.php}">{lang more}..</a> </span> </div>
+        <ul>
+		
+		
+		{loop $rightarray $r}
+		
+          <li>
+            <dl>
+              <dt><a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}"> <img alt="{$r['goodsname']}" src="{$r['goodsimg']}"></a></dt>
+              <dd>
+                <h1> <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}"> {substrs($r['goodsname'],45)}</a></h1>
+                <p> {lang price}：<span> ￥{$r['goodsprice']}</span></p>
+                <div> {lang Source}：<a target="_blank" href="{$r['sellerurl']}">{$r['goodsseller']}</a></div>
+                <b><a href="###">[{$r['shopname']}]</a></b> </dd>
+            </dl>
+          </li>
+
+		{/loop}
+		  
+		  
+
+        </ul>
+      </div>
+      <div class="see_zk" style="">
+        <div class="lm">
+          <h2><img alt="{lang Discount_information}" src="{TPL}images/see_zk.gif"></h2>
+          <span><a href="{url_discount.php}">{lang more}..</a></span></div>
+        <ul>
+		{loop $discountarray $r}
+          <li>
+            <h3><a target="_blank" href="{url_discount.php?action=view&did=$r['did']}">{$r['title']}</a></h3>
+            <p>{$r['about']}<a target="_blank" href="{url_discount.php?action=view&did=$r['did']}">{lang Details}&gt;&gt;</a></p>
+          </li>
+		{/loop}
+		
+        </ul>
+      </div>
+  </div>
+</div>
+
+{template 'footer'}
+</body>
+</html>

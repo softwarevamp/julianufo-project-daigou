@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="{TPL}css/help.css">
+
+<title>[{$cfg_site_name}] - Help Center</title>
+</head>
+<body>
+
+<form id="aspnetForm" action="List.aspx?cid=1" method="post" name="aspnetForm">
+  <div class="top">
+        <div class="logo">
+            <a href="/">
+                <img alt="代购网" src="{TPL}images/logo.gif"></a>
+            <p>
+                <a href="{url_help.php}">
+                    <img alt="Help Center" src="{TPL}images/help_zx.gif"></a></p>
+        </div>
+        <div class="top_r">
+            <div class="nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{url_see.php}">stroll</a></li>
+                    <li><a href="{url_recommend.php}">Recommend</a></li>
+                    <li><a href="{url_demo.php}">Demo</a></li>
+                    <li><a href="{url_discount.php}">Discount</a></li>
+                    <li><a href="{url_special.php}">Special</a></li>
+                    <li><a href="{url_free_postage.php}">Business</a></li>
+                    <li  style="border:none;"><a href="{url_guestbook.php}">Advisory</a></li>
+                </ul>
+            </div>
+            <div class="login">
+                <ul>
+                     <li class="che"><a href="{url_shoppingcart.php}">cart<span>({$_CARTCOUNT})</span></a></li>
+                    <li class="che"><a href="{url_tools.php}">tools</a></li>
+                    
+                </ul>
+                 <p>
+                    
+                    Hello！Visitors please&nbsp;<a href="{url_user.php?action=login}">[Login]</a>&nbsp;或&nbsp;<a href="{url_user.php?action=register}">[Register]</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="search">
+            <div class="cz">
+                Find Help：</div>
+            <div class="gjc">
+                <input type="text" onblur="if($.trim(this.value).length&lt;=0){this.className='s1';this.value='Enter the keywords you want to search,such as:What is purchasing?'}" onfocus="if(this.className=='s1'){this.value='';this.className='s1_';}" value="Enter the keywords you want to search,such as:What is purchasing?" id="hkey" name="" class="s1"><input type="submit" value="Search" onmouseout="this.className='s2'" onmouseover="this.className='s2_'" id="hbtn" name="" class="s2" onclick="">
+            </div>
+        </div>
+        <div class="left">
+            <h2 class="n1">
+                <a title="Help Category" href="{url_help.php}"></a>
+            </h2>
+            <ul>
+                {loop $atypearray $aval}
+				{if $aval['node']==0}
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                
+            </ul>
+            <h2 class="n2">
+                <a title="Frequently Asked Questions" href="{url_help.php?id=9}"></a>
+            </h2>
+            <ul>
+                 {loop $atypearray $aval}
+				{if $aval['node']==9}               
+                        <li><a href="{url_help.php?action=list&id=}{$aval['typeid']}">
+                            {$aval['typename']}</a></li>
+				{/if}
+				{/loop}
+                    
+            </ul>
+            <h2 class="n6">
+                <a title="Common tools" href="{url_tools.php}"></a>
+            </h2>
+            
+            <h2 class="n4">
+                <a title="User Information" href="{url_help.php?action=view&id=82}"></a>
+            </h2>
+            
+        </div>
+        
+    <div class="right">
+        <div class="weizhi">
+            <p>
+                <b>Your location：</b><a href="{url_help.php}">Help Home</a><span>&gt;</span><a href="{url_help.php?action=list&id=$position['typeid']}">{$position['typename']}</a></p>
+            <div>
+                <a target="_blank" href="{url_demo.php}">Demo</a></div>
+        </div>
+        <div class="bt">
+            <h1>
+                {$value['title']}</h1>
+        </div>
+        <div class="content">
+ 
+			{$value['body']}
+ 
+ 
+        </div>
+        <dl class="fy">
+            <dd>{if !empty($nextvalue)}<a href="{url_help.php?action=view&id=$nextvalue[aid]}">Next»</a>{/if}</dd>
+            <dt><a href="#one" title="返回顶部"></a></dt>
+        </dl>
+        <div class="relational">
+            <h2>
+                Help</h2>
+            <ul>
+                {loop $articlelist $val}
+                        <li><a href="{url_help.php?action=view&id=$val[aid]}">
+                            {$val['title']}</a></li>
+				{/loop}
+            </ul>
+        </div>
+    </div>
+    <div style="clear: both;" class="yj">
+    </div>
+
+    </div>
+    <input type="text" style="display: none;">
+    <div class="foot">
+        <p>
+            <a href="{url_about.php?action=aboutus}">About Shopping</a>&nbsp;|&nbsp;<a href="{url_about.php?action=contactus}">Contact us</a>&nbsp;|&nbsp;<a href="{url_about.php?action=joinus}">Join Us</a>&nbsp;|&nbsp;<a href="#" target="_blank">Team blog</a>&nbsp;|&nbsp;<a href="{url_about.php?action=links}">Links</a>
+        </p>
+        Copyright&nbsp;&copy;&nbsp;2010 代购! Inc. All rights reserved
+    </div>
+    </form>
+
+</body>

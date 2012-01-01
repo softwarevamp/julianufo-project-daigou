@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/rmb.css">
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ > 
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>    
+
+<script type="text/javascript" src="{TPL}js/mypanliGobal.js"></script>
+
+<title>
+
+</title>
+<style>
+.anniu{height:25px; padding-left:5px; padding-right:5px; border:#CCC solid 1px; background:#ffb619;}
+</style>
+</head>
+
+<body>
+
+
+    <form id="aspnetForm" action="RmbAccount.aspx" method="post" name="aspnetForm">
+<div>
+<input type="hidden" value="/wEPDwULLTEwNTYyNjAzMjkPZBYCZg9kFgJmD2QWAgIBD2QWAmYPZBYCAgEPZBYCAgEPFgIeC18hSXRlbUNvdW50ZmRk" id="__VIEWSTATE" name="__VIEWSTATE">
+</div>
+
+{template 'header'}
+
+    <div class="admin">
+        <div class="ding">
+            <div class="shouye">
+                <a title="我的会员中心" href="{url_m.php}"></a>
+            </div>
+            <div class="lb">
+               <div class="weizhi">
+                      <b>{lang Location}：</b><a href="{url_m.php}">{lang Member_Center}</a><span>&gt;</span>{lang my_RMB}
+                  </div>
+                
+                <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">{lang My_Member_Center}</a><span>|</span>{lang Setting_style}：</p>
+                    <ul>
+                        <li onclick="changeStyle('orange')" class="mypanliS1"></li>
+                        <li onclick="changeStyle('grey')" class="mypanliS2"></li>
+                        <li onclick="changeStyle('blue')" class="mypanliS3"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		
+{template 'member_left'}
+        
+    <div class="account">
+        <div class="tishi">
+            {lang Tips}：{lang Shown_cumbersome_procedures_each_order}。
+        </div>
+        <div class="zhanghu">
+            <div class="z_left">
+                <div class="qian">
+                    <img alt="我的RMB帐户" src="{TPL}images/qian.jpg">
+                </div>
+                <div class="yuer">
+                    <h1>
+                        {lang Dear_Member}&nbsp;{$_USERS['showname']}&nbsp;，{lang hello}！</h1>
+                    <dl>
+                        <dt>{lang Account_available_balance}：<b>￥{$_USERS['money']}</b></dt>
+                        <dd>
+                            <a  class="anniu" href="{url_m.php?name=rmbaccount&action=pay}">{lang Recharge_Now}</a><a  class="anniu" href="{url_m.php?name=recordslist}">{lang Consumer_records}</a></dd>
+                    </dl>
+                    <p>
+                        <a target="_blank" href="{url_help.php}">{lang Why_successful_change_account_balance}？</a></p>
+                </div>
+            </div>
+            <div class="z_right">
+                <h2>
+                    {lang Questions}：</h2>
+                <ul>
+				{php $helparray=helplist(5,'')}
+				{loop $helparray $r}
+                    <li><a target="_blank" href="{url_help.php?action=view&id=$r['aid']}">{$r['title']}</a></li>
+				{/loop}
+				
+                </ul>
+            </div>
+        </div>
+        <div class="fangshi" style="display:none">
+            <h2>
+               {lang Online_recharge_way}</h2>
+            <ul>
+                <li><a href="{url_m.php?name=rmbaccount&action=pay&type=1}" class="k1"></a>
+                    <p>
+                        <a href="{url_m.php?name=rmbaccount&action=pay&type=1}">PayPal充值</a><span>({lang Fee}：4%+0.3美元)</span></p>
+                </li>
+                <li><a href="{url_m.php?name=rmbaccount&action=pay&type=2}" class="k2"></a>
+                    <p>
+                        <a href="{url_m.php?name=rmbaccount&action=pay&type=2}">{lang Foreign_card_recharge}</a><span>({lang Fee}：3%)</span></p>
+                </li>
+                <li><a href="{url_m.php?name=rmbaccount&action=pay&type=3}" class="k3"></a>
+                    <p>
+                        <a href="{url_m.php?name=rmbaccount&action=pay&type=3}">{lang Domestic_card_recharge}</a><span>({lang Fee}：1%)</span></p>
+                </li>
+            </ul>
+            <div>
+                {lang Tips}：{lang Different_platforms_different_currency_translation_have_question}<a target="_blank" href="{url_help.php}">{lang Click_here}</a>！</div>
+        </div>	
+		
+		
+        <div class="jilu">
+            <div class="chongzhi">
+                <h2>
+                   {lang Record_last_recharge}</h2>
+                <a href="{url_m.php?name=refundrecord&action=refund}" class="tui" style="display:none">{lang would_like_request_refund}</a><a href="###" class="more" style="display:none">{lang See_more}</a>
+            </div>
+            <table>
+                <tbody><tr>
+                    <th>&nbsp;</th>
+                    <th>{lang date}</th>
+                    <th>{lang The_amount_recharge}</th>
+                    <th>{lang Recharge_way}</th>
+                    <th>{lang Transaction_number}</th>
+                    <th>{lang Operation}</th>
+                </tr>
+		
+		{loop $dataarray $key $r}
+				<tr>
+				<td class="z">{$key}</td>
+				<td class="h">{date('Y-m-d H:i:s',$r['successtime'])}</td>
+				<td class="z3">{$r['money']}</td>
+				<td class="z2">{$r['payname']}</td>
+				<td class="z4">{$r['sn']} </td>
+				<td class="h"><a href="{url_m.php?name=refundrecord&action=refund&rid=$r['rid']}" class="tui">{lang sh_out}</a></td>
+				</tr>
+		{/loop}
+            </tbody></table>
+        </div>
+    </div>
+
+        <div class="yj">
+        </div>
+    </div>
+
+    
+{template 'footer'}
+
+    </form>
+
+</body>
+</html>

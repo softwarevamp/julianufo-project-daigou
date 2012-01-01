@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{lang FS_purchase}" />
+<meta name="description" content="{lang FS_purchase}" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+<script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<link href="{TPL}css/pin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{TPL}js/Piece.js"></script>
+
+    <style type="text/css">
+        #ad20100930
+        {
+            z-index: 100;
+            display: none;
+            moz-opacity: 0.56;
+            opacity: 0.56;
+            filter: alpha(opacity=56);
+            height: 40px;
+            background: #fff url({TPL}images/footlayer.jpg) repeat-x 0 0;
+            position: fixed;
+            _position: absolute;
+            bottom: 0;
+            border-top: #5BB6D0 solid 2px;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+        .gg_close
+        {
+            width: 15px;
+            right: 10px;
+            margin: 5px 0 -100px 0;
+            background: url({TPL}images/1000912.gif) no-repeat center 2px;
+            height: 15px;
+            position: absolute;
+            z-index: 100;
+        }
+        .gg_img
+        {
+            float: left;
+            position: fixed;
+            _position: absolute;
+            bottom: 0;
+            z-index:8;width:950px;height:40px;cursor:pointer;}
+        .gg_img span
+        {
+            height: 40px;
+            width: 950px;
+            display: block;
+        }
+        .zd_hf
+        {
+            position: fixed;
+            _position: absolute;
+            margin-left: -475px;
+            left: 50%;
+            height: 40px;
+            width: 950px;
+            bottom: 0;
+            z-index: 110;
+            display: none;
+        }
+.pages {float:right;height:25px;margin:0px 10px 0px 0px;display:inline;overflow:hidden}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+
+    </style>
+<title>{lang Fight_purchase_shipping}</title>
+</head>
+<body>
+    
+    
+
+    <script type="text/javascript">        $(function() {
+            var r;
+            try {
+                r = jaaulde.utils.cookies.get("ad20100930");
+            } catch (eee) {
+                r = false;
+            }
+            if (!!r) {
+                $("#ad20100930,#ad20100930a").remove();
+            } else {
+                if (typeof document.body.style.maxHeight == "undefined") {
+                    $("#ad20100930,#ad20100930a").css("position", "absolute").css("margin-top", "0px").css("z-index", "100");
+                    var divY = getViewportHeight() - $("#ad20100930").outerHeight();
+                    $("#ad20100930,#ad20100930a").each(function() { $(this).css("top", (divY + document.documentElement.scrollTop).toString()); });
+                    $(window).scroll(function() { $("#ad20100930,#ad20100930a").each(function() { $(this).css("top", divY + document.documentElement.scrollTop + ""); }); });
+                }
+                $("#ad20100930,#ad20100930a").show();
+            }
+        });
+    </script>
+
+    <!-- <div id="ad20100930">
+        &nbsp;</div>
+   <div class="zd_hf" id="ad20100930a">
+        <a class="gg_img" href="#" target="_blank"><span style="background: url(http://sf.panli.com/FrontEnd/images20090801/special/20101030/bg.png) no-repeat 0 0;
+            _background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://sf.panli.com/FrontEnd/images20090801/special/20101030/bg.png?v=1',sizingMethod='scale');">
+        </span></a><a class="gg_close" href="javascript:;" onclick="$('#ad20100930,#ad20100930a').remove();jaaulde.utils.cookies.set('ad20100930', 'ad20100930', { domain: 'panli.com' }); return false;"
+            title="ر"></a>
+
+    </div>-->
+    <form name="aspnetForm" method="post" action="#" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTk2NjE5NzY2OWRk" />
+</div>
+
+    <div class="GobalCS" id="Panli_Customer" style="display: none;">
+        
+    </div>
+{template 'header'}
+	<div class="piece_top">
+        <div class="what">
+
+            <h2>
+                <img src="{TPL}images/what.gif" alt="什么是拼单" /></h2>
+            <ul>
+                <li>{lang bought_someone_fight_alone}！</li>
+                <li>{lang single_purchase_save_money}！</li>
+            </ul>
+            <a href="#" target="_blank">{lang View_single_rule}</a>
+
+        </div>
+        <div class="bp">
+            <h2>
+                <img src="{TPL}images/bp.gif" alt="我的单被别人拼了" /></h2>
+            <ul>
+                <li>{lang Member_Points_used_fight}！</li>
+                <li>{lang Untreated_baby_fight_alone}！</li>
+            </ul>
+
+        </div>
+        <div class="wp">
+            <h2>
+                <img src="{TPL}images/wp.gif" alt="我拼了别人的单" /></h2>
+            <ul>
+                <li>{lang Members_participate_purchase_fight}！</li>
+                <li>{lang Province_fight_more}！</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="piece">
+        <div class="left">
+            <div class="possible">
+                
+                <h2>
+                    <img src="{TPL}images/possible.gif" alt="可拼单的宝贝" /></h2>
+                
+                <div class="search">
+                    <div class="select">
+
+                           <input id="categoryID" onfocus="this.blur();" onmouseout="this.className='';" onmouseover="this.className='bian';" onclick="$('#categoryList').show()" readonly="readonly" type="text" value="所有分类" categoryid="-1" />
+					        <div onclick="this.style.display='none';" class="sort" id="categoryList" style="display: none;">
+						
+						
+							<a onclick="$('#categoryID').val('所有分类').attr('categoryid','0');" href="javascript:;"> {lang All_Categories}</a>
+						
+	{loop $typearray $r}
+		<a onclick="$('#categoryID').val('{$r['typename']}').attr('categoryid','{$r['typeid']}');" href="javascript:;"> {$r['typename']}</a>
+	{/loop}
+
+		</div>
+                    </div>
+                   <input class="text" id="searchKeyword" onfocus="searchFocus()"
+                        onblur="searchBlur()" name="" type="text" value="请输入商品名.." />
+          <input
+                            class="go" name="" onmouseover="this.className='go_'" onmouseout="this.className='go'"
+                            onclick="searchPiece()" type="button" value="搜一搜" />
+                </div>
+            </div>
+             <div class="merchandise">
+                <div class="gn">
+                    <ul>
+                        <li class="b1">
+
+                            <label>
+                                {lang Per_page}：</label><a class="yellow" href="{url_pinindex.php?pages=9}">9</a><a
+                                     href="{url_pinindex.php?pages=12}">12</a><a 
+                                        href="{url_pinindex.php?pages=24}">24</a></li>
+                        <li class="b2">
+                            <label>
+                                {lang Arrangement}：</label>
+                            <a class="s5_" href="#" title="默认">{lang Default}</a>
+
+                            <a class="s1" href="{url_pinindex.php?goodprices=asc}" title="按价格从低到高排序">
+                            </a><a class="s2" href="{url_pinindex.php?goodprices=desc}" title="按价格从高到低排序">
+                            </a><a class="s3" href="{url_pinindex.php?addtime=asc}" title="按时间从前到后排序">
+                            </a><a class="s4" href="{url_pinindex.php?addtime=desc}" title="按时间从后到前排序">
+                            </a></li>
+                        <li class="b3">
+                            <label>
+                                {lang Prices_area}：</label><input value="" class="wenben"
+                                    id="minPrice" name="minPrice" type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')" /><b>-</b><input
+                                        value="" class="wenben" id="maxPrice" name="maxPrice"
+                                        type="text" onkeyup="value=value.replace(/[^\d\.]/g,'')" />
+										<input class="que" id="subSearchBtn" name="submitprice" type="submit" value="确定" onclick="subSearch()" />
+
+                        </li>
+                        <li class="b4">
+                            <dl>
+                            	<dt><a target="_self" id="ctl00_NewContentPlaceHolder_next" href="?page={echo $page-1}">{lang Previous}</a></dt>
+                                <dd><a target="_self" id="ctl00_NewContentPlaceHolder_next" href="?page={echo $page+1}">{lang Next}</a></dd>
+                            </dl>
+                            
+                            </li>
+                    </ul>
+
+                </div>
+                
+                <ul class="Goods">
+                        {loop $dataarray $r} 
+                            <li>
+                                <div class="pic">
+                                    <a href="{$r['goodsurl']}" target="_blank">
+                                        <img src="{$r['orderimg']}"
+                                            alt="{$r['goodsname']}" onerror="this.src='{TPL}images/noimg220.gif';" height="220" width="220" /></a>
+                                </div>
+                                <div class="summary">
+
+                                    <h1 id="goodsname">
+                                        <a href="{url_pinindex.php?action=pay&oid=$r['oid']}" target="_blank" title="{$r['goodsname']}">
+                                            {$r['goodsname']}</a></h1>
+                                    <p>
+                                       ￥{$r['goodsprice']}</p>
+                                    <div class="pd"><a href="{url_pinindex.php?action=pay&oid=$r['oid']}" target="_blank">{lang I_fight_alone}</a></div>
+                                    <dl>
+
+                                        <dd>
+                                            {lang Sources_business}：<span>{$r['goodssite']}</span><b>-</b>{$r['goodsseller']}</dd>
+                                        <dd>
+                                            By：<span>{$r['uname']}</span></dd>
+                                        <dd>
+                                           {lang Popularity}：<span >{$r['pinnum']}{lang Times}</span></dd>
+
+                                    </dl>
+                                </div>
+                            </li>
+                        {/loop}
+                </ul>
+            </div>
+
+           <div class="yj">
+{echo pagelist($total,$pagesize,$page,"");}
+        </div>
+	</div>
+        <div class="right">
+            <div class="bz">
+                <div class="lm">
+                    <img src="{TPL}images/help.gif" alt="拼单帮助" />
+                </div>
+
+                <div class="ask">
+                    <ul>
+                    	<li><a href="{url_help.php?action=view&id=102}" target="_blank" title="{lang benefits_single_share_fight}">{lang benefits_single_share_fight}?</a></li>
+						<li><a href="{url_help.php?action=view&id=103}" target="_blank" title="{lang members_participate_single_Mody}？">{lang members_participate_single_Mody}？</a></li>
+						<li><a href="{url_help.php?action=view&id=107}" target="_blank" title="{lang fight_points_returned_Mody}？" style="color:red">{lang fight_points_returned_Mody}?</a></li>
+						<li><a href="{url_help.php?action=view&id=106}" target="_blank" title="{lang Fancy_goods_fight_alone}？">{lang Fancy_goods_fight_alone}?</a></li>
+						<li><a href="{url_help.php?action=view&id=105}" target="_blank" title="{lang unsuccessful_spell_under_circumstances}">{lang unsuccessful_spell_under_circumstances}？</a></li>
+					</ul>
+                </div>
+                <div class="jishu">
+                    <ul>
+                        <li>{lang Attendance}:<span>{$totalnum}</span></li>
+
+                        <li>{lang Goods_fight}:<span>{$total}</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bz">
+                <div class="h2">
+                    <img src="{TPL}images/ing.gif" alt="拼单进行时" />
+                </div>
+
+                <div class="ing">
+                    <ul>
+                    {loop $data $r} 	
+                       <li>
+                           <span>{ddate('Y-m-d', $r['addtime'])}  </span><i>{$r['uname']}</i>{lang successful_fight}
+					   </li>
+					{/loop}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bz">
+                <div class="h2">
+                    <img src="{TPL}images/bang.gif" alt="热拼宝贝" />
+                </div>
+                <div class="bang">
+                    <div id="point" class="jifen">
+                    	{loop $rightarray $key $r} 
+                                <dl>
+                                    <dt style="display: none;">
+                                        <div class="img">
+                                            <a href="{$r['goodsurl']}" target="_blank" title="{$r['goodsname']}">
+                                                <img src="{$r['goodsimg']}"
+                                                    alt="" /></a>
+                                        </div>
+                                        <div class="xiangxi">
+                                            <h1>
+                                                <i>
+
+                                                    {echo $key+1}.</i><a title="{$r['goodsname']}" href="{$r['goodsurl']}"
+                                                        target="_blank">{$r['goodsname']}</a></h1>
+                                            <label>
+                                                ￥{$r['goodsprice']}</label>
+                                            <p>
+                                               {lang B_purchase}：<i>{$r['pinnum']}</i>{lang Times}</p>
+                                        </div>
+
+                                    </dt>
+                                    <dd onmouseover="showHotProInfo(this)">
+                                        <span>{echo $key+1}</span><p>
+                           <a href="{$r['goodsurl']}" target="_blank">{$r['goodsname']}
+                                             </a></p>
+                                    </dd>
+                                </dl>  
+							{/loop}
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+{template 'footer'}
+    </form>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try { var pageTracker = _gat._getTracker("UA-436090-1"); pageTracker._trackPageview(); } catch (err) { }
+    </script>
+
+</body>
+</html>

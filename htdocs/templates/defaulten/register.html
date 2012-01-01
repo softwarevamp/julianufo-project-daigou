@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户注册 - {$cfg_site_name}</title>
+<link href="{TPL}css/Register.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"> </script>
+<script type="text/javascript" src="{TPL}js/Register.js"> </script>
+</head>
+
+<body>
+{template 'header'}
+<div class="box">
+<form name="login" method="post" action="{url_user.php?action=register}">
+<input type="hidden" name="commit" value="1"/>
+        <div class="move">
+          <img alt="注册" src="{TPL}images/move.gif"></div>
+        <div class="welcome"><img alt="注册" src="{TPL}images/welcome.gif" /></div>
+        <div class="register">
+<table>
+                <tbody>
+                <tr>
+                    <td class="l">
+                        username
+：
+                    </td>
+                    <td>
+                        <input type="text" onblur="nicknameblur(this)" onfocus="focusCheck(this,&quot;Case letters, Chinese, numbers, characters or the length of 2-8 4-16 characters &quot;);" name="regNickName" id="regNickName" maxlength="20" value="">
+                        <p>
+                            Nickname can be used as your login account</p>
+                  </td>
+                </tr>
+				<tr>
+                    <td class="l">
+                        email site：
+                    </td>
+                    <td>
+                        <input type="text" onblur="emailBlur(this)" onfocus="focusCheck(this,&quot;This will serve as the account login Panli, to receive a verification message &quot;);" name="regEmail" id="regEmail" maxlength="80" value="">
+                        <p>
+                            E-mail account as you log on, receive a verification message</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                        set password：
+                    </td>
+                    <td>
+               <input type="password" onfocus="focusCheck(this,'Password can be case-sensitive letters, numbers, 6-20 characters in length')" onblur="checkPassword(this)" value="" name="regPassword" id="regPassword" maxlength="20" onkeydown="passPower(this)">
+                        <p>
+                            Enter your username and password</p>
+                        <div style="display: none;" class="rank" id="passPower">
+                            Security Level: Low</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                        confirm_password：
+                    </td>
+                    <td>
+                        <input type="password" value="" onblur="reCheckPassword(this)" onfocus="focusCheck(this,'enter your password again')" name="regRePassword" maxlength="20" id="regRePassword">
+                        <p>
+                            Please enter again</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">
+                        auth code：
+                    </td>
+                    <td>
+                      <input type="text" name="regCheckCodeInput" class="verification" id="regCheckCodeInput" ><img border="0" onclick="var now=new Date();this.src='includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" style="vertical-align: middle; cursor: pointer;" alt="验证码" title="点击图片刷新" src="includes/code/securimage_show.php?sid={echo md5(time())}&amp;w=92&amp;h=30&amp;t='+Math.random();" id="regCheckCode">
+                        <a onclick="$('#regCheckCode').click();" style="cursor: pointer;">Not clear? For Photo</a>
+                        <p style="display: none;" class="red">
+                           Verification code input error, please re-enter</p>
+                    </td>
+                </tr>
+            </tbody></table>
+            <div class="refer">
+                <span>
+                    <label>
+                        <input type="checkbox" checked="checked" value="" name="regAgree" id="regAgree">have read and agree</label><a target="_blank" href="#">《User Registration Agreement》</a></span>
+                <input type="button" onclick="regSubmit()" onmouseout="this.className='button'" onmouseover="this.className='button_'" value="Submit registration" name="" class="button">
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="bottom_1">
+    </div>
+
+{template 'footer'}	
+</body>
+</html>

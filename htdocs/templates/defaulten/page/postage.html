@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+
+<script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+
+<link type="text/css" href="{TPL}css/yunfei.css" rel="stylesheet" />
+<title>International shipping - {$cfg_site_name}</title>
+</head>
+<body>
+
+<form name="aspnetForm" method="post" action="" id="aspnetForm">
+
+
+{template 'header'}
+
+    <script type="text/javascript">
+        function showpaihang(str, num) {
+            document.getElementById(str + "_1").className = "";
+            document.getElementById(str + "_2").className = "";
+            document.getElementById(str + "_3").className = "";
+            document.getElementById(str + "_4").className = "";
+            document.getElementById(str + "_" + num).className = "on_";
+            document.getElementById(str + "1").style.display = "none";
+            document.getElementById(str + "2").style.display = "none";
+            document.getElementById(str + "3").style.display = "none";
+            document.getElementById(str + "4").style.display = "none";
+            document.getElementById(str + num).style.display = "";
+        }
+    </script>
+
+    <div class="yunfei">
+        <div class="yunfei_top">
+            <h1>
+             Shipping comparison table<span>（Shipping）</span></h1>
+            <p>
+                We offer the following quality and cheap ways for you to compare the international shipping！</p>
+        </div>
+
+        <div class="name_">
+            <ul>
+                <li class="on_" id="kd_1" onclick="showpaihang('kd','1')">DHL fast</li>
+                <li id="kd_2" onclick="showpaihang('kd','2')">EMS fast</li>
+                <li id="kd_3" onclick="showpaihang('kd','3')">AIR General Express<span>(2kgThe following postal packets)</span></li>
+                <li id="kd_4" onclick="showpaihang('kd','4')">Domestic forwarding</li>
+
+            </ul>
+        </div>
+        <div class="dibu">
+            <div class="biao" style="display: " id="kd1">
+                <p>
+                    DHL transported the general period of 2 to 3 working days, a slightly different change of the national transport Oh!</p>
+                <table width="100%" border="0">
+                    <tr>
+
+                        <th colspan="2" class="w1">
+                          Arrived in
+                        </th>
+                        <th class="w2">
+                            Lifting less than 500g and
+                        </th>
+                        <th class="w3">
+                            Every 500g added weight or the number of zero
+                        </th>
+                    </tr>
+
+                    <tr class="lanmu">
+                        <td colspan="2" class="w11">
+                            Country / Region
+                        </td>
+                        <td class="w2">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                        <td class="w3">
+
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            美国
+                        </td>
+                        <td class="w1">
+
+                            USA
+                        </td>
+                        <td class="w2">
+                            151.00
+                        </td>
+                        <td class="w3">
+                            50.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+
+                        <td>
+                            加拿大
+                        </td>
+                        <td class="w1">
+                            Canada
+                        </td>
+                        <td class="w2">
+                            151.00
+                        </td>
+                        <td class="w3">
+
+                            50.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            法国
+                        </td>
+                        <td class="w1">
+                            France
+                        </td>
+
+                        <td class="w2">
+                            211.00
+                        </td>
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            英国
+                        </td>
+
+                        <td class="w1">
+                            U.K.
+                        </td>
+                        <td class="w2">
+                            211.00
+                        </td>
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="w1">
+                            爱尔兰
+                        </td>
+                        <td class="w1">
+                            ireland
+                        </td>
+                        <td class="w2">
+                            211.00
+                        </td>
+
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            荷兰
+                        </td>
+                        <td class="w1">
+                            Netherlands
+                        </td>
+
+                        <td class="w2">
+                            211.00
+                        </td>
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            澳大利亚
+                        </td>
+
+                        <td class="w1">
+                            Australia
+                        </td>
+                        <td class="w2">
+                            171.50
+                        </td>
+                        <td class="w3">
+                            37.50
+                        </td>
+                    </tr>
+
+                    <tr class="hui">
+                        <td class="w1">
+                            新西兰
+                        </td>
+                        <td class="w1">
+                            New Zealand
+                        </td>
+                        <td class="w2">
+                            171.50
+                        </td>
+
+                        <td class="w3">
+                            37.50
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            德国
+                        </td>
+                        <td class="w1">
+                            Germany
+                        </td>
+
+                        <td class="w2">
+                            211.00
+                        </td>
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td colspan="2" class="w11">
+                            西欧(Western Europe)
+                            <div class="guojia">
+
+                                Austria / Belgium / Denmark / Finland / Greece / Iceland / Luxembourg / Monaco / Norway / Spain / Portugal / Sweden / Switzerland / Turkey / Malta / Italy
+                            </div>
+                        </td>
+                        <td class="w2">
+                            211.00
+                        </td>
+                        <td class="w3">
+                            53.00
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="w11">
+                            东南亚(Southeast Asia)
+                            <div class="guojia">
+                                Malaysia / Singapore / Thailand / Vietnam / Cambodia / Philippines / Indonesia / Japan / Korea / Mongolia / North Korea / Hong Kong / Macau / China Taiwan
+Reading
+Display the corresponding Latin alphabet characters</div>
+                        </td>
+                        <td class="w2">
+                            212.50
+                        </td>
+
+                        <td class="w3">
+                            44.50
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            Other countries
+                        </td>
+                        <td class="w1">
+                            other
+                        </td>
+
+                        <td class="w2">
+                            385.00
+                        </td>
+                        <td class="w3">
+                            100.00
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="biao" style="display: none" id="kd2">
+
+                <p>
+                    EMS transported the general period of 5 to 7 working days, a slightly different change of the national transport Oh！</p>
+                <table width="100%" border="0">
+                    <tr>
+                        <th colspan="2" class="w1">
+                            Arrived in
+                        </th>
+                        <th colspan="2" class="w2">
+                            Lifting less than 500g and
+                        </th>
+
+                        <th colspan="2" class="w3">
+                            Every 500g added weight or the number of zero
+                        </th>
+                    </tr>
+                    <tr class="lanmu">
+                        <td colspan="2" class="w11">
+                            Country / Region
+                        </td>
+                        <td class="w2">
+                            Official Price<span>(￥)</span>
+
+                        </td>
+                        <td class="w2">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                        <td class="w3">
+                            Official Price<span>(￥)</span>
+                        </td>
+
+                        <td class="w3">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            美国
+                        </td>
+
+                        <td class="w1">
+                            USA
+                        </td>
+                        <td class="w2 shan">
+                            240.00
+                        </td>
+                        <td class="w2 red">
+                            140.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td>
+                            加拿大
+                        </td>
+
+                        <td class="w1">
+                            Canada
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            法国
+                        </td>
+
+                        <td class="w1">
+                            France
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            英国
+                        </td>
+
+                        <td class="w1">
+                            U.K.
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            爱尔兰
+                        </td>
+
+                        <td class="w1">
+                            ireland
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            澳大利亚
+                        </td>
+
+                        <td class="w1">
+                            Australia
+                        </td>
+                        <td class="w2 shan">
+                            210.00
+                        </td>
+                        <td class="w2 red">
+                            122.00
+                        </td>
+                        <td class="w3 shan">
+
+                            55.00
+                        </td>
+                        <td class="w3 red">
+                            32.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            新西兰
+                        </td>
+
+                        <td class="w1">
+                            New Zealand
+                        </td>
+                        <td class="w2 shan">
+                            210.00
+                        </td>
+                        <td class="w2 red">
+                            122.00
+                        </td>
+                        <td class="w3 shan">
+
+                            55.00
+                        </td>
+                        <td class="w3 red">
+                            32.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            德国
+                        </td>
+
+                        <td class="w1">
+                            Germany
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="w11">
+                            西欧(Western Europe)
+                            <div class="guojia">
+
+                                Austria / Belgium / Denmark / Finland / Greece / Iceland / Luxembourg / Monaco / Norway / Spain / Portugal / Sweden / Switzerland / Turkey / Malta / Italy
+                            </div>
+                        </td>
+                        <td class="w2 shan">
+                            280.00
+                        </td>
+                        <td class="w2 red">
+                            163.00
+                        </td>
+                        <td class="w3 shan">
+
+                            75.00
+                        </td>
+                        <td class="w3 red">
+                            44.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td colspan="2" class="w11">
+                            东南亚(Southeast Asia)
+                            <div class="guojia">
+
+                                Malaysia / Singapore / Thailand / Vietnam / Cambodia / Philippines / Indonesia / Japan / Korea / Mongolia / North Korea / Hong Kong / Macau / China Taiwan</div>
+                        </td>
+                        <td class="w2 shan">
+                            190.00
+                        </td>
+                        <td class="w2 red">
+                            111.00
+                        </td>
+                        <td class="w3 shan">
+
+                            45.00
+                        </td>
+                        <td class="w3 red">
+                            27.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            Other countries
+                        </td>
+
+                        <td class="w1">
+                            other
+                        </td>
+                        <td class="w2 shan">
+                            445.00
+                        </td>
+                        <td class="w2 red">
+                            259.00
+                        </td>
+                        <td class="w3 shan">
+
+                            120.00
+                        </td>
+                        <td class="w3 red">
+                            70.00
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="biao" style="display: none" id="kd3">
+                <p>
+
+                    AIR transport of longer term, the general operation of 8 to 15 business days, we recommend users do not choose rush delivery in this manner。</p>
+                <table width="100%" border="0">
+                    <tr>
+                        <th colspan="2" class="w1">
+                            Arrived in
+                        </th>
+                        <th class="w2">
+                            Lifting less than 100g and
+                        </th>
+
+                        <th class="w3">
+                            Every 100g added weight or the number of zero
+                        </th>
+                    </tr>
+                    <tr class="lanmu">
+                        <td colspan="2" class="w11">
+                            Country / Region
+                        </td>
+                        <td class="w2">
+                            Shopping discount<span>(￥)</span>
+
+                        </td>
+                        <td class="w3">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            美国
+                        </td>
+
+                        <td class="w1">
+                            USA
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+
+                    <tr class="hui">
+                        <td>
+                            加拿大
+                        </td>
+                        <td class="w1">
+                            Canada
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            法国
+                        </td>
+                        <td class="w1">
+                            France
+                        </td>
+
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            英国
+                        </td>
+
+                        <td class="w1">
+                            U.K.
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="w1">
+                            爱尔兰
+                        </td>
+                        <td class="w1">
+                            ireland
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            荷兰
+                        </td>
+                        <td class="w1">
+                            Netherlands
+                        </td>
+
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            澳大利亚
+                        </td>
+
+                        <td class="w1">
+                            Australia
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+
+                    <tr class="hui">
+                        <td class="w1">
+                            新西兰
+                        </td>
+                        <td class="w1">
+                            New Zealand
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w1">
+                            德国
+                        </td>
+                        <td class="w1">
+                            Germany
+                        </td>
+
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td colspan="2" class="w11">
+                            西欧(Western Europe)
+                            <div class="guojia">
+
+                                Austria / Belgium / Denmark / Finland / Greece / Iceland / Luxembourg / Monaco / Norway / Spain / Portugal / Sweden / Switzerland / Turkey / Malta / Italy
+                            </div>
+                        </td>
+                        <td class="w2">
+                            18.00
+                        </td>
+                        <td class="w3">
+                            15.00
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="w11">
+                            东南亚(Southeast Asia)
+                            <div class="guojia">
+                                Malaysia / Singapore / Thailand / Vietnam / Cambodia / Philippines / Indonesia / Japan / Korea / Mongolia / North Korea / Hong Kong / Macau / China Taiwan</div>
+                        </td>
+                        <td class="w2">
+                            14.00
+                        </td>
+
+                        <td class="w3">
+                            9.00
+                        </td>
+                    </tr>
+                    <tr class="hui">
+                        <td class="w1">
+                            Other countries
+                        </td>
+                        <td class="w1">
+                            other
+                        </td>
+
+                        <td class="w2">
+                            20.00
+                        </td>
+                        <td class="w3">
+                            18.00
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="biao" style="display: none" id="kd4">
+
+                <p>
+                   Transferred to the general operation of domestic period of 2 to 3 business days, different regions of slight changes Oh Yun！</p>
+                <table width="100%" border="0">
+                    <tr>
+                        <th class="w1">
+                            Lifting less than 500g and
+                        </th>
+                        <th class="w2">
+                            Every 500g added weight or the number of zero
+                        </th>
+
+                        <th class="w3">
+                            Packing
+                        </th>
+                    </tr>
+                    <tr class="lanmu">
+                        <td class="w11">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+
+                        <td class="w2">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                        <td class="w3">
+                            Shopping discount<span>(￥)</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            20.00
+                        </td>
+                        <td class="w2">
+                            9.00
+                        </td>
+                        <td class="w3">
+                            Free
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{template 'footer'}
+
+
+    </form>
+
+</body>
+</html>
+

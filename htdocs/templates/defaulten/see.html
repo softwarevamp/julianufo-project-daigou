@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<link href="{TPL}css/see.css" rel="Stylesheet" type="text/css">
+<script type="text/javascript" src="{TPL}js/SeeRun.js"></script>
+<style type="text/css">
+.pages {height:25px;margin:15px 0 0 0;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+<meta content="代购,淘宝网,服装,代购商品,购物网站" name="keywords">
+<meta content="随便逛逛，看看大家最近在代购什么商品？你可以了解会员经常逛的购物网站、淘宝网卖家；发现更多服装、饰品、特产等宝贝。代购商品之前，不妨先逛逛。" name="description">
+<title>[{$cfg_site_name}-随便逛逛] - 看看大家都在买什么</title>
+</head>
+<body>
+  {template 'header'}
+  <div class="see_pic">
+    <div class="search">
+      <div class="select">
+        <input type="text" value="{$typearray2[$type]['typename']}" name="" id="categoryID" categoryid="{$type}" onclick="$('#categoryList').show()" onmouseover="this.className='bian';" onmouseout="this.className='';" onfocus="this.blur();" readonly="readonly">
+        <div onclick="this.style.display='none';" class="sort" id="categoryList" style="display: none;">
+	
+	
+		<a onclick="$('#categoryID').val('Categories').attr('categoryid','0');" href="javascript:;"> Categories</a>
+	
+	{loop $typearray $r}
+		<a onclick="$('#categoryID').val('{$r['typename']}').attr('categoryid','{$r['typeid']}');" href="javascript:;"> {$r['typename']}</a>
+	{/loop}
+
+		</div>
+      </div>
+      <input type="text" value="" name="" class="text" id="keyword">
+      <input type="button" onmouseout="this.className='button'" onmouseover="this.className='button_'" class="button" id="searchbtn">
+    </div>
+  </div>
+  <div class="see">
+    <div class="see_left  mar_right_10">
+      <div class="pltj" style="height:auto">
+        <div class="lm">
+          <h2> <img alt="Panli推荐" src="{TPL}images/see_tj.gif"> </h2>
+          <span><a target="_blank" href="{url_recommend.php}">More..</a> </span> </div>
+        <ul>
+		
+		{loop $rightarray $r}
+		
+          <li>
+            <dl>
+              <dt><a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}"> <img alt="{$r['goodsname']}" src="{$r['goodsimg']}"></a></dt>
+              <dd>
+                <h1> <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}"> {substrs($r['goodsname'],45)}</a></h1>
+                <p> Price：<span> ￥{$r['goodsprice']}</span></p>
+                <div> Source：<a target="_blank" href="{$r['sellerurl']}">{$r['goodsseller']}</a></div>
+                <b><a href="###">[{$r['shopname']}]</a></b> </dd>
+            </dl>
+          </li>
+
+		{/loop}
+		  
+        </ul>
+      </div>
+      <!--<div class="see_zk" style="">
+        <div class="lm">
+          <h2><img alt="折扣信息" src="{TPL}images/see_zk.gif"></h2>
+          <span><a href="{url_discount.php}">More..</a></span></div>
+        <ul>
+		{loop $discountarray $r}
+          <li>
+            <h3><a target="_blank" href="{url_discount.php?action=view&did=$r['did']}">{$r['title']}</a></h3>
+            <p>{$r['about']}<a target="_blank" href="{url_discount.php?action=view&did=$r['did']}">Details&gt;&gt;</a></p>
+          </li>
+		{/loop}
+		
+        </ul>
+      </div>-->
+    </div>
+    <div class="see_right">
+      <div class="see_h2">
+        <h2> <img alt="show" src="{TPL}images/zhanshi.gif"></h2>
+        <dl>
+          <dt></dt>
+          <dd> <a target="_self" id="ctl00_NewContentPlaceHolder_next" href="?page={echo $page+1}">NEXT</a></dd>
+        </dl>
+      </div>
+      <div class="ku"> <a href="{url_see.php}">View all products</a> </div>
+      <div class="tishi" style="display: block;"> Product Information from other shopping sites, subject to the source site information！ </div>
+      <div class="tongji">
+        <label> Latest search<span id="recordnum">1000</span>Records</label>
+        <b><a href="{url_see.php}">View all products</a></b> </div>
+      <div class="see_show">
+	  
+	  {loop $dataarray $r}
+	  
+        <ul>
+          <li class="s_left"><a target="_blank" href="{$r['goodsurl']}" name="{$r['oid']}"> <img onerror="this.src='/images/noimg80.gif'" largesrc="{$r['orderimg']}" src="{$r['showimg']}"></a> </li>
+          <li class="s_mid">
+            <h1><a href="{$r['goodsurl']}" title="{$r['goodsname']}" target="_blank">{$r['goodsname']}</a></h1>
+            <dl>
+              <dt><em>￥{$r['goodsprice']}</em><span>Categories：<a href="?type={$r['typeid']}">{$typearray2[$r['typeid']]['typename']}</a></span></dt>
+              <dd>
+                <label> Source：</label>
+                <a target="_blank" href="{$r['siteurl']}" class="wz">{$r['goodssite']}</a><a target="_blank" href="{$r['sellerurl']}" class="dm">{$r['goodsseller']}</a></dd>
+            </dl>
+          </li>
+          <li class="s_right">
+            <dl>
+              <dt>Purchaser:{$r['uname']}</dt>
+              <dt style="font-size:11px">Time:{ddate('Y-m-d', $r['addtime'])}</dt>
+              <dd> <a onclick="FastAddShow('{$r['goodsurl']}')">Shopping</a> </dd>
+            </dl>
+          </li>
+        </ul>
+		{/loop}
+		
+      </div>
+      <div class="" style="">
+		{echo pagelist($total,$pagesize,$page,"");}
+      </div>
+    </div>
+  </div>
+  <div class="windows" id="LargePicDiv" style="width:320px;display: none;">
+    <div class="jiantou"> </div>
+    <div class="white" style="width:310px"> <a target="_blank" href="#"> <img alt="" src="MAX-WIDTH: 310px" style=""></a></div>
+    <p> <a target="_blank" href="#" id="PicTitle"></a> </p>
+  </div>
+  {template 'footer'}
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>登陆 - 代购中国</title>
+<meta content="" name="keywords">
+<meta content="" name="description">
+<meta content="IE=7" http-equiv="X-UA-Compatible">
+<link type="text/css" rel="stylesheet" href="{TPL}css/login.css">
+
+</head><body>
+
+<div class="top_menu">
+    <div class="top_menu_c">
+      <div class="m_l">	您好，欢迎来代购！ <a href="./?act=login"> 请登录</a> 或 <a href="./?act=register"> 免费注册</a> </div>
+      <div class="m_2">
+	&nbsp;<a href="./?act=myAccount">我的账户</a>&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+	&nbsp;<a href="./?act=cart">购物车</a>&nbsp; &nbsp;&nbsp;<span>|</span><!--&nbsp;&nbsp;&nbsp;<a href="./index.php?act=QA"><img src="{TPL}images/icon_helpt.gif" align="absmiddle" /> 帮助</a>-->&nbsp;&nbsp;&nbsp;<a href="./index.php?act=news&amp;id=40">配送区域</a>&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+	&nbsp;<a href="./index.php?act=paymethods">支付方式</a>&nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;<img src="{TPL}images/icon_helpt.gif" width="10" height="11" align="absmiddle"> <a href="./index.php?act=Consultation">在线咨询</a>&nbsp;</div>
+    </div>
+</div>
+<div class="body">
+  
+  
+<div class="top">
+  
+  <div class="t_left">    
+<div class="t_1"><a title="86Daigou.com - 代购中国商品，服务全球华人" href="/"><img height="77" border="0" width="200" id="Image4" name="Image4" src="{TPL}images/logo.gif"></a></div>
+    </div>
+  <div class="t_right">
+      <div class="t_3"></div>
+        <div class="t_4"><a title="填写代购单" href="./?act=buy"><img src="{TPL}images/addn.gif" width="140" height="28"></a></div>
+    
+	
+    <div class="t_5">
+<a href="./index.php?act=Review">&gt; 查看4000多条点评</a>
+      </div></div>
+  </div>
+  <div class="t_line"></div>
+  <script src="./js/prototype.js" type="text/javascript" language="JavaScript"></script>
+<script src="./js/checkinfo.js" type="text/javascript" language="JavaScript"></script>
+<script src="./js/ajax.js" type="text/javascript" language="JavaScript"></script>
+  <div class="main">
+  <div class="clear"></div>
+  	
+    <div class="main_other1">
+    <div class="clear"></div>
+    	<br>
+    	<br>
+    	<form name="login" method="post" action="{url_user.php?action=login}">
+		<input type="hidden" size="20" value="login" id="act" name="act">
+        <table height="352" cellspacing="0" cellpadding="0" border="0" align="center" width="95%">
+          
+          <tbody><tr>
+            <td width="57%" valign="bottom" style="background: transparent url({TPL}images/loginmain.jpg) no-repeat scroll right center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><table height="148" cellspacing="0" cellpadding="0" border="0" align="right" width="97%">
+              <tbody><tr>
+                <td height="37">&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="111"><div align="right"><a href="./index.php?act=news&amp;id=78">零风险代购计划</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+              </tr>
+            </tbody></table>              </td>
+            <td height="333" width="43%" valign="middle"><div align="left">
+              <table cellspacing="0" cellpadding="10" border="0" align="center" width="444">
+                <tbody><tr>
+                  <td width="424"><div class="input_f">
+                      <table cellspacing="1" cellpadding="5" border="0" width="92%">
+                        <tbody><tr>
+                          <td colspan="2"><strong><img height="35" align="absmiddle" width="35" src="{TPL}images/logint.gif"> 登陆代购中国</strong></td>
+                        </tr>
+                        <tr>
+                          <td width="30%"><div align="right">用户名或邮箱：</div></td>
+                          <td width="70%"><input type="text" value="" size="28" onfocus="this.className='buy_ipt2'" onblur="this.className='buy_ipt1';" onmouseout="this.className='buy_ipt1';" onmouseover="this.className='buy_ipt2';" id="u_userName" class="buy_ipt1" name="userName"></td>
+                        </tr>
+                        <tr>
+                          <td><div align="right">密码：</div></td>
+                          <td><input type="password" value="" size="28" onfocus="this.className='buy_ipt2'" onblur="this.className='buy_ipt1';" onmouseout="this.className='buy_ipt1';" onmouseover="this.className='buy_ipt2';" id="u_userPw" class="buy_ipt1" name="password"></td>
+                        </tr>
+                        <tr>
+                          <td width="30%"><div align="right">验证码：</div></td>
+                          <td><input type="text" size="8" onfocus="this.className='buy_ipt2'" onblur="this.className='buy_ipt1';" onmouseout="this.className='buy_ipt1';" onmouseover="this.className='buy_ipt2';" id="gd_code" class="buy_ipt1" name="gd_code">
+                              <img align="absmiddle" onclick="var now=new Date();this.src='./public/GD.php?'+now.getTime();" style="cursor: pointer;" src="./public/GD.php"> </td>
+                        </tr>
+                        <tr>
+                          <td width="30%">&nbsp;</td>
+                          <td><div style="position: relative;"><a href="./index.php?act=forgot_pw"></a>
+                                <label onmouseout="document.getElementById('autoLoginDiv').style.display='none'" onmouseover="document.getElementById('autoLoginDiv').style.display=''" for="remUsername">
+                                  <input type="checkbox" id="remUsername" name="RememberMe" tabindex="4" class="ipt-c">
+                                  两周以内自动登录</label>
+                            <div id="autoLoginDiv" style="border: 1px solid rgb(255, 153, 0); padding: 5px; position: absolute; width: 180px; height: 35px; background-color: rgb(255, 239, 164); left: 0pt; top: 20px; text-align: left; line-height: 150%; color: rgb(220, 104, 0); font-size: 12px; display: none;">为了您的信息安全，请不要在网吧或公用电脑上使用此功能！</div>
+                          </div></td>
+                        </tr>
+                        <tr>
+                          <td><div align="right"><input name="commit" type="hidden" value="提交"/></div></td>
+                          <td><div align="left"><a href="###"  onclick="login.submit()"><img src="{TPL}images/login_01.gif" width="82" height="24" style="cursor: pointer;" onclick="login.submit()"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./?act=register"><img src="{TPL}images/login_02.gif" width="78" height="24" style="cursor: pointer;"></a></div>                            </td>
+                        </tr>
+                        <tr>
+                          <td height="40"></td>
+                          <td height="40"><a href="./index.php?act=forgot_pw">忘记密码</a></td>
+                        </tr>
+                      </tbody></table>
+                  </div></td>
+                </tr>
+              </tbody></table>
+            </div></td>
+          </tr>
+        </tbody></table>
+	  </form>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+{template 'footer'}
+</div>
+</body></html>

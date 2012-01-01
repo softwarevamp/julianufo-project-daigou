@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{TPL}css/Recommend.css">
+<script type="text/javascript" src="{TPL}js/RecommendRun.js"></script>
+ 
+<meta content="商品推荐,代购,女装,服饰,护肤,食品" name="keywords">
+<meta content="国内的流行趋势是什么？网友都喜欢代购什么？时尚女装、服饰、美容护肤、中国美味食品一为您推荐！" name="description">
+    
+<title>
+	[{$cfg_site_name}-推荐] - 精选华人热购商品 喜欢就立即代购吧！
+</title></head>
+
+<body>
+
+<form id="aspnetForm" action="Default.aspx" method="post" name="aspnetForm">
+
+
+{template 'header'}
+
+  <div class="recommend">
+    <div class="left">
+            <div class="dh">
+                <h2>
+                </h2>
+              <ul>
+                    <li><a title="服装" href="{url_recommend.php?action=list&tid=1}" class="q1"></a></li>
+                    <li><a title="鞋包" href="{url_recommend.php?action=list&tid=2}" class="q2"></a></li>
+                    <li><a title="美容" href="{url_recommend.php?action=list&tid=3}" class="q3"></a></li>
+                    <li><a title="居家" href="{url_recommend.php?action=list&tid=4}" class="q4"></a></li>
+                    <li><a title="配饰" href="{url_recommend.php?action=list&tid=5}" class="q5"></a></li>
+                    <li><a title="食品" href="{url_recommend.php?action=list&tid=6}" class="q6"></a></li>
+              </ul>
+            </div>
+            <div class="ranking">
+                <div class="phb">
+                    <h2>
+                    </h2>
+                </div>
+                <div class="ph">
+                    
+                    {loop $leftarray $key $r}
+                    <dl>
+                        <dt {if $key==0}style="display: block;"{else}style="display: none;"{/if}>
+                            <div class="img">
+                                <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                <img alt="{$r['goodsname']}" src="{$r['goodsimg']}">
+                                </a>
+                            </div>
+                            <div class="xiangxi">
+                                <h1>
+                                    <b>
+                                        1.</b> <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                            {substrs($r['goodsname'],45)}</a>
+                                </h1>
+                                <label>
+                                    {$r['goodsprice']}</label>
+                                <p>
+                                    Source：<span>{$r['shopname']}</span></p>
+                            </div>
+                        </dt>
+                        <dd {if $key==0}style="display: none;"{else}style="display: block;"{/if}>
+                            <span>{echo $key+1}</span>
+                            <p>
+                                <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                    {substrs($r['goodsname'],45)}</a>
+                            </p>
+                        </dd>
+                    </dl>
+					{/loop}
+
+                </div>
+            </div>
+    </div>
+        <div class="right">
+            <dl class="gs">
+                <dt>
+                  <img alt="Panli推荐" src="{TPL}images/tuijian_tj.gif"></dt>
+                <dd>
+                    <ul>
+                        <li>The trend of commodity！</li>
+                        <li>The best quality for your protection seller！</li>
+                    </ul>
+                </dd>
+            </dl>
+            <div class="gundong">
+                <div id="MainPromotionBanner">
+                    <div id="SlidePlayer" style="height: 275px;">
+                        <ul id="Slides" class="Slides" style="height: 825px; position: absolute; top: -275px;">
+						
+								{loop $topcarray $r}
+						<li><a title="{$r['title']}" href="{url_special.php?action=view&sid=$r['sid']}" target="_blank"><img src="{$r['pic']}" alt="{$r['title']}"></a></li>
+					{/loop}	
+
+						
+						
+						</ul><ul class="SlideTriggers"><li class="">1</li><li class="Current">2</li><li class="">3</li></ul>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="xbtj">
+                <h2>
+                  <img alt="小编推荐" src="{TPL}images/xbtj1.gif"></h2>
+                <p>
+                    <a href="{url_recommend.php?action=list&tid=1}">Dress</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=2}">Shoes bag</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=3}">Hairdressing</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=4}">Home</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=5}">Accesory</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=6}">Food</a>
+					</p>
+            </div>
+            <div class="lb">
+                
+
+			{loop $rightarray $key $r}
+                
+                <dl>
+                    <dt><a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                        <img alt="{$r['goodsname']}" src="{$r['goodsimg']}"></a></dt>
+                    <dd>
+                        <h1>
+                            <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                            {$r['goodsname']}
+							</a></h1>
+                        <ul>
+                            <li><b>￥{$r['goodsprice']}</b></li>
+                            <li>
+                                <label>
+                                    Sources：
+                                </label>
+                                <span><i>
+                                    {$r['shopname']}</i></span><a target="_blank" href="{$r['sellerurl']}"><i>{$r['goodsseller']}</i></a></li>
+                            <li>
+                                <label>
+                                    Recommended：
+                                </label>
+                                <div>
+                                  <img alt="{$r['goodsname']}" src="{TPL}images/star{$r['rindex']}.gif"></div>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+ 
+		{/loop}
+                
+                <div style="clear: both;">
+                </div>
+            </div>
+		<!--好友推荐模块-->
+			 <div class="xbtj">
+                <h2>
+                  <img alt="好友推荐" src="{TPL}images/xbtj.gif" /></h2>
+                <p>
+                    <a href="{url_recommend.php?action=list&tid=1}">Clothing</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=2}">Shoe bag</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=3}">Beauty</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=4}">Home</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=5}">Accessories</a>&nbsp;|&nbsp;
+					<a href="{url_recommend.php?action=list&tid=6}">Food</a>
+					</p>
+          
+			</div>
+            <div class="lb">
+			{loop $rightuserarray $key $r}
+                
+                <dl style="height:143px;">
+                    <dt><a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                        <img alt="{$r['goodsname']}" src="{$r['goodsimg']}" style="height:115px;" /></a></dt>
+                    <dd>
+                        <h1>
+                            <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                            {$r['goodsname']}
+							</a></h1>
+                        <ul>
+                            <li><b>￥{$r['goodsprice']}</b></li>
+                            <li>
+                                <label>
+                                    Business：
+                                </label>
+                                <span><i>
+                                    {$r['shopname']}</i></span><a target="_blank" href="{$r['sellerurl']}"><i>{$r['goodsseller']}</i></a></li>
+                            <li>
+                                <label>
+                                    Star：
+                                </label>
+                                <div>
+                                  <img alt="{$r['goodsname']}" src="{TPL}images/star{$r['rindex']}.gif" /></div>
+                            </li>
+							  <li>
+                                <label>
+                                    Recommended：
+                                </label>
+                                
+                                   <i>{$r['uname']}</i>
+                            </li>
+							
+                        </ul>
+                    </dd>
+					<label>Recommended reason：</label><span style="width:170px;">{substrs($r['why'],48,0,1)}</span>
+                </dl>
+		{/loop}
+                <div style="clear: both;width:86px;height:58px;">
+                </div>
+            </div>
+    <!--好友推荐模块-->
+    </div>
+    </div>
+
+    
+{template 'footer'}
+    </form>
+
+
+</body>
+</html>

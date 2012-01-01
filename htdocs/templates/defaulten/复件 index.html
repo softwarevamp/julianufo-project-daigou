@@ -1,0 +1,715 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="代购,中国代购,华人代购,淘宝代购,留学生代购,国内代购,团购,拼单购" />
+<meta name="description" content="" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+<script src="{TPL}js/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<script type="text/javascript" src="{TPL}yuan/Translation.js"></script>
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewIndex.css" />
+<!--[if lte IE 6]><script type="text/javascript" src="{TPL}js/unitpngfix.js"></script><![endif]-->
+<link type="text/css" rel="Stylesheet" href="{TPL}yuan/css/css.css" />
+
+
+
+
+<script type="text/javascript">
+    $(function() {
+        var e = function(n, b) {
+            if (n.length > b) {
+                return n.substring(0, b - 2) + "...";
+            }
+            return n;
+        };
+		
+		
+		
+        $.getJSON("/ajax/index_ajax.php?action=maqueeproduct&r=" + Math.random(),
+        function(n) {
+            var b = $("<ul></ul>");
+            $("#Slider").empty().append(b);
+            $.each(n,
+            function(o, p) {
+                b.append('<li><div class="detailed"><div class="pic"><a href="{url_see.php?type=}' + p.c + "#" + p.id + '"><img width=80 height=80 alt="' + p.n + '" src="' + p.p + '" /></a></div><div class="info"><h2><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 40) + "</a></h2><dl><dd><b>￥" + p.m + "</b><span>" + p.d + '</span></dd><dd class="i_bj">代购信息：<i>' + p.un + "</i>购买于" + p.s + '</dd></dl></div></div><div class="concise"><p><a href="{url_see.php?type=}' + p.c + "#" + p.id + '">' + e(p.n, 25) + "</a></p><span>" + p.d + "</span></div></li>");
+            }); (function(v, x) {
+                var w = true;
+                var u = b;
+                var o = 0;
+                var p;
+                var t = 1;
+                var y = u.find(".concise:eq(0)").outerHeight();
+                u.scrollTop(0);
+                u.children().each(function() {
+                    o += $(this).outerHeight();
+                });
+                u.append(u.html());
+                var q = u.find("li:eq(1)");
+                $(q).find(".detailed").show();
+                $(q).find(".concise").hide();
+                var z = function() {
+                    var s = u.scrollTop();
+                    if (s >= o) {
+                        q = u.find("li:eq(0)");
+                        u.find(".detailed").hide();
+                        $(q).find(".detailed").show();
+                        $(q).find(".concise").hide();
+                    }
+                    u.scrollTop((s >= o ? 0 : s) + t);
+                    if (u.scrollTop() % y == 0) {
+                        r();
+                    }
+                };
+                function r() {
+                    t = 0;
+                    if (w) {
+                        setTimeout(function() {
+                            $(q).find(".concise").show();
+                            q = $(q).next("li:first");
+                            if (!q) {
+                                q = u.find("li:first");
+                            }
+                            u.find(".detailed").hide();
+                            $(q).find(".detailed").show();
+                            $(q).find(".concise").hide();
+                            w = true;
+                            t = 1;
+                        },
+                        x);
+                    }
+                    w = false;
+                }
+                u.find("li").mouseover(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".detailed").show();
+                    $(this).find(".concise").hide();
+                    clearInterval(p);
+                });
+                u.find("li").mouseout(function() {
+                    u.find(".detailed").hide();
+                    $(this).find(".concise").show();
+                    $(q).find(".detailed").show();
+                    $(q).find(".concise").hide();
+                    p = setInterval(z, v);
+                });
+                p = setInterval(z, v);
+            })(30, 3000);
+        });
+		
+        $.getJSON("/ajax/index_ajax.php?action=recommendproduct&r=" + Math.random(),
+        function(b) {
+            var o = $('<div class="g_left"><a href="javascript:;" title="向左"></a></div>').click(function() {
+                clearTimeout(s);
+                if (v != w) {
+                    return;
+                }
+                p(v - 1);
+            });
+            var x = $('<div class="g_right"><a href="javascript:;" title="向右"></a></div>').click(function() {
+                clearTimeout(s);
+                if (v != w) {
+                    return;
+                }
+                p();
+            });
+            var t = $('<div class="g_box"></div>');
+            var n = $('<div class="g_center"></div>').append(t).hover(function() {
+                clearTimeout(s);
+                u = true;
+            },
+            function() {
+                clearTimeout(s);
+                u = false;
+                s = setTimeout(function() {
+                    p();
+                },
+                3000);
+            });
+            $.each(b,
+            function(y, z) {
+                var r = $("<ul></ul>");
+                $.each(z,
+                function(B, A) {
+                    r.append('<li><div class="g_pic"><a href="{url_recommend.php?action=view&gid=}' + A.id + '" target="_blank"><img src="' + A.p + '" alt="' + A.n + '" /></a><p>已购买' + A.s + '件</p></div><h2><a href="{url_recommend.php?action=view&gid=}' + A.id + '" target="_blank">' + A.n + "</a></h2><span>￥" + A.m + "</span></li>");
+                });
+                t.append(r);
+            });
+            t.append(t.children().clone()).width(660 * b.length * 2);
+            $("#Recommend").empty().append(o).append(n).append(x);
+            var s = setTimeout(function() {
+                p();
+            },
+            5000);
+            var v = 0;
+            var w = v;
+            var u = false;
+            var q = t.find("ul").length;
+            var p = function(r) {
+                w = (r || r == 0) ? r: v + 1;
+                if (w >= q) {
+                    w = b.length;
+                    t.css("margin-left", 0 - 660 * (w - 1));
+                }
+                if (w < 0) {
+                    w = b.length - 1;
+                    t.css("margin-left", 0 - 660 * (w + 1));
+                }
+                t.fadeTo("fast", 0.5).animate({
+                    marginLeft: (0 - 660 * w) + "px"
+                },
+                800,
+                function() {
+                    $(this).fadeTo("fast", 1);
+                    v = w;
+                    clearTimeout(s);
+                    if (!u) {
+                        s = setTimeout(function() {
+                            p();
+                        },
+                        5000);
+                    }
+                });
+            };
+        });
+		
+        $("#navi ul li:first-child").addClass("qh");
+        $("#navi ul li:last-child").addClass("wu");
+        $(".desc").hide();
+        $("#desc1").show();
+        $("#navi ul li ").mouseover(function() {
+            $("#navi ul li").removeClass();
+            $(this).addClass("qh");
+            if ($(this).next("li").length == 0) {
+                $(this).prev("li").addClass("wu");
+            } else {
+                $(this).next("li").addClass("wu");
+            }
+            $(".desc").hide();
+            $(".desc:eq(" + $("#navi ul li").index(this) + ")").show();
+        });
+    });
+</script>
+
+<title>
+	[{$cfg_site_name}] - 全球最大的华人代购网站
+</title></head>
+<body>
+   
+
+
+{template 'header'}
+    <div id="flash">
+    <div id="flash_left">
+        <div class="f_title">SERVICE</div>
+        <ul>
+          <li class="r1"><a href="###" title="正在建设中">Add Money</a></li>
+
+          <li class="r2"><a href="###" title="正在建设中">Step Guide</a></li>
+          <li class="r3"><a href="###" title="正在建设中">Service Fees</a></li>
+          <li class="r4"><a href="###" title="正在建设中">Payment</a></li>
+          <li class="r5"><a href="###" title="正在建设中">Shipping</a></li>
+          <li class="r6"><a href="###" title="正在建设中">Lnsurance</a></li>
+        </ul>
+      </div>
+
+      <div id="flash_right">
+      <div id="flash_1">
+        <div class="i_btn_login"> <a href="{url_user.php?action=register}"> <img height="45" border="0" width="180" alt="免费注册，享代购乐趣！" src="{TPL}images/blank.gif" /> </a></div>
+        <div class="i_newer">
+          <a href="./index.php?act=news&amp;id=24">What</a>
+          <a href="./index.php?act=news&amp;id=85">Why</a> 
+          <a href="./index.php?act=news&amp;id=122">Learn</a>
+          <a href="./index.php?act=news&amp;id=102">Range</a>
+         </div>
+      </div>
+      
+      </div> 
+    </div>
+    
+    <div class="shop_pro">
+   
+   <!--bd-->
+<div class="bd_img">
+	<div class="sideLeft">    
+        <div class="module" id="step">
+        <h5 class="title">Shopping Procedure</h5>
+		<ul class="steplst" id="steplst">
+        <li><img src="{TPL}yuan/images/step1.jpg" id="imgstep1" onMouseOver="javascript:helpTabSelect('step1');" style="cursor:auto;" /></li>
+        <li><img src="{TPL}yuan/images/step2.jpg" id="imgstep2" onMouseOver="javascript:helpTabSelect('step2');" style="cursor:auto;"/></li>
+        <li><img src="{TPL}yuan/images/step3.jpg" id="imgstep3" onMouseOver="javascript:helpTabSelect('step3');" style="cursor:auto;"/></li>
+        <li><img src="{TPL}yuan/images/step4.jpg" id="imgstep4" onmouseover="javascript:helpTabSelect('step4');" style="cursor:auto;"/></li>
+        <li><img src="{TPL}yuan/images/step5.jpg" id="imgstep5" onMouseOver="javascript:helpTabSelect('step5');" style="cursor:auto;"/></li>
+        </ul>
+        <div class="msgl" id="step1"><div class="msgr"><div class="msgm">
+        You select items on Chinese Online Stores, copy the URL and place the order on www.yoybuy.com.
+        </div></div></div>
+        <div class="msgl" id="step2" style="display:none;"><div class="msgr"><div class="msgm">
+        Choose a suitable payment method to add money to your account and pay items fee.
+        </div></div></div>
+        <div class="msgl" id="step3" style="display:none;"><div class="msgr"><div class="msgm">
+         The purchaser of yoybuy.com will buy your order after the payment is done.
+         </div></div></div>
+
+        <div class="msgl" id="step4" style="display:none;"><div class="msgr"><div class="msgm"> 
+        After items arrive at our company, select the items you would like to ship and submit delivery address. After you get the exact weight, select a delivery method and pay delivery fees.
+        </div></div></div>
+        <div class="msgl" id="step5" style="display:none;"><div class="msgr"><div class="msgm"> 
+        You confirm the receipt of the parcel and leave a feedback.
+        </div></div></div>
+        </div>
+    </div>
+</div>
+<!--bd-->
+<script type="text/javascript" language="javascript">
+var last = 'step1';
+										
+										document.getElementById('step2').style.display = 'none';
+										document.getElementById('step3').style.display = 'none';
+										document.getElementById('step4').style.display = 'none';
+										document.getElementById('step5').style.display = 'none';
+										
+										document.getElementById('imgstep1').src = "{TPL}yuan/images/step1_1.jpg";
+										document.getElementById('imgstep2').src = "{TPL}yuan/images/step2.jpg";								
+										document.getElementById('imgstep3').src = "{TPL}yuan/images/step3.jpg";
+										document.getElementById('imgstep4').src = "{TPL}yuan/images/step4.jpg";
+										document.getElementById('imgstep5').src = "{TPL}yuan/images/step5.jpg";
+										
+										function helpTabSelect(id)
+										{
+											document.getElementById(last).style.display = 'none';
+											document.getElementById(id).style.display = '';		
+											if(id == "step1")
+											{
+												document.getElementById('imgstep1').src = "{TPL}yuan/images/step1_1.jpg";
+												document.getElementById('imgstep2').src = "{TPL}yuan/images/step2.jpg";
+												document.getElementById('imgstep3').src = "{TPL}yuan/images/step3.jpg";
+												document.getElementById('imgstep4').src = "{TPL}yuan/images/step4.jpg";
+												document.getElementById('imgstep5').src = "{TPL}yuan/images/step5.jpg";
+											}
+											else if(id == "step2")
+											{
+												document.getElementById('imgstep1').src = "{TPL}yuan/images/step1.jpg";
+												document.getElementById('imgstep2').src = "{TPL}yuan/images/step2_1.jpg";
+												document.getElementById('imgstep3').src = "{TPL}yuan/images/step3.jpg";
+												document.getElementById('imgstep4').src = "{TPL}yuan/images/step4.jpg";
+												document.getElementById('imgstep5').src = "{TPL}yuan/images/step5.jpg";
+											}	
+											else if(id == "step3")
+											{
+												document.getElementById('imgstep1').src = "{TPL}yuan/images/step1.jpg";
+												document.getElementById('imgstep2').src = "{TPL}yuan/images/step2.jpg";
+												document.getElementById('imgstep3').src = "{TPL}yuan/images/step3_1.jpg";
+												document.getElementById('imgstep4').src = "{TPL}yuan/images/step4.jpg";
+												document.getElementById('imgstep5').src = "{TPL}yuan/images/step5.jpg";
+											}			
+											else if(id == "step4")
+											{
+												document.getElementById('imgstep1').src = "{TPL}yuan/images/step1.jpg";
+												document.getElementById('imgstep2').src = "{TPL}yuan/images/step2.jpg";
+												document.getElementById('imgstep3').src = "{TPL}yuan/images/step3.jpg";
+												document.getElementById('imgstep4').src = "{TPL}yuan/images/step4_1.jpg";
+												document.getElementById('imgstep5').src = "{TPL}yuan/images/step5.jpg";
+											}		
+											else if(id == "step5")
+											{
+												document.getElementById('imgstep1').src = "{TPL}yuan/images/step1.jpg";
+												document.getElementById('imgstep2').src = "{TPL}yuan/images/step2.jpg";	
+												document.getElementById('imgstep3').src = "{TPL}yuan/images/step3.jpg";
+												document.getElementById('imgstep4').src = "{TPL}yuan/images/step4.jpg";
+												document.getElementById('imgstep5').src = "{TPL}yuan/images/step5_1.jpg";
+											}
+											last = id;
+										}
+</script>  
+   
+    </div>
+    
+    
+  <div class="center">
+    <div class="box">
+            
+            <div class="left">
+                <div class="see">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_see.php}">What to buy？</a></h2>
+                        <span><a href="{url_see.php}">More...</a></span>
+
+                    </div>
+                    <div class="see_list" id="Slider">
+                        <div class="seeLoading">
+                            <img src="{TPL}images/loading.gif" alt="数据加载中..." />
+                            <p>
+                                数据加载中...</p>
+                        </div>
+                        <ul>
+
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tuan">
+                    <div class="lm">
+                        <h2>
+
+                            <a href="special.php">Exchange Rate</a></h2>
+                        <span><a class="ts" href="special.php">activities</a></span>
+                    </div>
+                  <div class="tuan_show">
+                  
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody><tr>
+    <td class="sx">Currency</td>
+    <td class="sx">Exchange Rate</td>
+    <td class="sx">Currency</td>
+    <td class="sx">Exchange Rate</td>
+  </tr>
+  <tr>
+    <td class="xx"><img src="{TPL}/images/USD.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['USD']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/Canadian.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['CAD']['rate']}</span></td>
+  </tr>
+  <tr>
+    <td class="xx"><img src="{TPL}/images/oub.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['EUR']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/GBP.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['GBP']['rate']}</span></td>
+  </tr>
+  <tr>
+    <td class="xx"><img src="{TPL}/images/aob.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['AUD']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/xjpb.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['SGD']['rate']}</span></td>
+  </tr>
+    <tr>
+    <td class="xx"><img src="{TPL}/images/dkk.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['DKK']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/sek.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['SEK']['rate']}</span></td>
+  </tr>
+    <tr>
+    <td class="xx"><img src="{TPL}/images/NOK.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['NOK']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/JPY.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['JPY']['rate']}</span></td>
+  </tr>
+    <tr>
+    <td class="xx"><img src="{TPL}/images/PHP.gif" /></td>
+    <td class="xx"><b class="up"></b><span class="up price">{$ratedata['PHP']['rate']}</span></td>
+    <td class="xx"><img src="{TPL}/images/THB.gif" /></td>
+    <td class="xx"><b class="down"></b><span class="up price">{$ratedata['THB']['rate']}</span></td>
+  </tr>
+</tbody></table>
+
+                   <!--<div class="tuan_show_x">
+                    <img src="{TPL}/images/2010-09-16_173903.jpg">
+                    <h2>
+                            <a href="special.php?action=view&amp;sid=3">
+                    浪漫夏日 必备连衣裙单品大网罗…</a></h2>
+                    </div>-->
+                           </div>
+
+                </div>
+                
+                <div class="pd">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_help.php}">FAQ</a></h2>
+                      <span><a href="{url_help.php}" class="ts">More</a></span>
+                    </div>
+                    <div class="ask0">
+                    <ul class="ask0_list">
+				{loop $articlearray $r}
+				<li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+				{/loop}
+
+				
+				
+				</ul>
+                    </div>
+                    <!--<div class="pd_list">
+
+                        <ul>
+						{loop $cptjarray $r}
+                            <li>
+                                <div class="pd_pic">
+                                    <a href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                        <img onerror="this.src='{TPL}images/noimg80.gif'"
+                                            alt="{$r['goodsname']}" src="{$r['goodsimg']}" /></a>
+                                </div>
+                                <div class="pd_info">
+                                    <h2>
+                                        <a href="{url_recommend.php?action=view&gid=$r['gid']}">
+
+                                             {substrs($r['goodsname'],45)}</a></h2>
+                                    <dl>
+                                        <dd>
+                                            <p>
+                                                &nbsp;<i>{$r['buynum']}</i>People purchasing</p>
+                                            <b>{$r['shopname']}</b></dd>
+
+                                        <dd class="pd_jq">
+                                            ￥{$r['goodsprice']}</dd>
+                                    </dl>
+                                </div>
+                            </li>
+                         {/loop}   
+
+                            </ul>
+                    </div>-->
+                </div>
+             <!--   <div class="bbs">
+                    
+                    <div class="lm">
+					<h2><a href="###" target="_blank">Chinese forum</a></h2>
+					<span><a href="###" target="_blank">More...</a></span>
+					</div>
+					<div class="bbs_info">
+					<dl><dt><a href="###" target="_blank"><img src="{TPL}images/index_21.gif" alt="文艺调的率性——专访etc" /></a></dt><dd><h1><a href="#" target="_blank">文艺调的率性——专访etc</a></h1>
+					<p>本期之星是有着“月败达人”之称的etc，让我们一起走进她的世界吧！<a href="#" target="_blank">详细&gt;&gt;</a></p>
+					</dd></dl>
+					<ul>
+					
+					<li><a href="#" target="_blank">2010小K的行程：GARDALAND、米兰、Prato</a></li>
+					<li><a href="#" target="_blank">搜了一堆牛仔包包! 大爱啊大爱啊! 纠结中......</a></li>
+					<li><a href="#" target="_blank">史上最全的女生皮肤必修课（哇哇，这么全~~）</a></li>
+					<li><a href="#" target="_blank">小S的新包包到咯 先小秀一下！</a></li>
+					</ul>
+					
+					</div>
+
+                </div>-->
+                <div class="tuan">
+                    <div class="lm">
+                        <h2>
+
+                            <a href="{url_special.php}">Quality goods</a></h2>
+                        <span><a href="{url_special.php}" class="ts">Participated living</a></span>
+                    </div>
+
+					{loop $specialarray $r}
+                    <div class="tuan_show"  style="height:243px;">
+                        <div class="tuan_pic">
+                            <a href="{url_special.php?action=view&sid=$r['sid']}">
+                                <img src="{$r['pic']}" alt="{$r['title']}" /></a>
+                        </div>
+
+                        <h2>
+                            <a href="{url_special.php?action=view&sid=$r['sid']}">{$r['title']}</a></h2>
+                        <div class="tuan_info">
+                            <p>
+                             {substrs($r['about'],135)}</p>
+                        </div>
+                    </div>
+					{/loop}
+                </div>
+                <!--<div class="xiaobian">
+                    <div class="lm">
+                        <h2>
+                            <a href="{url_recommend.php}">Recommend</a></h2>
+
+                        <div class="xb_lm">
+                            <p>
+                                <a href="{url_recommend.php?action=list&tid=1}">Dress</a><i>|</i><a href="{url_recommend.php?action=list&tid=2}">Shoes Bag</a><i>|</i><a
+                                    href="{url_recommend.php?action=list&tid=3}">Hairdressing</a><i>|</i><a href="{url_recommend.php?action=list&tid=4}">House</a><i>|</i><a
+                                        href="{url_recommend.php?action=list&tid=5}">Accesory</a><i>|</i><a href="{url_recommend.php?action=list&tid=6}">Food</a></p>
+
+                        </div>
+                    </div>
+                    <div class="xb_list" id="Recommend">
+                        <div class="pdLoading">
+                            <img src="{TPL}images/loading.gif" alt="数据加载中..." />
+                            <p>
+                                Data Loading...</p>
+                        </div>
+
+                        
+                    </div>
+                </div>-->
+            </div>
+<div class="right">
+                
+                <div class="gonggao">
+				<div class="r_lm"><h2><a href="{url_news.php}" target="_blank">Notice</a></h2><span><a href="{url_news.php}" target="_blank">More...</a></span></div>
+				<ul class="gg_nr">
+				{loop $newsarray $r}
+				<li><a href="{url_news.php?action=view&nid=$r['nid']}" target="_blank" title="{$r['title']}" style="color:red">{$r['title']}</a></li>
+				{/loop}
+				</ul>
+				</div>               
+      <div class="ask">
+				<div class="r_lm">
+				  <h2><a href="{url_help.php}">Online translation</a></h2></div>
+				  <ul class="ask_list">
+				<!--{loop $articlearray $r}
+				<li><a href="{url_help.php?action=view&id=$r['aid']}" target="_blank" title="{$r['title']}">{$r['title']}</a></li>
+				{/loop}
+				-->
+					<li>1st <span>Enter Englist words</span></li>
+					<li>2st <span>Click</span> Englist to Chinese</li>
+					<li>3st <span>Click</span> Go Taobao</li>
+			      </ul>
+           <div id="example3" style="width:180px; height:100px; margin-left:20px;">
+			  <p class="example">
+			  <input type="text" value="What Want to buy" onfocus="if (this.value == 'What Want to buy') {this.value = '';}" onblur="if (this.value == '') {this.value = 'What Want to buy';}" style="color: red;width: 160px; font-family: Arial;" size="20" />
+			  <input type="button" id="submit" value="English to Chinese" style="width: 165px; font-family:Arial; font-weight: bold; color: #009ad6;" />
+			  </p>
+             <div class="search-box">
+			    <form style="height:50px;width:170px;overflow:hidden;padding:0px;margin:0px;" action="http://search1.taobao.com/browse/search_auction.htm?at_topsearch=1" method="post" target="_blank">
+			      <div id="tresult" class="search-form">
+			        <span class="search-q">
+			        <input type="text" autocomplete="off" accesskey="s" name="q" id="q" value="Translate Result" style="color: red;width: 160px; font-family: Arial;" size="20" />
+			        </span>
+			        <button id="DoSearch" type="submit" style="font-weight: bold; font-family:Arial; color: #009ad6; width: 165px;" />
+			        Go To Taobao</button>
+			      </div>
+			      <input type="hidden" name="sort" value="" />
+			      <input type="hidden" name="at_topsearch" value="1" />
+			      <input type="hidden" name="f" value="D9_5_1" />
+			      <input type="hidden" name="promote" value />
+			      <input type="hidden" name="isnew" value="2" />
+			      <input type="hidden" name="atype" value="b" />
+			      <input type="hidden" name="commend" value="all" />
+			      <input type="hidden" name="search_type" value="auction" />
+			      <input type="hidden" name="user_action" value="initiative" />
+			      <input type="hidden" name="ssid" value="s1-e" />
+			    </form>
+             </div>
+		  </div>
+            
+            
+            
+            
+       </div>
+                <div class="partner"><div class="r_lm">
+                  <h2>Partner</h2>
+                </div><div class="partner_list"><table><tr><td class="z">
+                <img src="{TPL}images/634171369911755766.gif" alt="PayPal" /></td><td>The most popular method</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145324912025623.gif" alt="环迅支付" /></td><td>Should "pay" with ease</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145324979105741.gif" alt="EMS" /></td><td>Speed committed</td></tr><tr><td class="z">
+                <img src="{TPL}images/634145325015765805.gif" alt="DHL" /></td><td>Leader in logistics</td></tr></table></div></div>
+                
+            </div>
+      </div>
+	     <div class="ect" style="float:right;margin-top:28px;margin-right:236px;">
+      <div class="tit">
+         <h2>TAOBAO EACHNET DANGDANG ETCNG ETC</h2>
+      </div>
+      
+      <div class="main">
+      <ul>
+        <li><a href="http://www.taobao.com/"><img src="{TPL}images/taobao.gif" /></a></li>
+        <li><a href="http://www.eachnet.com/"><img src="{TPL}images/yd.jpg" /></a></li>
+        <li><a href="http://www.dangdang.com/"><img src="{TPL}images/dd.jpg" /></a></li>
+        <li><a href="http://www.paipai.com/"><img src="{TPL}images/pp.jpg" /></a></li>
+        <li><a href="http://youa.baidu.com/"><img src="{TPL}images/ya.jpg" /></a></li>
+        <li><a href="http://www.amazon.cn/"><img src="{TPL}images/zy.jpg" /></a></li
+        ><li><a href="http://www.taobao.com/"><img src="{TPL}images/taobao.gif" /></a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    
+ 
+
+    
+    <!--dd-->
+    
+<DIV style="Z-INDEX: 1; POSITION: absolute; WIDTH: 80px; HEIGHT: 191px; VISIBILITY: visible; TOP: 300px; RIGHT: 156px" id="divStayTopright">
+<SCRIPT language=javascript type=text/javascript>
+if(screen.width == "1280" || screen.hight == "1024" )
+{
+    document.getElementById("divStayTopright").style.right = "156";
+}
+</SCRIPT>
+
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="98%">
+<TBODY>
+<TR>
+<TD><IMG alt="" src="{TPL}images/gd1.gif" width=108 height=70 /></TD></TR>
+<TR>
+<TD bgColor="#0099ff" height=80><IMG alt="" src="{TPL}images/gd4.gif" width=108 height=78 /></TD></TR>
+<TR>
+  <TD>
+  <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+	<TBODY>
+	<TR>
+	<TD><A href="http://wpa.qq.com/msgrd?v=3&uin=598608888&site=qq&menu=yes" target=blank><IMG border=0 alt="" src="{TPL}images/qq1.gif" width=54 height=25 /></A></TD>
+	<TD><A href="http://wpa.qq.com/msgrd?v=3&uin=591061888&site=qq&menu=yes" target=blank><IMG border=0 alt="" src="{TPL}images/qq2.gif" width=54 height=25 /></A></TD>
+	</TR>
+	<TR>
+	<TD><A href="http://wpa.qq.com/msgrd?v=3&uin=616389888&site=qq&menu=yes" target=blank><IMG border=0 alt="" src="{TPL}images/qqq3.gif" width=54 height=25 /></A></TD>
+	<TD><A href="http://wpa.qq.com/msgrd?v=3&uin=9477708&site=qq&menu=yes" target=blank><IMG border=0 alt="" src="{TPL}images/qqq4.gif" width=54 height=25 /></A></TD>
+	</TR>
+
+	<TR>
+	<TD colSpan=2><IMG border=0 alt="" src="{TPL}images/yszx1.gif" width=108 height=47 /></TD></TR>
+	<TR>
+	<TD colSpan=2><IMG border=0 alt="" src="{TPL}images/yszx2.gif" width=108 height=47 /></TD></TR>
+	<TR>
+	<TD colSpan=2><a href="msnim:chat?contact=baby7.99@msn.com"target=blank><IMG border=0 alt="" src="{TPL}images/yszxmsn1.gif" width=108 height=47 /></a></TD></TR>
+	<TR>
+	<TD colSpan=2><a href="msnim:chat?contact=babydaigou@msn.com"target=blank><IMG border=0 alt="" src="{TPL}images/yszxmsn2.gif" width=108 height=47 /></a></TD></TR>
+	</TBODY>
+  </TABLE>
+  </TD>
+</TR>
+<TR>
+<TD><A href="#dg"><IMG border=0 alt="" src="{TPL}images/gd3.gif" width=108 height=115 /></A></TD>
+</TR>
+</TBODY></TABLE>
+</DIV>
+
+<SCRIPT type=text/javascript> 
+var verticalpos="frombottom"
+function JSFX_FloatTopDiv()
+{
+var startX =70,
+startY = 459;
+var ns = (navigator.appName.indexOf("Netscape") != -1);
+var d = document;
+function ml(id)
+{
+  var el=d.getElementById?d.getElementById(id):d.all?d.all[id]:d.divs[id];
+  if(d.divs)el.style=el;
+  el.sP=function(x,y){this.style.right=x;this.style.top=y;};
+  el.x = startX;
+  if (verticalpos=="fromtop")
+  el.y = startY;
+  else{
+  el.y = ns ? pageYOffset + innerHeight : document.documentElement.scrollTop + 
+document.documentElement.clientHeight;
+  el.y -= startY;
+  }
+  return el;
+}
+window.stayTopright=function()
+{
+  if (verticalpos=="fromtop"){
+  var pY = ns ? pageYOffset : document.documentElement.scrollTop;
+  ftlObj.y += (pY + startY - ftlObj.y)/8;
+  }
+  else{
+  var pY = ns ? pageYOffset + innerHeight : document.documentElement.scrollTop + 
+document.documentElement.clientHeight;
+  ftlObj.y += (pY - startY - ftlObj.y)/8;
+  }
+  ftlObj.sP(ftlObj.x, ftlObj.y);
+  setTimeout("stayTopright()", 10);
+}
+ftlObj = ml("divStayTopright");
+stayTopright();
+}
+JSFX_FloatTopDiv();
+</SCRIPT>  
+    
+{template 'footer'}
+</body>
+</html>
+

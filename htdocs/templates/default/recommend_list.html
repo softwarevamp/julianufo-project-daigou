@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="{lang knitwear_Korean_Japanese_sweaters}" name="keywords">
+<meta content="{$cfg_site_name}{lang Clothing_jackets_knitwear_sweaters_Shopping}！" name="description">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+
+<script type="text/javascript" src="{TPL}js/jquery-1.4.1.min.js"></script>
+
+<script type="text/javascript" src="{TPL}js/jQuery.Extend.js"></script>
+
+<script src="{TPL}js/jQuery.Drag.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="{TPL}js/jquery.cookies.2.1.0.min.js"></script>
+
+<script src="{TPL}js/Gobal.js" type="text/javascript"></script>
+
+
+<link type="text/css" rel="stylesheet" href="{TPL}css/List.css">
+
+<script type="text/javascript" src="{TPL}js/jquery.json-1.3.min.js"></script>
+
+    <script type="text/javascript">
+        var cate="{$typename}",subcate="";
+        $(document).ready(function() {
+            var cateList = $(".caidan h3");
+            cateList.children("a[title=" + cate + "]").parent("h3").addClass("t");
+            if (subcate != "")
+                $(".caidan li:contains('" + subcate + "')").addClass("x");
+            var data = $.evalJSON(jaaulde.utils.cookies.get("scan"));
+            if (data != null) {
+                $.each(data, function(index, item) {
+                    $("#scan").append("<li><a href='recommend.php?action=view&gid=" + item["id"] + "'><img src='" + item["pimg"] + "' alt='" + item["n"] + "'  /></a></li>");
+                });
+            }
+        });
+    </script>
+
+<style type="text/css">
+.pages {float:right;height:25px;margin:15px 0 0 0;display:inline;}
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:20px;line-height:20px;margin-left:2px;padding:0 5px;text-decoration:none;}
+.pages li {border:1px solid #DDDDDD;color:#CCC;font-family:"simsun";}
+.pages li:hover {background:#FFEDE1;border:1px solid #FF9900;}
+.pages .current {background:#FFEDE1;border:1px solid #FF6600;color:#FF0000;}
+.pages em {color:#999999;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+</style>
+<title>
+	{$gtype['typename']} - {$cfg_site_name}
+</title></head><body>
+
+
+<form id="aspnetForm" action="List.aspx?category=1" method="post" name="aspnetForm">
+
+{template 'header'}
+
+<div class="list">
+<div class="zuo">
+    <div class="lm">
+        <img alt="热门商品分类" src="{TPL}images/fenlei.gif">
+    </div>
+    <div class="caidan">
+        
+               <!-- <h3 class="t">-->
+				<h3>
+                    <a title="{lang Clothing}" href="{url_recommend.php?action=list&tid=1}">
+                        <b>
+                           {lang Clothing}</b><span>{lang Assembled_most_trends_clothing}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=8}">
+                                {lang g_Clothing}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=9}">
+                                {lang b_Clothing}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=10}">
+                                {lang Underwear_socks}</a></li>
+                </ul>
+            
+                <h3>
+                    <a title="{lang Shoebag}" href="{url_recommend.php?action=list&tid=2}">
+                        <b>
+                            {lang Shoebag}</b><span>{lang popular_packages_pretty_shoes}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=11}">
+                                {lang shose}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=12}">
+                                {lang bag}</a></li>
+                </ul>
+            
+                <h3>
+                    <a title="{lang Beauty}" href="{url_recommend.php?action=list&tid=3}">
+                        <b>
+                            {lang Beauty}</b><span>{lang Underwear_socks}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=13}">
+                              {lang Makeup}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=14}">
+                                {lang Skin_Care}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=15}">
+                               {lang Beauty_Tools}</a></li>
+                </ul>
+            
+                <h3>
+                    <a title="居家" href="{url_recommend.php?action=list&tid=4}">
+                        <b>
+                            {lang Home}</b><span>{lang Create_happy_home_life}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=16}">
+                                {lang Home_Textiles}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=17}">
+                                {lang Decoration}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=18}">
+                                {lang Daily}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=19}">
+                                {lang Stationery}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=20}">
+                                {lang Gifts}</a></li>
+                </ul>
+            
+                <h3>
+                    <a title="配饰" href="{url_recommend.php?action=list&tid=5}">
+                        <b>
+                            {lang Accessories}</b><span>{lang Collecting_unique_fashion_accessories}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=21}">
+                                {lang Jewelry}</a></li>
+                            <li><a href="{url_recommend.php?action=list&tid=22}">
+                                {lang Clothing_Accessories}</a></li>
+                </ul>
+            
+                <h3>
+                    <a title="食品" href="{url_recommend.php?action=list&tid=6}">
+                        <b>
+                           {lang Food}</b><span>{lang TJ_Chinese_cuisine}</span></a></h3>
+                <ul>
+                    
+                            <li><a href="{url_recommend.php?action=list&tid=23}">
+                               {lang Specialty}</a></li>
+                </ul>
+            
+    </div>   
+    <div class="lately">
+        <h2>
+            <img src="{TPL}images/lately.gif"></h2>
+        <ul id="scan">
+
+        </ul>
+    </div>
+</div>
+
+        <div class="you">
+            <div class="weizhi">
+                <p>
+                    <b>{lang Location}：</b><a href="{url_recommend.php}">{lang Editor_Choice}</a>{$position}</p>
+            </div>
+            <div class="show">
+                <ul>
+                    
+					
+					{loop $dataarray $key $r}
+                            <li>
+                                <div class="pic">
+                                    <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                        <img alt="{$r['goodsname']}" src="{$r['goodsimg']}"></a></div>
+                                <div class="summary">
+                                    <h3>
+                                        <a target="_blank" href="{url_recommend.php?action=view&gid=$r['gid']}">
+                                             {substrs($r['goodsname'],90)}</a></h3>
+                                    <b>￥{$r['goodsprice']}</b>
+                                    <p class="dd">
+                                        <label>
+                                            {lang Sources_business}：</label><span><i>{$r['shopname']}</i></span><a target="_blank" href="{$r['sellerurl']}"><i>{$r['goodsseller']}</i></a>
+                                  </p><p class="dt">
+                                            <label>
+                                                {lang Recommendation_Index}：</label><soan><img alt="{$r['rindex']}" src="{TPL}images/star{$r['rindex']}.gif"></soan></p>
+                                </div>
+                            </li>
+                        
+					{/loop}
+					
+                </ul>
+            </div>
+            <div class="p">
+			{echo pagelist($total,$pagesize,$page,"");}
+			
+			
+			</div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+
+    
+{template 'footer'}
+
+</form>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">  
+<link type="text/css" rel="stylesheet" href="{TPL}css/NewTopFoot.css"  />
+<link type="text/css" id="styleName" rel="stylesheet" href="{TPL}css/orange/color.css"/ >    
+<link type="text/css"  rel="stylesheet" href="{TPL}css/rmb.css"/>
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/wdggcGobal.js"></script>
+
+
+<title>{lang My_Shopping_Cart}-{lang Result_page}</title>
+</head>
+
+<body>
+
+{template 'header'}
+
+ <div class="admin">
+        <div class="ding">
+            <div class="shouye">
+                <a href="{url_m.php}" title="我的会员中心"></a>
+            </div>
+            <div class="lb">
+                <div class="weizhi">
+                      <b>{lang Location}：</b><a href="{url_m.php}">{lang Member_Center}</a><span>&gt;</span><a href="{url_m.php?name=rmbaccount}">{lang my_RMB}</a><span>&gt;</span>RMB{lang Account_recharge}
+                  </div>
+                
+                <div class="shezhi">
+                    <p>
+                        <a href="{url_m.php}">{lang My_Member_Center}</a><span>|</span>{lang Setting_style}：</p>
+                    <ul>
+                        <li class="mypanliS1" onclick="changeStyle('orange')"></li>
+                        <li class="mypanliS2" onclick="changeStyle('grey')" ></li>
+                        <li class="mypanliS3" onclick="changeStyle('blue')"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		
+{template 'member_left'}
+        
+    <div class="account">
+        <div class="gaiyao">
+            <h2>
+                RMB{lang Account_recharge}</h2>
+            <ul>
+                <li><span>1.</span> {lang ensure_information_party_personal_information}。</li>
+                <li><span>2.</span> {lang transactions_required_you_passport_holders}。</li>
+            </ul>
+        </div>
+        <div class="fashion">
+            <h2>
+               {lang Please_choose_you_want_recharge}：</h2>
+            <ul class="optional">
+                <li {if $type==1}class="on"{/if}><a onclick="selectPay(this,'PayPalPay')" href="javascript:;" class="p1"></a></li>
+                <li {if $type==2}class="on"{/if}><a onclick="selectPay(this,'overseaPay')" href="javascript:;" class="p2"></a></li>
+                <li {if $type==3}class="on"{/if}><a onclick="selectPay(this,'DomesticPay')" href="javascript:;" class="p3"></a></li>
+            </ul>
+            <div id="PayPalPay" class="box" {if $type!=1}style="display: none;"{/if}>
+                <div class="point">
+                    {lang Tips}：{lang foreign_currency_currency_used_PayPal}<span>{lang US}</span>{lang For_conversion}。
+                </div>
+                <h3>
+                    {lang Please_amount_selection_want_recharge}：</h3>
+                <ul class="edu">
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="10.00" name="PayPalPrice" checked="checked">$10.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="20.00" name="PayPalPrice">$20.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="50.00" name="PayPalPrice">$50.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="100.00" name="PayPalPrice">$100.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="200.00" name="PayPalPrice">$200.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" value="500.00" name="PayPalPrice">$500.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="paypal.SP(this);" id="ppOther" value="0.00" name="PayPalPrice">{lang other_money}:$</label><input type="text" onkeyup="value=value.replace(/[^\d\.]/g,'');setmoney('ppOther','ppomoney');paypal.sum($('#ppOther')[0]);" value="" disabled="disabled" id="ppomoney" maxlength="15" class="number"></li>
+                </ul>
+                <dl class="jiesuan">
+                    <dt>{lang Recharge_fee_for}：<span>4%&nbsp;+&nbsp;0.3{lang US}</span></dt>
+                    <dt>{lang Current_RMB_dollar_exchange_rate}：<span>{$ratedata['USD']['rate']}</span></dt>
+                    <dd>
+                        <span id="dollar">$10.00</span>{lang Recharge_deducting_fees_equivalent_about}：<span>{$ratedata['USD']['rate']}<b id="ppRMB">63.05元</b></dd>
+                </dl>
+                <div class="next">
+                    <input type="button" value="前往充值" onmouseout="this.className=''" onmouseover="this.className='by'" onclick="paypal.submit()">
+                </div>
+                <div class="paypal">
+                    <div class="p_logo">
+                        <img src="{TPL}images/paypal.gif"></div>
+                    <dl>
+                        <dt><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_display-approved-signup-countries-outside">了解Paypal</a></dt>
+                        <dd>
+                            {lang payment_nternational_instant_payment}！</dd>
+                    </dl>
+                </div>
+                <div class="yuan">
+                </div>
+            </div>
+            <div {if $type!=2}style="display: none;"{/if} id="overseaPay" class="box">
+                <div class="point fg">
+                   {lang Tips}：{lang currency_online_banking}<span>{lang RMB}</span>{lang For_conversion}。
+                </div>
+                <h3>
+                    {lang Please_select_recharge_platform_want}：<span>({lang online_banking_online_recharge_maximum_amount_single}<b>10000</b>RMB。)</span></h3>
+                <ul class="edu">
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="50.00" checked="checked" name="overseaPrice">￥50.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="100.00" name="overseaPrice">￥100.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="200.00" name="overseaPrice">￥200.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="500.00" name="overseaPrice">￥500.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="1000.00" name="overseaPrice">￥1000.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" value="2000.00" name="overseaPrice">￥2000.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="oversea.SP(this)" id="oOther" value="0.00" name="overseaPrice">{lang other_money}:￥</label><input type="text" onkeyup="value=value.replace(/[^\d\.]/g,'');setmoney('oOther','oomoney');oversea.sum($('#oOther')[0]);" id="oomoney" value="" disabled="disabled" maxlength="15" class="number"></li>
+                </ul>
+                <dl class="jiesuan">
+                    <dt>{lang wysxf}：<span>1%</span></dt>
+                    <dd>
+                        {lang RMB_the_amount_recharge}<b id="oRMB">48.49元</b></dd>
+                </dl>
+                <div class="guowai">
+                    <h4  style="display:none;">
+                        {lang Please_select_recharge_platform_want}</h4>
+                    <ul  style="display:none;">
+                        <li  style="display:none;">
+                            <img alt="China Bank 网银在线" src="{TPL}images/wy_.gif">
+                            <label style="color: rgb(187, 187, 187);">
+                                <input type="radio" name="otype" checked="checked">China Bank 网银在线</label>
+                        </li>
+                        <li onclick="$(this).find('input')[0].checked=true;" style="display:none;">
+                            <img alt="IPS环迅支付" src="{TPL}images/hx.gif">
+                            <label >
+                                <input type="radio"  disabled="disabled" name="otype" >IPS环迅支付</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="next">
+                    <input type="button" value="前往充值" onmouseout="this.className=''" onmouseover="this.className='by'" onclick="oversea.submit()" name="">
+                </div>
+                <div class="yuan">
+                </div>
+            </div>
+            <div {if $type!=3}style="display: none;"{/if} id="DomesticPay" class="box">
+                <div class="point fg">
+                   {lang Tips}：无论您使用的是何种货币账户，支付宝均以<span>人民币</span>进行折算。
+                </div>
+                <h3>
+                    请填选您要充值的金额：<span>(目前使用支付宝充值，单笔最高金额为<b>2000</b>RMB。)</span></h3>
+                <ul class="edu">
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="50.00" name="dpPrice" checked="checked">￥50.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="100.00" name="dpPrice">￥100.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="200.00" name="dpPrice">￥200.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="500.00" name="dpPrice">￥500.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="1000.00" name="dpPrice">￥1000.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="2000.00" name="dpPrice">￥2000.00</label></li>
+                    <li>
+                        <label>
+                            <input type="radio" onclick="china.SP(this)" value="0.00" id="dpOther" name="dpPrice">{lang other_money}:￥</label><input type="text" onkeyup="value=value.replace(/[^\d\.]/g,'');setmoney('dpOther','dpomoney');china.sum($('#dpOther')[0]);" value="" maxlength="15" class="number" disabled="disabled" id="dpomoney"></li>
+                </ul>
+                <dl class="jiesuan">
+                    <dt>{lang Alipay_recharge_fee_for}：<span>1%</span></dt>
+                    <dd>
+                       {lang RMB_the_amount_recharge}<b id="dpRMB">49.49元</b></dd>
+                </dl>
+                <div class="next">
+                    <input type="button" value="前往充值" onmouseout="this.className=''" onmouseover="this.className='by'" onclick="china.submit()">
+                </div>
+                <div class="yuan">
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="exchange" value="{$ratedata['USD']['rate']}">
+
+   <script type="text/javascript">
+        function selectPay(dom, id) { $(".optional li").removeAttr("class"); $(".box").hide(); $(dom).parent("li").attr("class", "on"); $("#" + id).show(); }
+
+        function setmoney(radioID, textID) { document.getElementById(radioID).value = document.getElementById(textID).value || 0.00; }
+        var paypal = {
+            money: document.getElementById("dollar"),
+            exchange: document.getElementById("exchange").value,
+            RMB: document.getElementById("ppRMB"),
+            isOther: function() { if ($("#ppOther")[0].checked) $("#ppomoney").attr("class", "number_").removeAttr("disabled"); else $("#ppomoney").attr("class", "number").attr("disabled", "disabled"); },
+            sum: function(dom) { this.money.innerHTML = "$" + dom.value; var r = ((parseFloat(dom.value) * 0.96 - 0.3) * this.exchange); this.RMB.innerHTML = (r > 0 ? r - 0.005 : 0.00).toFixed(2) + "元"; },
+            SP: function(dom) { if (dom.checked && (this.RMB || (this.RMB = document.getElementById("ppRMB"))) && (this.money || (this.money = document.getElementById("dollar"))) && (dom.value >= 0 || !(this.money.innerHTML = "$0.00"))) this.sum(dom); this.isOther(); },
+            submit: function() { var s = parseFloat($("#PayPalPay input:checked").val()); if (s > 0) window.open("/m.php?name=pay&action=paypal&amount=" + s); else alert("请正确输入要充值的金额"); }
+        }
+        var oversea = {
+            RMB: document.getElementById("oRMB"),
+            isOther: function() { if ($("#oOther")[0].checked) $("#oomoney").attr("class", "number_").removeAttr("disabled"); else $("#oomoney").attr("class", "number").attr("disabled", "disabled"); },
+            SP: function(dom) { if (dom.checked && (this.RMB || (this.RMB = document.getElementById("oRMB")))) this.sum(dom); this.isOther(); },
+            sum: function(dom) { var r = dom.value * 0.99; this.RMB.innerHTML = (r > 0 ? r - 0.000 : 0.00).toFixed(2) + "元"; },
+            submit: function() { var url = $("input[name='otype']")[0].checked ? "/m.php?name=pay&action=ChinaBank" : "/m.php?name=pay&action=ips"; var s = parseFloat($("#overseaPay input:checked").val()); if (s > 0) window.open(url + "&amount=" + s); else alert("请正确输入要充值的金额"); }
+        }
+        var china = {
+            RMB: document.getElementById("dpRMB"),
+            isOther: function() { if ($("#dpOther")[0].checked) $("#dpomoney").attr("class", "number_").removeAttr("disabled"); else $("#dpomoney").attr("class", "number").attr("disabled", "disabled"); },
+            SP: function(dom) { if (dom.checked && (this.RMB || (this.RMB = document.getElementById("dpRMB")))) this.sum(dom); this.isOther(); },
+            sum: function(dom) { var r = dom.value * 0.99; this.RMB.innerHTML = (r > 0 ? r - 0.005 : 0.00).toFixed(2) + "元"; },
+            submit: function() { var s = parseFloat($("#DomesticPay input:checked").val()); if (s > 0) window.open("/m.php?name=pay&action=ips&amount=" + s); else alert("请正确输入要充值的金额"); }
+        }
+
+
+        $(document).ready(function() {
+            paypal.sum($("#PayPalPay input:checked")[0]);
+            oversea.sum($("#overseaPay input:checked")[0]);
+            china.sum($("#DomesticPay input:checked")[0]);
+        });
+    </script>
+
+
+    
+        <div class="yj">
+        </div>
+    </div>
+
+{template 'footer'}
+    
+</body>
+</html>
