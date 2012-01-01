@@ -1,0 +1,18 @@
+DIV.ie6 {
+	POSITION: absolute
+}
+DIV.top-right {
+	RIGHT: auto; ; LEFT: expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); BOTTOM: auto; ; TOP: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )
+}
+DIV.top-left {
+	
+}
+DIV.bottom-right {
+	
+}
+DIV.bottom-left {
+	
+}
+DIV.center {
+	; LEFT: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); WIDTH: 100%; ; TOP: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )
+}

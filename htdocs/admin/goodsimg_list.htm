@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:580});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});		
+	// 选中的值	
+	$("#updatepayid").click(function(){
+	
+		var selectedStr = "";
+		var sendMail = $("input[name='did[]']");		
+		sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+		
+
+		
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$("#act")[0].value="";
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+	//判断类型
+	var payid=$('#payid').val();
+	if(payid!=""){
+		$.post("<?php echo PHP_SELF?>", {action:"updatepayid",payid:payid, ids: selectedStr}, 
+			   function(data){
+					  if(data==1){$.jGrowl("更改支付ID为["+payid+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+					  //alert(data);return false;				  
+				}); 
+	}
+//alert(selectedStr+$("#act")[0].value);
+	});
+	
+	// 选中的值	
+	$("#updatetypeid").click(function(){
+	
+		var selectedStr = "";
+		var sendMail = $("input[name='did[]']");		
+		sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$("#act")[0].value="";
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+	//判断类型
+	var typeid=$('#typeid').val();
+	if(typeid!=""){
+		$.post("<?php echo PHP_SELF?>", {action:"updatetypeid",typeid:typeid, ids: selectedStr}, 
+			   function(data){
+					  if(data==1){$.jGrowl("更改分类ID为["+typeid+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+					  //alert(data);return false;				  
+				}); 
+	}
+//alert(selectedStr+$("#act")[0].value);
+	});	
+	
+	
+	
+	
+	
+	
+
+});
+function updatestate(state){
+	if (state == "") {
+		alert("缺少参数!");
+		return false;
+	}
+	var ORDERSTATE=new Array("0","待处理","已确认","在途订单","已到仓库","提交货运","无效订单");
+	var selectedStr = "";
+	var sendMail = $("input[name='did[]']");		
+	sendMail.each( function() {
+		if ($(this).attr("checked")) {
+			selectedStr += $(this).val() + "|";
+		}
+	});
+	
+	//alert(selectedStr);
+	if (selectedStr == "") {
+		$("#act")[0].value="";
+		$.jGrowl("至少选择一条数据!");
+		//alert("至少选择一条数据");
+		return false;
+	}
+	if(confirm("您确认要更改状态为"+ORDERSTATE[state]+"？")){
+    $.post("<?php echo PHP_SELF?>", {action:"updatestate",state:state, ids: selectedStr}, 
+		   function(data){
+				  if(data==1){$.jGrowl("更改状态为["+ORDERSTATE[state]+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;	  
+				  }); 
+    }
+
+}
+
+
+function update_weight(id,obj){
+
+	if(obj.value.length<2){
+	}else{
+		$.post("<?php echo PHP_SELF?>", {action:"updateweight",ids:id, value:obj.value}, 
+		   function(data){
+			if(data==1){$.jGrowl("更改重量为["+obj.value+"]成功!");}else{alert("更改出错");}
+				  //alert(data);return false;	  
+		});
+	}
+}
+function update_expressno(id,obj){
+	if(isNaN(obj.value)){
+		upname="订单备注";
+	}else{
+		upname="单号";
+	}
+	if(obj.value.length<2){
+	}else{
+		$.post("<?php echo PHP_SELF?>", {action:"updateexpressno",ids:id, value:obj.value}, 
+		   function(data){
+			if(data==1){$.jGrowl("更改"+upname+"为["+obj.value+"]成功!");}else{alert("更改出错");}
+				  //alert(data);return false;	  
+		});
+	}
+}
+
+</script>
+
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+        <td width="650">
+		<input type="hidden" id="act" name="act" value="" />
+		<a href="####"  onclick="document.getElementById('act').value='updatepayid'" id="updatepayid" class="btn_a" style="margin-left:5px">批量获取图片</a></td>
+		 
+<TD width="200">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR><TD width="110" align="middle">
+<INPUT type="hidden" name="state" value="<?php echo $state?>">
+<INPUT class="input" name="keywords" value="<?php echo $keywords?>"></TD>
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<TD align=right>共 <font color=red><?php echo $total?></font> 条 每页显示 <?php echo $pagesize?> 条 </TD>
+
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+		  	<th width="3%"><input type="checkbox" id=checkboxall name="chkall" value='ON' /></th>
+            <th width="6%" <?php echo sortcss('oid')?>><a href="<?php echo sortstr('oid')?>">ID</a></th>
+			<th width="8%" <?php echo sortcss('uname')?>><a href="<?php echo sortstr('uname')?>">用户</a></th>
+			<th width="29%">外部图片地址</th>
+            <th width="30%" >本地图片地址</th>
+			<th width="9%" >提交/更新</th>
+            <th width="7%">状态</th>
+            <th width="8%">修改</th>
+</thead>
+<tbody>
+
+<?php if(is_array($dataarray)){foreach($dataarray as $r){?>
+          <tr>
+            <td><input type="checkbox" name="did[]" value="<?php echo $r['oid']?>" /></td>
+            <td><?php echo $r['oid']?></td>
+            <td><?php echo $r['uname']?></td>
+            <td><A title="<?php echo $r['goodsname']?>" href="<?php echo $r['goodsimg']?>" target=_blank><?php echo $r['goodsimg']?></A></td>
+            <td><a title="<?php echo $r['goodsname']?>" href="<?php echo $r['goodsimg']?>" target="_blank"><?php echo $r['orderimg']?></a></td>
+            <td><?php echo date('y-m-d H:i',$r['addtime'])?></td>
+            <td><?php echo $ORDERSTATE[$r['state']]?></td>
+            <td>
+
+
+				<a class="user_x cboxElement" target="_blank" href="goodsimg_list.php?oid=<?php echo $r['oid']?>">抓取图片</a>	
+
+			</td>
+          </tr>
+<?php }}?>
+</tbody>
+        </table>
+		  <div style="width:99%;margin:0px auto;">
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

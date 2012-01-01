@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单编辑</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<form name="form" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认充值" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="5" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">转账充值:(充值编号:<?php echo $sn?>&nbsp;)</td>
+          </tr>
+          <tr>
+            <td width="91"  class="lh">用户名：</td>
+            <td width="367" height="22" bgcolor="#FFFFFF"><input name="uname" type="text" class="input w200" id="uname"  value="<?php echo $evalue["uname"]?>" />
+            注：用户名要确认正确</td>
+          </tr>
+          <tr>
+            <td  class="lh">充值金额：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="money" type="text" class="input w200" id="money" />
+            注：人民币￥</td>
+          </tr>
+          <tr>
+            <td  class="lh">充值类别：</td>
+            <td height="22" bgcolor="#FFFFFF"><?php echo getselectstr('paytype', $PAYTYPE);?>
+            注：必须选择</td>
+          </tr>
+          <tr>
+            <td  class="lh">支付名称：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="payname" type="text" class="input w200" id="payname" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">备注：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="remark" cols="60" rows="5" id="remark"></textarea>
+            注：相关说明</td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+		<input type="hidden" name="sn" value="<?php echo $sn?>"/>
+          <input name="save" type="submit" class="btn" value="确认充值">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

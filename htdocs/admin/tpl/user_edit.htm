@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单编辑</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<form name="form" target="ActFrm" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" onclick="parent.location.reload();" value="确认更新" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+   
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="2" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">修改订单:(用户ID:<?php echo $evalue["uid"]?>&nbsp;用户名：<?php echo $evalue["uname"]?>&nbsp;)</td>
+          </tr>
+          <tr>
+            <td  class="lh">email：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="email" type="text" class="input w200" id="email"  value="<?php echo $evalue["email"]?>" />
+              注：@email.com</td>
+          </tr>
+          <tr>
+            <td  class="lh">真名：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="tname" type="text" class="input w200" id="tname"  value="<?php echo $evalue["tname"]?>" /></td>
+          </tr>
+		    <tr>
+            <td  class="lh">客户代号：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="memberid" type="text" class="input w200" id="memberid"  value="<?php echo $evalue["memberid"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">性别：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="sex" type="text" class="input w200" id="sex"  value="<?php echo $evalue["sex"]?>" />
+            注：1：男 0女 </td>
+          </tr>
+          <tr>
+            <td  class="lh">电话：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="tel" type="text" class="input w200" id="tel"  value="<?php echo $evalue["tel"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">邮编：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="zip" type="text" class="input w200" id="zip"  value="<?php echo $evalue["zip"]?>" />
+            注：如 450000</td>
+          </tr>
+          <tr>
+            <td  class="lh">QQ：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="qq" type="text" class="input w200" id="qq"  value="<?php echo $evalue["qq"]?>">
+              注：52456456</td>
+          </tr>
+          <tr>
+            <td  class="lh">MSN：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="msn" type="text" class="input w200" id="msn"  value="<?php echo $evalue["msn"]?>" />
+              如：@gmail.com</td>
+          </tr>
+          <tr>
+            <td  class="lh">国家：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="country" type="text" class="input w200" id="country"  value="<?php echo $evalue["country"]?>" />
+              如：中国</td>
+          </tr>
+          <tr>
+            <td  class="lh">城市：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="city" type="text" class="input w200" id="city"  value="<?php echo $evalue["city"]?>" />
+              如：郑州</td>
+          </tr>
+          <tr>
+            <td  class="lh">详细地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="address" type="text" class="input w200" id="address"  value="<?php echo $evalue["address"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">积分：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="scores" type="text" class="input w200" id="scores"  value="<?php echo $evalue["scores"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">余额：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="money" type="text" class="input w200" id="money"  value="<?php echo $evalue["money"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">密码：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="password" type="text" class="input w200" id="password"  value="<?php echo $evalue["password"]?>" /></td>
+          </tr>
+		  <tr>
+            <td  class="lh">备注：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="remark" type="text" class="input w200" id="remark"  value="<?php echo $evalue["remark"]?>" /></td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+		<input type="hidden" name="sid" value="<?php echo $evalue["sid"]?>"/>
+          <input name="save" type="submit" class="btn" onclick="parent.location.reload();" value="确认更新">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

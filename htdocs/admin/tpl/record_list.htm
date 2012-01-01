@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:480});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});		
+	// 选中的值	
+	$("#sendAll").click(function(){
+	
+		var selectedStr = "";
+		var $sendMail = $("input[name='did[]']");		
+		$sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+		
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+		
+	if(confirm("您确认要删除？")){		
+    $.post("<?php echo PHP_SELF?>", {action:"dels", delids: selectedStr}, 
+		   function(data){
+				  if(data==1){$.jGrowl("删除ID为["+selectedStr+"]的信息成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;				  
+				  }); 
+    }
+//alert(selectedStr+$("#act")[0].value);		
+	});		
+		
+		
+		
+		
+		
+		
+		
+});
+
+</script>
+
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+        <td width="100">
+		  <a href="####" id="sendAll" class="btn_a" style="margin-left:5px">删除已选</a>
+		 </td>
+<TD width="300">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR><TD width="110" align="middle">
+<INPUT type="hidden" name="type" value="<?php echo $type?>">
+<INPUT class="input" name="keywords" value="<?php echo $keywords?>">
+
+</TD>
+<TD width="2"></TD>
+<TD width="110" align="middle">
+<?php echo getselectstr('raction', $RECORDACTION, $raction);?>
+
+</TD>
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<TD align=right>共 <font color=red><?php echo $total?></font> 条 每页显示 <?php echo $pagesize?> 条 </TD>
+
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+		<a href="javascript:location.reload();" style="color:green;float:right;">刷新</a><br/>
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+		  	<th width="6%"><input type="checkbox" id=checkboxall name="chkall" value='ON' /></th>
+            <th width="7%" <?php echo sortcss('rid')?>><a href="<?php echo sortstr('rid')?>">ID</a></th>
+			<th width="9%" <?php echo sortcss('uname')?>><a href="<?php echo sortstr('uname')?>">用户名</a></th>
+			<th width="5%">类别</th>
+			<th width="8%" >行为</th>
+			<th width="7%" >金额</th>
+			<th width="8%" >账户余额</th>
+			<th width="34%">备注</th>
+            <th width="11%">发生时间</th>
+            <th width="5%">管理</th>
+</thead>
+<tbody>
+
+<?php if(is_array($dataarray)){foreach($dataarray as $r){?>
+          <tr>
+            <td><input type="checkbox" name="did[]" value="<?php echo $r['rid']?>" /></td>
+            <td><?php echo $r['rid']?></td>
+            <td><?php echo $r['uname']?></td>
+            <td><font color='green'><?php echo $RECORDTYPE[$r['type']]?></font></td>
+            <td><?php echo $RECORDACTION[$r['action']]?></td>
+            <td><font color='red'><?php echo $r['money']?></font></td>
+            <td><font color='red'><?php echo $r['accountmoney']?></font></td>
+            <td><?php echo $r['remark']?></td>
+            <td><?php echo date('Y-m-d H:i',$r['addtime'])?></td>
+            <td>
+			
+			
+				<a href="javascript:if(confirm('确实要删除吗?'))location='<?php echo PHP_SELF?>?action=del&did=<?php echo $r['rid']?>'">删除</a></td>
+          </tr>
+<?php }}?>
+</tbody>
+        </table>
+		  <div style="width:100%;margin:0px auto;">
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

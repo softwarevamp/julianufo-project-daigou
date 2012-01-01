@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单编辑</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" name="form" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认提交" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="5" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">银行账户</td>
+          </tr>
+          <tr>
+            <td width="51"  class="lh">币种：</td>
+            <td width="367" height="22" bgcolor="#FFFFFF">
+			
+			<?php echo getselectstr('currency',$CURRENCY, $evalue["currency"],'选择币种');?>
+			</td>
+          </tr>
+          <tr>
+            <td  class="lh">银行名：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="bankname" type="text" class="input w200" id="bankname" value="<?php echo $evalue['bankname']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">账户：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="account" type="text" class="input w200" id="account" value="<?php echo $evalue['account']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">账户名：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="accountname" type="text" class="input w200" id="accountname" value="<?php echo $evalue['accountname']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">备注：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="remark" cols="60" rows="5" id="remark"><?php echo $evalue['remark']?></textarea></td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+          <input name="bid" type="hidden" id="bid" value="<?php echo $bid?>"/>
+		   <input name="action" type="hidden" id="action" value="<?php echo $action?>"/>
+          <input name="save" type="submit" class="btn" value="确认提交">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

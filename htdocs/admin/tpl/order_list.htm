@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:580});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});		
+	// 选中的值	
+	$("#updatepayid").click(function(){
+	
+		var selectedStr = "";
+		var sendMail = $("input[name='did[]']");		
+		sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+		
+
+		
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$("#act")[0].value="";
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+	//判断类型
+	var payid=$('#payid').val();
+	if(payid!=""){
+		$.post("<?php echo PHP_SELF?>", {action:"updatepayid",payid:payid, ids: selectedStr}, 
+			   function(data){
+					  if(data==1){alert("更改支付ID为["+payid+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+					  //alert(data);return false;				  
+				}); 
+	}
+//alert(selectedStr+$("#act")[0].value);
+	});
+	
+	// 选中的值	
+	$("#updatetypeid").click(function(){
+	
+		var selectedStr = "";
+		var sendMail = $("input[name='did[]']");		
+		sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$("#act")[0].value="";
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+	//判断类型
+	var typeid=$('#typeid').val();
+	if(typeid!=""){
+		$.post("<?php echo PHP_SELF?>", {action:"updatetypeid",typeid:typeid, ids: selectedStr}, 
+			   function(data){
+					  if(data==1){alert("更改分类ID为["+typeid+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+					  //alert(data);return false;				  
+				}); 
+	}
+//alert(selectedStr+$("#act")[0].value);
+	});	
+	
+});
+function updatestate(state){
+	if (state == "") {
+		alert("缺少参数!");
+		return false;
+	}
+	var ORDERSTATE=new Array("0","待处理","已确认","在途订单","已到仓库","提交货运","无效订单");
+	var selectedStr = "";
+	var sendMail = $("input[name='did[]']");		
+	sendMail.each( function() {
+		if ($(this).attr("checked")) {
+			selectedStr += $(this).val() + "|";
+		}
+	});
+	
+	//alert(selectedStr);
+	if (selectedStr == "") {
+		$("#act")[0].value="";
+		$.jGrowl("至少选择一条数据!");
+		//alert("至少选择一条数据");
+		return false;
+	}
+	if(confirm("您确认要更改状态为"+ORDERSTATE[state]+"？")){
+    $.post("<?php echo PHP_SELF?>", {action:"updatestate",state:state, ids: selectedStr}, 
+		   function(data){
+				  if(data==1){alert("更改状态为["+ORDERSTATE[state]+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;	  
+				  }); 
+    }
+
+}
+
+
+function update_weight(id,obj){
+
+	if(obj.value.length<2){
+	}else{
+		$.post("<?php echo PHP_SELF?>", {action:"updateweight",ids:id, value:obj.value}, 
+		   function(data){
+			if(data==1){alert("更改重量为["+obj.value+"]成功!");}else{alert("更改出错");}
+				  //alert(data);return false;	  
+		});
+	}
+}
+function update_expressno(id,obj){
+	if(isNaN(obj.value)){
+		upname="订单备注";
+	}else{
+		upname="单号";
+	}
+	if(obj.value.length<2){
+	}else{
+		$.post("<?php echo PHP_SELF?>", {action:"updateexpressno",ids:id, value:obj.value}, 
+		   function(data){
+			if(data==1){alert("更改"+upname+"为["+obj.value+"]成功!");}else{alert("更改出错");}
+				  //alert(data);return false;	  
+		});
+	}
+}
+
+</script>
+
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="58">
+		<a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a>
+		<a href="javascript:;" onclick="window.open (window.location);"><img src="images/open.gif" alt="新窗口打开" width="16" height="20" /></a>
+		</td>
+        <td width="650">
+		<input type="hidden" id="act" name="act" value="" />
+		<?php echo getpayidselect('payid')?>
+		  <a href="####"  onclick="document.getElementById('act').value='updatepayid'" id="updatepayid" class="btn_a" style="margin-left:5px">批量更改拍货ID</a>
+		<?php echo getotypeselect('typeid')?>
+		  <a href="####"  onclick="document.getElementById('act').value='updatetypeid'" id="updatetypeid" class="btn_a" style="margin-left:5px">批量更改分类ID</a>		  
+		  <a href="####"  onclick="updatestate(2)" id="updatestate2" class="btn_a" style="margin-left:5px">已确认</a>
+		  <a href="####"  onclick="updatestate(3)" id="updatestate3" class="btn_a" style="margin-left:5px">在途订单</a>
+		  <a href="####"  onclick="updatestate(4)" id="updatestate4" class="btn_a" style="margin-left:5px">已到仓库</a>
+		 </td>
+		 
+<TD width="200">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR><TD width="110" align="middle">
+<INPUT type="hidden" name="state" value="<?php echo $state?>">
+<INPUT class="input" name="keywords" value="<?php echo $keywords?>"></TD>
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<TD align=right>共 <font color=red><?php echo $total?></font> 条 每页显示 <?php echo $pagesize?> 条 </TD>
+
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+		  	<th width="3%"><input type="checkbox" id="checkboxall" name="chkall" value='ON' /></th>
+            <th width="3%" <?php echo sortcss('oid')?>><a href="<?php echo sortstr('oid')?>">ID</a></th>
+			<th width="5%" <?php echo sortcss('uname')?>><a href="<?php echo sortstr('uname')?>">用户</a></th>
+			<th width="6%" <?php echo sortcss('utype')?>><a href="<?php echo sortstr('utype')?>">会员等级</a></th>
+			<th width="17%">商品名称</th>
+            <th width="8%" <?php echo sortcss('goodsseller')?>><a href="<?php echo sortstr('goodsseller')?>">来源商家</a></th>
+            <th width="5%">单价</th>
+			<th width="2%">数量</th>
+			<th width="4%" >运费</th>
+            <th width="5%" >重量</th>
+			<th width="12%" >快递单号/备注</th>
+			<th width="7%" >拍货ID</th>
+			<th width="7%" <?php echo sortcss('addtime')?>><a href="<?php echo sortstr('addtime')?>">提交时间</a></th>
+			<th width="7%" <?php echo sortcss('uptime')?>><a href="<?php echo sortstr('uptime')?>">更新时间</a></th>
+            <th width="5%">状态</th>
+            <th width="4%">修改</th>
+		</tr>
+</thead>
+<tbody>
+
+<?php if(is_array($dataarray)){foreach($dataarray as $r){?>
+          <tr>
+            <td><input type="checkbox" name="did[]" value="<?php echo $r['oid']?>" /></td>
+            <td><?php echo $r['oid']?></td>
+            <td><a class="user_x cboxElement" target="_blank" href="email_send.php?inbox=1&uname=<?php echo $r['uname']?>" title="点击用户名发邮件给用户"><?php echo $r['uname']?></a></td>
+            <td>
+            	<?php 
+				if($r['utype']==1){
+				 	echo $UTYPENAME['1'];
+				 }elseif($r['utype']==2){ 
+				 	echo $UTYPENAME['2']; 
+				 }elseif($r['utype']==3){
+				  echo $UTYPENAME['3'];
+				  }else{
+				  echo $UTYPENAME['0'];
+				  }
+				  ?>
+			</td>
+			<td><a href="<?php echo $r['goodsurl']?>" title="<?php echo $r['goodsremark']?>" target="_blank"><?php echo $r['goodsname']?></a><br/><FONT color=red>尺码：<?php echo $r['goodssize']?>&nbsp;&nbsp;颜色：<?php echo $r['goodscolor']?> </FONT></td>
+            <td><DIV align=center>
+<A title=<?php echo $r['goodsseller']; ?> href="<?php echo $r['goodsurl']?>" target=_blank><?php echo $r['goodsseller']?></A><BR>
+<A href="http://amos.im.alisoft.com/msg.aw?v=2&amp;uid=<?php echo $r['goodsseller']?>&amp;site=cntaobao&amp;s=1&amp;charset=utf-8" target=_blank><IMG border=0 alt="6329-XL&#13;&#10;6332-XL&#13;&#10;6357-XL" src="http://amos.im.alisoft.com/online.aw?v=2&amp;uid=<?php echo $r['goodsseller']?>&amp;site=cntaobao&amp;s=1&amp;charset=utf-8"></A></DIV></td>
+            <td><?php echo $r['goodsprice']?></td>
+            <td><?php echo $r['goodsnum']?></td>
+            <td><?php echo $r['sendprice']?></td>
+            <td><INPUT class=input onchange=update_weight(<?php echo $r['oid']?>,this) id=weight value="<?php echo $r['orderweight']?>" maxLength=10 size=3 type=text name=weight></td>
+            <td><INPUT class=input onchange=update_expressno(<?php echo $r['oid']?>,this) id=bianhao value="<?php if(!empty($r['expressno']))echo $r['expressno'];else echo $r['orderremark']?>" maxLength=16 size=20 type=text name=bianhao></td>
+            <td><?php echo $r['payid']?><?php if ($r['type']==2)echo '<font color=\'red\'>[代发货订单]</font>';?></td>
+            <td><?php echo date('y-m-d H:i',$r['addtime'])?></td>
+			<td><?php echo date('y-m-d H:i',$r['uptime'])?></td>
+            <td><?php echo $ORDERSTATE[$r['ostate']]?></td>
+            <td>
+				<a class="user_x cboxElement" target="_blank" href="order_edit.php?oid=<?php echo $r['oid']?>"><img src="images/23x16.gif"></a>
+			</td>
+          </tr>
+<?php }}?>
+</tbody>
+
+        </table>
+<div style="width:99%;margin:0px auto;">
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

@@ -1,0 +1,70 @@
+// Sample 1：提示后自动消息
+$.jGrowl("Hello world!");
+// Sample 2：需要用户手动关闭
+$.jGrowl("需要用户手动关闭!", { header: '提示信息',sticky: true,corners:"8px" });
+// Sample 3：增加标题
+$.jGrowl("A message with a header", { header: 'Important' });
+// Sample 4：指定在10秒后自动消失
+$.jGrowl("A message that will live a little longer.", { life: 10000 });
+// Sample 5：消失后有回调事件
+$.jGrowl("A message with a beforeOpen callback and a different opening animation.", {
+beforeClose: function(e,m) {
+alert('About to close this notification!');
+},
+animateOpen: {
+height: 'show'
+}
+});
+
+
+
+
+// 获取当前选中的option值    
+
+$('#sltList').val()       
+
+//获取当前选中项的文本    
+
+$('#sltList option[@selected]').text(); // 获取当前选中的option, text为文本, val则是option的值了 
+
+或 var item = $("select[@name= list] option[@selected]").text();
+
+//设置文本为当前选中项
+
+$("#sltList option[@selected]").attr("text",'张三');
+
+
+//设置select下拉框的第二个元素为当前选中值
+   $('#sltList')[0].selectedIndex = 1;
+
+//设置value=1的项目为当前选中项
+$("#sltList").attr("value",'1');
+   $('#sltList').val('1');
+
+//添加下拉框的option
+
+$("<option value='3'>王五</option><option value='4'>赵六</option>").appendTo("#sltList")
+
+//清空下拉框
+
+$("sltList").empty();
+
+例：
+
+//改变时的事件
+
+$("#testSelect").change(function(){ //事件發生
+jQuery('option:selected', this).each(function(){ //印出選到多個值
+alert(this.value);    
+});
+});
+
+$("#childTypeResult").append(htmlStr); //是在此ID标签后增加htmlStr的值.
+
+$("#childTypeResult").html(htmlStr); 是修改此ID的值为htmlStr的值.
+
+
+
+
+
+/scorerecord_list.php

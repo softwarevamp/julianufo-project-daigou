@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>抓取规则</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" name="form" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认提交" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="5" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">采集规则</td>
+          </tr>
+          <tr>
+            <td width="101"  class="lh">商城名：</td>
+            <td width="367" height="22" bgcolor="#FFFFFF"><input name="shopname" type="text" class="input w300" id="shopname" value="<?php echo $evalue['shopname']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">商城地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="shopurl" type="text" class="input w300" id="shopurl" value="<?php echo $evalue['shopurl']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">识别码：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="shopcode" type="text" class="input w300" id="shopcode" value="<?php echo $evalue['shopcode']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">编码：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="charset" type="text" class="input w300" id="charset" value="<?php echo $evalue['charset']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">名字规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsname" class="input w300" id="preg_goodsname"><?php echo $evalue['preg_goodsname']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">名字规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsname2" class="input w300" id="preg_goodsname2"><?php echo $evalue['preg_goodsname2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">名字规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsname3" class="input w300" id="preg_goodsname3"><?php echo $evalue['preg_goodsname3']?></textarea></td>
+          </tr>		  
+
+          <tr>
+            <td  class="lh">价格规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsprice" class="input w300" id="preg_goodsprice"><?php echo $evalue['preg_goodsprice']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">价格规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsprice2" class="input w300" id="preg_goodsprice2"><?php echo $evalue['preg_goodsprice2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">价格规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsprice3" class="input w300" id="preg_goodsprice3"><?php echo $evalue['preg_goodsprice3']?></textarea></td>
+          </tr>		  
+          <tr>
+            <td  class="lh">运费规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sendprice" class="input w300" id="preg_sendprice"><?php echo $evalue['preg_sendprice']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">运费规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sendprice2" class="input w300" id="preg_sendprice2"><?php echo $evalue['preg_sendprice2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">运费规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sendprice3" class="input w300" id="preg_sendprice3"><?php echo $evalue['preg_sendprice3']?></textarea></td>
+          </tr>		  
+          <tr>
+            <td  class="lh">图片规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsimg" class="input w300" id="preg_goodsimg"><?php echo $evalue['preg_goodsimg']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">图片规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsimg2" class="input w300" id="preg_goodsimg2"><?php echo $evalue['preg_goodsimg2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">图片规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsimg3" class="input w300" id="preg_goodsimg3"><?php echo $evalue['preg_goodsimg3']?></textarea></td>
+          </tr>		  
+          <tr>
+            <td  class="lh">卖家规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsseller" class="input w300" id="preg_goodsseller"><?php echo $evalue['preg_goodsseller']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsseller2" class="input w300" id="preg_goodsseller2"><?php echo $evalue['preg_goodsseller2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_goodsseller3" class="input w300" id="preg_goodsseller3"><?php echo $evalue['preg_goodsseller3']?></textarea></td>
+          </tr>		  
+          <tr>
+            <td  class="lh">卖家url规则1：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sellerurl" class="input w300" id="preg_sellerurl"><?php echo $evalue['preg_sellerurl']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家url规则2：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sellerurl2" class="input w300" id="preg_sellerurl2"><?php echo $evalue['preg_sellerurl2']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家url规则3：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="preg_sellerurl3" class="input w300" id="preg_sellerurl3"><?php echo $evalue['preg_sellerurl3']?></textarea></td>
+          </tr>		  
+        </table>
+        <div align="center" style="margin-top:10px">
+          <input name="sid" type="hidden" id="sid" value="<?php echo $sid?>"/>
+		   <input name="action" type="hidden" id="action" value="<?php echo $action?>"/>
+          <input name="save" type="submit" class="btn" value="确认提交">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

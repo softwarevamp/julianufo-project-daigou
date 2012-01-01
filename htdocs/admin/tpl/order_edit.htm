@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单编辑</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<form name="form" target="ActFrm" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认更新" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="2" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">修改订单:(所属用户ID:<?php echo $evalue["uid"]?>&nbsp;所属用户名：<?php echo $evalue["uname"]?>&nbsp;关联运单：<?php echo $evalue["sid"]?>)</td>
+          </tr>
+          <tr>
+            <td  class="lh">商品地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsurl" type="text" class="input w200" id="goodsurl"  value="<?php echo $evalue["goodsurl"]?>" />
+              注：商品地址http://</td>
+          </tr>
+          <tr>
+            <td  class="lh">商品名称：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsname" type="text" class="input w200" id="goodsname"  value="<?php echo $evalue["goodsname"]?>" />
+              注：商品名字</td>
+          </tr>
+          <tr>
+            <td  class="lh">商品单价：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsprice" type="text" class="input w200" id="goodsprice"  value="<?php echo $evalue["goodsprice"]?>" />
+              注：商品单价
+			  <input type="hidden" name="oldgoodsprice" value="<?php echo $evalue["goodsprice"]?>"/>
+			  </td>
+          </tr>
+          <tr>
+            <td  class="lh">快递价格：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="sendprice" type="text" class="input w200" id="sendprice"  value="<?php echo $evalue["sendprice"]?>" />
+              注：快递价格
+			 <input type="hidden" name="oldsendprice" value="<?php echo $evalue["sendprice"]?>"/>
+			  </td>
+          </tr>
+          <tr>
+            <td  class="lh">数量：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsnum" type="text" class="input w200" id="goodsnum"  value="<?php echo $evalue["goodsnum"]?>" />
+              注：购买数量</td>
+          </tr>
+          <tr>
+            <td  class="lh">尺寸：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodssize" type="text" class="input w200" id="goodssize"  value="<?php echo $evalue["goodssize"]?>" />
+              注：尺寸备注信息</td>
+          </tr>
+          <tr>
+            <td  class="lh">颜色：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodscolor" type="text" class="input w200" id="goodscolor"  value="<?php echo $evalue["goodscolor"]?>">
+              注：颜色备注信息</td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsseller" type="text" class="input w200" id="goodsseller"  value="<?php echo $evalue["goodsseller"]?>" />
+              如：taobao卖家名称</td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="sellerurl" type="text" class="input w200" id="sellerurl"  value="<?php echo $evalue["sellerurl"]?>" />
+              如：http://</td>
+          </tr>
+          <tr>
+            <td  class="lh">快递单号：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="expressno" type="text" class="input w200" id="expressno"  value="<?php echo $evalue["expressno"]?>" />
+              如：国内快递单号</td>
+          </tr>
+          <tr>
+            <td  class="lh">订单重量：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="orderweight" type="text" class="input w200" id="orderweight"  value="<?php echo $evalue["orderweight"]?>" />
+              如：单位g</td>
+          </tr>
+          <tr>
+            <td  class="lh">支付ID：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="payid" type="text" class="input w200" id="payid"  value="<?php echo $evalue["payid"]?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">订单状态：</td>
+            <td height="22" bgcolor="#FFFFFF"><?php echo getselectstr('state', $ORDERSTATE, $evalue["state"]);?></td>
+          </tr>
+          <tr>
+            <td  class="lh">商品备注：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="goodsremark" cols="60" rows="2" class="textarea"  id="goodsremark"><?php echo $evalue["goodsremark"]?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">订单备注：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="orderremark" cols="60" rows="2" class="textarea"  id="orderremark"><?php echo $evalue["orderremark"]?></textarea></td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+		<input type="hidden" name="uname" value="<?php echo $evalue["uname"]?>"/>
+		<input type="hidden" name="uid" value="<?php echo $evalue["uid"]?>"/>
+          <input name="save" type="submit" class="btn" value="确认更新">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm"  style="display:none"></iframe>
+</body>
+</html>

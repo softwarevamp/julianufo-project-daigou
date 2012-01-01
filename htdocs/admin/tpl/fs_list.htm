@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:300});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});	
+		
+		// 选中的值	
+	$("#sendAll").click(function(){
+	
+		var selectedStr = "";
+		var $sendMail = $("input[name='did[]']");		
+		$sendMail.each( function() {
+			if ($(this).attr("checked")) {
+				selectedStr += $(this).val() + "|";
+			}
+		});
+		
+		//alert(selectedStr);
+		if (selectedStr == "") {
+			$.jGrowl("至少选择一条数据!");
+			return false;
+		}
+		
+	if(confirm("您确认要删除？")){		
+    $.post("<?php echo PHP_SELF?>", {action:"dels", delids: selectedStr}, 
+		   function(data){
+				  if(data==1){$.jGrowl("删除ID为["+selectedStr+"]的信息成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;				  
+				  }); 
+    }
+//alert(selectedStr+$("#act")[0].value);		
+	});		
+});
+
+</script>
+
+<SCRIPT type="text/javascript">
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="58"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" title="刷新" width="28" height="20" /></a>
+		<a href="javascript:;" onclick="window.open (window.location);"><img src="images/open.gif" alt="新窗口打开" width="16" height="20" /></a>
+		</td>
+<TD width="380">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR>
+	
+	<TD width="110" align="middle">
+		
+	<select name="keywords">
+		<option value='0'>选择查询年份</option>
+        <?php 
+		for($keywords=2010;$keywords<=date('Y');$keywords++){
+		   echo "<option value=".$keywords.">".$keywords."</option>";
+		}
+		?>
+	</select>
+	</TD>
+	<TD width="110" align="middle">
+	<select name="firstmonth">
+	    <option value='0'>选择起始月份</option>
+        <?php 
+		if($keywords==date('Y')){
+			$yuefen=date('m');
+		}else{
+			$yuefen=12;		
+		}
+		
+		for($firstmonth=1;$firstmonth<=$yuefen;$firstmonth++){
+		   echo "<option value=".$firstmonth.">".$firstmonth."</option>";
+		}
+		?>
+	</select>
+	</TD>
+	<TD width="110" align="middle">
+	
+	<select name="endmonth">
+	    <option value='0'>选择结束月份</option>
+        <?php 
+		if($keywords==date('Y')){
+			$yuefen=date('m');
+		}else{
+			$yuefen=12;		
+		}
+		
+		for($endmonth=1;$endmonth<=12;$endmonth++){
+		   echo "<option value=".$endmonth.">".$endmonth."</option>";
+		}
+		?>
+	</select>
+	</TD>
+	
+
+	
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<td></td>
+        <td width="20"></td>
+        <td width="1"></td>
+		
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+            <th width="7%">年份</th>
+			<th width="10%">总收款</th>
+			<th width="9%">订单收款</th>
+			<th width="9%">运单收款</th>
+			<th width="8%">佣金</th>
+			<th width="5%">利润情况</th>
+			<th width="8%">利润金额</th>
+			<th width="8%">类别</th>
+			<th width="18%">备注</th>
+</thead>
+<tbody>
+          <tr>
+            <td>ALL</td>
+            <td><?php echo $allmoney; ?></td>
+			<td><?php echo $orderquery; ?></td>
+			<td><?php echo $sendorderquery; ?></td>
+            <td><?php echo $serverfeequery;?></td>
+			<td><?php echo  round(($serverfeequery/$allmoney),4);?></td>
+			<td><?php echo $serverfeequery; ?></td>
+            <td>总计</td>
+			<td>总计详细数据</td>
+          </tr>
+<?php if(!empty($dataarray)){ foreach($dataarray as $key=>$r){ ?>
+		  <tr>
+            <td><?php echo $year ?></td>
+            <td><?php  echo $r['allmoney']?></td>
+			<td><?php  echo $r['orderdata']?></td>
+			<td><?php  echo $r['sendorderdata']?></td>
+            <td><?php echo $r['servermoney']?></td>
+			<td><?php if($r['servermoney']!='')echo round(($r['servermoney']/$r['allmoney']),4);?></td>
+			<td><?php echo $r['servermoney'] ?></td>
+            <td><?php  echo $key ?>月份</td>
+			<td style="color:green;">月份详细数据</td>	
+          </tr>
+<?php }} ?>
+</tbody>
+
+        </table>
+		  <div style="width:100%;margin:0px auto;">
+   <!-- <?php echo multi($total,$pagesize,$page,"");?>-->
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

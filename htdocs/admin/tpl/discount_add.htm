@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专题管理</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+ <script type="text/javascript" charset="utf-8" src="./kindeditor/kindeditor.js"></script>
+ <script type="text/javascript">
+    KE.show({
+        id : 'body',
+        cssPath : './kindeditor/index.css',
+		urlType : 'absolute'
+    });
+  </script>
+</head>
+<body>
+<form name="form" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认发布" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="5" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">折扣管理</td>
+          </tr>
+
+          <tr>
+            <td  class="lh">折扣标题：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="title" type="text" class="input w200" id="title" value="<?php echo $evalue['title']?>" />
+            </td>
+          </tr>
+    <tr>
+      <td align="right" class="left_title_1">图片：</td>
+      <td><input name="fileimg[]" type="file" id="fileimg[]" class="input w200"/><img onerror="this.src='/images/noimg60.gif'" src="/<?php echo $evalue['pic'];?>" width="80" height="50" /><input name="imgold" type="hidden" id="imgold" value="<?php echo $evalue['pic'];?>" /></td>
+    </tr>	  
+		  
+		  
+          <tr>
+            <td  class="lh">简介：</td>
+            <td height="22" bgcolor="#FFFFFF">
+			<textarea name="about" cols="150" rows="5"><?php echo $evalue['about']?></textarea>
+</td>
+          </tr>
+
+          <tr>
+            <td  class="lh">关键词：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="seokeywords" type="text" class="input w200" id="seokeywords"  value="<?php echo $evalue['seokeywords']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">描述：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="seodescription" type="text" class="input w200" id="seodescription" value="<?php echo $evalue['seodescription']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">来源网站：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="fromshop" type="text" class="input w200" id="fromshop" value="<?php echo $evalue['fromshop']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">折扣时间：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="discounttime" type="text" class="input w200" id="discounttime" value="<?php echo $evalue['discounttime']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">折扣URL：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="discounturl" type="text" class="input w200" id="discounturl" value="<?php echo $evalue['discounturl']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">flag：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="flag" type="text" class="input w50" id="flag" value="<?php echo $evalue['flag']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">排序：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="listorder" type="text" class="input w50" id="listorder" value="<?php echo $evalue['listorder']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">内容：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="body" cols="150" rows="25" id="body"><?php echo $evalue['body']?></textarea>
+            </td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+		<input type="hidden" name="did" value="<?php echo $evalue['did']?>"/>
+          <input name="save" type="submit" class="btn" value="确认发布">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

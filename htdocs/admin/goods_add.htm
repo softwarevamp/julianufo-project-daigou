@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商品管理</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="_script/jquery.js"></script>
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+ <script type="text/javascript" charset="utf-8" src="./kindeditor/kindeditor.js"></script>
+ <script type="text/javascript">
+    KE.show({
+        id : 'about',
+        cssPath : './kindeditor/index.css',
+		urlType : 'absolute'
+    });
+  </script>
+</head>
+<body>
+<form name="form" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+  <div id="box_tools" class="floor_t">
+    <div class="toolbgline">
+      <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <tr>
+          <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+          <td><span style="margin-top:10px">
+            <input name="save2" type="submit" class="btn" value="确认发布" />
+            <input name="reback2" type="reset" class="btn" value="重新填写" />
+            </span></td>
+          <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+          <td width="1"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="floor_c">
+    <div class="xn"></div>
+    <div class="boxf">
+      <div class="boxn">
+        <script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	document.form.reback2.disabled=true;
+	document.form.save2.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+        <table id="table" style="margin-top:0px" cellpadding="5" cellspacing="1">
+          <tr class="th" >
+            <td colspan="2">商品管理</td>
+          </tr>
+          <tr>
+            <td width="51"  class="lh">选择分类：</td>
+            <td width="367" height="22" bgcolor="#FFFFFF"><?php echo getatypeselect("gtypeid",$evalue['gtypeid'],'选择分类')?>&nbsp;<font color=red>注：必须选择!</font></td>
+          </tr>
+          <tr>
+            <td  class="lh">商品地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsurl" type="text" class="input w200" id="goodsurl" value="<?php echo $evalue['goodsurl']?>" /> <span style="margin-top:10px">
+              <input name="save22" type="submit" class="btn" value="抓取信息" />
+            </span> </td>
+          </tr>
+          <tr>
+            <td  class="lh">商品名称：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsname" type="text" class="input w200" id="goodsname" value="<?php echo $evalue['goodsname']?>" />            </td>
+          </tr>
+          <tr>
+            <td  class="lh">商品价格：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsprice" type="text" class="input w200" id="goodsprice"  value="<?php echo $evalue['goodsprice']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="goodsseller" type="text" class="input w200" id="goodsseller"  value="<?php echo $evalue['goodsseller']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">卖家地址：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="sellerurl" type="text" class="input w200" id="sellerurl"  value="<?php echo $evalue['sellerurl']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">商城名：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="shopname" type="text" class="input w200" id="shopname"  value="<?php echo $evalue['shopname']?>" /></td>
+          </tr>
+          <tr>
+            <td  class="lh">浏览数：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="views" type="text" class="input w50" id="views" value="<?php echo $evalue['views']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">购买数：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="buynum" type="text" class="input w50" id="buynum" value="<?php echo $evalue['buynum']?>"/></td>
+          </tr>
+		    <tr>
+            <td  class="lh">是否显示在首页：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="buynum" type="text" class="input w50" id="buynum" value="<?php echo $evalue['flag']?>"/>&nbsp;<font color=red>注：c为显示,h为不显示!</font></td>
+          </tr>
+          <tr>
+            <td  class="lh">排序：</td>
+            <td height="22" bgcolor="#FFFFFF"><input name="listorder" type="text" class="input w50" id="listorder" value="<?php echo $evalue['listorder']?>"/></td>
+          </tr>
+          <tr>
+            <td  class="lh">推荐原因：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="why" cols="100" rows="5" id="why"><?php echo $evalue['why']?></textarea></td>
+          </tr>
+          <tr>
+            <td  class="lh">内容：</td>
+            <td height="22" bgcolor="#FFFFFF"><textarea name="about" cols="150" rows="25" id="about"><?php echo $evalue['about']?></textarea>            </td>
+          </tr>
+        </table>
+        <div align="center" style="margin-top:10px">
+		<input type="hidden" name="aid" value="<?php echo $evalue['aid']?>"/>
+          <input name="save" type="submit" class="btn" value="确认发布">
+          &nbsp;&nbsp;
+          <input name="reback" type="reset" class="btn" value="重新填写">
+        </div>
+      </div>
+    </div>
+    <div class="xn"></div>
+    <div class="x1"></div>
+  </div>
+</form>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET?>" />
+<link rel="stylesheet" href="css/common.css" type="text/css" />
+<script language="javascript" src="js/jquery-1.4.2.min.js"></script>
+<script language="javascript" src="js/jquery.checkboxes.min.js"></script>
+<script language="javascript" src="js/tableRowCheckboxToggle.js"></script>
+<script>
+$(document).ready(function(){
+		//点击事件切换 全选取消状态
+		$("#selectall").click( function (){ $("#grouplist").toggleCheckboxes(); });
+	});
+</script>
+
+<title>列表</title>
+</head>
+
+<body>
+<div id="man_zone">
+<?php if($action=="edit"){?>
+<form action="?action=edit" method="post" enctype="multipart/form-data">
+<table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td width="15%" align="right" class="left_title_1">ID：</td>
+      <td width="85%"><input name="eid" type="text" id="eid" value="<?php echo $value['eid']?>"  readonly="true"/></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">账户名称：</td>
+      <td><input name="smtp_account" type="text" id="smtp_account" value="<?php echo $value['smtp_account']?>"/></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="right" class="left_title_2">smtp地址：</td>
+      <td><input name="smtp_server" type="text" id="smtp_server" value="<?php echo $value['smtp_server']?>"   /></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">邮箱密码：</td>
+      <td><input name="smtp_password" type="text" id="smtp_password" value="<?php echo $value['smtp_password']?>"  /></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">auth：</td>
+      <td>	  
+	  <input type="radio" name="smtp_auth" value="1" <?php if($value['smtp_auth']==1)echo 'checked="checked"'?>/> 正常
+        <input name="smtp_auth" type="radio" value="0" <?php if($value['smtp_auth']==0)echo 'checked="checked"'?> /> 禁用
+         </td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">SSl：</td>
+      <td> <input type="radio" name="smtp_ssl" value="1" <?php if($value['smtp_ssl']==1)echo 'checked="checked"'?>/> 正常
+        <input name="smtp_ssl" type="radio" value="0" <?php if($value['smtp_ssl']==0)echo 'checked="checked"'?> /> 禁用
+		 </td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">端口：</td>
+      <td><input name="smtp_port" type="text" id="smtp_port" value="<?php echo $value['smtp_port']?>"></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">回复地址：</td>
+      <td><input name="reply_address" type="text" id="reply_address" value="<?php echo $value['reply_address']?>"></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">状态：</td>
+      <td>
+        <input type="radio" name="state" value="1" <?php if($value['state']==1)echo 'checked="checked"'?>/> 正常
+        <input name="state" type="radio" value="0" <?php if($value['state']==0)echo 'checked="checked"'?> /> 禁用
+		
+		</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="right" class="left_title_2">&nbsp;</td>
+      <td><input type="submit" name="Submit" value="提交" />
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" name="Submit2" value="重置" /></td>
+    </tr>
+  </table>
+
+  </form>
+  
+  <?php }elseif($action=="add"){?>  
+ 
+ 
+ <form action="?action=add" method="post" enctype="multipart/form-data">
+<input name="gid" type="hidden" id="gid" value="<?php echo $gid;?>" />
+<table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <td width="15%" align="right" class="left_title_2">账户名称：</td>
+      <td width="85%"><input name="smtp_account" type="text" id="smtp_account"/></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="right" class="left_title_2">smtp地址：</td>
+      <td><input name="smtp_server" type="text" id="smtp_server"  /></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">邮箱密码：</td>
+      <td><input name="smtp_password" type="text" id="smtp_password"  /></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">auth：</td>
+      <td><input type="radio" name="smtp_auth" value="1" checked="checked"/>
+正常
+  <input name="smtp_auth" type="radio" value="0"  />
+禁用 </td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">SSl：</td>
+      <td><input type="radio" name="smtp_ssl" value="1" />
+正常
+  <input name="smtp_ssl" type="radio" value="0"  checked="checked" />
+禁用 </td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">端口：</td>
+      <td><input name="smtp_port" type="text" id="smtp_port"></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">回复地址：</td>
+      <td><input name="reply_address" type="text" id="reply_address"></td>
+    </tr>
+    <tr>
+      <td align="right" class="left_title_2">状态：</td>
+      <td><input type="radio" name="state" value="1"  checked="checked"/>
+正常
+  <input name="state" type="radio" value="0"  />
+禁用 </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td align="right" class="left_title_2">&nbsp;</td>
+      <td><input type="submit" name="Submitadd" value="提交" />
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" name="Submit2" value="重置" /></td>
+    </tr>
+  </table>
+
+  </form> 
+  
+  
+  
+  
+  
+  
+  <?php }elseif(empty($action)){?>
+  
+  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1">
+    <tr>
+      <td>
+	    
+    <input type="button" onclick="grouplist.submit();" name="Submit" value="删除选定" />
+    <input type="button" onclick="location.href='?action=add'" name="Submit4" value="添加账户" /></td>
+    </tr>
+  </table>
+<form method="post" action="?action=dels" name="grouplist" id="grouplist">
+  <table width="99%" align="center"  border="0" cellpadding="3" cellspacing="1" class="table_style">
+    <tr>
+      <th width="2%"><label>
+        <input type="checkbox" name="checkbox" value="checkbox" id="selectall" />
+      </label></th>
+      <th width="5%">ID</th>
+      <th width="15%">账户名称</th>
+      <th width="15%">smtp地址</th>
+      <th width="12%">邮箱密码</th>
+      <th width="13%">auth</th>
+      <th width="7%">SSl</th>
+      <th width="7%">端口</th>
+      <th width="12%">状态</th>
+      <th width="12%">操作</th>
+    </tr>
+	<?php if(is_array($dataarray)){foreach($dataarray as $value){?>
+    <tr class="odd_row">
+      <td align="center"><input type="checkbox" name="delids[]" value="<?php echo $value['eid']?>" /></td>
+      <td><?php echo $value['eid']?></td>
+      <td><?php echo $value['smtp_account']?></td>
+      <td><?php echo $value['smtp_server']?></td>
+      <td><?php echo $value['smtp_password']?></td>
+      <td><?php echo $value['smtp_auth']?>&nbsp;&nbsp;</td>
+      <td><?php echo $value['smtp_ssl']?></td>
+      <td><?php echo $value['smtp_port']?></td>
+      <td><?php if($value['state']==1)echo "√";else echo "×";?>&nbsp;</td>
+      <td>
+<a href="smtp_list.php?action=edit&amp;eid=<?php echo $value['eid']?>">编辑账户 </a>|<a href="javascript:if(confirm('确实要删除吗?'))location='smtp_list.php?action=del&eid=<?php echo $value['eid']?>'"> 删除</a></td>
+    </tr>
+	<?php }}else{?>
+	<tr><td colspan=10>暂无数据..............</td></tr>
+	<?php };?>
+  </table>
+  
+
+  <div style="width:99%;margin:0px auto;">
+
+  
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+  </form>
+  <?php }?>
+</div>
+</body>
+</html>

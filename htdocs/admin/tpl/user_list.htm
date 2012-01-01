@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:480});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});		
+});
+function updatestate(state){
+	if (state == "") {
+		alert("缺少参数!");
+		return false;
+	}
+	var ORDERSTATE=new Array("未验证","通过验证","正常","禁用");
+	var selectedStr = "";
+	var sendMail = $("input[name='did[]']");		
+	sendMail.each( function() {
+		if ($(this).attr("checked")) {
+			selectedStr += $(this).val() + "|";
+		}
+	});
+	
+	//alert(selectedStr);
+	if (selectedStr == "") {
+		$.jGrowl("至少选择一条数据!");
+		//alert("至少选择一条数据");
+		return false;
+	}
+	if(confirm("您确认要更改状态为"+ORDERSTATE[state]+"？")){
+    $.post("<?php echo PHP_SELF?>", {action:"updatestate",state:state, ids: selectedStr}, 
+		   function(data){
+				  if(data==1){$.jGrowl("更改状态为["+ORDERSTATE[state]+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;	  
+				  }); 
+    }
+
+}
+
+</script>
+
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="58"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a>
+		<a href="javascript:;" onclick="window.open (window.location);"><img src="images/open.gif" alt="新窗口打开" width="16" height="20" /></a>
+		</td>
+        <td width="200">
+		  <a href="####"  onclick="updatestate(1)" id="updatestate2" class="btn_a" style="margin-left:5px">通过验证</a>
+		  <a href="####"  onclick="updatestate(3)" id="updatestate3" class="btn_a" style="margin-left:5px">设置禁用</a>
+		 </td>
+<TD width="200">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR><TD width="110" align="middle">
+<INPUT type="hidden" name="state" value="<?php echo $state?>">
+<INPUT class="input" name="keywords" value="<?php echo $keywords?>"></TD>
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<TD align=right>共 <font color=red><?php echo $total?></font> 条 每页显示 <?php echo $pagesize?> 条 </TD>
+
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+	<a href="javascript:location.reload();" style="color:green;float:right;">刷新</a><br/>
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+		  	<th width="3%"><input type="checkbox" id=checkboxall name="chkall" value='ON' /></th>
+            <th width="2%" <?php echo sortcss('uid')?>><a href="<?php echo sortstr('uid')?>">ID</a></th>
+			<th width="4%" <?php echo sortcss('memberid')?>><a href="<?php echo sortstr('uid')?>">客户代号</a></th>
+			<th width="6%" <?php echo sortcss('uname')?>><a href="<?php echo sortstr('uname')?>">用户名</a></th>
+			<th width="8%">邮箱</th>
+            <th width="4%">真名</th>
+			<th width="2%" >性别</th>
+			<th width="9%" >国家/城市/邮编</th>
+			<th width="9%" >注册IP/有效期</th>
+            <th width="8%">登录IP/登录时间</th>
+			<th width="8%">QQ/MSN</th>
+			<th width="4%" >积分</th>
+            <th width="4%" >余额</th>
+            <th width="4%">状态</th>
+			<th width="6%">消费记录</th>
+			<th width="5%">备注</th>
+            <th width="10%">管理</th>
+</thead>
+<tbody>
+
+<?php if(is_array($dataarray)){foreach($dataarray as $r){?>
+          <tr>
+            <td><input type="checkbox" name="did[]" value="<?php echo $r['uid']?>" /></td>
+            <td><?php echo $r['uid']?></td>
+			<td><?php echo $r['memberid']?></td>
+            <td><?php echo $r['uname']?></td>
+            <td><?php echo $r['email']?></td>
+            <td><?php echo $r['tname']?></td>
+            <td><?php if($r['sex']){echo "男";}else {echo "女";} ?></td>
+            <td><?php echo $r['country']?>/<?php echo $r['city']?>/<?php echo $r['zip']?></td>
+            <td><?php echo $r['regip']?><br/> /<?php if($r['utype']>0) echo date('Y-m-d',$r['validity']); else if($r['utype']==0) echo '普通会员无期限'; else echo '已到期'; ?></td>
+            <td><?php echo $r['loginip']?><br/><?php echo date('Y-m-d H:i',$r['logintime']) ?></td>
+            <td><?php echo $r['qq']?><br/><?php echo $r['msn']?></td>
+            <td><?php echo $r['scores']?></td>
+            <td><?php echo $r['money']?></td>			
+            <td><?php echo $USERSTATE[$r['state']]?></td>
+			<td><a href="/admin/record_list.php?name=<?php echo $r['uname'];?>">查看详情</a></td>
+			<td><?php echo $r['remark']?></td>
+            <td>
+			
+			
+				<a class="user_x cboxElement" target="_blank" href="email_send.php?inbox=1&email=<?php echo $r['email']?>">邮件</a>|<a class="user_x cboxElement" target="_blank" href="pm_send.php?inbox=1&uid=<?php echo $r['uid']?>">短信</a>|<a class="user_x cboxElement" target="_blank" href="user_edit.php?uid=<?php echo $r['uid']?>">编辑|</a><a href="javascript:if(confirm('确实要删除吗?'))location='<?php echo PHP_SELF?>?action=del&did=<?php echo $r['uid']?>'">删除</a></td>
+          </tr>
+<?php }}?>
+</tbody>
+
+        </table>
+		  <div style="width:100%;margin:0px auto;">
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

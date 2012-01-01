@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title></title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="_script/jquery.js"></script>
+<script src="_script/jquery.colorbox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="_script/jquery.colorbox.css" />
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript"> 
+$(function(){$(".user_x").colorbox({iframe:true,innerWidth:506, innerHeight:580});});
+function checkclick(msg){if(confirm(msg)){event.returnValue=true;}else{event.returnValue=false;}}
+$(function() {
+	// 全选反选	
+	$("#checkboxall").click(function(){
+	    var checked_status = this.checked;   
+		$("input[name='did[]']").each(function(){this.checked = checked_status;});
+		});		
+});
+function updatestate(state){
+	if (state == "") {
+		alert("缺少参数!");
+		return false;
+	}
+	var ORDERSTATE=new Array("空","待处理","已邮寄","已确认","无效运单");
+	var selectedStr = "";
+	var sendMail = $("input[name='did[]']");		
+	sendMail.each( function() {
+		if ($(this).attr("checked")) {
+			selectedStr += $(this).val() + "|";
+		}
+	});
+	
+	//alert(selectedStr);
+	if (selectedStr == "") {
+		$.jGrowl("至少选择一条数据!");
+		//alert("至少选择一条数据");
+		return false;
+	}
+	if(confirm("您确认要更改状态为"+ORDERSTATE[state]+"？")){
+    $.post("<?php echo PHP_SELF?>", {action:"updatestate",state:state, ids: selectedStr}, 
+		   function(data){
+				  if(data==1){$.jGrowl("更改状态为["+ORDERSTATE[state]+"]成功!", {beforeClose: function(e,m) {location.reload();}});}else{alert("更改出错");}
+				  //alert(data);return false;	  
+				  }); 
+    }
+
+}
+
+
+function update_expressno(id,obj){
+	if(obj.value.length<2){
+	}else{
+		$.post("<?php echo PHP_SELF?>", {action:"updateexpressno",ids:id, value:obj.value}, 
+		   function(data){
+			if(data==1){$.jGrowl("更改快递单号为["+obj.value+"]成功!");}else{alert("更改出错");}
+				  //alert(data);return false;	  
+		});
+	}
+}
+
+</script>
+
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+function colorclose(){
+	 parent.$.fn.colorbox.close();
+}
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="58"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a>
+		<a href="javascript:;" onclick="window.open (window.location);"><img src="images/open.gif" alt="新窗口打开" width="16" height="20" /></a>
+		</td>
+        <td width="200">
+		  <a href="####"  onclick="updatestate(2)" id="updatestate2" class="btn_a" style="margin-left:5px">已邮寄</a>
+		  <a href="####"  onclick="updatestate(3)" id="updatestate3" class="btn_a" style="margin-left:5px">已成功</a>
+		  <a href="####"  onclick="updatestate(4)" id="updatestate4" class="btn_a" style="margin-left:5px">无效运单</a>
+		 </td>
+<TD width="200">
+<TABLE border="0" cellSpacing="0" cellPadding="0" align="right">
+<FORM id="form" method="get" name="form">
+<TBODY>
+<TR><TD width="110" align="middle">
+<INPUT type="hidden" name="state" value="<?php echo $state?>">
+<INPUT class="input" name="keywords" value="<?php echo $keywords?>"></TD>
+<TD width="2"></TD>
+<TD width="52"><INPUT class="btn" value="搜索" type="submit" name="Submit3"></TD></TR></FORM>
+</TBODY></TABLE></TD>
+
+<TD align=right>共 <font color=red><?php echo $total?></font> 条 每页显示 <?php echo $pagesize?> 条 </TD>
+
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn"> 
+	   		<a href="javascript:location.reload();" style="color:green;float:right;">刷新</a><br/>
+      <form name="form" enctype="multipart/form-data" method="post">
+        <table border="0" cellspacing="1" class="tablesorter">
+		<thead>
+          <tr>
+		  	<th width="3%"><input type="checkbox" id=checkboxall name="chkall" value='ON' /></th>
+            <th width="4%" <?php echo sortcss('sid')?>><a href="<?php echo sortstr('sid')?>">ID</a></th>
+			<th width="6%" <?php echo sortcss('uname')?>><a href="<?php echo sortstr('uname')?>">用户</a></th>
+			<th width="9%">发货单号</th>
+            <th width="15%">国家/城市</th>
+			<th width="14%" >地址/邮编</th>
+			<th width="12%" >姓名/电话/邮件</th>
+            <th width="4%">运费</th>
+			<th width="5%">服务费</th>
+			<th width="5%" >报关费</th>
+            <th width="5%" >总费用</th>
+			<th width="8%" >提交/更新</th>
+            <th width="6%">状态</th>
+            <th width="4%">修改</th>
+</thead>
+<tbody>
+
+<?php if(is_array($dataarray)){foreach($dataarray as $r){?>
+          <tr>
+            <td><input type="checkbox" name="did[]" value="<?php echo $r['sid']?>" /></td>
+            <td><?php echo $r['sid']?></td>
+            <td><?php echo $r['uname']?></td>
+            <td><INPUT class=input onchange=update_expressno(<?php echo $r['sid']?>,this) id=bianhao value="<?php if(!empty($r['sn']))echo $r['sn'];else echo $r['remark']?>"  maxLength=16 size=20 type=text name=bianhao></td>
+            <td><?php echo $r['country']?>/<?php echo $r['city']?></a></td>
+            <td><?php echo $r['address']?><br/><?php echo $r['zip']?></td>
+            <td><?php echo $r['consignee']?>/<?php echo $r['tel']?><br/><?php echo $r['email']?></td>
+            <td><?php echo $r['freight']?></td>
+            <td><?php echo $r['serverfee']?></td>
+            <td><?php echo $r['customsfee']?></td>
+            <td><?php echo $r['totalfee']?></td>
+            <td><?php echo date('y-m-d H:i',$r['addtime'])?><br/><?php echo date('y-m-d H:i',$r['uptime'])?></td>
+            <td><?php echo $SENDORDERSTATE[$r['state']]?></td>
+            <td>
+				<a class="user_x cboxElement" target="_blank" href="sendorder_edit.php?sid=<?php echo $r['sid']?>" title="修改"><img src="images/23x16.gif"></a>
+				<a class="" target="_blank" href="sendorder_orderlist.php?sid=<?php echo $r['sid']?>" title="详单"><img src="images/d.gif"></a>
+			</td>
+          </tr>
+<?php }}?>
+</tbody>
+
+        </table>
+		  <div style="width:100%;margin:0px auto;">
+    <?php echo multi($total,$pagesize,$page,"");?>
+  </div>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+</body>
+</html>

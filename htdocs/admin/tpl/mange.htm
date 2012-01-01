@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>------</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 7]><script type="text/javascript" src="_script/unitpngfix.js"></script><![endif]-->
+<script type="text/jscript" src="_script/jquery.js"></script>
+<!-- Arquivos utilizados pelo jQuery jgrowl plugin -->
+<script type="text/javascript" src="_script/jquery.jgrowl.js"></script>
+<link rel="stylesheet" type="text/css" href="_script/jquery.jgrowl.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="themes/blue/style.css" media="screen" />
+<!--[if lt IE 7]><LINK href="_script/jquery.jgrowl.ie6.css" type=text/css rel=stylesheet><![endif]-->
+<!-- / fim dos arquivos utilizados pelo jQuery jgrowl plugin -->
+<SCRIPT type=text/javascript>
+function tools(){
+var box_h="1";	
+var top=$(document).scrollTop();
+$("#topv")[0].value=top;
+if(($.browser.msie==true)&&($.browser.version==6.0)){
+if(top>box_h)$("#box_tools").css({position:"absolute",top:top-box_h});
+}else{
+if(top>box_h)$("#box_tools").css({position:"fixed",top:"-"&top+"px"});
+}
+if(top<=box_h)$("#box_tools").css({position:"static",top:0});
+}
+
+$(function(){
+window.onscroll=tools;
+window.onresize=tools;
+});
+
+</SCRIPT>
+</head>
+<body>
+<div id="box_tools" class="floor_t">
+  <div class="toolbgline">
+  <table width="100%" border="0" cellspacing="2" cellpadding="0">
+      <tr>
+        <td width="28"><a href="javascript:location.reload();"><img src="images/admin.gif" alt="刷新" width="28" height="20" /></a></td>
+        
+        <td><span style="margin-top:10px">
+          <input name="reback2" type="reset" class="btn" onclick="location.href='mange.php?action=add'" value="添加管理" />
+          </span></td>
+        
+        <td width="20"><input class="input w200"  style="width:20px;margin-right:2px" name="topv" type="text" id="topv" value="" /></td>
+        <td width="1"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="floor_c">  
+  <div class="xn"></div>
+  <div class="boxf">
+    <div class="boxn">
+<script>    
+function checkform()
+{
+/*	var title = document.getElementById("title");
+	if(title.value=="")
+	{
+		alert("作品标题不能为空，请输入！");
+		title.focus();
+		return false;
+	}*/
+
+	
+	document.form.reback.disabled=true;
+	document.form.save.disabled=true;
+	//document.form.save.value='提交中';
+	return true;
+}
+function nform()
+{
+	document.form.reback.disabled=false;
+	document.form.save.disabled=false;
+	return true;
+}
+
+
+</script>
+<?php if($action=='add' or $action=='edit'){?>
+<form action="?action=<?php if($action=='add'){?>add<?php }else{?>edit<?php }?>" method="post">
+<input type="hidden" name="mid" value="<?php echo $evalue["mid"]?>"/>
+<table cellpadding="1" cellspacing="1" id="table" style="margin-top:10px">
+  <tr class="th" >
+    <td colspan="2">&nbsp;&nbsp;<?php if($action=='add'){?>添加项目<?php }else{?>编辑项目<?php }?></td>
+  </tr>
+  <tr>
+    <td  class="lh">管理名称：</td>
+    <td height="22" bgcolor="#FFFFFF"><input name="mname" type="text" class="input w200" id="mname"  value="<?php echo $evalue["mname"]?>" />
+      注：显示名称</td>
+  </tr>
+  <tr>
+    <td  class="lh">上级关联：</td>
+    <td height="22" bgcolor="#FFFFFF"><select name="node">
+      <option value="0">管理分区</option>
+	  <?php foreach($menuarray as $r){?>
+	  <?php if($r['type']=='group' or $r['type']=='zone'){?>
+      <option value="<?php echo $r['mid']?>" <?php if($evalue['node']==$r['mid'])echo "selected=\"selected\""?>><?php echo $r['mname']?></option>
+	  <?php }}?>
+	  
+    </select>
+      注：显示名称</td>
+  </tr>
+  <tr>
+    <td  class="lh">类型：</td>
+    <td height="22" bgcolor="#FFFFFF"><select name="type" id="type">
+      <option value="zone" <?php if($evalue['type']=='zone')echo "selected=\"selected\""?>>管理分区</option>
+      <option value="group" <?php if($evalue['type']=='group')echo "selected=\"selected\""?>>管理分组</option>
+      <option value="item" <?php if($evalue['type']=='item')echo "selected=\"selected\""?>>管理项</option>
+    </select>
+    </td>
+  </tr>
+  <tr>
+    <td  class="lh">地址：</td>
+    <td height="22" bgcolor="#FFFFFF"><input name="murl" type="text" class="input w200" id="murl"  value="<?php echo $evalue["murl"]?>" /></td>
+  </tr>
+  <tr>
+    <td  class="lh">排序：</td>
+    <td height="22" bgcolor="#FFFFFF"><input name="listorder" type="text" class="input w200" id="listorder"  value="<?php echo $evalue["listorder"]?>" /></td>
+  </tr>
+  <tr>
+    <td  class="lh">代号：</td>
+    <td height="22" bgcolor="#FFFFFF"><input name="mcode" type="text" class="input w200" id="mcode"  value="<?php echo $evalue["mcode"]?>" />
+      注意：英文不能重复</td>
+  </tr>
+</table>
+
+      <div align="center" style="margin-top:10px">
+        <input name="Submit" type="submit" class="btn" value="<?php if($action=='add'){?>确定添加<?php }else{?>确认更新<?php }?>" />
+    
+      </div>
+	  <br/>
+</form>
+<?php }?>
+
+
+      <form name="form" target="ActFrm" enctype="multipart/form-data" method="post" onSubmit="return checkform()">
+        <table border="0" cellpadding="5" cellspacing="1" id="table1"  class="tablesorter">
+		<thead>
+          <tr>
+            <th>ID</th>
+            <th>管理名称</th>
+            <th>类型</th>
+            <th>代号</th>
+            <th>地址</th>
+            <th>排序</th>
+            <th>管理操作</th>
+          </tr>
+</thead>
+<tbody>
+<?php $str="";?>
+<?php foreach($menuarray as $r){?>
+<?php if($r['type']=='zone'){?>
+          <tr>
+            <td><?php echo $r['mid']?></td>
+            <td><?php echo $r['mname']?></td>
+            <td height="22"><?php echo $menuname[$r['type']]?></td>
+            <td><?php echo $r['mcode']?></td>
+            <td><?php echo $r['murl']?></td>
+            <td><?php echo $r['listorder']?></td>
+            <td><a href="?action=add">[添加]</a><a href="?action=edit&mid=<?php echo $r['mid']?>">[编辑]</a><a href="?action=del&did=<?php echo $r['mid']?>">[删除]</a></td>
+          </tr>
+<?php foreach($menuarray as $r1){?>
+<?php if($r1['type']=='group' and $r1['node']==$r['mid']){?>
+          <tr class="even">
+            <td><?php echo $r1['mid']?></td>
+            <td>└─&nbsp;<?php echo $r1['mname']?></td>
+            <td height="22"><?php echo $menuname[$r1['type']]?></td>
+            <td><?php echo $r1['mcode']?></td>
+            <td><?php echo $r1['murl']?></td>
+            <td><?php echo $r1['listorder']?></td>
+            <td><a href="?action=add">[添加]</a><a href="?action=edit&mid=<?php echo $r1['mid']?>">[编辑]</a><a href="?action=del&did=<?php echo $r1['mid']?>">[删除]</a></td>
+          </tr>
+<?php foreach($menuarray as $r2){?>
+<?php if($r2['type']=='item' and $r2['node']==$r1['mid']){?>
+
+          <tr class="odd">
+            <td><?php echo $r2['mid']?></td>
+            <td>└─────&nbsp;<?php echo $r2['mname']?></td>
+            <td height="22"><?php echo $menuname[$r2['type']]?></td>
+            <td><?php echo $r2['mcode']?></td>
+            <td><?php echo $r2['murl']?></td>
+            <td><?php echo $r2['listorder']?></td>
+            <td><a href="?action=add">[添加]</a><a href="?action=edit&mid=<?php echo $r2['mid']?>">[编辑]</a><a href="?action=del&did=<?php echo $r2['mid']?>">[删除]</a></td>
+          </tr>
+
+<?php }}?>
+<?php }}?>
+<?php }}?>
+
+</tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+  <div class="xn"></div>
+  <div class="x1"></div>
+</div>
+<iframe src="about:blank" name="ActFrm" id="ActFrm" style="display:none"></iframe>
+
+
+</body>
+</html>
