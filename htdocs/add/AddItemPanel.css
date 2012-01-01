@@ -1,0 +1,322 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 100%; COLOR: #333; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL LI {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+.addpanel_overlay {
+	Z-INDEX: 800; POSITION: fixed; FILTER: alpha(opacity=56); WIDTH: 100%; BOTTOM: 0px; DISPLAY: none; BACKGROUND: #000; HEIGHT: 100%; TOP: 0px; RIGHT: 0px; LEFT: 0px; opacity: 0.56; moz-opacity: 0.56; _position: absolute
+}
+.addpanel_dialog {
+	Z-INDEX: 900; POSITION: fixed; MARGIN-TOP: -227px; WIDTH: 555px; BACKGROUND: url(newimages/yj_.gif) #BC96E7 no-repeat 50% bottom; HEIGHT: 503px; MARGIN-LEFT: -277px; TOP: 50%; LEFT: 50%; _position: absolute; _margin-top: 0
+}
+.addpanel_windowname {
+	POSITION: relative; MARGIN-TOP: -2px; BACKGROUND: url(newimages/yj.gif) no-repeat left top; HEIGHT: 32px; OVERFLOW: hidden
+}
+.addpanel_windowname H2 {
+	LINE-HEIGHT: 32px; DISPLAY: inline; FLOAT: left; COLOR: #fff; MARGIN-LEFT: 10px; FONT-SIZE: 14px; FONT-WEIGHT: 100
+}
+.addpanel_windowname A {
+	MARGIN: 10px 10px 0px 0px; WIDTH: 21px; DISPLAY: inline; BACKGROUND: url(newimages/close.gif) no-repeat 0px -14px; FLOAT: right; HEIGHT: 14px; CURSOR: pointer
+}
+.addpanel_windowname A:hover {
+	BACKGROUND-POSITION: 0px 0px; CURSOR: pointer
+}
+.addpanel_inlay {
+	MARGIN: 0px 10px; WIDTH: 535px; DISPLAY: inline; BACKGROUND: url(newimages/yj.gif) #fff no-repeat right top; FLOAT: left; HEIGHT: 460px; OVERFLOW: hidden
+}
+.addpanel_write {
+	MARGIN: 35px 0px 0px 15px; HEIGHT: 35px
+}
+.addpanel_write LABEL {
+	MARGIN: 7px 5px 0px 0px; FLOAT: left
+}
+.addpanel_address {
+	WIDTH: 325px; BACKGROUND: url(newimages/address.gif) no-repeat; FLOAT: left; HEIGHT: 30px
+}
+.addpanel_address_ {
+	WIDTH: 325px; BACKGROUND: url(newimages/address.gif) no-repeat; FLOAT: left; HEIGHT: 30px
+}
+.addpanel_address_ {
+	BACKGROUND-POSITION: 0px -32px; COLOR: #ababab
+}
+.addpanel_address INPUT {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; WIDTH: 313px; PADDING-RIGHT: 0px; DISPLAY: inline; BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: left; HEIGHT: 18px; MARGIN-LEFT: 5px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 7px
+}
+.addpanel_address_ INPUT {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; WIDTH: 313px; PADDING-RIGHT: 0px; DISPLAY: inline; BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: left; HEIGHT: 18px; MARGIN-LEFT: 5px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 7px
+}
+.addpanel_address INPUT {
+	BACKGROUND: url(newimages/address_.gif) repeat-x 50% top
+}
+.addpanel_tijiao {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 86px; DISPLAY: inline; BACKGROUND: url(newimages/tj.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 30px; MARGIN-LEFT: 5px; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.addpanel_tijiao_ {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 86px; DISPLAY: inline; BACKGROUND: url(newimages/tj.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 30px; MARGIN-LEFT: 5px; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.addpanel_tijiao_ {
+	BACKGROUND-POSITION: 0px -32px
+}
+.addpanel_dhk {
+	MARGIN: 0px 0px 0px 100px; WIDTH: 337px; BACKGROUND: url(newimages/dhk.gif) no-repeat; HEIGHT: 64px; COLOR: #efaa40
+}
+.addpanel_dhk P {
+	MARGIN: 30px 0px 0px 10px; DISPLAY: inline; FLOAT: left
+}
+.addpanel_wrong {
+	HEIGHT: 64px
+}
+.addpanel_wrong P {
+	BORDER-BOTTOM: #fcebdc 1px solid; BORDER-LEFT: #fcebdc 1px solid; LINE-HEIGHT: 30px; MARGIN: 10px 0px 0px 104px; PADDING-LEFT: 35px; WIDTH: 290px; DISPLAY: inline; BACKGROUND: url(newimages/wrong.gif) #fefded no-repeat 10px 5px; FLOAT: left; HEIGHT: 30px; COLOR: #ff0000; BORDER-TOP: #fcebdc 1px solid; BORDER-RIGHT: #fcebdc 1px solid
+}
+.addpanel_loading {
+	HEIGHT: 59px; COLOR: #8ddb68; MARGIN-LEFT: 200px; PADDING-TOP: 5px
+}
+.addpanel_loading IMG {
+	DISPLAY: block
+}
+.addpanel_loading P {
+	MARGIN-TOP: 5px
+}
+.addpanel_tishi {
+	PADDING-BOTTOM: 0px; MARGIN: 30px 14px 0px; PADDING-LEFT: 90px; PADDING-RIGHT: 0px; COLOR: #60a1d7; BORDER-TOP: #ddd 1px dashed; PADDING-TOP: 20px
+}
+.addpanel_tishi H2 {
+	LINE-HEIGHT: 25px; PADDING-LEFT: 15px; BACKGROUND: url(newimages/deng.gif) no-repeat left 50%; HEIGHT: 25px; COLOR: #333; FONT-SIZE: 14px; FONT-WEIGHT: 100
+}
+.addpanel_tishi UL {
+	MARGIN: 5px 0px 0px 5px
+}
+.addpanel_tishi LI {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 10px; BACKGROUND: url(newimages/d.gif) no-repeat left 50%; HEIGHT: 25px
+}
+.addpanel_tishi LI SPAN {
+	MARGIN: 0px 2px; COLOR: #f90
+}
+.addpanel_tiqu {
+	MARGIN: 15px 0px 0px 14px; WIDTH: 507px; OVERFLOW: hidden; BORDER-TOP: #ccc 1px dashed
+}
+.addpanel_tiqu H2 {
+	MARGIN: 10px 0px 0px; FONT-SIZE: 12px
+}
+.addpanel_tiqu H2 SPAN {
+	COLOR: #999; MARGIN-LEFT: 5px; FONT-WEIGHT: 100
+}
+.addpanel_tiqu UL {
+	MARGIN-TOP: 15px; WIDTH: 515px
+}
+.addpanel_tiqu LI {
+	MARGIN: 0px 8px 8px 0px; DISPLAY: inline; FLOAT: left
+}
+.addpanel_tiqu LI A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 24px; WIDTH: 95px; BACKGROUND: url(newimages/wz.gif) no-repeat; FLOAT: left; HEIGHT: 24px; COLOR: #aaa; TEXT-DECORATION: none
+}
+.addpanel_procedure {
+	MARGIN: 25px 0px 0px 15px; HEIGHT: 40px
+}
+.addpanel_wangzhi {
+	BORDER-BOTTOM: #ccc 1px dashed; MARGIN: 0px 14px; HEIGHT: 64px
+}
+.addpanel_wangzhi DL {
+	MARGIN: 0px; HEIGHT: 39px
+}
+.addpanel_wangzhi DT {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; HEIGHT: 30px; MARGIN-LEFT: 1px; PADDING-TOP: 0px
+}
+.addpanel_wangzhi DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+.addpanel_wangzhi DD INPUT {
+	WIDTH: 395px
+}
+.addpanel_hui {
+	BORDER-BOTTOM: #cacaca 1px solid; BORDER-LEFT: #cacaca 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #f3f3f3; COLOR: #ababab; BORDER-TOP: #cacaca 1px solid; BORDER-RIGHT: #cacaca 1px solid; PADDING-TOP: 5px
+}
+.addpanel_data .addpanel_hui {
+	BORDER-BOTTOM: #cacaca 1px solid; BORDER-LEFT: #cacaca 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #f3f3f3; COLOR: #ababab; BORDER-TOP: #cacaca 1px solid; BORDER-RIGHT: #cacaca 1px solid; PADDING-TOP: 5px
+}
+.addpanel_red {
+	BORDER-BOTTOM: #ff9900 1px solid; BORDER-LEFT: #ff9900 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; COLOR: #f00; BORDER-TOP: #ff9900 1px solid; BORDER-RIGHT: #ff9900 1px solid; PADDING-TOP: 5px
+}
+.addpanel_data .addpanel_red {
+	BORDER-BOTTOM: #ff9900 1px solid; BORDER-LEFT: #ff9900 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; COLOR: #f00; BORDER-TOP: #ff9900 1px solid; BORDER-RIGHT: #ff9900 1px solid; PADDING-TOP: 5px
+}
+.addpanel_data .addpanel_wen {
+	BACKGROUND: url(newimages/wen.gif) no-repeat 136px 4px; CURSOR: pointer
+}
+.addpanel_wangzhi P {
+	LINE-HEIGHT: 16px; COLOR: #60a1d7; MARGIN-LEFT: 100px
+}
+.addpanel_wangzhi .addpanel_alert {
+	PADDING-LEFT: 20px; BACKGROUND: url(newimages/alert.jpg) no-repeat left 0px; COLOR: #f00; MARGIN-LEFT: 100px
+}
+.addpanel_data LABEL {
+	LINE-HEIGHT: 14px; MARGIN: 40px -450px -50px 330px; DISPLAY: inline; FLOAT: left;width:80px;
+}
+.addpanel_data LABEL INPUT {
+	DISPLAY: inline; FLOAT: left; MARGIN-RIGHT: 3px
+}
+.addpanel_data LABEL B {
+	MARGIN-TOP: 4px; FLOAT: left; FONT-WEIGHT: 100
+}
+.addpanel_fare {
+	BORDER-BOTTOM: #cb8136 1px solid; POSITION: relative; BORDER-LEFT: #cb8136 1px solid; MARGIN: -42px -200px -200px -10px; WIDTH: 208px; DISPLAY: none; BACKGROUND: #ffffcc; FLOAT: left; HEIGHT: 180px; OVERFLOW: hidden; BORDER-TOP: #cb8136 1px solid; BORDER-RIGHT: #cb8136 1px solid; LEFT: 110px
+}
+.addpanel_fare DIV {
+	MARGIN-TOP: 7px; HEIGHT: 20px
+}
+.addpanel_fare H2 {
+	MARGIN: 0px 0px 0px 7px; DISPLAY: inline; FLOAT: left; HEIGHT: 20px; COLOR: #666; FONT-SIZE: 12px
+}
+.addpanel_fare P {
+	LINE-HEIGHT: 20px; TEXT-INDENT: 24px; MARGIN: 0px 5px 5px 7px; COLOR: #cb8136
+}
+.addpanel_data TABLE .addpanel_fare A {
+	MARGIN: 0px 7px 0px 0px; WIDTH: 15px; BACKGROUND: url(newimages/close.gif) no-repeat 50% bottom; FLOAT: right; HEIGHT: 13px
+}
+.addpanel_img {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; MARGIN: 35px 15px -150px 0px; WIDTH: 100px; DISPLAY: none; FLOAT: right; HEIGHT: 100px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid
+}
+.addpanel_img IMG {
+	WIDTH: 100px; HEIGHT: 100px
+}
+.addpanel_data {
+	MARGIN: 15px 0px 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.addpanel_data TABLE {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.addpanel_data TABLE TD {
+	PADDING-BOTTOM: 8px
+}
+.addpanel_data TABLE INPUT {
+	BORDER-BOTTOM: #badbea 1px solid; BORDER-LEFT: #badbea 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; FLOAT: left; COLOR: #333; BORDER-TOP: #badbea 1px solid; BORDER-RIGHT: #badbea 1px solid; PADDING-TOP: 5px
+}
+.addpanel_zuo {
+	TEXT-ALIGN: right; WIDTH: 110px; VERTICAL-ALIGN: top; PADDING-TOP: 8px
+}
+.addpanel_data .addpanel_k {
+	WIDTH: 395px
+}
+.addpanel_data SPAN {
+	MARGIN: 5px 0px 0px 5px; DISPLAY: inline; FLOAT: left; COLOR: #f90
+}
+.addpanel_data TEXTAREA {
+	BORDER-BOTTOM: #badbea 1px solid; BORDER-LEFT: #badbea 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; WIDTH: 395px; PADDING-RIGHT: 5px; BACKGROUND: #fff; FLOAT: left; HEIGHT: 40px; FONT-SIZE: 12px; BORDER-TOP: #badbea 1px solid; BORDER-RIGHT: #badbea 1px solid; PADDING-TOP: 5px
+}
+.addpanel_data .addpanel_still {
+	COLOR: #ccc
+}
+.addpanel_data TABLE A {
+	MARGIN: 5px 0px 0px 5px; WIDTH: 18px; DISPLAY: inline; BACKGROUND: url(newimages/jj.gif) no-repeat left top; FLOAT: left; HEIGHT: 18px
+}
+.addpanel_data TABLE A:hover {
+	BACKGROUND-POSITION: left bottom
+}
+.addpanel_data TABLE .addpanel_jian {
+	BACKGROUND-POSITION: right top
+}
+.addpanel_data TABLE .addpanel_jian:hover {
+	BACKGROUND-POSITION: right bottom
+}
+.addpanel_go {
+	MARGIN: 3px 0px 0px 113px
+}
+.addpanel_go .addpanel_next {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 109px; BACKGROUND: url(newimages/go.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 39px; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.addpanel_go .addpanel_next_ {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 109px; BACKGROUND: url(newimages/go.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 39px; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.addpanel_go .addpanel_next_no {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 109px; BACKGROUND: url(newimages/go.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 39px; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+.addpanel_go .addpanel_next_no {
+	BACKGROUND-POSITION: 0px -80px
+}
+.addpanel_go .addpanel_next_ {
+	BACKGROUND-POSITION: 0px -40px
+}
+.addpanel_go A {
+	MARGIN: 10px 0px 0px 20px; DISPLAY: inline; FLOAT: left; COLOR: #999; TEXT-DECORATION: none
+}
+.addpanel_go A:hover {
+	COLOR: #ff9900
+}
+.addpanel_go INPUT {
+	BORDER-BOTTOM: #badbea 1px solid; BORDER-LEFT: #badbea 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #fff; COLOR: #333; BORDER-TOP: #badbea 1px solid; BORDER-RIGHT: #badbea 1px solid; PADDING-TOP: 5px
+}
+
+.addpanel_succeed {
+	MARGIN: 20px 0px 0px 90px; HEIGHT: 90px
+}
+.addpanel_succeed H2 {
+	LINE-HEIGHT: 39px; PADDING-LEFT: 50px; FONT-FAMILY: "simhei"; BACKGROUND: url(newimages/succeed.gif) no-repeat left 50%; HEIGHT: 39px; COLOR: #80ab51; FONT-SIZE: 20px; FONT-WEIGHT: normal;clear:both;
+}
+.addpanel_succeed P {
+	MARGIN: 5px 0px 0px 52px; COLOR: #999;clear:both;
+}
+.addpanel_succeed P SPAN {
+	MARGIN: 0px 2px; COLOR: #f90
+}
+.addpanel_last {
+	BORDER-BOTTOM: #ececea 1px solid; BORDER-LEFT: #ececea 1px solid; MARGIN: 0px 15px; BACKGROUND: #fdffef; HEIGHT: 125px; BORDER-TOP: #ececea 1px solid; BORDER-RIGHT: #ececea 1px solid
+}
+.addpanel_last .addpanel_img {
+	MARGIN: 12px 0px 0px 12px; DISPLAY: inline; FLOAT: left
+}
+.addpanel_show {
+	MARGIN: 15px 0px 0px 10px; WIDTH: 365px; DISPLAY: inline; FLOAT: left
+}
+.addpanel_show H2 {
+	LINE-HEIGHT: 18px; HEIGHT: 40px; COLOR: #5d99cf; FONT-SIZE: 12px; FONT-WEIGHT: 100
+}
+.addpanel_show LI {
+	LINE-HEIGHT: 20px; COLOR: #aaa
+}
+.addpanel_show LI SPAN {
+	COLOR: #f90
+}
+.addpanel_lastnav {
+	MARGIN: 15px 0px 0px 118px
+}
+.addpanel_lastnav A {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; WIDTH: 143px; DISPLAY: inline; BACKGROUND: url(newimages/nav.gif) no-repeat 50% top; FLOAT: left; HEIGHT: 44px; COLOR: #ddd; MARGIN-LEFT: 10px; FONT-SIZE: 14px; TEXT-DECORATION: none
+}
+.addpanel_lastnav A:hover {
+	BACKGROUND-POSITION: 0px bottom; COLOR: #fff
+}
+#isAuction {
+	DISPLAY: none
+}
+#p0 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 180px
+}
+#p0 P {
+	COLOR: #bbb; FONT-SIZE: 12px
+}
+#p1 {
+	DISPLAY: none
+}
+#promptInfo P {
+	WIDTH: 380px
+}
+#promptInfo P A {
+	COLOR: #3399ff
+}
+#promptInfo P A:hover {
+	COLOR: #f90; TEXT-DECORATION: none
+}
